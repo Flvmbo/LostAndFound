@@ -1,0 +1,74 @@
+body{
+    /* text-align: center; */
+    font-family: 'Times New Roman', Times, serif;
+    /* color:#fff; */
+
+}
+
+.content{
+    max-width: 960px;
+    height: 600px;
+    margin: 0 auto;
+    border:2px solid blue;
+    display: grid;
+    /* grid-template-columns: 30% 20% 50%; */
+    /* grid-template-columns: 1fr 1fr 1fr ; */
+    /* grid-auto-rows:minmax(200px, auto); */
+    /* grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,minmax(200px, auto)) ;
+     */
+    /* Specfies width */
+ /* grid-template-columns: repeat(3, minmax(1rem, auto)); */
+ 
+
+ /* Specifies height */
+ /* grid-template-rows: repeat(2, 100px); */
+
+ /* For every other row than the specified numbered row */
+ /* grid-auto-rows: 50px; 
+
+ gap: 5px ;
+ grid-auto-flow: row;
+
+align-content: center;
+justify-content:space-around ;
+ align-content:  */
+
+/* MOVING TO GRID TEMPLATE AREAS, commented all previous code till display:grid */
+/* grid-template-columns: [col-start] 1fr [col-2] 1fr [col-end] 1fr;
+grid-auto-rows: 60px auto 100px;
+grid-template-areas: 
+"header header header"
+"main main sidebar"
+"footer footer footer"; */
+gap:4px;
+
+grid-template:
+ "header header header" 60px
+ "main main sidebar" auto
+ "footer footer footer" 100px
+ /[col-start] 1fr [col-2]1fr [col-3] 1fr [col-end];
+
+}
+
+.content div{
+    /* padding:20px; */
+    background-color:lightblue;
+}
+
+.content div:nth-child(even){
+    background-color: brown;
+}
+
+.header{
+    grid-area:header ;
+}
+.main{
+    grid-area: main ;
+}
+.sidebar{
+    grid-area: sidebar ;
+}
+.footer{
+    grid-area: footer ;
+}
