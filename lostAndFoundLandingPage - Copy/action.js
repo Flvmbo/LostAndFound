@@ -1,16 +1,19 @@
 var count = 1
 var margin = 0
+var mP = 0
 function changeSlide()
 {
     
     var slide = document.getElementsByClassName("current-item")[0]
-    slide.style.marginLeft = `${margin}px`
-    margin-=978
+    slide.style.marginLeft = `calc(${margin}rem - ${mP}%) `
+    margin-=42
+    mP +=5
     count++
     if(count > 3)
     {
         count = 1
         margin = 0
+        mP=0
     }
 }
 
@@ -53,6 +56,35 @@ const inViewCallback = entries => {
   aboutUsText.forEach(element => {
       observer.observe(element)
   })
+
+
+
+
+const newCursor = document.querySelector('.updatedCursor')
+
+
+document.addEventListener('mousemove',function(e)
+{
+    var x = e.pageX
+    var y = e.pageY
+
+    newCursor.style.top = y + "px"
+    newCursor.style.left = x + "px"
+})
+
+const hamburger = document.querySelector('.hamburger')
+const mobileMenu = document.querySelector('.mobile-menu-container')
+
+hamburger.addEventListener('click',function(e)
+{
+    mobileMenu.classList.toggle('mobile-opened')
+    if(document.body.style.overflowY == 'hidden')
+    {   document.body.style.overflowY = 'auto' }
+    else
+    {
+        document.body.style.overflowY = 'hidden'
+    }
+})
 
 
 
