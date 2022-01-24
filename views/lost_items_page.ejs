@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Items</title>
+    <link rel="stylesheet" href="lost_item_files/lost-items.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+    </style>
+</head>
+<body>
+    <div class="mobile-filter-container">
+        <div class="mobile-filter-div" id="mobile-filter-div">
+            <div class="mobile-exit-div exit-div">
+                <button class="exit-btn mobile-exit-btn" id="exit-item-not-found">x</button>
+            </div>
+            <h2 class="filters">Filters</h2>
+            <ul class="category-filter filter-type">    
+                <h2 class="filter-heading">Category</h2>
+                <li class="category-item filter-item" id="mobile-all"><label for="">All</label> </li>
+                <li class="category-item filter-item" id="mobile-clothing"><label for="">Clothing</label> </li>
+                <li class="category-item filter-item" id="mobile-books"><label for="">Books</label> </li>
+                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label>  </li>
+                <li class="category-item filter-item" id="mobile-cards"><label for="">Cards</label> </li>
+                <li class="category-item filter-item" id="mobile-footwear"><label for="">Footwear</label> </li>
+                <li class="category-item filter-item" id="mobile-rain-shelter"><label for="">Rain Shelter</label></li>
+                <li class="category-item filter-item" id="mobile-other"><label for="">Other</label> </li>
+            </ul>
+
+            <ul class="location-filter filter-type mobile-filter-type" id="mobile-filter-type">
+                <h2 class="filter-heading">Choose location(s)</h2>
+                <ul class="choose-location">
+                   <li> <input type="radio" checked name="mobile-location" id="mobile-all-location"> <label for="mobile-all-location">All</label></li>
+                   <li> <input type="radio"  name="mobile-location" id="mobile-specific-location"> <label for="mobile-specific-location">Select location</label></li>
+                </ul>
+                <div class="select-location-true">
+                    <li class="location-item filter-item"><input type="checkbox" checked class="check" name="chapel" id="mobile-chapel"> <label for="mobile-chapel">CHAPEL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="mobile-clds"> <label for="mobile-clds">CLDS</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds">  <label for="mobile-ceds">CEDS</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst">  <label for="mobile-cst">CST</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt">  <label for="mobile-lt">LT</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"> <label for="mobile-daniel-hall">DANIEL HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"> <label for="mobile-dorcas-hall">DORCAS HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"> <label for="mobile-lydia-hall">LYDIA HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="mobile-joseph-hall"> <label for="mobile-joseph-hall">JOSEPH HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="mobile-deborah-hall"> <label for="mobile-deborah-hall">DEBORAH HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="mobile-john-hall"> <label for="mobile-john-hall">JOHN HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mobile-mary-hall"> <label for="mobile-mary-hall">MARY HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="mobile-paul-hall"><label for="mobile-paul-hall">PAUL HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="mobile-esther-hall"> <label for="mobile-esther-hall">ESTHER HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="mobile-peter-hall"><label for="mobile-peter-hall">PETER HALL </label></li>
+                 </div>
+                 <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
+                 <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
+            </ul>
+
+            <div class="date-filter filter-type">
+                <h2 class="filter-heading">Select Date</h2>
+                <ul class="choose-date-div">
+                    <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-most-recent">Most recent</label></li>
+                    <li><input type="radio"  name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
+                </ul>
+                <div class="select-date-true">
+                    <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-from"></div>
+                    <div class="time-period-div To-div">  <label for="mobile-date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-to"></div>
+                </div>
+            </div>
+
+            <div class="item-not-found-div filter-type">
+                <h2 class="filter-heading">Can't find your lost item?</h2>
+                <div class="get-update-div">
+                    <a href="Not Seeing Your Lost Item/index.html"><button class="btn updates-btn"> Get Updates!</button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="overall-container" id="top">
+       <a class="to-top" href="#top"> 
+           <div class="back-to-top-div">
+                <button class="back-to-top-btn">
+                    <!-- <img class="to-top-img" src="./lost-items-images/drop-down.svg" alt=""> -->
+                    <span class="to-top-symbol">^</span>   
+                </button>
+            </div>
+        </a>
+        <div class="item-not-found-div filter-type" id="item-not-found-div">
+            <div class="exit-div">
+                <button class="exit-btn" id="exit-item-not-found">x</button>
+            </div>
+            <h2 class="">Can't find your lost item?</h2>
+            <div class="get-update-div">
+                <a href="Not Seeing Your Lost Item/index.html"><button class="btn updates-btn"> Get Updates!</button></a>
+            </div>
+        </div>
+        <header>
+            <a href="/home" class="logo-home">
+                <div class="logo-name-div">
+                    <div class="logo-div">
+                        <img class="logo" src="lost_item_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
+                    </div>
+                    <p class="name">Lost & <br> Found</p>
+                </div>
+            </a>
+            <ul class="nav-container">
+                <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html" class="nav-link"> Home </a></li>
+                <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html#about-us" class="nav-link"> About us</a></li>
+                <li class="nav-item"><a href="Ekundayo-lostAndFound/found_an_item_page.html" class="nav-link"> Submit Item</a></li>
+                <li class="nav-item"><a href="lost-items.html" class="nav-link"> Lost Items</a></li>
+            </ul>
+            <div class="login-btn">
+                <a href="Dami-LostAndFound-main/sign-in.html"><button class="admin-login-btn btn">Login as Admin</button></a>
+                <!-- <br> -->
+                <!-- <label for="admin" style="font-size: .75em;">Admin Deborah Hall</label> -->
+            <!-- If logged in, this button.textContent = whatsoever admin -->
+            </div>
+            <div class="menu-bar">
+                <img class="hamburger" src="lost_item_files/lost-items-images/Hamburger.svg" alt="">
+            </div>
+        </header>
+        <main>
+            <h1 class="big-text" >Check for your <span class="lost-emphasis">los</span>t items</h1>
+            <div class="filter-menu">
+                <button class="show-filter"><img class="filter-icon" src="lost_item_files/lost-items-images/filter-sort.png" alt="filter-icon"><label for="filter-sort" class="filter-sort-label" >Filter and Sort</label></button>
+            </div>
+            <div class="num-div">
+                <label for="item-number" class="item-number">4 items found </label>
+        <!--  By default, in any form of sort, it shows by most recently uploaded -->
+            </div>
+            <div class="filter-lost-items-container">
+                <div class="filter-container"  id="filter-container">
+                    <h2 class="filters">Filters</h2>
+                    <ul class="category-filter filter-type">    
+                        <h2 class="filter-heading">Category</h2>
+                        <li class="category-item filter-item" id="all"><label for="">All</label></li>
+                        <li class="category-item filter-item" id="clothing"><label for="">Clothing</label></li>
+                        <li class="category-item filter-item" id="books"><label for="">Books</label></li>
+                        <li class="category-item filter-item" id="fashion-accessories"><label for="">Fashion Accessories</label></li>
+                        <li class="category-item filter-item" id="cards"><label for="">Cards</label></li>
+                        <li class="category-item filter-item" id="footwear"><label for="">Footwear</label></li>
+                        <li class="category-item filter-item" id="rain-shelter"><label for="">Rain Shelter</label></li>
+                        <li class="category-item filter-item" id="other"><label for="">Other</label></li>
+                    </ul>
+                
+
+                    <ul class="location-filter filter-type">
+                        <h2 class="filter-heading">Choose location(s)</h2>
+                        <ul class="choose-location">
+                           <li> <input type="radio" checked name="locations" id="all-location"> <label for="all-location">All</label></li>
+                           <li> <input type="radio"  name="locations" id="specific-location"> <label for="specific-location">Select location</label></li>
+                        </ul>
+                        <div class="select-location-true">
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="chapel" id="chapel"> <label for="chapel">CHAPEL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="clds"><label for="clds">CLDS</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="ceds"> <label for="ceds">CEDS</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="cst"> <label for="cst">CST</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="lt"> <label for="lt">LT</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="daniel-hall"><label for="daniel-hall">DANIEL HALL </label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="dorcas-hall"><label for="dorcas-hall">DORCAS HALL </label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="lydia-hall"><label for="lydia-hall">LYDIA HALL </label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="joseph-hall"><label for="joseph-hall">JOSEPH HALL </label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="deborah-hall"><label for="deborah-hall">DEBORAH HALL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="john-hall"><label for="john-hall">JOHN HALL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mary-hall"><label for="mary-hall">MARY HALL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="paul-hall"><label for="paul-hall">PAUL HALL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="esther-hall"> <label for="esther-hall">ESTHER HALL</label></li>
+                            <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="peter-hall"><label for="peter-hall">PETER HALL </label></li>
+                         </div>
+                         <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
+                         <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
+                    </ul>
+
+                    <div class="date-filter filter-type">
+                        <h2 class="filter-heading">Select Date</h2>
+                        <ul class="choose-date-div">
+                            <li><input type="radio" checked name="date" id="most-recent"> <label for="most-recent">Most recent</label></li>
+                            <li><input type="radio"  name="date" id="search-date"> <label for="search-date">Look up from?</label></li>
+                        </ul>
+                        <div class="select-date-true">
+                            <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
+                            <div class="time-period-div To-div">  <label for="date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
+                        </div>
+                    </div>
+
+                    <div class="item-not-found-div filter-type">
+                        <h2 class="filter-heading">Can't find your lost item?</h2>
+                        <div class="get-update-div">
+                            <a href="Not Seeing Your Lost Item/index.html"><button class="btn updates-btn"> Get Updates!</button></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="lost-items-container">
+                
+                    <div class="lost-item-container" id="1">
+                        <div class="item-time-uploaded-div item-details-div">
+                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                        </div>    
+                      <div class="lost-item-div">
+                            <div class="image-slider-container" id='2'>
+                                <div class="slider-container prev-image-container">
+                                    <input class="prev-image slide-image" type="button" value="<">
+                                </div>
+                                <div class="image-container">
+                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
+                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/pig.jpg" alt="">
+                                </div>
+                                <div class="slider-container next-image-container">
+                                    <input class="next-image slide-image" type="button" value=">">
+                                </div>
+                            </div>
+                            <div class="lost-item-content-div">
+                                <div class="item-name-div item-details-div">
+                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" placeholder="Laptop"  readonly name="item-name" class="item-name details-input">
+                                </div>
+                                <div class="item-location-found-div item-details-div">
+                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
+                                </div>
+                                <div class="item-current-location-div item-details-div">
+                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
+                                </div>
+                                <div class="item-date-found-div item-details-div">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
+                                </div>
+                                <div class="retrieve-item-div">
+                                    <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
+                                </div>
+
+                            </div>
+                        </div> 
+                        <div class="item-category-div item-details-div">
+                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <input type="text" readonly placeholder="Category: Electronics"  name="category" class="category details-input">
+                        </div>   
+                    </div>
+                    <div class="lost-item-container">
+                        <div class="item-time-uploaded-div item-details-div">
+                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                        </div>    
+                      <div class="lost-item-div">
+                            <div class="image-slider-container" id="4">
+                                <div class="slider-container prev-image-container">
+                                    <input class="prev-image slide-image" type="button" value="<">
+                                </div>
+                                <div class="image-container">
+                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
+                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/Dog.jpg" alt="">
+                                </div>
+                                <div class="slider-container next-image-container">
+                                    <input class="next-image slide-image" type="button" value=">">
+                                </div>
+                            </div>
+                            <div class="lost-item-content-div">
+                                <div class="item-name-div item-details-div">
+                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
+                                </div>
+                                <div class="item-location-found-div item-details-div">
+                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
+                                </div>
+                                <div class="item-current-location-div item-details-div">
+                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
+                                </div>
+                                <div class="item-date-found-div item-details-div">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="25th December, 2022"  name="date-found" class="date-found details-input">
+                                </div>
+                                <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
+
+                            </div>
+                        </div> 
+                        <div class="item-category-div item-details-div">
+                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
+                        </div>   
+                    </div>
+                    <div class="lost-item-container">
+                        <div class="item-time-uploaded-div item-details-div">
+                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                        </div>    
+                      <div class="lost-item-div">
+                            <div class="image-slider-container" id="5">
+                                <div class="slider-container prev-image-container">
+                                    <input class="prev-image slide-image" type="button" value="<">
+                                </div>
+                                <div class="image-container">
+                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
+                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/filter-sort.png" alt="">
+                                </div>
+                                <div class="slider-container next-image-container">
+                                    <input class="next-image slide-image" type="button" value=">">
+                                </div>
+                            </div>
+                            <div class="lost-item-content-div">
+                                <div class="item-name-div item-details-div">
+                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
+                                </div>
+                                <div class="item-location-found-div item-details-div">
+                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
+                                </div>
+                                <div class="item-current-location-div item-details-div">
+                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
+                                </div>
+                                <div class="item-date-found-div item-details-div">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
+                                </div>
+                                <a class="retrieve-item"href="/item-retrieval"><button class="retrieve-item-btn btn">Retrieve</button></a>
+
+                            </div>
+                        </div> 
+                        <div class="item-category-div item-details-div">
+                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
+                        </div>   
+                    </div>
+                    <div class="lost-item-container">
+                        <div class="item-time-uploaded-div item-details-div">
+                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                        </div>    
+                      <div class="lost-item-div">
+                            <div class="image-slider-container" id="6">
+                                <div class="slider-container prev-image-container">
+                                    <input class="prev-image slide-image" type="button" value="<">
+                                </div>
+                                <div class="image-container">
+                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
+                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/pig.jpg" alt="">
+                                </div>
+                                <div class="slider-container next-image-container">
+                                    <input class="next-image slide-image" type="button" value=">">
+                                </div>
+                            </div>
+                            <div class="lost-item-content-div">
+                                <div class="item-name-div item-details-div">
+                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
+                                </div>
+                                <div class="item-location-found-div item-details-div">
+                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
+                                </div>
+                                <div class="item-current-location-div item-details-div">
+                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
+                                </div>
+                                <div class="item-date-found-div item-details-div">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
+                                </div>
+                                <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
+
+                            </div>
+                        </div> 
+                        <div class="item-category-div item-details-div">
+                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
+                        </div>   
+                    </div>
+                </div>
+                
+            </div>
+
+        </main>
+    </div>
+    <script src="lost_item_files/script.js"></script>
+</body>
+</html>
