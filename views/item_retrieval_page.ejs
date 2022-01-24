@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+    </style>
+    <link rel="stylesheet" href="item_retrieval_files/retrieval_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="full-page">
+      <div class="full_page">
+        <header>
+                <a href="Landing_page.ejs" class="logo-home">
+                    <div class="logo-name-div">
+                        <div class="logo-div">
+                            <img class="logo" src="item_retrieval_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
+                        </div>
+                        <p class="name">Lost & <br> Found</p>
+                    </div>
+                </a>
+                <ul class="nav-container">
+                  <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html" class="nav-link"> Home </a></li>
+                <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html#about-us" class="nav-link"> About us</a></li>
+                <li class="nav-item"><a href="Ekundayo-lostAndFound/found_an_item_page.html" class="nav-link"> Submit Item</a></li>
+                <li class="nav-item"><a href="lost-items.html" class="nav-link"> Lost Items</a></li>
+                </ul>
+                <div class="login-btn">
+                    <a href="Dami-LostAndFound-main/sign-in.html"><button class="admin-login-btn btn">Login as Admin</button></a>
+                    <!-- <br> -->
+                    <!-- <label for="admin" style="font-size: .75em;">Admin Deborah Hall</label> -->
+                <!-- If logged in, this button.textContent = whatsoever admin -->
+                </div>
+                <div class="menu-bar">
+                    <img class="hamburger" src="item_retrieval_files/lost-items-images/Hamburger.svg" alt="">
+                </div>
+            </header>
+
+            <a href="#" class="previous">&#8249;</a>
+            <a href="#" class="back">Back to Home</a>
+            <div class="container">
+              <div class="overall-container">
+              <form class="form">
+              <div class="form-div">
+                <h3><strong>ITEM RETRIEVAL PAGE</strong></h3>
+                  <div class="input_txtbx_div">
+                    <input type="text" name="fname" value="" placeholder="Firstname"><br>
+                  </div>
+                  <div class="input_txtbx_div">
+                    <input type="text" name="lname" value="" placeholder="Lastname"><br>
+                  </div>
+                  <div class="input_txtbx_div">
+                    <input type="text" name="admin" value="" placeholder="Admin"><br>
+                  </div>
+                  <div class="input_txtbx_div">
+                    <input type="text" name="location" value="" placeholder="Location"><br>
+                  </div>
+              </div>
+
+
+              <div class="picture-div">
+                <div class="image-preview" id="imagePreview">
+                  <img src="" alt="Image Preview" class="image-preview__image">
+                  <span class="image-preview__default-text">Upload a picture of the retriever or drag and drop here</span>
+                </div>
+              </div>
+
+            </form>
+            <div class="btn-div-center">
+                <div class="btn-div">
+                  <input type="submit" name="" value="Submit" class="submit btn" onclick="message()">                  
+                </div>
+            </div>
+          </div>
+            </div>
+
+
+
+
+
+    <script>
+      function message(){
+        window.alert("Congrats on finding lost item")
+      }
+
+       const inpFile = document.getElementById("inpFile");
+       const previewContainer = document.getElementById("imagePreview");
+       const previewImage = previewContainer.querySelector('.image-preview__image');
+       const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+       inpFile.addEventListener("change", function(){
+         const file = this.files[0];
+         if (file){
+           const reader = new FileReader();
+           previewDefaultText.style.display = "none";
+           previewImage.style.display = "block";
+           reader.addEventListener("load", function(){
+             previewImage.setAttribute("src", this.result);
+           });
+           reader.readAsDataURL(file);
+         } else{
+           previewDefaultText.style.display = null;
+           previewImage.style.display = null;
+           previewImage.setAttribute("src", "");
+         }
+       });
+
+    </script>
+      </div>
+    </div>
+  </body>
+</html>
