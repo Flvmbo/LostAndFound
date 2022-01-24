@@ -18,9 +18,15 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-    
-})
 
+    res.render("Landing_page");
+});
+
+
+
+app.get("/home", (req, res) => {
+    res.render("Landing_page");
+});
 
 port = process.env.PORT || 3000
 app.listen(port)
