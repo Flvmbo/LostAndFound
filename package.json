@@ -4,7 +4,7 @@
   "description": "Prototype Lost and Found system for Covenant University.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
