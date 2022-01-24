@@ -55,8 +55,8 @@ app.get("/lost-items", (req, res) => {
 const dbConnect = async() => {
     try
     {
-    await mongoose.connect(process.env.MONGOURI,
-        console.log("connected to the database")
+    await mongoose.connect(process.env.MONGOURI,()=>{
+        console.log("connected to the database")}
         )
     }
     catch(e)
