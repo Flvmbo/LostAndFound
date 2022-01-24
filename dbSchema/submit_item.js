@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require("express")
 const bodyParser = require("body-parser")
-const router = express.router()
+
 
 
 var submit_item = new mongoose.Schema({

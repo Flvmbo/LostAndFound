@@ -16,7 +16,7 @@
         <%- include('./partials/nav_bar.ejs') %>
  
          <!-- main -->
-         <main class="main">
+         <form class="main" action="/api/v1/submit-item" method="post">
              <div class="main-header">
                  <!-- <label for=""><img src="./lost-items-images/back.png" alt="" srcset="" class="back_pic"></label>
                   -->
@@ -24,25 +24,25 @@
                   <!-- COME AND REMOVE THIS SCOPE -->
                  <p class="back_text">Back to home</p>
              </div>
-             <form class="main-center" action="/api/v1/submit-item" method="post">
+             <div class="main-center">
                  <div class="main-center-center">
                      <div class="main-center-center-left">
                          <div class="input_txtbx_div form-info-div">
                              <p class="form-info">SUBMIT A FOUND ITEM</p>
                          </div>
                          <div class="input_txtbx_div">
-                             <input type="text" name=""  class="input_txtbx" id="" placeholder="Item name">
+                             <input type="text" name="f_item_name"  class="input_txtbx" id="" placeholder="Item name">
                          </div>
                          <div class="input_txtbx_div">
-                             <select name="" class="input_txtbx"  id="">
+                             <select name="f_category" class="input_txtbx"  id="">
                                  <option value="Select category">Select category</option>
                              </select>
                          </div>
                          <div class="input_txtbx_div">
-                             <input type="text"  class="input_txtbx" name="" id="" placeholder="Brief description identifying marks">
+                             <input type="text"  class="input_txtbx" name="f_description" id="" placeholder="Brief description identifying marks">
                          </div>
                          <div class="input_txtbx_div">
-                             <input type="text"  class="input_txtbx" name="" id="" placeholder="Location found">
+                             <input type="text"  class="input_txtbx" name="f_location" id="" placeholder="Location found">
                          </div>
                      </div>
                      <div class="main-center-center-right">
@@ -66,11 +66,11 @@
                          </div>
                      </div>
                  </div>
-                </form>
+                </div>
              
              <div class="main-footer">
                  <div class="main-footer-center">
-                     </label><input type="button" class="submit_button" value="Submit">
+                     </label><input type="submit" class="submit_button" value="Submit">
                  </div>
              </div>
  
@@ -80,7 +80,7 @@
              <div class="circle3"></div>
              <div class="circle4"></div>
      
-         </main>
+            </form>
  
  
          <!-- footer -->
