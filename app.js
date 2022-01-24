@@ -4,10 +4,13 @@ const mongoose = require("mongoose")
 const path = require("path")
 const ejs = require("ejs")
 const req = require("express/lib/request")
-
-
+const routes = require('./routes/userRoutes')
 var app = express()
+
 app.use(express.static("./public"))
+app.use(express.json())
+// app.use('/api/v1',routes)
+app.use(express.urlencoded({extended:false}));
 
 
 
@@ -46,6 +49,8 @@ app.get("/item-retrieval", (req, res) => {
 app.get("/lost-items", (req, res) => {
     res.render("lost_items_page");
 });
+
+
 
 port = process.env.PORT || 3000
 app.listen(port)
