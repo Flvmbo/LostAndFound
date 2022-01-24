@@ -1,0 +1,138 @@
+<style>
+    header{
+    position:sticky;
+    width:100%;
+    z-index: 3;
+    border-bottom: 1px solid rgb(218, 214, 214);
+    border-radius: 4px;
+    background-color: #fff;
+    /* box-shadow: 0px 3px 4px -3px rgb(48, 47, 47); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    margin-bottom: 1em;
+    padding: .25em 0;
+}
+.logo-name-div{
+    display:flex;
+    align-items: center;
+    color:#592C54;
+    font-weight: 700;
+    cursor: pointer;
+}
+.logo-div{
+    height:100%;
+}
+.name{
+    margin-left:10px;
+}
+.logo{
+    height: 80px;
+    margin: auto 0;
+    object-fit: cover;
+}
+.logo-home{
+    text-decoration: none;
+}
+.nav-container{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* border: 2px solid black; */
+}
+.nav-item{
+    position: relative;
+    list-style: none;
+    margin:0 1.5em;
+    font-size: .9rem;
+    font-weight: 600;
+    /* color:#592C54; */
+        /* color:#7c306c; */
+    cursor: pointer;
+}
+
+.nav-link{
+    position: relative;
+    text-decoration: none;
+    color:#592C54;
+}
+.nav-link::before{
+    content: '';
+    position:absolute;
+    top: 100%;
+    height:2px;
+    width: 0;
+    background-color: rgb(156, 146, 146);
+    left:0;
+    transition: width .2s ease-in;
+}
+.nav-link:hover{
+    color:#7c306c;
+}
+.nav-link:hover::before{
+    width:100%;
+}
+.menu-bar{
+    display: none;
+    cursor: pointer;
+}
+
+.btn{
+
+/* outline-style:thin; */
+outline:0;
+border: 0;;
+padding: 1em;
+border-radius:10px;
+background-color: #592C54;
+color:#fff;
+/* font-weight: bold; */
+font-size: .75rem;
+cursor: pointer;
+transition-property: background-color, color,  box-shadow;
+transition-duration: .2s;
+transition-timing-function: ease-in;
+box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
+
+}
+.btn:hover, .btn:focus{
+    background-color: transparent;
+    /* color: #592C54; */
+    /* border:1px solid; */
+        color:#7c306c;
+    /* color: #000; */
+
+
+    /* box-shadow: .35px 1px 1px 0px #000; */
+    box-shadow: 0px 1px 2px 0px rgb(48, 47, 47);
+
+
+
+}
+</style>
+ <header>
+                <a href="lostAndFoundLandingPage - Copy/index.html" class="logo-home">
+                    <div class="logo-name-div">
+                        <div class="logo-div">
+                            <img class="logo" src="item_retrieval_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
+                        </div>
+                        <p class="name">Lost & <br> Found</p>
+                    </div>
+                </a>
+                <ul class="nav-container">
+                  <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html" class="nav-link"> Home </a></li>
+                <li class="nav-item"><a href="lostAndFoundLandingPage - Copy/index.html#about-us" class="nav-link"> About us</a></li>
+                <li class="nav-item"><a href="Ekundayo-lostAndFound/found_an_item_page.html" class="nav-link"> Submit Item</a></li>
+                <li class="nav-item"><a href="lost-items.html" class="nav-link"> Lost Items</a></li>
+                </ul>
+                <div class="login-btn">
+                    <a href="Dami-LostAndFound-main/sign-in.html"><button class="admin-login-btn btn">Login as Admin</button></a>
+                    <!-- <br> -->
+                    <!-- <label for="admin" style="font-size: .75em;">Admin Deborah Hall</label> -->
+                <!-- If logged in, this button.textContent = whatsoever admin -->
+                </div>
+                <div class="menu-bar">
+                    <img class="hamburger" src="item_retrieval_files/lost-items-images/Hamburger.svg" alt="">
+                </div>
+            </header>
