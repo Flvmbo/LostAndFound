@@ -193,6 +193,10 @@
                 </div>
                 <div class="lost-items-container">
                     <div class="lost-item-container">
+                        <div class="show-details-div">
+                            <button class="btn show-details-btn">Show details</button>
+                            <button class="btn exit-details">X</button>
+                        </div>
                         <!-- <div class="item-time-uploaded-div item-details-div">
                             <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
                         </div>     -->
@@ -226,6 +230,24 @@
 
                             </div>
                         </div> 
+
+                        <div class="retriever-details-div">
+                            <h2 class="retriever-details-heading">Retrieval Details</h2>
+                            <div class="retriever-details">
+                                <div class="retriever-full-name-div retriever-details-item">
+                                    <label class="item-label" for="fullname">Retriever fullname: </label>
+                                    <input class="details-input"  type="text" name="fullname" placeholder="Retriever full name" readonly id="">
+                                </div>
+                                <div class="admin-div retriever-details-item">
+                                    <label class="item-label" for="admin">Admin:</label>
+                                    <input class="details-input" type="text" name="admin" placeholder="Admin" readonly id="">
+                                </div>
+                                <div class="date-time-div retriever-details-item">
+                                    <label class="item-label" for="date-time">Date and time: </label>
+                                    <input class="" type="datetime" name="date-time" id="">
+                                </div>
+                            </div>
+                        </div>
    
                     </div>
                     <div class="lost-item-container">
@@ -269,5 +291,30 @@
         </main>
     </div>
     <script src="./script.js"></script>
+    <script>
+        const exitDetails = document.querySelector('.exit-details');
+        const showDetails = document.querySelector('.show-details-btn');
+        const retrieveDetailsBlock = document.querySelector('.retriever-details-div');
+        const bodyy = document.querySelector('body');
+        showDetails.addEventListener('click', ()=>{
+            retrieveDetailsBlock.style = "transform:scale(1);display:flex;"
+            showDetails.style.display = "none";
+            exitDetails.style.display = "block"
+        })
+
+        exitDetails.addEventListener('click', ()=>{
+            retrieveDetailsBlock.style = "transform:scale(0)";
+            showDetails.style.display = "block";
+            exitDetails.style.display = "none";
+
+           
+        })
+
+        window.addEventListener("resize", ()=>{
+           retrieveDetailsBlock.style = "transform:scale(1)";
+        })
+    
+        
+    </script>
 </body>
 </html>
