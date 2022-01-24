@@ -57,9 +57,8 @@ app.get("/lost-items", (req, res) => {
 const dbConnect = async() => {
     try
     {
-    await mongoose.connect("mongodb://localhost/LostAndFound",
-        console.log("connected to the database")
-        )
+        await mongoose.connect("mongodb://localhost/LostAndFound")
+        console.log("connected to the database")   
     }
     catch(e)
     {

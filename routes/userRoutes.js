@@ -5,19 +5,19 @@ const route  = express.Router()
 
 
 route.post('/signin',async (req,res) => {
-    const {a,b} = req.body
+    // const {username,password} = req.body
 
-    console.log(a);
+    // console.log(username);
 
-    // try{
-    //     const users = await user.create(req.body)
-    //     const savedUser = await users.save()
-    //     res.json(savedUser)
-    // }
-    // catch(e)
-    // {
-    //     console.log(e);
-    // }
+    try{
+        const users = await user.create(req.body)
+        const savedUser = await users.save()
+        res.json(savedUser)
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
     
 })
 
