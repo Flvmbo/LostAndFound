@@ -18,8 +18,7 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-
-    res.render("Landing_page");
+    res.render("lost_items_page");
 });
 
 
