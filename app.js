@@ -11,7 +11,7 @@ app.use(express.static("./public"))
 app.use(express.json())
 // app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
-
+app.use("/api/v1/submit-item",)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
