@@ -23,6 +23,7 @@
     "express": "^4.17.2",
     "mongoose": "^6.1.7",
     "nodemailer": "^6.7.2",
+    "package.json": "^2.0.1",
     "path": "^0.12.7"
   }
 }
