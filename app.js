@@ -7,9 +7,11 @@ const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 var app = express()
 
+require('dotenv/config')
+
 app.use(express.static("./public"))
 app.use(express.json())
-// app.use('/api/v1',routes)
+app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
 app.use("/api/v1/submit-item",)
 
@@ -50,6 +52,21 @@ app.get("/lost-items", (req, res) => {
 });
 
 
+const dbConnect = async() => {
+    try
+    {
+    await mongoose.connect(process.env.MONGOURI,
+        console.log("connected to the database")
+        )
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+}
+
+
+dbConnect()
 
 port = process.env.PORT || 3000
 app.listen(port)
