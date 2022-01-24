@@ -346,7 +346,7 @@ body
     border-top: 2px solid lavender;
     position: relative;
     width: 100%;
-    height: calc(100vh - 90px);
+    height: 700px;
     display: flex;
     flex-direction: row;
     overflow-x: hidden;
