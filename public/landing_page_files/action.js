@@ -51,8 +51,8 @@ const inViewCallback = entries => {
   observer.observe(aboutUsHeader[1])
   observer.observe(adminPic)
   observer.observe(hhsAdmin)
-  observer.observe(adminYarns)
   observer.observe(arBtn)
+  observer.observe(adminYarns)
   aboutUsText.forEach(element => {
       observer.observe(element)
   })
