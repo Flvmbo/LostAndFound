@@ -1,0 +1,24 @@
+const express = require('express')
+const mongoose = require('mongoose')
+const user = require('../dbSchema/users')
+const route  = express.Router()
+
+
+route.post('/signin',async (req,res) => {
+    const {a,b} = req.body
+
+    console.log(a);
+
+    // try{
+    //     const users = await user.create(req.body)
+    //     const savedUser = await users.save()
+    //     res.json(savedUser)
+    // }
+    // catch(e)
+    // {
+    //     console.log(e);
+    // }
+    
+})
+
+module.exports = route
