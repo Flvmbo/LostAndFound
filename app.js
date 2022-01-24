@@ -10,6 +10,7 @@ var app = express()
 app.use(express.static("./public"))
 
 
+
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
 app.set("layout", path.join(__dirname + "/views/layouts"))
@@ -17,7 +18,7 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-    res.render("item_retrieval_page")
+    res.render("lost_items_page")
 })
 
 
