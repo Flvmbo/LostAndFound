@@ -5,6 +5,7 @@ const path = require("path")
 const ejs = require("ejs")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
+const itemRoutes = require('./routes/item')
 var app = express()
 
 require('dotenv/config')
@@ -13,7 +14,7 @@ app.use(express.static("./public"))
 app.use(express.json())
 app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
-app.use("/api/v1/submit-item",)
+app.use("/api/v1",itemRoutes)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
@@ -52,12 +53,15 @@ app.get("/lost-items", (req, res) => {
 });
 
 
+port = process.env.PORT || 3000
+
 const dbConnect = async() => {
     try
     {
-    await mongoose.connect(process.env.MONGOURI,()=>{
-        console.log("connected to the database")}
-        )
+    const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+        console.log("connected to the database")
+        app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
+    })
     }
     catch(e)
     {
@@ -68,5 +72,4 @@ const dbConnect = async() => {
 
 dbConnect()
 
-port = process.env.PORT || 3000
-app.listen(port)
+

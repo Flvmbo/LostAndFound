@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const express = require("express")
 const bodyParser = require("body-parser")
-const router = express.router()
 
 
 var submit_item = new mongoose.Schema({
@@ -20,6 +19,16 @@ var submit_item = new mongoose.Schema({
     Location : {
         type : String,
         required : true
+    },
+    isRetrieved:{
+        type:Boolean,
+        required:false,
+        default:false
+    },
+    itemDate:{
+        type:Date,
+        required:false,
+        default: Date.now()
     }
 })
 
