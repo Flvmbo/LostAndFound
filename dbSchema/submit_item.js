@@ -28,7 +28,7 @@ var submit_item = new mongoose.Schema({
     itemDate:{
         type:Date,
         required:false,
-        default: Date.now()
+        default: ""
     }
 })
 
