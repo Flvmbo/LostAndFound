@@ -5,16 +5,20 @@ const path = require("path")
 const ejs = require("ejs")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
+const submit_item = require("./routes/submit_item")
 
 const submit_item_schema = require("./dbSchema/submit_item")
 var app = express()
 
-require('dotenv/config')
 
+
+require('dotenv/config')
 app.use(express.static("./public"))
 app.use(express.json())
 app.use('/api/v1',routes)
-app.use(express.urlencoded({extended:false}));
+app.use("/api/v1/submit-item", submit_item)
+app.use(express.urlencoded({ extended:true }));
+
 
 
 app.set("view engine", "ejs")
