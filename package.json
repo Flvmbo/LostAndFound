@@ -2,7 +2,7 @@
   "name": "lostandfound",
   "version": "1.0.0",
   "description": "Prototype Lost and Found system for Covenant University.",
-  "main": "app.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
@@ -23,8 +23,8 @@
     "dotenv": "^14.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "mongoose": "^6.1.7",
     "multer": "^1.4.4",
+    "mongoose": "^6.1.8",
     "nodemon": "^2.0.15",
     "path": "^0.12.7"
   }
