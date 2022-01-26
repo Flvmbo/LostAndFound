@@ -20,6 +20,11 @@ var submit_item = new mongoose.Schema({
         type : String,
         required : true
     }
+    // ,
+    // picture : {
+    //     data : Buffer,
+    //     contentType : String
+    // }
 })
 
 var submit_item_schema = mongoose.model("submit Item",submit_item)
