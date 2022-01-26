@@ -236,11 +236,11 @@
                             <div class="retriever-details">
                                 <div class="retriever-full-name-div retriever-details-item">
                                     <label class="item-label" for="fullname">Retriever fullname: </label>
-                                    <input class="details-input"  type="text" name="fullname" placeholder="Retriever full name" readonly id="">
+                                    <input class="details-input"  type="text" name="fullname" value="Retriever full name" readonly id="">
                                 </div>
                                 <div class="admin-div retriever-details-item">
                                     <label class="item-label" for="admin">Admin:</label>
-                                    <input class="details-input" type="text" name="admin" placeholder="Admin" readonly id="">
+                                    <input class="details-input" type="text" name="admin" value="Admin" readonly id="">
                                 </div>
                                 <div class="date-time-div retriever-details-item">
                                     <label class="item-label" for="date-time">Date and time: </label>
@@ -292,28 +292,46 @@
     </div>
     <script src="./script.js"></script>
     <script>
-        const exitDetails = document.querySelector('.exit-details');
+      const exitDetails = document.querySelector('.exit-details');
         const showDetails = document.querySelector('.show-details-btn');
         const retrieveDetailsBlock = document.querySelector('.retriever-details-div');
         const bodyy = document.querySelector('body');
         showDetails.addEventListener('click', ()=>{
-            retrieveDetailsBlock.style = "transform:scale(1);display:flex;"
+            retrieveDetailsBlock.style = "transform:scale(1);"
+            //retrieveDetailsBlock.style.display = "flex";
             showDetails.style.display = "none";
             exitDetails.style.display = "block"
         })
+        var showRetrieve = window.matchMedia("(min-width:850px)");
+        var showRetrieveWidth = window.matchMedia("(width:850px)")
 
         exitDetails.addEventListener('click', ()=>{
             retrieveDetailsBlock.style = "transform:scale(0)";
+            //retrieveDetailsBlock.style.display = "none";
             showDetails.style.display = "block";
             exitDetails.style.display = "none";
 
-           
         })
+        
+       window.addEventListener("resize", ()=>{
+           if(window.innerWidth > 850){
+               retrieveDetailsBlock.style = "transform:scale(1)";
+               //retrieveDetailsBlock.style.display = "flex";
+           }else if(window.innerWidth < 850 && retrieveDetailsBlock.style.display == "flex"){
+               retrieveDetailsBlock.style = "transform:scale(0)";
+               //retrieveDetailsBlock.style.display = "none";
+               //showDetails.click()
 
-        window.addEventListener("resize", ()=>{
-           retrieveDetailsBlock.style = "transform:scale(1)";
-        })
+           }else{
+            //retrieveDetailsBlock.style.display = "none";
+                exitDetails.click()
+           }
+       })
     
+       
+        
+       
+       
         
     </script>
 </body>
