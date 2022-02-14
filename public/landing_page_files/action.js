@@ -78,6 +78,7 @@ const mobileMenu = document.querySelector('.mobile-menu-container')
 hamburger.addEventListener('click',function(e)
 {
     mobileMenu.classList.toggle('mobile-opened')
+    hamburger.style.position = "absolute"
     if(document.body.style.overflowY == 'hidden')
     {   document.body.style.overflowY = 'auto' }
     else
