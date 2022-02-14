@@ -6,6 +6,7 @@ const ejs = require("ejs")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
+const { render } = require("express/lib/response")
 var app = express()
 
 require('dotenv/config')
@@ -14,7 +15,9 @@ app.use(express.static("./public"))
 app.use(express.json())
 app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
-app.use("/api/v1",itemRoutes)
+app.use("/",itemRoutes)
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
@@ -48,9 +51,12 @@ app.get("/item-retrieval", (req, res) => {
     res.render("item_retrieval_page");
 });
 
-app.get("/lost-items", (req, res) => {
-    res.render("lost_items_page");
-});
+// app.get("/lost-items", (req, res) => {
+//     // res.render("lost_items_page");
+//     // console.log("here");
+//     // res.json({"message":"we in this"})
+//     res.render("lost_items_page",{items:allItems})
+// });
 
 
 port = process.env.PORT || 3000
