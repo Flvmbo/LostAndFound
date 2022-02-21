@@ -172,7 +172,8 @@
                 </div>
                 <div class="lost-items-container">
                 
-                    <div class="lost-item-container" id="1">
+                    <% items.forEach((item,index) => { %>
+                    <div class="lost-item-container" id="<%-index%>">
                         <div class="item-time-uploaded-div item-details-div">
                             <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
                         </div>    
@@ -191,16 +192,16 @@
                             </div>
                             <div class="lost-item-content-div">
                                 <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" placeholder="Laptop"  readonly name="item-name" class="item-name details-input">
+                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" placeholder="<%-item.item_name%>"  readonly name="item-name" class="item-name details-input">
                                 </div>
                                 <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
+                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="<%-item.Location%>"  name="location-found" class="location-found details-input">
                                 </div>
                                 <div class="item-current-location-div item-details-div">
-                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
+                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="<%-item.Location%>"  name="current-location" class="current-location details-input">
                                 </div>
                                 <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="<%-item.itemDate%>"  name="date-found" class="date-found details-input">
                                 </div>
                                 <div class="retrieve-item-div">
                                     <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
@@ -210,10 +211,12 @@
                         </div> 
                         <div class="item-category-div item-details-div">
                             <!-- <label for="item-category-label" class="item-label">Category:</label> -->
-                             <input type="text" readonly placeholder="Category: Electronics"  name="category" class="category details-input">
+                             <input type="text" readonly placeholder="Category: <%-item.Category%>"  name="category" class="category details-input">
                         </div>   
                     </div>
-                    <div class="lost-item-container">
+
+                    <% }) %>
+                    <!-- <div class="lost-item-container">
                         <div class="item-time-uploaded-div item-details-div">
                             <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
                         </div>    
@@ -246,13 +249,13 @@
                                 <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
 
                             </div>
-                        </div> 
+                        </div>  
                         <div class="item-category-div item-details-div">
-                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <label for="item-category-label" class="item-label">Category:</label>
                              <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
                         </div>   
-                    </div>
-                    <div class="lost-item-container">
+                    </div> -->
+                    <!--<div class="lost-item-container">
                         <div class="item-time-uploaded-div item-details-div">
                             <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
                         </div>    
@@ -287,7 +290,7 @@
                             </div>
                         </div> 
                         <div class="item-category-div item-details-div">
-                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                             <label for="item-category-label" class="item-label">Category:</label> 
                              <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
                         </div>   
                     </div>
@@ -326,10 +329,10 @@
                             </div>
                         </div> 
                         <div class="item-category-div item-details-div">
-                            <!-- <label for="item-category-label" class="item-label">Category:</label> -->
+                            <!-- <label for="item-category-label" class="item-label">Category:</label> 
                              <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
                         </div>   
-                    </div>
+                    </div> -->
                 </div>
                 
             </div>
