@@ -52,6 +52,10 @@ app.get("/lost-items", (req, res) => {
     res.render("lost_items_page");
 });
 
+app.get("/retrieval-records", (req,res)=>{
+    res.render("item-retrieval-record-page")
+})
+
 
 port = process.env.PORT || 3000
 
