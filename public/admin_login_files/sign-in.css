@@ -30,19 +30,23 @@ body{
 
 }
 .back{
-    position: fixed;
-    top:10px;
+    position: absolute;
     text-decoration: none;
-    color:#fff;
-    left: 30px;
+    color:#592C54;
+    /* top:100%; */
+    left:10px;
+    bottom:10px;
     font-size: .75em;
     display: flex;
     align-items: center;
-  
+    width:100%;
 }
 .back-home{
     cursor: pointer;
     margin-left: .5em;
+}
+.back a{
+    text-decoration: none;
 }
 
 main{
@@ -206,9 +210,9 @@ p{
    /* body{
        overflow:visible;
    } */
-   .back-home{
+   .back{
     /* color:#592C54 */
-    
+        width: 80%;    
    }
 }
 
@@ -218,6 +222,7 @@ p{
         width:95%;
     }
     .back{
+        width:95%;
         left:10px;
     }
 }
