@@ -14,9 +14,9 @@
                 <label class="back-home" for="back">&#8249;</label>
                 <label class="back-home" for="">Back to Home</label>
             </a>
-            <form action="">
+            <form action="/sign-in" method="POST">
                 <div class="heading">
-                    <a href="lostAndFoundLandingPage - Copy/index.html" class="logo-home">
+                    <a href="/home" class="logo-home">
                         <div class="logo-name-div">
                             <div class="logo-div">
                                 <img class="logo" src="admin_login_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
@@ -36,9 +36,17 @@
                             <label for="" class="password-label input-label">Password</label>
                             <input type="text" class="form-input password " name="password" value="">
                         </div>
+                        <div class="error-div">
+                            <p class="info"><%= info.error %> </p>
+                        </div>
+                        <script>
+                            const info = document.querySelector('.info');
+                            info.style.display = "<%= info.display  %> "
+                        </script>
                         <div class="btn-div">
                             <input type="submit" value="Sign in" class="btn submit">
                         </div>
+                        
                     </div>
                     <div class="circle-holder">
                         <div class="circle1 circle">
@@ -47,8 +55,8 @@
                         <div class="circle2 circle">
                         
                         </div>
-                      </div>
-                    </form>
+                    </div>
+                    <!-- </form> -->
                 </div>
             </form>
         </main>

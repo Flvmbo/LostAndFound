@@ -33,7 +33,7 @@ route.get("/lost-items", async (req,res) => {
             isRetrieved : false
         })
 
-        res.render("lost_items_page",{items:allItems})
+        res.render("lost_items_page",{items:{item:allItems}})
     }
 
     catch(e)
