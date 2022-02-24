@@ -30,11 +30,15 @@ var submit_item = new mongoose.Schema({
         required:false,
         default: ""
     }
-    // ,
-    // picture : {
-    //     data : Buffer,
-    //     contentType : String
-    // }
+    ,
+    firstImage: {
+       type:String,
+       default: ""
+    },
+    secondImage:{
+        type:String,
+        default: ""
+    }
 })
 
 var submit_item_schema = mongoose.model("submit Item",submit_item)

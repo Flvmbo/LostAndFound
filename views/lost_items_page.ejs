@@ -72,7 +72,7 @@
             <div class="item-not-found-div filter-type">
                 <h2 class="filter-heading">Can't find your lost item?</h2>
                 <div class="get-update-div">
-                    <a href="Not Seeing Your Lost Item/index.html"><button class="btn updates-btn"> Get Updates!</button></a>
+                    <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
                 </div>
             </div>
 
@@ -94,7 +94,7 @@
             </div>
             <h2 class="">Can't find your lost item?</h2>
             <div class="get-update-div">
-                <a href="Not Seeing Your Lost Item/index.html"><button class="btn updates-btn"> Get Updates!</button></a>
+                <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
             </div>
         </div>
         <%- include('./partials/nav_bar.ejs') %>
@@ -178,13 +178,13 @@
                             <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
                         </div>    
                       <div class="lost-item-div">
-                            <div class="image-slider-container" id='2'>
+                            <div class="image-slider-container" id=`<%=index%> + 1`>
                                 <div class="slider-container prev-image-container">
                                     <input class="prev-image slide-image" type="button" value="<">
                                 </div>
                                 <div class="image-container">
-                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
-                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/pig.jpg" alt="">
+                                    <img class="item-image left-img" src="<%=item.firstImage%>" alt="<%= item.Description %>">
+                                    <img class="item-image right-img" src="<%=item.secondImage%>" alt="<%= item.Description %>">
                                 </div>
                                 <div class="slider-container next-image-container">
                                     <input class="next-image slide-image" type="button" value=">">

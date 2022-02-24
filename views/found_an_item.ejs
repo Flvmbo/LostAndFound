@@ -14,9 +14,9 @@
    <div class="full_page">
     <div class="full-page">
         <%- include('./partials/nav_bar.ejs') %>
- 
+  
          <!-- main -->
-         <form class="main" action="/api/v1/submit-item" method="post">
+         <form class="main" action="/api/v1/submit-item" method="post" enctype="multipart/form-data">
              <div class="main-header">
                  <!-- <label for=""><img src="./lost-items-images/back.png" alt="" srcset="" class="back_pic"></label>
                   -->
@@ -56,10 +56,11 @@
                              <div class="upload_svg1_div">
                                  <img src="found_an_item_files/lost-items-images/upload.png" class="upload_pic" alt="" srcset=""> 
                              </div>
+                             
                              <div class="upload_text1_div">
                                  Upload the first picture or drag and drop here
                              </div>
-                             <input type="file" name = "first_image" >
+                             <input type="file" name = "image" >
                          </div>
                          <div class="upload_second_pic">
                              <!-- <br> -->
@@ -67,8 +68,10 @@
                                  <img src="found_an_item_files/lost-items-images/upload.png" class="upload_pic" alt="" srcset=""> 
                              </div>
                              <div class="upload_text2_div">
-                                 Upload the second picture or drag and drop here
+                                 Upload the second picture or drag and drop here 
                              </div>
+                             <input type="file" name = "image" >
+
                          </div>
                      </div>
                  </div>
