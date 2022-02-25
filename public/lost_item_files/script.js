@@ -1,21 +1,31 @@
 const body = document.querySelector('body');
 const showFilter = document.querySelector('.show-filter');
 const filterContainer = document.querySelector('.mobile-filter-container');
+const filterBackground = document.querySelector('.mobile-filter-background')
 const sliderImages = document.querySelectorAll('.image-container img');
 const overallContainer = document.querySelector('.overall-container');
 const mobileFilterExit = document.querySelector('.mobile-exit-btn');
 
 showFilter.addEventListener('click', (e)=>{
     filterContainer.style = "left:0;right:0;overflow-y:scroll;";
+    filterBackground.style = "display:block;"
     body.style.overflowY = "hidden";
 })
 
 mobileFilterExit.addEventListener('click', ()=>{
     filterContainer.style = "right:-100%;overflow-y:hidden;"
     body.style.overflowY = "scroll";
+    filterBackground.style = "display:none;"
+
 
 })
 
+filterBackground.addEventListener('click', ()=>{
+    filterContainer.style = "right:-100%;overflow-y:hidden;"
+    body.style.overflowY = "scroll";
+    filterBackground.sty2le = "display:none;"
+
+})
 //HOW TO MAKE IT SO THAT WHEN YOU CLICK ON THE BACKGROUND, IT WILL EX THE FILTER TOO (CURRENT STEP NOT WORKING PROPERLY)
 // filterContainer.addEventListener('click', ()=>{
 //     filterContainer.style = "right:-100%;overflow-y:hidden;"

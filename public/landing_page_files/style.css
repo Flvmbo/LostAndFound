@@ -5,7 +5,6 @@
     font-size: 16px;
     scroll-behavior: smooth;
 }
-
 *,*::before,*::after{
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'Raleway', sans-serif;
@@ -921,6 +920,8 @@ body
     padding: 1rem 1rem 6rem 1rem ;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgb(218, 214, 214);
+
 }
 
 .fs

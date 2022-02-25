@@ -9,6 +9,7 @@
 
 body{
     /* position: relative; */
+    /* position: absolute; */
     height: 100%;
     width: 100%;
     font-family: "Raleway", Arial, Helvetica, sans-serif;
@@ -77,8 +78,8 @@ body{
 */
 
 .overall-container{
-    /* position: relative; */
-    max-width: 1650px;
+    position: relative;
+    max-width: 2000px;
     width: 100%;
     height:100%;
     margin:0 auto;
@@ -89,38 +90,55 @@ body{
     /* border: 2px solid brown; */
 }
 
-.mobile-filter-container{
+.mobile-filter-background{
     position:absolute;
     top:0;
-    right:-100%;
-    left:100%;
+    /* right:-100%; */
+    /* left:100%; */
     bottom: 0;
+    left:0;
+    right:0;
     /* max-width: 1650px; */
     z-index: 5;
-    display:flex;
+    /* display:flex;
     align-items:flex-start;
-    justify-content:center;
-    /* display: none; */
+    justify-content:center; */
+    display: none;
     background-color: rgba(0, 0, 0, 0.5);
-    transition: right .15s ease-in;
     /* overflow-y: scroll; */
     /* border: 2px solid; */
 
     
 }
+.mobile-filter-container{
+    position:absolute;
+    bottom: 0;
+    top:0;
+    right:-100%;
+    left:100%;
+    width:100%;
+    z-index: 6;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    transition: right .15s ease-in;
+    margin: 0 auto;
+}
 .mobile-filter-div{
+    /* position: relative; */
     position: relative;
+    
+    /* bottom: 0; */
     background-color: #fff;
     width:75%;
-    /* margin: 0 auto; */
     margin-top: 2em;
     z-index: 11;
-    opacity: 1;
+    /* opacity: 1; */
     border: 0;
     padding:0 .5em;
     font-size: .85em;
     font-weight: 600;
-    box-shadow: 1px 0px 2px -1px rgb(48, 47, 47);
+    box-shadow: 0px 0px 2px -1px rgb(48, 47, 47);
     /* overflow-y: scroll; */
 
 }
@@ -277,7 +295,7 @@ header{
     top: 100%;
     height:.15em;
     width: 0;
-    background-color: rgb(95, 48, 48);
+    background-color: rgb(160, 126, 126);
     left:0;
     transition: width .2s ease-in;
 }

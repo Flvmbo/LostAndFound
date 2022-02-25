@@ -6,7 +6,8 @@ const ejs = require("ejs")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
-const { render } = require("express/lib/response")
+const { render } = require("express/lib/response");
+const admin = require('./dbSchema/users');
 var app = express()
 
 require('dotenv/config')
@@ -36,7 +37,7 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/sign-in", (req, res) => {
-    res.render("admin_signin_page");
+    res.render("admin_signin_page", {info:{error:"", display:"none"}});
 });
 
 app.get("/found-item", (req, res) => {
@@ -58,13 +59,56 @@ app.get("/item-retrieval", (req, res) => {
 //     res.render("lost_items_page",{items:allItems})
 // });
 
+app.get("/retrieval-records", (req,res)=>{
+    res.render("item-retrieval-record-page")
+})
 
-port = process.env.PORT || 3000
+app.post("/sign-in", async  (req,res)=>{
+    
 
+    try{
+        const {username:name,password} = req.body
+        if(name == "" || password == ""){
+            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
+        }
+        else{
+            const getadmin =  await admin.findOne({
+                name:name,
+                password:password
+            });
+            if(getadmin){
+
+               res.redirect('/lost-items');
+            }else{
+                res.render("admin_signin_page", {info:{error:"Invalid username or password", display:"block", }});
+            }
+        }
+    }catch(e){
+        console.log(e.message());
+    }
+ 
+})
+
+
+port = process.env.PORT || 3900
+
+// const dbConnect = async() => {
+//     try
+//     {
+//     const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+//         console.log("connected to the database")
+//         app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
+//     })
+//     }
+//     catch(e)
+//     {
+//         console.log(e);
+//     }
+// }
 const dbConnect = async() => {
     try
     {
-    const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+    const connected = await mongoose.connect("mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
         console.log("connected to the database")
         app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
     })

@@ -1,6 +1,5 @@
 *{
-  font-family: "Raleway";
-  box-sizing: border-box;
+  font-family: Raleway;
 }
 .full-page{
   position: absolute;
@@ -10,90 +9,11 @@
 }
 
 .full_page{
-  max-width: 1650px;
+  max-width: 2000px;
   margin: 0 auto;
-  top: 0px;
-  left: 0px;
-}
-header{
-  position:sticky;
-  width:97%;
-  margin:0 auto;
-  z-index: 3;
-  border-bottom: 1px solid rgb(218, 214, 214);
-  border-radius: 4px;
-  background-color: #fff;
-  /* box-shadow: 0px 3px 4px -3px rgb(48, 47, 47); */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top:0;
-  margin-bottom: 1em;
-  padding: .25em 0;
-}
-.logo-name-div{
-  display:flex;
-  align-items: center;
-  color:#592C54;
-  font-weight: 700;
-  cursor: pointer;
-}
-.logo-div{
-  height:100%;
-}
-.name{
-  margin-left:10px;
-}
-.logo{
-  height: 80px;
-  margin: auto 0;
-  object-fit: cover;
-}
-.logo-home{
-  text-decoration: none;
-}
-.nav-container{
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: space-between;
-  /* border: 2px solid black; */
-}
-.nav-item{
-  position: relative;
-  list-style: none;
-  margin:0 1.5em;
-  font-size: .9rem;
-  font-weight: 600;
-  /* color:#592C54; */
-      /* color:#7c306c; */
-  cursor: pointer;
+  padding:1em;
 }
 
-.nav-link{
-  position: relative;
-  text-decoration: none;
-  color:#592C54;
-}
-.nav-link::before{
-  content: '';
-  position:absolute;
-  top: 100%;
-  height:2px;
-  width: 0;
-  background-color: rgb(156, 146, 146);
-  left:0;
-  transition: width .2s ease-in;
-}
-.nav-link:hover{
-  color:#7c306c;
-}
-.nav-link:hover::before{
-  width:100%;
-}
-.menu-bar{
-  display: none;
-  cursor: pointer;
-}
 .btn{
 
 /* outline-style:thin; */
@@ -295,6 +215,7 @@ input[type = text]{
   justify-content: center;
 }
 
+
 .back, .previous{
   color: #592C54;
 }
@@ -308,13 +229,7 @@ a:link{
   margin-left: 3em;
 }
 
-.myfile{
-  position: absolute;
-  right: 31%;
-  top: 25%;
-}
-
-.image-preview{
+#dropRegion{
   position: relative;
   width:80%;
   height: 85%;
@@ -355,6 +270,40 @@ a:link{
   width: 70%;
   /* height: 20px; */
 }
+
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.my_modal_content{
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+}
+
+/* #image-preview {
+    margin-top:20px;
+}
+#image-preview .image-view {
+    display: inline-block;
+    position:relative;
+    margin-right: 13px;
+    margin-bottom: 13px;
+}
+#image-preview .image-view img {
+    max-width: 100px;
+    max-height: 100px;
+} */
+
 @media (max-width:695px) {
   .form{
     flex-direction: column;
@@ -367,7 +316,7 @@ a:link{
   .picture-div{
     width:100%;
     margin: 0 auto;
-    height: 250px;
+    height: 550px;
   }
   .overall-container{
     align-items: center;
