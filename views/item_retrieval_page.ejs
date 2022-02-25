@@ -1,3 +1,9 @@
+<script>
+    if("<%= info.activeAdmin %>" == ""){
+      window.location.replace("/sign-in-page")
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -170,3 +176,12 @@
     </div>
   </body>
 </html>
+
+
+
+
+<script>
+    if("<%=  info.activeAdmin %>" != ""){
+        document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+    }
+</script>

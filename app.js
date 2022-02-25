@@ -9,7 +9,7 @@ const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
 const { render } = require("express/lib/response");
 const adminLogin  = require("./routes/adminLogin")
-
+const items = require('./dbSchema/submit_item')
 var app = express()
 
 require('dotenv/config')
@@ -49,7 +49,7 @@ app.get("/sign-in-page", (req, res) => {
 });
 
 app.get("/found-item", (req, res) => {
-    res.render("found_an_item");
+    res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin}});
 });
 
 app.get("/get-update", (req, res) => {
@@ -57,9 +57,24 @@ app.get("/get-update", (req, res) => {
 });
 
 app.get("/item-retrieval", (req, res) => {
-    res.render("item_retrieval_page");
+    res.render("item_retrieval_page" , {info: {activeAdmin : req.session.activeAdmin}});
 });
 
+
+app.get("/lost-items", async (req,res) => {
+    try{
+        const allItems = await items.find({
+            isRetrieved : false
+        })
+
+        res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin}})
+    }
+
+    catch(e)
+    {
+        console.log(e);
+    }
+})
 // app.get("/lost-items", (req, res) => {
 //     // res.render("lost_items_page");
 //     // console.log("here");
