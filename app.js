@@ -3,11 +3,13 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const path = require("path")
 const ejs = require("ejs")
+const session  = require("express-session")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
 const { render } = require("express/lib/response");
-const admin = require('./dbSchema/users');
+const adminLogin  = require("./routes/adminLogin")
+
 var app = express()
 
 require('dotenv/config')
@@ -19,6 +21,12 @@ app.use(express.urlencoded({extended:false}));
 app.use("/",itemRoutes)
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+app.use(session({
+    secret : "secret",
+    resave : false,
+    saveUninitialized : false
+}))
+app.use("/sign-in", adminLogin)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
@@ -27,16 +35,16 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-    res.render("Landing_page");
+    res.render("Landing_page", {info:{}});
 });
 
 
 
 app.get("/home", (req, res) => {
-    res.render("Landing_page");
+    res.render("Landing_page", {info:{}});
 });
 
-app.get("/sign-in", (req, res) => {
+app.get("/sign-in-page", (req, res) => {
     res.render("admin_signin_page", {info:{error:"", display:"none"}});
 });
 
@@ -63,32 +71,10 @@ app.get("/retrieval-records", (req,res)=>{
     res.render("item-retrieval-record-page")
 })
 
-app.post("/sign-in", async  (req,res)=>{
-    
-
-    try{
-        const {username:name,password} = req.body
-        if(name == "" || password == ""){
-            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
-            const getadmin =  await admin.findOne({
-                name:name,
-                password:password
-            });
-            if(getadmin){
-
-               res.redirect('/lost-items');
-            }else{
-                res.render("admin_signin_page", {info:{error:"Invalid username or password", display:"block", }});
-            }
-        }
-    }catch(e){
-        console.log(e.message());
-    }
- 
+app.get("/log-out" , (req ,res) =>{
+    req.session.activeAdmin = null
+    res.redirect("/lost-items")
 })
-
 
 port = process.env.PORT || 3900
 
