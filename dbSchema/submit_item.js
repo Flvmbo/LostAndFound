@@ -20,11 +20,6 @@ var submit_item = new mongoose.Schema({
         type : String,
         required : true
     },
-    isRetrieved:{
-        type:Boolean,
-        required:false,
-        default:false
-    },
     itemDate:{
         type:Date,
         required:false,

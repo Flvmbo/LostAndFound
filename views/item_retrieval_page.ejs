@@ -2,36 +2,37 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retrieve Item</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
-    <link rel="stylesheet" href="item_retrieval_files/retrieval_page.css">
+    <link rel="stylesheet" href="/item_retrieval_files/retrieval_page.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div class="full-page">
       <div class="full_page">
         <%- include('./partials/nav_bar.ejs') %>
-            <a href="#" class="previous">&#8249;</a>
-            <a href="/home" class="back">Back to Home</a>
-            <div class="container">
-              <div class="modal" id="mymodal">
-                <div class="my_modal_content">
-                  <p>Congrats on finding lost item</p>
-                  <button type="button" class="btn" id="home_btn" onclick="location.href='#'">Go to homepage</button>
-                </div>
-              </div>
-              <div class="overall-container">
-              <form class="form">
+        <a href="#" class="previous">&#8249;</a>
+        <a href="/home" class="back">Back to Home</a>
+        <div class="container">
+          <div class="modal" id="mymodal">
+            <div class="my_modal_content">
+              <p>Congrats on finding lost item</p>
+              <button type="button" class="btn" id="home_btn" onclick="location.href='#'">Go to homepage</button>
+            </div>
+          </div>
+          <form  action="/item-retrieval/<%= info.id%>" class="overall-container" method="post" enctype="multipart/form-data" >
+            <div class="form">
               <div class="form-div">
                 <h3>ITEM RETRIEVAL PAGE</h3>
                   <div class="input_txtbx_div">
-                    <input type="text" name="fname" value="" placeholder="Firstname"><br>
+                    <input type="text" name="firstname" value="" placeholder="Firstname"><br>
                   </div>
                   <div class="input_txtbx_div">
-                    <input type="text" name="lname" value="" placeholder="Lastname"><br>
+                    <input type="text" name="lastname" value="" placeholder="Lastname"><br>
                   </div>
                   <div class="input_txtbx_div">
                     <input type="text" name="admin" value="" placeholder="Admin"><br>
@@ -39,23 +40,37 @@
                   <div class="input_txtbx_div">
                     <input type="text" name="location" value="" placeholder="Location"><br>
                   </div>
+                  <div class="error-div">
+                    <p class="info"><%= info.error %> </p>
+                  </div>
+                <script>
+                    const info = document.querySelector('.info');
+                    info.style.display = "<%= info.display  %>"
+                </script>
               </div>
-
-
               <div class="picture-div">
                   <div id="dropRegion">
                     <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
                     <span class="image-preview__default-text">Click to upload a picture of the retriever or drag and drop here</span>
                   </div>
+                  <div class="input-div">
+                    <input type="file" name="idphoto" id="idphoto">
+                  </div>
+                  
               </div>
 
-            </form>
-            <div class="btn-div-center">
-                <div class="btn-div">
-                  <input type="submit" name="" value="Submit" class="submit btn" id="my_btn">
-                </div>
             </div>
-
+              <div class="btn-div-center">
+                  <div class="btn-div">
+                    <input type="submit" name="" value="Submit" class="submit btn" id="my_btn">
+                  </div>
+              </div>
+          </form>   
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
 
 
@@ -89,9 +104,9 @@
         var modal = document.getElementById("mymodal");
         var my_submit = document.getElementById("my_btn");
         var btn = document.getElementById("home_btn");
-        my_submit.onclick = function(){
-          modal.style.display = "block";
-        }
+  
+          modal.style.display = "<%= info.modalDisplay %>";
+        
         // btn.onclick = function(){
         //   modal.style.display = "none;"
         // }
@@ -103,18 +118,17 @@
 
         // drag and drop AND file selector
         var dropRegion = document.getElementById("dropRegion");
-        var myinput = document.createElement("input");
-        myinput.type = "file";
-        myinput.accept = "image/*";
-        myinput.multiple = true;
+        var myinput = document.getElementById('idphoto')
         dropRegion.addEventListener("click", function(){
           myinput.click();
         });
         myinput.addEventListener("change", function(){
           var files = myinput.files;
+        
           handleFiles(files);
         });
         function preventDefault(e){
+          myinput.click();
           e.preventDefault();
           e.stopPropagation();
         }
@@ -136,9 +150,9 @@
         }
         function validateImage(image){
           // check type of file
-          var validTypes = ['image/jpeg', 'image/png'];
+          var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
           if(validTypes.indexOf(image.type) == -1){
-            alert("Inalid File Type");
+            alert("Invalid File Type");
             return false;
           }
           // check the size of file, Im not sure if this is needed
@@ -165,8 +179,5 @@
         reader.readAsDataURL(image);
         }
 
-    </script>
-      </div>
-    </div>
-  </body>
-</html>
+      </script>
+    

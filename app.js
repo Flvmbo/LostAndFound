@@ -2,21 +2,23 @@ const express  = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const path = require("path")
-const ejs = require("ejs")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
+const retrieveItemRoutes = require('./routes/retrieveItem')
 const { render } = require("express/lib/response");
 const admin = require('./dbSchema/users');
 var app = express()
 
 require('dotenv/config')
 
-app.use(express.static("./public"))
+app.use(express.static("public"))
 app.use(express.json())
 app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
 app.use("/",itemRoutes)
+app.use('/',retrieveItemRoutes)
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -29,8 +31,6 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 app.get("/",(req,res)=>{
     res.render("Landing_page");
 });
-
-
 
 app.get("/home", (req, res) => {
     res.render("Landing_page");
@@ -48,9 +48,7 @@ app.get("/get-update", (req, res) => {
     res.render("get_update");
 });
 
-app.get("/item-retrieval", (req, res) => {
-    res.render("item_retrieval_page");
-});
+
 
 // app.get("/lost-items", (req, res) => {
 //     // res.render("lost_items_page");
@@ -60,7 +58,7 @@ app.get("/item-retrieval", (req, res) => {
 // });
 
 app.get("/retrieval-records", (req,res)=>{
-    res.render("item-retrieval-record-page")
+    res.render("item_retrieval_record_page")
 })
 
 app.post("/sign-in", async  (req,res)=>{
