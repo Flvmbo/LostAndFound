@@ -2,12 +2,15 @@ const express  = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const path = require("path")
+const ejs = require("ejs")
+const session  = require("express-session")
 const req = require("express/lib/request")
 const routes = require('./routes/userRoutes')
 const itemRoutes = require('./routes/item')
 const retrieveItemRoutes = require('./routes/retrieveItem')
 const { render } = require("express/lib/response");
-const admin = require('./dbSchema/users');
+const adminLogin  = require("./routes/adminLogin")
+const items = require('./dbSchema/submit_item')
 var app = express()
 
 require('dotenv/config')
@@ -21,6 +24,12 @@ app.use('/',retrieveItemRoutes)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+app.use(session({
+    secret : "secret",
+    resave : false,
+    saveUninitialized : false
+}))
+app.use("/sign-in", adminLogin)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
@@ -29,27 +38,44 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-    res.render("Landing_page");
+    res.render("Landing_page", {info:{}});
 });
 
 app.get("/home", (req, res) => {
-    res.render("Landing_page");
+    res.render("Landing_page", {info:{}});
 });
 
-app.get("/sign-in", (req, res) => {
+app.get("/sign-in-page", (req, res) => {
     res.render("admin_signin_page", {info:{error:"", display:"none"}});
 });
 
 app.get("/found-item", (req, res) => {
-    res.render("found_an_item");
+    res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin}});
 });
 
 app.get("/get-update", (req, res) => {
     res.render("get_update");
 });
 
+app.get("/item-retrieval", (req, res) => {
+    res.render("item_retrieval_page" , {info: {activeAdmin : req.session.activeAdmin}});
+});
 
 
+app.get("/lost-items", async (req,res) => {
+    try{
+        const allItems = await items.find({
+            isRetrieved : false
+        })
+
+        res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin}})
+    }
+
+    catch(e)
+    {
+        console.log(e);
+    }
+})
 // app.get("/lost-items", (req, res) => {
 //     // res.render("lost_items_page");
 //     // console.log("here");
@@ -61,32 +87,10 @@ app.get("/retrieval-records", (req,res)=>{
     res.render("item_retrieval_record_page")
 })
 
-app.post("/sign-in", async  (req,res)=>{
-    
-
-    try{
-        const {username:name,password} = req.body
-        if(name == "" || password == ""){
-            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
-            const getadmin =  await admin.findOne({
-                name:name,
-                password:password
-            });
-            if(getadmin){
-
-               res.redirect('/lost-items');
-            }else{
-                res.render("admin_signin_page", {info:{error:"Invalid username or password", display:"block", }});
-            }
-        }
-    }catch(e){
-        console.log(e.message());
-    }
- 
+app.get("/log-out" , (req ,res) =>{
+    req.session.activeAdmin = null
+    res.redirect("/lost-items")
 })
-
 
 port = process.env.PORT || 3900
 

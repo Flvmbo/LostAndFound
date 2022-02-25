@@ -118,3 +118,9 @@
         ev.target.appendChild(document.getElementById(data));
     }
 </script> -->
+
+<script>
+    if("<%=  info.activeAdmin %>" != ""){
+        document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+    }
+</script>

@@ -37,15 +37,5 @@ route.post("/api/v1/submit-item", upload.array("image"), async (req,res)=>{
 
 
 
-route.get("/lost-items", async (req,res) => {
-    try{
-        const allItems = await items.find({})
-        res.render("lost_items_page",{items:{item:allItems}})
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-})
 
 module.exports = route

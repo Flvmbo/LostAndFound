@@ -345,3 +345,9 @@
     <script src="lost_item_files/script.js"></script>
 </body>
 </html>
+
+<script>
+    if("<%=  items.activeAdmin %>" != ""){
+        document.getElementById("loginBtnDiv").innerHTML = ` <%=  items.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+    }
+</script>
