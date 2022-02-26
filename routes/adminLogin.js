@@ -20,13 +20,10 @@ route.post("/", async  (req,res)=>{
             });
 
             if(getadmin != null || getadmin != ""){
-                req.session.activeAdmin = getadmin.location
+                res.locals.activeAdmin = req.session.activeAdmin = getadmin.location
                 
                 try{
-                    const allItems = await items.find({
-                        isRetrieved : false
-                    })
-
+                    const allItems = await items.find({})
                     res.render("lost_items_page",{items:{item:allItems, activeAdmin : req.session.activeAdmin }})
                 }
 

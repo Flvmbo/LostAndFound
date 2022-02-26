@@ -1,4 +1,7 @@
 <style>
+    *{
+        font-family: "Raleway", Arial, Helvetica, sans-serif;  
+    }
 header{
     position:sticky;
     width:100%;
@@ -110,76 +113,6 @@ box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
 
 }
 
-@media (max-width:1220px) {
-    .filter-container{
-        display:none;
-    }
-    .filter-menu{
-        width: 85%;
-        /* height: 30px; */
-        margin: 1em auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* border: 2px solid; */
-        /* cursor: pointer; */
-
-    
-    
-    }
-    .show-filter{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 40px;
-        border:1px solid rgba(209, 207, 207,.8);
-        outline: 0;
-       padding: .3em;
-       font-weight: bold;
-       background-color: rgba(248, 248, 248,.7);
-       cursor: pointer;
-    
-    }
-    .show-filter:hover, .show-filter:focus{
-       background-color: rgb(245, 243, 243);
-
-    }
-    .show-filter:active{
-       background-color: rgb(224, 221, 221);
-
-    }
-    .filter-sort-label{
-        cursor: pointer;
-    }
-    .filter-icon{
-        display: block;
-        height: 100%;
-        margin-right:1.2em;
-    }
-    .lost-items-container{
-        width:100%;
-        gap:1em;  
-        
-    }
-  
-    
-}
-
-@media (max-width:930px) {
-    .lost-items-container{
-        grid-template-columns: .9fr;
-        /* ASK UI IF THE SPACING IS RIGHT AND WHAT TO DO WITH THE EMPTY SPACES, GRAPHICS???? */
-        place-content: center;
-        padding: 0;
-        margin: 0;
-    }
-    .filter-menu{  
-        width: 100%;
-        
-    }
-}
-
 @media (max-width:850px) {
     .nav-container, .login-btn{
         display: none;
@@ -188,47 +121,6 @@ box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
     .menu-bar{
         display: block;
     }
-}
-@media (max-width:450px) {
-    .lost-item-div{
-        flex-direction: column;
-        justify-content: space-between;
-        /* border: 2px solid; */
-    }
-    .filter-menu{
-        width: 100%;
-    }
-    .lost-items-container{
-        grid-template-columns: 1fr;
-     
-    
-        /* grid-template-columns: repeat(2, autofit) 1fr; */
-        /* grid-column: 300px 300px 300px; */
-        /* grid-auto-columns: repeat(autofit, 2); */
-        /* grid-auto-columns: 1fr 1fr; */
-        grid-template-rows:minmax(200px,400px);
-        grid-auto-rows:minmax(200px,400px);
-        gap:1em;  
-        /* border: 2px solid red; */
-        /* border-top: 1px solid; */
-
-    }
-    .lost-item-content-div{
-        margin-top: 2em;
-    }
-    .item-category-div{
-        justify-content:right;
-        /* border: 2px solid; */
-        margin-top:.25em;
-    
-    }
-    .category{
-        text-align: right;
-    }
-       .retrieve-item-btn{
-           align-items: center;
-       }
-    
 }
 </style>
 
@@ -257,9 +149,6 @@ box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
     <div class="menu-bar">
         <img class="hamburger" src="/lost_item_files//lost-items-images/Hamburger.svg" alt="">
     </div>
- 
-
-   
 </header>
 
 

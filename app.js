@@ -57,16 +57,17 @@ app.get("/get-update", (req, res) => {
     res.render("get_update");
 });
 
-app.get("/item-retrieval", (req, res) => {
-    res.render("item_retrieval_page" , {info: {activeAdmin : req.session.activeAdmin}});
+app.get("/item-retrieval/:id", (req, res) => {
+    id = req.params.id;
+    // console.log(id)
+    res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"none", id:`${id}`, activeAdmin : req.session.activeAdmin}});
 });
+
 
 
 app.get("/lost-items", async (req,res) => {
     try{
-        const allItems = await items.find({
-            isRetrieved : false
-        })
+        const allItems = await items.find({})
 
         res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin}})
     }
@@ -76,6 +77,7 @@ app.get("/lost-items", async (req,res) => {
         console.log(e);
     }
 })
+
 // app.get("/lost-items", (req, res) => {
 //     // res.render("lost_items_page");
 //     // console.log("here");
@@ -92,7 +94,7 @@ app.get("/log-out" , (req ,res) =>{
     res.redirect("/lost-items")
 })
 
-port = process.env.PORT || 3900
+port = process.env.PORT || 3700
 
 // const dbConnect = async() => {
 //     try

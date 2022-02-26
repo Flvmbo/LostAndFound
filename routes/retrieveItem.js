@@ -32,7 +32,9 @@ try{
             
            await retrievedItem.save().catch((e)=>console.log(e.message));
            await lostitems.deleteOne({_id:getId}) 
-           .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block"}}))
+           .then(()=>
+          { console.log(res.locals)
+           res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block"}})})
            .catch((e)=>console.log(e.message))
         }
         else{
@@ -44,10 +46,5 @@ try{
 }
 
 })
-route.get("/item-retrieval/:id", (req, res) => {
-    id = req.params.id;
-    // console.log(id)
-    res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"none", id:`${id}`}});
-});
 
 module.exports = route;
