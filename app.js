@@ -13,6 +13,12 @@ const adminLogin  = require("./routes/adminLogin")
 const items = require('./dbSchema/submit_item')
 var app = express()
 
+app.use(session({
+    secret : "secret",
+    resave : false,
+    saveUninitialized : false
+}))
+
 require('dotenv/config')
 
 app.use(express.static("public"))
@@ -24,11 +30,7 @@ app.use('/',retrieveItemRoutes)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
-app.use(session({
-    secret : "secret",
-    resave : false,
-    saveUninitialized : false
-}))
+
 app.use("/sign-in", adminLogin)
 
 app.set("view engine", "ejs")

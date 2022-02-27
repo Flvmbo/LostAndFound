@@ -17,7 +17,7 @@ try{
     console.log(getId)
     const {firstname, lastname, admin, location} = req.body;
     if(firstname == "" || lastname == "" || admin == "" || location == ""){
-        res.render("item_retrieval_page", {info:{error:"Enter values to empty fields", display:"block", modalDisplay:"none"}});
+        res.render("item_retrieval_page", {info:{error:"Enter values to empty fields", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});
     }
     else{
         if(req.file){
@@ -32,13 +32,11 @@ try{
             
            await retrievedItem.save().catch((e)=>console.log(e.message));
            await lostitems.deleteOne({_id:getId}) 
-           .then(()=>
-          { console.log(res.locals)
-           res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block"}})})
+           .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin}}))
            .catch((e)=>console.log(e.message))
         }
         else{
-        res.render("item_retrieval_page", {info:{error:"Image is required", display:"block", modalDisplay:"none"}});
+        res.render("item_retrieval_page", {info:{error:"Image is required", display:"block", modalDisplay:"none",id:`${id}`, activeAdmin: req.session.activeAdmin}});
         }
     }
 }catch(e){
@@ -46,5 +44,14 @@ try{
 }
 
 })
+
+
+
+
+route.get("/item-retrieval/:id", (req, res) => {
+    id = req.params.id;
+    // console.log(id)
+    res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"none", id:`${id}`, activeAdmin: req.session.activeAdmin}});
+});
 
 module.exports = route;
