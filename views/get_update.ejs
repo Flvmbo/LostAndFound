@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Not Seeing Your Lost Item</title>
-    <link rel="stylesheet" href="get_update_page/style.css">
-    <link rel="stylesheet" href="get_update_page/notSeeing.css">
+    <link rel="stylesheet" href="/get_update_page/notSeeing.css">
 </head>
+<%- include('./partials/nav_bar.ejs') %>
+
 <body>
-   <%- include('./partials/nav_bar.ejs') %>
 
    <div class="back">
-    <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back To Home</a>
-</div>
+        <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back To Home</a>
+    </div>
 
 
     <div class="container">
@@ -53,9 +53,8 @@
         </div>
         <!-- <div class="modal-body"></div> -->
         <div class="modal-body">
-            <p>Thanks for your response</p>
-           <p> You'd be notified of any updates in your
-           category!</p>
+           <p>Thanks for your response</p>
+           <p> You'd be notified of any updates in your category!</p>
            <div class="btn-div">
                 <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
            </div>

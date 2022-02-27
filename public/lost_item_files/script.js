@@ -1,29 +1,32 @@
 const body = document.querySelector('body');
 const showFilter = document.querySelector('.show-filter');
-const filterContainer = document.querySelector('.mobile-filter-container');
+// const filterContainer = document.querySelector('.mobile-filter-container');
+const filterContainer = document.querySelector('.mobile-filter-div');
 const filterBackground = document.querySelector('.mobile-filter-background')
 const sliderImages = document.querySelectorAll('.image-container img');
 const overallContainer = document.querySelector('.overall-container');
 const mobileFilterExit = document.querySelector('.mobile-exit-btn');
 
 showFilter.addEventListener('click', (e)=>{
-    filterContainer.style = "left:0;right:0;overflow-y:scroll;";
+    // filterContainer.style = "visibility:visible;left:0;right:0;overflow-y:scroll;";
+    filterContainer.style = "transform:translate(-50%, 0%) scale(1);overflow-y:scroll;pointer-events:all";
     filterBackground.style = "display:block;"
     body.style.overflowY = "hidden";
 })
 
 mobileFilterExit.addEventListener('click', ()=>{
-    filterContainer.style = "right:-100%;overflow-y:hidden;"
-    body.style.overflowY = "scroll";
+    filterContainer.style = "transform: translate(-50%, 0%) scale(0);overflow-y:hidden;pointer-events:none"
+    body.style.overflowY = "auto";
     filterBackground.style = "display:none;"
 
 
 })
 
 filterBackground.addEventListener('click', ()=>{
-    filterContainer.style = "right:-100%;overflow-y:hidden;"
-    body.style.overflowY = "scroll";
-    filterBackground.sty2le = "display:none;"
+    // filterContainer.style = "right:-100%;overflow-y:hidden;"
+    filterContainer.style = "transform: translate(-50%, 0%) scale(0);overflow-y:hidden; pointer-events:none"
+    body.style.overflowY = "auto";
+    filterBackground.style = "display:none;"
 
 })
 //HOW TO MAKE IT SO THAT WHEN YOU CLICK ON THE BACKGROUND, IT WILL EX THE FILTER TOO (CURRENT STEP NOT WORKING PROPERLY)
@@ -36,6 +39,35 @@ filterBackground.addEventListener('click', ()=>{
 const slideContainer = document.querySelector('.image-container');
 const rightSlide = document.querySelectorAll('.next-image');
 const leftSlide = document.querySelectorAll('.prev-image');
+
+let touchstartX = 0
+let touchendX = 0
+const slider = document.querySelector('.image-container')
+
+function handleGesture() {
+  if (touchendX < touchstartX) alert('swiped left!')
+  if (touchendX > touchstartX) alert('swiped right!')
+}
+
+slider.addEventListener('touchstart', e => {
+    alert( e.changedTouches[0].screenX)
+    let leftTouch = e.changedTouches[0].screenX;
+    let rightTouch = e.changedTouches[0].screenX;
+    if(imagesize >= 85 && imagesize <= 110){
+    //SWIPE LEFT
+        touchstartX = imagesize
+        handleGesture()
+    }
+    else if(imagesize>=210 && imagesize<=235){
+        // SWIPE RIGHT
+        touchendX = imagesize
+        handleGesture()
+    }
+//   touchstartX = e.changedTouches[0].screenX
+//   alert(e.changedTouches[0].screenX)
+//   handleGesture()
+})
+
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
@@ -288,26 +320,12 @@ exitItemNotFound.addEventListener('click', ()=>{
 })
 
 
-let touchstartX = 0
-let touchendX = 0
 
-const slider = document.querySelector('.image-container')
-
-function handleGesture() {
-  if (touchendX < touchstartX) alert('swiped left!')
-  if (touchendX > touchstartX) alert('swiped right!')
-}
-
-slider.addEventListener('touch', e => {
-    alert('hi')
-  touchstartX = e.changedTouches[0].screenX
-})
-
-slider.addEventListener('touchend', e => {
-    alert('msg');
-  touchendX = e.changedTouches[0].screenX
-  handleGesture()
-})
+// slider.addEventListener('touchend', e => {
+//     alert('msg');
+//   touchendX = e.changedTouches[0].screenX
+//   handleGesture()
+// })
 
 
 // if (document.readyState === "loading"){

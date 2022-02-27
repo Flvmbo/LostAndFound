@@ -5,7 +5,9 @@
     box-sizing: border-box;
     font-family: "Raleway", sans-serif;
 }
-
+a{
+    text-decoration: none;
+}
 #back{
     color: #7c306c;
     font-size: .75em;
@@ -261,5 +263,9 @@ img{
     }
 }
 
-
+@media (max-width:450px) {
+    .container{
+        width:100%;
+    }
+}
 
