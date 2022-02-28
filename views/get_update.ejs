@@ -17,18 +17,18 @@
 
 
     <div class="container">
-        <form action="">
+        <form action="/get-update" method="post">
             <h1 id="heading">NOT SEEING YOUR LOST ITEM?</h1>
             <div class="input-container">
                 <div class="overall-form-div">
                     <div class="field">
-                        <input type="text" placeholder="FirstName">
-                        <input type="text" placeholder="Student Email">
-                        <input type="text" placeholder="Item Category">
-                        <input type="text" placeholder="Name of item">
+                        <input type="text" name="firstname" placeholder="FirstName">
+                        <input type="text" name="student_email" placeholder="Student Email">
+                        <input type="text" name="item_category" placeholder="Item Category">
+                        <input type="text" name="item_name" placeholder="Name of item">
                     </div>
                     
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Descriptions" class="descriptions"></textarea>
+                    <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
                 </div>
 
                 <div class="pic">
@@ -37,7 +37,8 @@
             </div>
 
             <div class="btn-div">
-                <button data-modal-target class="btn">Submit</button>        
+                <!-- <button data-modal-target class="btn">Submit</button>      -->
+                <input class="btn" type="submit" value="gg">   
             </div>
         </form>
 

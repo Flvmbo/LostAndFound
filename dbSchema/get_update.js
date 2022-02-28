@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const express = require("express")
-const bodyParser = require("body-parser")
-const router = express.router()
+
 
 
 var get_update = new mongoose.Schema({
@@ -27,5 +26,5 @@ var get_update = new mongoose.Schema({
     }
 })
 
-var get_update_schema = mongoose.model("submit Item",get_update)
+var get_update_schema = mongoose.model("get update",get_update)
 module.exports = get_update_schema
