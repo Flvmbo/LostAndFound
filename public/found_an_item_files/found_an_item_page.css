@@ -1,3 +1,9 @@
+*{
+    font-family: "Raleway", Arial, Helvetica, sans-serif;  
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
 a{
     text-decoration: none;
 }
@@ -7,9 +13,10 @@ a{
     height: auto;
     top: 0px;
     left : 0px;
-    padding: 20px;
-    font-family: "raleway";
+    padding:1em;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;  
     box-sizing: border-box;
+    /* border: 2px solid; */
 }
 
 .full-page{
@@ -24,13 +31,13 @@ a{
 .main-header{
     position: relative;
     width: 100%;
-    height: 80px;
+    /* height: 80px; */
+    margin-bottom: 1.5em;
     display: flex;
     align-items: center;
     padding-left: 20px;
     color : #592C54;
-    box-sizing: border-box;
-    font-family: "raleway";
+    font-family: "Raleway", Arial, Helvetica, sans-serif;  
     /* border: 2px solid; */
     font-size: .75rem;
 }
@@ -38,7 +45,11 @@ a{
 .form-info{
     position: relative;
     font-weight: bold;
-    font-family: "Raleway";
+    font-family: "Raleway", Arial, Helvetica, sans-serif;  
+    width:80%;
+    margin: 0 auto;
+    /* margin-bottom: 2em; */
+    text-align: left;
 }
 
 
@@ -51,6 +62,7 @@ a{
 
 .back_text{
     display:inline-block;
+    font-size: .85rem;
 }
 
 .main-center{
@@ -63,35 +75,47 @@ a{
 
 .main-center-center{
     position: relative;
-    margin: auto;
-    width: 70%;
+    margin: 0 auto;
+    /* border: 2px solid; */
+    width: 80%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
+    /* padding: .5em; */
 }
 
 .main-center-center-left{
     position: relative;
     width: 55%;
+    max-width: 500px;
     box-sizing: border-box;
+    /* border: 2px solid; */
+
 }
 
 .input_txtbx_div{
     position: relative;
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    margin-bottom: 3em;
+}
+.input_txtbx_div input:focus{
+    outline: none;
+    border-bottom: 2px solid #592C54;
 }
 
 .input_txtbx{
     position: relative;
     width: 100%;
-    height: 35px;
+    /* height: 35px; */
+    padding-left: .15em;
     outline: none;
     background-color: transparent;
     border :1px solid #000000;
     border-left-width: 0px;
     border-right-width: 0px;
     border-top-width: 0px;
-    font-family: "raleway";
+    font-size: .9rem2;
 }
 
 
@@ -102,86 +126,80 @@ a{
 
 .main-center-center-right{
     position: relative;
-    width: 35%;
-    height: 20px;
+    width: 40%;
+    max-width: 350px;
+    min-width: 280px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: max-content;
+    /* height: max-content; */
+    /* border: 2px solid; */
+
 }
 
 
 .upload_first_pic{
     position: relative;
-    background-color: rgba(150, 75, 142, 0.1);
     width: 100%;
-    border: 1px dashed #787878;
-    border-radius: 10px;
-    padding: 25px;
+    padding: .5em;
     box-sizing: border-box;
-    margin: 15px;
+    /* margin: 15px; */
     color: #592C54;
 }
-
-.upload_svg1_div{
-    position: relative;
-    display: grid;
-    place-items: center;
-    width : 100%;
-    height : 60px;
+.upload-pic-container{
+    width:100%;
+    display: flex;
+    background-color: rgba(150, 75, 142, 0.1);
+    border: 1px dashed #787878;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:150px;
 }
-
+.upload_svg_div{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width : 100%;
+    /* height : 60px; */
+}
+.upload-text{
+    text-align: center;
+}
 .upload_pic{
     position: relative;
     width: 40px;
-    height: 40px;
+    /* height: 40px; */
 }
 
 
 
 .upload_second_pic{
     position: relative;
-    background-color: rgba(150, 75, 142, 0.1);
     width: 100%;
-    border: 1px dashed #787878;
-    border-radius: 10px;
-    padding: 25px;
+    padding: .5em;
     box-sizing: border-box;
-    margin: 15px;
+    /* margin: 15px; */
     color: #592C54;
 }
-.upload_svg2_div{
-    position: relative;
-    display: grid;
-    place-items: center;
-    width : 100%;
-    height : 60px;
-}
-
 
 .main-footer{
     position: relative;
     width: 100%;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     box-sizing: border-box;
 }
 
 .main-footer-center{
     position: relative;
-    margin: auto;
-    width: 70%;
+    margin: 0 auto;
+    width: 80%;
     box-sizing: border-box;
 }
 
 .submit_button{
-    position: relative;
-    width: 100px;
-    height: 40px;
-    font-family: "raleway"; 
-    background-color: #592C54;
-    color: white;
-    border-width: 0px;
-    border-radius: 10px;
+    font-size: 1rem;
 }
 
 .designs{
@@ -234,27 +252,39 @@ a{
 }
 
 @media (max-width:850px) {
-    .nav-container, .login-btn{
-        display: none;
-        /* flex-direction: column; */
-    }
-    .menu-bar{
-        display: block;
-    }
-
     .main-center-center{
         flex-direction: column;
+        margin: 2em auto;
+        /* align-items: left; */
+        /* border: 2px solid; */
     }
     .main-center-center-left{
         width: 80%;
-        align-self: center;
+        /* align-self: center; */
         margin-bottom: 30px;
     }
     .main-center-center-right{
         width: 80%;
-        align-self: center;
+        max-width: none;
+        /* align-items: left; */
+        /* border: 2px solid; */
+        /* width: 40%; */
+     
     }.main-footer-center{
         width : 57%;
+    }
+    .upload-pic-container{
+        width:80%;
+        /* display: flex;
+        background-color: rgba(150, 75, 142, 0.1);
+        border: 1px dashed #787878;
+        border-radius: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        height:150px;
+        max-width: none;
+        min-width: 280px;
     }
 }
 
@@ -277,4 +307,26 @@ a{
         box-shadow: 0px 0px 2px  rgba(150, 75, 142, 0.4);
     }
 
+}
+
+@media (max-width : 450px) {
+    .main-center-center{
+        /* border:2px solid; */
+        width: 100%;
+    }
+    .main-center-center-left{
+        width: 90%;
+    }
+    .upload-pic-container{
+        min-width: none;
+        width: 100%;
+      border: 2px solid;
+
+    }
+    .main-center-center-right{
+        min-width: none;
+        width: 90%;
+      border: 2px solid;
+
+    }
 }

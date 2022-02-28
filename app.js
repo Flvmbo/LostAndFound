@@ -26,7 +26,7 @@ app.use(express.json())
 app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
 app.use("/",itemRoutes)
-app.use('/',retrieveItemRoutes)
+app.use(retrieveItemRoutes)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
