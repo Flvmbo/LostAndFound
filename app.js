@@ -11,6 +11,7 @@ const retrieveItemRoutes = require('./routes/retrieveItem')
 const { render } = require("express/lib/response");
 const adminLogin  = require("./routes/adminLogin")
 const items = require('./dbSchema/submit_item')
+const getUpdate = require("./routes/getUpdate.js")
 var app = express()
 
 app.use(session({
@@ -27,6 +28,8 @@ app.use('/api/v1',routes)
 app.use(express.urlencoded({extended:false}));
 app.use("/",itemRoutes)
 app.use('/',retrieveItemRoutes)
+app.use("/", getUpdate)
+
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -65,12 +68,37 @@ app.get("/item-retrieval/:id", (req, res) => {
     res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"none", id:`${id}`, activeAdmin : req.session.activeAdmin}});
 });
 
+app.get("/check-item/:id", async (req, res) => {
+    iid = req.params.id
 
+    
+    try{
+        const allItems = await items.find({})
+        for (let i = 0; i < allItems.length; i++) {
+            if(allItems[i].uniqueID == iid){
+                show = {}
+                show.id = allItems[i].id
+                show.item_name = allItems[i].item_name
+                show.Category = allItems[i].Category
+                show.Description = allItems[i].Description
+                show.Location = allItems[i].Location
+                show.itemDate = allItems[i].itemDate
+                show.firstImage = allItems[i].firstImage
+                show.secondImage = allItems[i].secondImage
+            }            
+        }
+        res.render("check_item_page",{info:{item:show}})
+    }
+
+    catch(e)
+    {
+        console.log(e);
+    }
+});
 
 app.get("/lost-items", async (req,res) => {
     try{
         const allItems = await items.find({})
-
         res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin}})
     }
 
