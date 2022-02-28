@@ -31,9 +31,9 @@
             </div>
           </div>
           <form  action="/item-retrieval/<%= info.id %>" class="overall-container" method="post" enctype="multipart/form-data" >
+            <h3>ITEM RETRIEVAL PAGE</h3>
             <div class="form">
               <div class="form-div">
-                <h3>ITEM RETRIEVAL PAGE</h3>
                   <div class="input_txtbx_div">
                     <input type="text" name="firstname" value="" placeholder="Firstname"><br>
                   </div>
@@ -61,8 +61,8 @@
                   </div>
                   <div class="input-div">
                     <input type="file" name="idphoto" id="idphoto">
+                    <input type="button" value="clear" id="clear">
                   </div>
-                  
               </div>
 
             </div>
@@ -125,6 +125,7 @@
         // drag and drop AND file selector
         var dropRegion = document.getElementById("dropRegion");
         var myinput = document.getElementById('idphoto')
+        var clear = document.getElementById('clear');
         dropRegion.addEventListener("click", function(){
           myinput.click();
         });
@@ -134,10 +135,13 @@
           handleFiles(files);
         });
         function preventDefault(e){
-          myinput.click();
           e.preventDefault();
           e.stopPropagation();
         }
+        clear.addEventListener('click', (e)=>{
+          //myinput.files = null;
+          console.log(myinput.files)
+        })
         dropRegion.addEventListener("dragenter", preventDefault, false);
         dropRegion.addEventListener("dragleave", preventDefault, false);
         dropRegion.addEventListener("dragover", preventDefault, false);
@@ -146,6 +150,7 @@
           var data = e.dataTransfer,
           // e.dataTransfer contains the dragged data
               files = data.files;
+              myinput.files = data.files
           handleFiles(files);
         }
         dropRegion.addEventListener("drop", handleDrop, false);

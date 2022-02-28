@@ -4,17 +4,19 @@
 *{
     box-sizing: border-box;
     font-family: "Raleway", sans-serif;
+    /* margin: 0;
+    padding: 0; */
 }
 a{
     text-decoration: none;
 }
 #back{
     color: #7c306c;
-    font-size: .75em;
+    font-size: .85rem;
 }
 
 .back{
-    margin: 2em 0;
+    margin: .5em 0;
     display: flex;
     align-items: center;
 }
@@ -35,6 +37,10 @@ a{
     font-size: 18px;
     /* line-height: 21px; */
     text-align: left;
+    /* border: 2px solid #592C54; */
+    margin:0;
+    margin-bottom: 2em;
+
 }
 
 .container {
@@ -57,16 +63,25 @@ a{
     /* border: 2px solid; */
 }
 
-input{
+.field input{
     border: none;
-    margin-top: 30px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 2em;
     width: 100%;
     background-color: transparent;
+    font-size: .9rem;
     outline: none;
+}
+input:focus{
+    border-bottom: 2px solid #592C54;
 }
 
 textarea:focus, input:focus{
     outline: none;
+}
+textarea:focus{
+    border: 2px solid #592C54;
+
 }
 
 .field{
@@ -78,17 +93,17 @@ textarea:focus, input:focus{
 }
 
 .descriptions{
-    margin-top: 80px;
-    margin-bottom: 20px;
     display: block;
     border-radius: 10px;
     width: 90%;
     border: 1px solid rgb(177, 173, 173);
+    padding: 3px;
 }
 
 form{
     width: 100%;
     height: 100%;
+    /* border: 2px solid; */
 }
 .input-container{
     display: flex;
@@ -97,21 +112,27 @@ form{
     /* height:100%; */
     /* border:2px solid; */
     padding:.35em;
-
+    margin:0;
+    margin-bottom: 2em;
 }
 img{
     display: block;
+    /* display: none; */
+
 }
 .pic{
     width: 47%;
-    height:100%;
+    height:360px;
+    /* height: 100%; */
     position: relative;
     /* border:2px solid; */
     padding:.35em;
 
 }
 .pic img{
-    height: 540px;
+    /* height: 540px; */
+    height: 100%;
+    /* max-height: 100%; */
     width: 100%;
     object-fit: cover;
     /* margin-left: 20px; */
@@ -167,7 +188,7 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
+    transition: transform .35s ease-in-out;
     box-shadow: 0px 0px 4px 0px #572f4e;
     border-radius: 10px;
     z-index: 10;
@@ -232,11 +253,13 @@ img{
     opacity: 1;
     pointer-events: all;
 }
-
+.btn-div{
+    padding-left:.35em;
+}
 
   /* MEDIA QUERRIES */
 @media (max-width: 767px) {
-    .hidden-mobile {
+    .pic,.hidden-mobile {
       display: none;
     }
     .container{
@@ -245,9 +268,12 @@ img{
     }
     form{
         width: 100%;
+        display: flex;
+        flex-direction: column;
         position: relative;
-        align-items: center;
+        align-items: left;
         justify-content: center;
+        /* border: 2px solid; */
     }
     .field{
         width: 100%;
