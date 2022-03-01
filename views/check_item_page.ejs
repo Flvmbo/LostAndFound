@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+    </style>
     <link rel="stylesheet" href="/check_item_files/check-item.css">
     
 </head>
@@ -42,7 +45,7 @@
                         <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=info.item.itemDate%>"  name="date-found" class="date-found details-input">
                     </div>
                     <div class="retrieve-item-div">
-                        <a class="retrieve-item" href="/item-retrieval/<%= info.item._id  %>"  ><button class="retrieve-item-btn btn">Retrieve</button></a>
+                        <a class="retrieve-item" href="/item-retrieval-checkpage/<%= info.item.id  %>"  ><button class="retrieve-item-btn btn">Retrieve</button></a>
                     </div>
               </div>
             </div> 
