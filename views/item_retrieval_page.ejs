@@ -130,8 +130,7 @@
           myinput.click();
         });
         myinput.addEventListener("change", function(){
-          var files = myinput.files;
-        
+          var files = myinput.files;     
           handleFiles(files);
         });
         function preventDefault(e){
@@ -149,8 +148,8 @@
         function handleDrop(e){
           var data = e.dataTransfer,
           // e.dataTransfer contains the dragged data
-              files = data.files;
-              myinput.files = data.files
+          files = data.files;
+          myinput.files = data.files
           handleFiles(files);
         }
         dropRegion.addEventListener("drop", handleDrop, false);
@@ -176,18 +175,19 @@
         }
         // preview image before uploading
         function previewTheImage(image){
-        const previewContainer = document.getElementById("dropRegion");
-        const previewImage = previewContainer.querySelector('.image-preview__image');
-        const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
-        const reader = new FileReader();
-        previewDefaultText.style.display = "none";
-        var my_cont = document.getElementById("dropRegion");
-        var my_image = document.getElementById("my_image");
-        previewImage.style.display = "block";
-        reader.addEventListener("load", function(){
-          previewImage.setAttribute("src", this.result);
-        });
-        reader.readAsDataURL(image);
+          const previewContainer = document.getElementById("dropRegion");
+          const previewImage = previewContainer.querySelector('.image-preview__image');
+          const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+          const reader = new FileReader();
+          previewDefaultText.style.display = "none";
+          previewImage.style.display = "block";
+      //    var my_cont = document.getElementById("dropRegion");
+        //  var my_image = document.getElementById("my_image");
+
+          reader.addEventListener("load", function(){
+            previewImage.setAttribute("src", this.result);
+          });
+          reader.readAsDataURL(image);
         }
 
     </script>
