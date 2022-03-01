@@ -1,0 +1,144 @@
+*{
+    box-sizing: border-box;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+
+}
+.full-page{
+    width:100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.full_page{
+    max-width: 1920px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+}
+
+.main{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.main-center{
+    position: relative;
+    width: 400px;
+    height: 250px;
+    display: grid;
+    place-items: center;
+}
+
+.form{
+    display: grid;
+    place-items: center;
+}
+
+.input_txtbx_div{
+    position: relative;
+    margin-bottom: 35px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.input_txtbx{
+    width: 400px;
+    height: 30px;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-radius: 10px;
+    border-color: black;
+    outline: none;
+    padding: 20px;
+    font-size: 17px;
+}
+
+.btn{
+/* outline-style:thin; */
+outline:0;
+border: 0;;
+padding: 1em;
+border-radius:10px;
+background-color: #592C54;
+color:#fff;
+/* font-weight: bold; */
+font-size: .75rem;
+cursor: pointer;
+transition-property: background-color, color,  box-shadow;
+transition-duration: .2s;
+transition-timing-function: ease-in;
+box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
+/* margin-bottom:1em; */
+
+}
+.btn:hover, .btn:focus{
+background-color: transparent;
+/* color: #592C54; */
+/* border:1px solid; */
+    color:#7c306c;
+/* color: #000; */
+
+
+/* box-shadow: .35px 1px 1px 0px #000; */
+box-shadow: 0px 1px 2px 0px rgb(48, 47, 47);
+}    
+@media (max-width: 440px) {
+    .main-center{
+        width: 100%; 
+    }
+    .input_txtbx{
+        width: 100%
+    }
+}
+
+
+
+/* pop up styles */
+.pop_up_div{
+    position: fixed;
+    width: 1920px;
+    height: 700px;
+    z-index: 9;
+    background-color: rgb(0, 0, 0, 0.3);
+    display: grid;
+    place-items: center;
+    display: none;
+}
+
+.pop_up{
+    position: relative;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.pop_up_top{
+    height: 25%;
+    position: relative;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+    border-bottom: 1px solid grey;
+    font-weight: 700;
+}
+
+.pop_up_bottom{
+    height: 75%;
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    padding: 25px;
+    font-weight: bold;
+}

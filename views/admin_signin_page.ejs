@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin login</title>
-    <link rel="stylesheet" href="admin_login_files/sign-in.css">
+    <link rel="stylesheet" href="/admin_login_files/sign-in.css">
 </head>
 <body>
     <div class="overall-container">
         <main>
            
-            <form action="/sign-in" method="POST">
+            <form action="/sign-in" method="POST" id="form">
                 <div class="heading">
                     <a href="/home" class="logo-home">
                         <div class="logo-name-div">
                             <div class="logo-div">
-                                <img class="logo" src="admin_login_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
+                                <img class="logo" src="/admin_login_files/lost-items-images/cu-logo.svg" alt="Covenant University Logo">
                             </div>
                             <p class="name">Lost & <br> Found</p>
                         </div>
@@ -41,7 +41,7 @@
                             info.style.display = "<%= info.display  %>"
                         </script>
                         <div class="btn-div">
-                            <input type="submit" value="Sign in" class="btn submit">
+                            <input type="submit" value="Sign in" class="btn submit" onclick="check_item_page()">
                         </div>
                         
                     </div>
@@ -65,3 +65,11 @@
     </div>
 </body>
 </html>
+
+<script>
+var check_item_page = () =>{
+    if("<%= info.id%>" != "" || "<%= info.id%>" != null){
+        document.getElementById("form").action = "/sign-in/<%= info.id%>"
+    }
+}
+</script>

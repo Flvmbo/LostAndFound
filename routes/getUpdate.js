@@ -7,13 +7,13 @@ var route = express.Router();
 
 route.post("/get-update", async (req,res)=>{
 
-    var {firstname,student_email, item_name,item_category, description} = req.body
+    var {firstname,student_email, item_category,item_name, description} = req.body
     try{
         var new_update = new get_update_schema({
             Firstname : firstname,
             StudentEmail : student_email,
-            Category : item_name,
-            Item_name : item_category,
+            Category : item_category,
+            Item_name : item_name,
             Description : description
         })
         new_update.save()

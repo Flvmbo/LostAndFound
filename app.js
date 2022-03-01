@@ -12,6 +12,8 @@ const { render } = require("express/lib/response");
 const adminLogin  = require("./routes/adminLogin")
 const items = require('./dbSchema/submit_item')
 const getUpdate = require("./routes/getUpdate.js")
+const checkItemRoutes = require("./routes/checkItem")
+const unsubscribe = require("./routes/unsubscribe")
 var app = express()
 
 app.use(session({
@@ -29,12 +31,13 @@ app.use(express.urlencoded({extended:false}));
 app.use("/",itemRoutes)
 app.use('/',retrieveItemRoutes)
 app.use("/", getUpdate)
-
+app.use("/", checkItemRoutes)
+app.use("/", adminLogin)
+app.use("/", unsubscribe)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-app.use("/sign-in", adminLogin)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname + "/views"))
@@ -62,6 +65,10 @@ app.get("/get-update", (req, res) => {
     res.render("get_update");
 });
 
+app.get("/unsubscribe" , (req,res)=>{
+    res.render("unsubscribe_from_mail", {info:{}})
+})
+
 app.get("/item-retrieval/:id", (req, res) => {
     id = req.params.id;
     // console.log(id)
@@ -71,13 +78,13 @@ app.get("/item-retrieval/:id", (req, res) => {
 app.get("/check-item/:id", async (req, res) => {
     iid = req.params.id
 
-    
     try{
         const allItems = await items.find({})
         for (let i = 0; i < allItems.length; i++) {
             if(allItems[i].uniqueID == iid){
                 show = {}
                 show.id = allItems[i].id
+                show.uniqueID = allItems[i].uniqueID
                 show.item_name = allItems[i].item_name
                 show.Category = allItems[i].Category
                 show.Description = allItems[i].Description

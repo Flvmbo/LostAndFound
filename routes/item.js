@@ -8,23 +8,13 @@ const upload = require('../middleware/upload')
 const get_update_schema = require("../dbSchema/get_update")
 const path = require("path")
 
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-charactersLength));
-}
-return result;
-}
 
 route.post("/api/v1/submit-item", upload.array("image"), async (req,res)=>{
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date;
-    var uniqueID =  makeid(10)
+    var uniqueID =  Date.now()
 
     const {item_name,Category,Description,Location} = req.body
     try{
@@ -63,7 +53,9 @@ route.post("/api/v1/submit-item", upload.array("image"), async (req,res)=>{
                     from: 'isaiah.ekundayo@stu.cu.edu.ng',
                     to: get_update_list[i].StudentEmail,
                     subject: 'Lost Item Alert',
-                    html: `<p>Based on your the item misplaced you have been adviced to check out this </p> <a href="http://localhost:3700/check-item/${uniqueID}">item</a>`
+                    html: `<p>Based on your the item misplaced you have been adviced to check out this <a href="http://localhost:3700/check-item/${uniqueID}">item</a></p>
+                    <p>To opt out from receiving emails please click the button <a href = "http://localhost:3700/unsubscribe"><input type="button"/ value="Unsubscribe"></a> </p>
+                    `
                 };
 
                 transporter.sendMail(mailOptions, function(error, info){
