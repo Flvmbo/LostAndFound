@@ -59,7 +59,9 @@ app.get("/found-item", (req, res) => {
 });
 
 app.get("/get-update", (req, res) => {
-    res.render("get_update");
+    // res.render("get_update");
+    res.render("get_update",{info:{popup:"none"}})
+
 });
 
 app.get("/item-retrieval/:id", (req, res) => {
@@ -70,8 +72,6 @@ app.get("/item-retrieval/:id", (req, res) => {
 
 app.get("/check-item/:id", async (req, res) => {
     iid = req.params.id
-
-    
     try{
         const allItems = await items.find({})
         for (let i = 0; i < allItems.length; i++) {

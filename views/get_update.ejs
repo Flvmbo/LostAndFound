@@ -38,7 +38,7 @@
 
             <div class="btn-div">
                 <!-- <button data-modal-target class="btn">Submit</button>      -->
-                <input class="btn" type="submit" value="gg">   
+                <input class="btn" type="submit" id="get-btn" value="Submit">   
             </div>
         </form>
 
@@ -48,11 +48,12 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <!-- <div class="modal-body"></div> -->
+       
         <div class="modal-body">
            <p>Thanks for your response</p>
            <p> You'd be notified of any updates in your category!</p>
            <div class="btn-div">
-                <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
+                <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
            </div>
         </div>
     </div>
@@ -62,6 +63,8 @@
     <div class="circle2"></div>
     <div class="circle3"></div>
     <div class="circle4"></div>
-    <script src="get_update_page/script.js"></script>
+    <% if ( info.popup === "show") { %>
+        <script src="get_update_page/script.js"></script>
+    <% } %>
 </body>
 </html>

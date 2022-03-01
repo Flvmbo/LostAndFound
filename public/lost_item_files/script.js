@@ -27,7 +27,6 @@ filterBackground.addEventListener('click', ()=>{
     filterContainer.style = "transform: translate(-50%, 0%) scale(0);overflow-y:hidden; pointer-events:none"
     body.style.overflowY = "auto";
     filterBackground.style = "display:none;"
-
 })
 //HOW TO MAKE IT SO THAT WHEN YOU CLICK ON THE BACKGROUND, IT WILL EX THE FILTER TOO (CURRENT STEP NOT WORKING PROPERLY)
 // filterContainer.addEventListener('click', ()=>{
