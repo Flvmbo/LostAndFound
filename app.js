@@ -58,7 +58,8 @@ app.get("/sign-in-page", (req, res) => {
 });
 
 app.get("/found-item", (req, res) => {
-    res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin}});
+    res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin,popup:"none"}});
+
 });
 
 app.get("/get-update", (req, res) => {
