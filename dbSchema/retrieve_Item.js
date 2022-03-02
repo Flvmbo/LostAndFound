@@ -32,6 +32,10 @@ var retrieveItem = new mongoose.Schema({
                 
     idphoto:{
         type:String
+    },
+
+    itemPhoto:{
+        type:String
     }
 })
 

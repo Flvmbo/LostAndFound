@@ -32,6 +32,8 @@ try{
                 Location_found : retrieved_item.Location,
                 date_found : date.getDate()+"-"+date.getDay()+"-"+date.getFullYear()+"  "+date.getHours()+":"+date.getMinutes(),                
                 idphoto:"retrieved/images/" + req.file.filename,
+                itemPhoto : retrieved_item.firstImage
+
             })
             
            await retrievedItem.save()

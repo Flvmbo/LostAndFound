@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -133,12 +134,14 @@ body{
    float: right;
    
 }
+
 .exit-div{
     position: absolute;
     top:-9px;
     left:-5px;
    /* float: left; */
 }
+
 .exit-btn{
     outline:0;
     border: 0;
@@ -493,15 +496,14 @@ main{
     background-color:#fff;
 }
 
+
 .image-container{
     position: relative;
     display: flex;
-  height: 100%;
-  /* width: 100%; */
-  margin:0 .3em;
-  box-shadow: 0px 0px 3px 0px rgb(48, 47, 47);
-
-  /* border: 2px solid; */
+    height: 100%;
+    width: 150px;
+    margin:0 .3em;
+    box-shadow: 0px 0px 3px 0px rgb(48, 47, 47);
   /* overflow: hidden; */
 }
 .slider-container{
@@ -509,6 +511,7 @@ main{
     /* margin-left: .3em; */
     transition: opacity .4s ease-in-out;
 }
+
 .slide-image{
     background-color: #592C54;
     color: #fff;
@@ -524,7 +527,6 @@ main{
     
 
 }
-
 .prev-image-container{
     /* display:none; */
     opacity: 0;
@@ -533,10 +535,10 @@ main{
 
 .item-image{
 
-    /* display: block;2
-   max-width:100%;
-    height: 100%;
-  object-fit: cover; */
+   display: block;
+   /* max-width:100%; */
+    /* height: 100%; */
+  object-fit: cover; 
 
   /* position: relative; */
   /* display: block; */
@@ -545,6 +547,7 @@ main{
   right:0;
   bottom:0; */
   height: 100%;
+  width: 100%;
   /* object-fit: cover; */
     /* max-width: 100%; */
 }
