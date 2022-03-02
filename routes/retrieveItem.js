@@ -37,7 +37,7 @@ try{
             })
             
            await retrievedItem.save()
-           .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin}}))
+           .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin, popup: "show"}}))
            .catch((e)=>console.log(e.message));
            
            await lostitems.deleteOne({_id:getId}).catch((e)=>console.log(e.message))
@@ -48,6 +48,8 @@ try{
     }
 }catch(e){
     console.log(e);
+    res.render("item_retrieval_page", {info:{error:"Please reload application", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});
+    
 }
 
 })
