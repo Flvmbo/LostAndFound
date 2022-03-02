@@ -178,7 +178,7 @@
                     </div>
 
                 </div>
-                
+
                 <div class="lost-items-container">
                 
                     <% items.item.forEach((item,index) => { %>
@@ -214,14 +214,14 @@
                                     <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=item.itemDate%>"  name="date-found" class="date-found details-input">
                                 </div>
                                 <div class="retrieve-item-div">                                
-                                    <a class="retrieve-item" href="/item-retrieval-checkpage/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
+                                    <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
                                 </div>
 
                                 <script>
                                     var retrieveButton =document.getElementById("retrieveButton")
                                     retrieveButton.addEventListener("click",()=>{
-                                        if("<%=  items.activeAdmin %>" != ""){
-                                            retrieveButton.href = "/item-retrieval/<%= item._id  %>"
+                                        if("<%=  items.activeAdmin %>" == ""){
+                                            retrieveButton.href = "/item-retrieval-checkpage/<%= item._id  %>"
                                         }
                                     })
                                 </script>
@@ -361,5 +361,4 @@
     <script src="lost_item_files/script.js"></script>
 </body>
 </html>
-
 
