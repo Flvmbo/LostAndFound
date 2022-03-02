@@ -1,220 +1,228 @@
 <script>
-    if("<%= info.activeAdmin %>" == ""){
-      window.location.replace("/sign-in-page")
-    }
+  if ("<%= info.activeAdmin %>" == "") {
+    window.location.replace("/sign-in-page")
+  }
 </script>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrieve Item</title>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
-    </style>
-    <link rel="stylesheet" href="/item_retrieval_files/retrieval_page.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
-  </head>
-  <body>
-    <div class="full-page">
-      <div class="full_page">
-        <%- include('./partials/nav_bar.ejs') %>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrieve Item</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+  </style>
+  <link rel="stylesheet" href="/item_retrieval_files/retrieval_page.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
+</head>
+
+<body>
+  <div class="full-page">
+    <div class="full_page">
+      <%- include('./partials/nav_bar.ejs') %>
         <script>
-          if("<%=  info.activeAdmin %>" != ""){
-           // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-              document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-              document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+          if ("<%=  info.activeAdmin %>" != "") {
+            // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+            document.getElementById("loginBtnDiv").innerHTML = `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
           }
-      </script>
+        </script>
         <a href="#" class="previous">&#8249;</a>
         <a href="/home" class="back">Back to Home</a>
         <div class="container">
-            <form  action="/item-retrieval/<%= info.id %>" class="overall-container" method="post" enctype="multipart/form-data" >
+          <form action="/item-retrieval/<%= info.id %>" class="overall-container" method="post"
+            enctype="multipart/form-data">
             <h3>ITEM RETRIEVAL PAGE</h3>
             <div class="form">
               <div class="form-div">
-                  <div class="input_txtbx_div">
-                    <input type="text" name="firstname" value="" placeholder="Firstname"><br>
-                  </div>
-                  <div class="input_txtbx_div">
-                    <input type="text" name="lastname" value="" placeholder="Lastname"><br>
-                  </div>
-                  <div class="input_txtbx_div">
-                    <input type="text" name="admin" value="<%= info.activeAdmin %> " readonly placeholder="Admin" ><br>
-                  </div>
-                  <div class="input_txtbx_div">
-                    <input type="text" name="location" value="" placeholder="Location"><br>
-                  </div>
-                  <div class="error-div">
-                    <p class="info"><%= info.error %> </p>
-                  </div>
+                <div class="input_txtbx_div">
+                  <input type="text" name="firstname" value="" placeholder="Firstname"><br>
+                </div>
+                <div class="input_txtbx_div">
+                  <input type="text" name="lastname" value="" placeholder="Lastname"><br>
+                </div>
+                <div class="input_txtbx_div">
+                  <input type="text" name="admin" value="<%= info.activeAdmin %> " readonly placeholder="Admin"><br>
+                </div>
+                <div class="input_txtbx_div">
+                  <input type="text" name="location" value="" placeholder="Location"><br>
+                </div>
+                <div class="error-div">
+                  <p class="info">
+                    <%= info.error %>
+                  </p>
+                </div>
                 <script>
-                    const info = document.querySelector('.info');
-                    info.style.display = "<%= info.display  %>"
+                  const info = document.querySelector('.info');
+                  info.style.display = "<%= info.display  %>"
                 </script>
               </div>
               <div class="picture-div">
-                  <div id="dropRegion">
-                    <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
-                    <span class="image-preview__default-text">Click to upload a picture of the retriever or drag and drop here</span>
-                  </div>
-                  <div class="input-div">
-                    <input type="file" name="idphoto" id="idphoto">
-                    <input type="button" value="clear" id="clear">
-                  </div>
+                <div id="dropRegion">
+                  <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
+                  <span class="image-preview__default-text">Click to upload picture of the retriever or drag and drop
+                    here</span>
+                </div>
+                <div class="input-div">
+                  <input type="file" name="idphoto" id="idphoto">
+                  <!-- <input type="button" value="clear" id="clear"> -->
+                </div>
               </div>
 
             </div>
-              <div class="btn-div-center">
-                  <div class="btn-div">
-                    <input type="submit" name="" value="Submit" class="submit btn" id="my_btn">
-                  </div>
+            <div class="btn-div-center">
+              <div class="btn-div">
+                <input type="submit" name="" value="Submit" class="submit btn" id="my_btn">
               </div>
-          </form>  
+            </div>
+          </form>
 
-        <div class="modal" id="modal">
+          <div class="modal" id="modal">
             <div class="modal-header">
-                 <a href="/lost-items"><button data-close-button class="close-button">&times;</button></a>
+              <a href="/lost-items"><button data-close-button class="close-button">&times;</button></a>
             </div>
             <!-- <div class="modal-body"></div> -->
-           
+
             <div class="modal-body">
-               <p>Congrats on finding lost item</p>
-                <div class="btn-div">
-                    <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
-               </div>
+              <p>Congrats on finding lost item</p>
+              <div class="btn-div">
+                <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
+              </div>
             </div>
 
-        </div>
-        <div id="overlay"></div>
+          </div>
+          <div id="overlay"></div>
 
 
         </div>
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 
 
 
-    <script>
-      /*function message(){
-        window.alert("Congrats on finding lost item")
-      }
+<script>
+  /*function message(){
+    window.alert("Congrats on finding lost item")
+  }
 
-       const inpFile = document.getElementById("inpFile");
-       const previewContainer = document.getElementById("imagePreview");
-       const previewImage = previewContainer.querySelector('.image-preview__image');
-       const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
-       inpFile.addEventListener("change", function(){
-         const file = this.files[0];
-         if (file){
-           const reader = new FileReader();
-           previewDefaultText.style.display = "none";
-           previewImage.style.display = "block";
-           reader.addEventListener("load", function(){
-             previewImage.setAttribute("src", this.result);
-           });
-           reader.readAsDataURL(file);
-         } else{
-           previewDefaultText.style.display = null;
-           previewImage.style.display = null;
-           previewImage.setAttribute("src", "");
-         }
+   const inpFile = document.getElementById("inpFile");
+   const previewContainer = document.getElementById("imagePreview");
+   const previewImage = previewContainer.querySelector('.image-preview__image');
+   const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+   inpFile.addEventListener("change", function(){
+     const file = this.files[0];
+     if (file){
+       const reader = new FileReader();
+       previewDefaultText.style.display = "none";
+       previewImage.style.display = "block";
+       reader.addEventListener("load", function(){
+         previewImage.setAttribute("src", this.result);
        });
+       reader.readAsDataURL(file);
+     } else{
+       previewDefaultText.style.display = null;
+       previewImage.style.display = null;
+       previewImage.setAttribute("src", "");
+     }
+   });
 */
-        // pop up
-        // var modal = document.getElementById("mymodal");
-        // var my_submit = document.getElementById("my_btn");
-        // var btn = document.getElementById("home_btn");
-  
-        //   modal.style.display = "<%= info.modalDisplay %>";
-        
-        // btn.onclick = function(){
-        //   modal.style.display = "none;"
-        // }
-        // window.onclick = function(event){
-        //   if (event.target == modal){
-        //     modal.style.display = "none";
-        //   }
-        // }
+  // pop up
+  // var modal = document.getElementById("mymodal");
+  // var my_submit = document.getElementById("my_btn");
+  // var btn = document.getElementById("home_btn");
 
-        // drag and drop AND file selector
-        var dropRegion = document.getElementById("dropRegion");
-        var myinput = document.getElementById('idphoto')
-        var clear = document.getElementById('clear');
-        dropRegion.addEventListener("click", function(){
-          myinput.click();
-        });
-        myinput.addEventListener("change", function(){
-          var files = myinput.files;     
-          handleFiles(files);
-        });
-        function preventDefault(e){
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        clear.addEventListener('click', (e)=>{
-          //myinput.files = null;
-          console.log(myinput.files)
-        })
-        dropRegion.addEventListener("dragenter", preventDefault, false);
-        dropRegion.addEventListener("dragleave", preventDefault, false);
-        dropRegion.addEventListener("dragover", preventDefault, false);
-        dropRegion.addEventListener("drop", preventDefault, false);
-        function handleDrop(e){
-          var data = e.dataTransfer,
-          // e.dataTransfer contains the dragged data
-          files = data.files;
-          myinput.files = data.files
-          handleFiles(files);
-        }
-        dropRegion.addEventListener("drop", handleDrop, false);
-        function handleFiles(files){
-            if(validateImage(files[0])){
-              previewTheImage(files[0]);
-          }
-        }
-        function validateImage(image){
-          // check type of file
-          var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-          if(validTypes.indexOf(image.type) == -1){
-            alert("Invalid File Type");
-            return false;
-          }
-          // check the size of file, Im not sure if this is needed
-          var maxSizeInBytes = 10e6;//10MB
-          if(image.size > maxSizeInBytes){
-            alert("File too large");
-            return false;
-          }
-          return true;
-        }
-        // preview image before uploading
-        function previewTheImage(image){
-          const previewContainer = document.getElementById("dropRegion");
-          const previewImage = previewContainer.querySelector('.image-preview__image');
-          const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
-          const reader = new FileReader();
-          previewDefaultText.style.display = "none";
-          previewImage.style.display = "block";
-      //    var my_cont = document.getElementById("dropRegion");
-        //  var my_image = document.getElementById("my_image");
+  //   modal.style.display = "<%= info.modalDisplay %>";
 
-          reader.addEventListener("load", function(){
-            previewImage.setAttribute("src", this.result);
-          });
-          reader.readAsDataURL(image);
-        }
+  // btn.onclick = function(){
+  //   modal.style.display = "none;"
+  // }
+  // window.onclick = function(event){
+  //   if (event.target == modal){
+  //     modal.style.display = "none";
+  //   }
+  // }
 
-    </script>
-      </div>
-    </div>
-  </body>
+  // drag and drop AND file selector
+  var dropRegion = document.getElementById("dropRegion");
+  var myinput = document.getElementById('idphoto')
+  var clear = document.getElementById('clear');
+  dropRegion.addEventListener("click", function () {
+    myinput.click();
+  });
+  myinput.addEventListener("change", function () {
+    var files = myinput.files;
+    handleFiles(files);
+  });
+  function preventDefault(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  clear.addEventListener('click', (e) => {
+    //myinput.files = null;
+    console.log(myinput.files)
+  })
+  dropRegion.addEventListener("dragenter", preventDefault, false);
+  dropRegion.addEventListener("dragleave", preventDefault, false);
+  dropRegion.addEventListener("dragover", preventDefault, false);
+  dropRegion.addEventListener("drop", preventDefault, false);
+  function handleDrop(e) {
+    var data = e.dataTransfer,
+      // e.dataTransfer contains the dragged data
+      files = data.files;
+    myinput.files = data.files
+    handleFiles(files);
+  }
+  dropRegion.addEventListener("drop", handleDrop, false);
+  function handleFiles(files) {
+    if (validateImage(files[0])) {
+      previewTheImage(files[0]);
+    }
+  }
+  function validateImage(image) {
+    // check type of file
+    var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    if (validTypes.indexOf(image.type) == -1) {
+      alert("Invalid File Type");
+      return false;
+    }
+    // check the size of file, Im not sure if this is needed
+    var maxSizeInBytes = 10e6;//10MB
+    if (image.size > maxSizeInBytes) {
+      alert("File too large");
+      return false;
+    }
+    return true;
+  }
+  // preview image before uploading
+  function previewTheImage(image) {
+    const previewContainer = document.getElementById("dropRegion");
+    const previewImage = previewContainer.querySelector('.image-preview__image');
+    const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+    const reader = new FileReader();
+    previewDefaultText.style.display = "none";
+    previewImage.style.display = "block";
+    //    var my_cont = document.getElementById("dropRegion");
+    //  var my_image = document.getElementById("my_image");
+
+    reader.addEventListener("load", function () {
+      previewImage.setAttribute("src", this.result);
+    });
+    reader.readAsDataURL(image);
+  }
+
+</script>
+</div>
+</div>
+</body>
+
 </html>
 
-<% if ( info.popup === "show") { %>
+<% if ( info.popup==="show" ) { %>
   <script src="/item_retrieval_files/popupscript.js"></script>
-<% } %>
+  <% } %>

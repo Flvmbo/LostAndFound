@@ -294,7 +294,7 @@ body
 
 
 
-.admin-login-btn,.retrieve-item-btn
+/* .admin-login-btn,.retrieve-item-btn
 {
     width: 9.046rem;
     height: 3.097rem;
@@ -307,10 +307,11 @@ body
     color: var(--primary-color);
     transition: all 0.3s ease;
     cursor: pointer;
-}
+} */
 
 .retrieve-item-btn
 {
+    font-size: 1rem;
     opacity: 0;
     transform: translateX(-100px) ;
     animation:login-animate 0.5s 0.5s ease forwards,
@@ -319,6 +320,7 @@ body
 
 .admin-login-btn
 {
+    font-size: 1rem;
     opacity: 0;
     transform: translateX(200px);
     animation:login-animate 0.5s 0.5s ease forwards,

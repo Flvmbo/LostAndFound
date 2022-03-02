@@ -88,31 +88,37 @@ form h3{
   justify-content: space-between;
   /* border: 1px solid; */
   /* margin-bottom: 1em; */
+  margin: 0 auto;
+
 
 }
 
 .form-div{
   position: relative;
   width: 45%;
-  max-width:450px;
+  max-width:500px;
   align-items: center;
   flex-direction: column;
+  margin-right: 1em;
   /* padding-top: 1em; */
   /* border: 1px solid; */
 
 }
 .picture-div{
   position: relative;
+  /* width: max-content; */
   width: 45%;
+  max-width: 300px;
   height: 325px;
   max-height: 325px;
-  min-width: 210px;
+  /* min-width: 210px; */
   display: flex;
   flex-direction: column;
   /* align-items: flex-start; */
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   /* border: 1px solid; */
+  padding:0;
 
 }
 
@@ -133,9 +139,11 @@ a:link{
 
 #dropRegion{
   position: relative;
-  width: 100%;
-  max-width: 420px;
-  height: 90%;
+  /* width: 100%; */
+  width: max-content;
+  max-width: 300px;
+  max-height: 90%;
+  height: 300px;
   /* max-height: 100%; */
   background: rgba(150, 75, 142, 0.08);
   border: 1px dashed rgba(120, 120, 120, 0.5);
@@ -148,21 +156,25 @@ a:link{
   font-size: 14px;
   color: #000000;
   text-align: center;
+  margin: 0;
   /* border: 2px solid; */
 
 }
 .image-preview__image{
   display: none;
   width: 100%;
+  /* width: max-content; */
+  /* max-width: 300px; */
   /* height:325px; */
-  height: 100%;
+  height: 300px;
+  /* height: 150px; */
   max-height: 100%;
   object-fit:contain;
 }
 .input-div{
   width:100%;
-  max-width: 420px;
-  height:5%;
+  /* max-width: 420px;2 */
+  height:10%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -288,10 +300,14 @@ a:link{
     margin-top: .5em;
     padding-left:.35em;
 }
+.image-preview__image{
+  height:100%;
+  object-fit:fill;
+}
 
 
 
-@media (max-width:695px) {
+@media (max-width:850px) {
   .form{
     flex-direction: column;
 
@@ -306,8 +322,8 @@ a:link{
     width:100%;
     margin: 0 auto;
     margin-bottom: 1em;
-    height: 350px;
-    align-items: center;
+    height: 250px;
+    /* align-items: center; */
     /* border: 2px solid; */
   }
   .overall-container{
@@ -315,10 +331,12 @@ a:link{
   }
   .btn-div{
     width:100%;
-    max-width: 420px;
+    max-width: 310px;
     margin:0 auto;
-
+    /* border: 2px solid; */
   }
+    
+  
 
 }
 @media (max-width:450px) {
@@ -332,9 +350,21 @@ a:link{
 
   }
   #dropRegion{
-    width:100%;
+    max-width:100%;
+  }
+  .picture-div{
+    height: 200px;
   }
   .input-div{
     width:100%;
   }
+  
+ 
+}
+
+@media (max-width:400px) {
+.image-preview__image{
+  object-fit:cover;
+
+}
 }
