@@ -1,7 +1,7 @@
 const express = require("express")
 var route = express.Router()
 
-route.get("/item-retrieval-checkpage/:id/", async (req,res)=>{
+route.get("/item-retrieval-checkpage/:id", async (req,res)=>{
     try{
         uniqueID = req.params.uniqueID
         id = req.params.id
