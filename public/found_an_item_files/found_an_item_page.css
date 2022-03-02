@@ -184,9 +184,9 @@ a{
     display: none;
     width: 100%;
   /* height:325px; */
-  height: 100%;
+  height: 150px;
   max-height: 100%;
-  object-fit:contain;
+  object-fit:cover;
   z-index: 2;
 }
 
@@ -401,7 +401,7 @@ a{
     }
     .main-footer{
         position: relative;
-        margin: 0 auto;
+        /* margin: 0 auto; */
         width: 100%;
         
     }.main-footer-center{
@@ -417,8 +417,8 @@ a{
         min-width: none;
         width: 100%;
     }
- 
    .main-footer-center{
+        min-width: none;
         width: 100%;
     }
     
