@@ -14,6 +14,7 @@ const items = require('./dbSchema/submit_item')
 const getUpdate = require("./routes/getUpdate.js")
 const checkItemRoutes = require("./routes/checkItem")
 const unsubscribe = require("./routes/unsubscribe")
+const retrievalRecord = require("./routes/retrievalRecord")
 var app = express()
 
 app.use(session({
@@ -34,6 +35,7 @@ app.use("/", getUpdate)
 app.use("/", checkItemRoutes)
 app.use("/", adminLogin)
 app.use("/", unsubscribe)
+app.use("/",retrievalRecord)
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -125,9 +127,6 @@ app.get("/lost-items", async (req,res) => {
 //     res.render("lost_items_page",{items:allItems})
 // });
 
-app.get("/retrieval-records", (req,res)=>{
-    res.render("item_retrieval_record_page")
-})
 
 app.get("/log-out" , (req ,res) =>{
     req.session.activeAdmin = null
