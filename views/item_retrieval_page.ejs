@@ -21,6 +21,13 @@
     <div class="full-page">
       <div class="full_page">
         <%- include('./partials/nav_bar.ejs') %>
+        <script>
+          if("<%=  info.activeAdmin %>" != ""){
+           // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+              document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+              document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+          }
+      </script>
         <a href="#" class="previous">&#8249;</a>
         <a href="/home" class="back">Back to Home</a>
         <div class="container">
@@ -207,15 +214,6 @@
     </div>
   </body>
 </html>
-
-
-
-
-<script>
-    if("<%=  info.activeAdmin %>" != ""){
-        document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-    }
-</script>
 
 <% if ( info.popup === "show") { %>
   <script src="/item_retrieval_files/popupscript.js"></script>
