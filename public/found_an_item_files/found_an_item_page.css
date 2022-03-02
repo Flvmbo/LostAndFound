@@ -326,6 +326,17 @@ a{
 }
 
 
+.info{
+    display: none;
+    width:100%;
+    background-color: rgb(168, 49, 49);
+    margin-bottom:3em;
+    padding: .5em;
+    text-align: center;
+    font-size: .85rem;
+    color:#fff;
+  }
+
 @media (max-width:850px) {
     .main-center-center{
         flex-direction: column;

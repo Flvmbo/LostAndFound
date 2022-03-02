@@ -55,6 +55,15 @@
                                     <input type="text" class="input_txtbx" name="Location" id=""
                                         placeholder="Location found">
                                 </div>
+                                <div class="error-div">
+                                    <p class="info">
+                                      <%= info.error %>
+                                    </p>
+                                </div>
+                                <script>
+                                    const info = document.querySelector('.info');
+                                    info.style.display = "<%= info.display  %>"
+                                </script>
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
