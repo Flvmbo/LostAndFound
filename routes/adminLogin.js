@@ -23,7 +23,8 @@ route.post("/sign-in", async  (req,res)=>{
                 req.session.activeAdmin = getadmin.location
                    try{
                         const allItems = await items.find({})
-                        res.render("lost_items_page",{items:{item:allItems, activeAdmin : req.session.activeAdmin }})
+                        // res.render("lost_items_page",{items:{item:allItems, activeAdmin : req.session.activeAdmin }})
+                        res.redirect("/lost-items")
                     }
 
                     catch(e)
