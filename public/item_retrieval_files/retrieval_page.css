@@ -135,6 +135,7 @@ a:link{
 } */
 .previous{
   margin-left: 3em;
+  font-size: 1.2rem;
 }
 
 #dropRegion{
@@ -358,13 +359,18 @@ a:link{
   .input-div{
     width:100%;
   }
-  
+  .previous{
+    margin-left: 2em;
+  }
  
 }
 
 @media (max-width:400px) {
-.image-preview__image{
-  object-fit:cover;
+  .image-preview__image{
+    object-fit:cover;
 
-}
+  }
+  .previous{
+    margin-left: 1em;
+  }
 }

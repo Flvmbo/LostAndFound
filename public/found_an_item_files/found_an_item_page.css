@@ -407,6 +407,11 @@ a{
     }.main-footer-center{
         width: 90%;
     }
+    .form-info{
+        /* border: 2px solid; */
+        text-align: left;
+        width:90%;
+    }
 }
 
 @media (max-width:350px) {
@@ -420,6 +425,11 @@ a{
    .main-footer-center{
         min-width: none;
         width: 100%;
+    }
+    .form-info{
+        /* border: 2px solid; */
+        text-align: left;
+        width:100%;
     }
     
 }

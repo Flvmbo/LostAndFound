@@ -5,11 +5,26 @@ var dropRegion = document.getElementById("dropRegion");
           image1.click();
         });
 
-        image1.addEventListener("change", function(){
-          var files = image1.files;
-          console.log(files)
-          handleFiles(files);
+        image1.addEventListener("change", function () {
+         checkValue(this);
         });
+
+        function checkValue(input){
+          const previewImage = document.querySelector('.preview-img1');
+          const previewDefaultText = document.querySelector('.preview-default-text1');
+          var upload_pic1 = document.querySelector('.upload_pic1');
+          var files = input.files;
+          if(!input.value){
+            previewImage.setAttribute("src", "");
+            previewDefaultText.style.display = "block";
+            upload_pic1.style.display = "block";
+            previewImage.style.display = "none";
+          }
+          if(input.value){  
+            handleFiles(files);
+          }
+        }
+
 
         function handleFiles(files){
             if(validateImage(files[0])){
@@ -22,12 +37,16 @@ var dropRegion = document.getElementById("dropRegion");
             var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
             if(validTypes.indexOf(image.type) == -1){
               alert("Invalid File Type");
+               image1.value = "";
+               checkValue(image1);
               return false;
             }
             // check the size of file, Im not sure if this is needed
             var maxSizeInBytes = 10e6;//10MB
             if(image.size > maxSizeInBytes){
               alert("File too large");
+              image1.value = "";
+              checkValue(image1);
               return false;
             }
             return true;
@@ -94,14 +113,29 @@ var dropRegion = document.getElementById("dropRegion");
           image2.click();
         });
 
-        image2.addEventListener("change", function(){
-          var files = image2.files;
-          console.log(files)
-          handleFiles2(files);
+
+        image2.addEventListener("change", function () {
+         checkValue2(this);
         });
+        function checkValue2(input){
+          const previewImage2 = document.querySelector('.preview-img2');
+          const previewDefaultText2 = document.querySelector('.preview-default-text2');
+          var upload_pic2 = document.querySelector('.upload_pic2');
+          var files = input.files;
+          if(!input.value){
+              previewImage2.setAttribute("src", "");
+              previewDefaultText2.style.display = "block";
+              upload_pic2.style.display = "block";
+              previewImage2.style.display = "none";
+          }
+          if(input.value){  
+          handleFiles2(files);
+          }
+        }
 
         function handleFiles2(files){
             if(validateImage2(files[0])){
+
               previewImage2(files[0]);
           }
         }
@@ -111,14 +145,19 @@ var dropRegion = document.getElementById("dropRegion");
             var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
             if(validTypes.indexOf(image.type) == -1){
               alert("Invalid File Type");
+              image2.value = "";
+              checkValue2(image2);
               return false;
             }
             // check the size of file, Im not sure if this is needed
             var maxSizeInBytes = 10e6;//10MB
             if(image.size > maxSizeInBytes){
               alert("File too large");
+              image2.value = "";
+              checkValue2(image2);
               return false;
             }
+           
             return true;
           }
 
