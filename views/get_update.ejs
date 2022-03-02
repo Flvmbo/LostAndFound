@@ -64,4 +64,10 @@
     <div class="circle4"></div>
     <script src="get_update_page/script.js"></script>
 </body>
-</html>
+</html> 
+
+<script>
+    if ("<%=  info.activeAdmin %>" != "") {
+        document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+    }
+</script>

@@ -62,7 +62,7 @@ app.get("/found-item", (req, res) => {
 });
 
 app.get("/get-update", (req, res) => {
-    res.render("get_update");
+    res.render("get_update", {info: {activeAdmin : req.session.activeAdmin}});
 });
 
 app.get("/unsubscribe" , (req,res)=>{
