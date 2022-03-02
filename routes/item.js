@@ -29,13 +29,8 @@ route.post("/api/v1/submit-item", upload.array("image"), async (req,res)=>{
             secondImage: "uploads/images/" + req.files[1].filename
         })
         
-        if(req.files){
-            console.log("File is: " ,req.files)
-        }
-    
         await new_item.save().then( async ()=>{
-            console.log("hiii")
-            console.log(Category)
+
             res.render("found_an_item",{info:{popup:"show"}})
 
             // res.redirect('/lost-items');

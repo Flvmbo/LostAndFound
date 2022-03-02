@@ -184,8 +184,8 @@
                                     <input class="prev-image slide-image" type="button" value="<">
                                 </div>
                                 <div class="image-container">
-                                    <img class="item-image left-img" src="<%=item.firstImage%>" alt="<%= item.Description %>">
-                                    <img class="item-image right-img" src="<%=item.secondImage%>" alt="<%= item.Description %>">
+                                    <img class="item-image left-img" src="/<%=item.firstImage%>" alt="<%= item.Description %>">
+                                    <img class="item-image right-img" src="/<%=item.secondImage%>" alt="<%= item.Description %>">
                                 </div>
                                 <div class="slider-container next-image-container">
                                     <input class="next-image slide-image" type="button" value=">">
@@ -204,10 +204,19 @@
                                 <div class="item-date-found-div item-details-div">
                                     <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=item.itemDate%>"  name="date-found" class="date-found details-input">
                                 </div>
-                                <div class="retrieve-item-div">
-                                    <a class="retrieve-item" href="/item-retrieval-checkpage/<%= item._id  %>"  ><button class="retrieve-item-btn btn">Retrieve</button></a>
+                                <div class="retrieve-item-div">                                
+                                    <a class="retrieve-item" href="/item-retrieval-checkpage/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
                                 </div>
 
+                                <script>
+                                    var retrieveButton =document.getElementById("retrieveButton")
+                                    retrieveButton.addEventListener("click",()=>{
+                                        if("<%=  items.activeAdmin %>" != ""){
+                                            retrieveButton.href = "/item-retrieval/<%= item._id  %>"
+                                        }
+                                    })
+                                </script>
+                                
                             </div>
                         </div> 
                         <div class="item-category-div item-details-div">
@@ -348,4 +357,6 @@
     if("<%=  items.activeAdmin %>" != ""){
         document.getElementById("loginBtnDiv").innerHTML = ` <%=  items.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
     }
+
+   
 </script>

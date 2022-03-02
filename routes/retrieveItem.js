@@ -12,7 +12,6 @@ var id ="";
 
 route.post("/item-retrieval/:id",retrieved.single('idphoto'), async (req,res)=>{
 try{
-    console.log(req.params)
     let getId = req.params.id;
     console.log(getId)
     const {firstname, lastname, admin, location} = req.body;
@@ -21,18 +20,24 @@ try{
     }
     else{
         if(req.file){
-            console.log(req.file);
+            var retrieved_item = await lostitems.findOne({id : getId})
+            const date = new Date()
+
             var retrievedItem =   new retrievedItems({
                 firstname:firstname,
                 lastname:lastname,
                 admin:admin,
                 location:location,
-                idphoto:"retrieved/images/" + req.file.filename
+                item_name : retrieved_item.item_name,
+                Location_found : retrieved_item.Location,
+                date_found : date.getDate()+"-"+date.getDay()+"-"+date.getFullYear()+"  "+date.getHours()+":"+date.getMinutes(),                
+                idphoto:"retrieved/images/" + req.file.filename,
             })
             
            await retrievedItem.save()
            .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin}}))
            .catch((e)=>console.log(e.message));
+           
            await lostitems.deleteOne({_id:getId}).catch((e)=>console.log(e.message))
         }
         else{
@@ -40,7 +45,7 @@ try{
         }
     }
 }catch(e){
-    console.log(e.message());
+    console.log(e);
 }
 
 })

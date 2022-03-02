@@ -250,3 +250,9 @@
 </body>
 </html>
 
+
+<script>
+    if("<%=  info.activeAdmin %>" != ""){
+        document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+    }
+</script>

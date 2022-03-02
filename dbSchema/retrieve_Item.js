@@ -17,6 +17,19 @@ var retrieveItem = new mongoose.Schema({
         required:true,
         type:String
     },
+    item_name : {
+        required:true,
+        type:String
+    },
+    Location_found :{
+        required:true,
+        type:String
+    },
+    date_found :{
+        required:true,
+        type:String
+    },
+                
     idphoto:{
         type:String
     }

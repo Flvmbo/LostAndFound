@@ -46,11 +46,11 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 app.get("/",(req,res)=>{
-    res.render("Landing_page", {info:{}});
+    res.render("Landing_page", {info:{activeAdmin : req.session.activeAdmin}});
 });
 
 app.get("/home", (req, res) => {
-    res.render("Landing_page", {info:{}});
+    res.render("Landing_page", {info:{activeAdmin : req.session.activeAdmin}});
 });
 
 app.get("/sign-in-page", (req, res) => {
