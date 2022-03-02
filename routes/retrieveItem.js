@@ -30,10 +30,10 @@ try{
                 idphoto:"retrieved/images/" + req.file.filename
             })
             
-           await retrievedItem.save().catch((e)=>console.log(e.message));
-           await lostitems.deleteOne({_id:getId}) 
+           await retrievedItem.save()
            .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin}}))
-           .catch((e)=>console.log(e.message))
+           .catch((e)=>console.log(e.message));
+           await lostitems.deleteOne({_id:getId}).catch((e)=>console.log(e.message))
         }
         else{
         res.render("item_retrieval_page", {info:{error:"Image is required", display:"block", modalDisplay:"none",id:`${id}`, activeAdmin: req.session.activeAdmin}});

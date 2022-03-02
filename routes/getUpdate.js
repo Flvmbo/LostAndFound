@@ -1,7 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const get_update_schema = require("../dbSchema/get_update")
-
+let info = {};
 var route = express.Router();
 
 
@@ -16,9 +16,11 @@ route.post("/get-update", async (req,res)=>{
             Item_name : item_name,
             Description : description
         })
-        new_update.save()
-        .then(()=>{
-            res.redirect("/lost-items")
+        
+        new_update.save().then(()=>{
+            console.log(new_update)
+            res.render("get_update",{info:{popup:"show"}})
+            // res.redirect("/lost-items")
         })
     }catch(err){
         console.log(err)

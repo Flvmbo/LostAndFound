@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Found an item</title>
-    <link rel="stylesheet" href="found_an_item_files/found_an_item_page.css">
+    <link rel="stylesheet" href="/found_an_item_files/found_an_item_page.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
@@ -58,56 +58,58 @@
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
-                                    <!-- <br> -->
-                                    <div class="first-pic-container upload-pic-container">
-                                        <div class="upload_svg_div">
-                                            <img src="found_an_item_files/lost-items-images/upload.png"  class="upload_pic" alt="" srcset="">
-                                        </div>
-
-                                        <div class="upload_text1_div">
-                                            <p class="upload-text"> Upload first picture or drag and drop here </p>
-                                        </div>
+                                    <div class="first-pic-container upload-pic-container" id="dropRegion">  
+                                        <img src="" alt="" class="preview-img1">
+                                        <img src="found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
+                                        <p class="upload-text preview-default-text1"> Upload first picture or drag and drop here </p>
                                     </div>
-                                    <input type="file" name="image">
+                                    <input type="file" name="image" id="image1">
                                 </div>
                                 <div class="upload_second_pic">
-                                    <!-- <br> -->
-                                    <div class="first-pic-container upload-pic-container">
-                                        <div class="upload_svg_div">
-                                            <img src="found_an_item_files/lost-items-images/upload.png" class="upload_pic" alt="" srcset="">
-                                        </div>
-                                        <div class="upload_text2_div">
-                                            <p class="upload-text"> Upload second picture or drag and drop here </p>
-                                        </div>
+                                    <div class="first-pic-container upload-pic-container" id="dropRegion2">
+                                        <img src="" alt="" class="preview-img2">
+                                        <img src="found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic2" alt="" srcset="">
+                                        <p class="upload-text preview-default-text2"> Upload second picture or drag and drop here </p>
                                     </div>
-                                    <input type="file" name="image">
+                                    <input type="file" name="image" id="image2">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="main-footer">
-                        <div class="main-footer-center">
-                            </label><input type="submit" class="submit_button btn" value="Submit">
+                        <div class="main-footer">
+                            <div class="main-footer-center">
+                                </label><input type="submit" class="submit_button btn" value="Submit">
+                            </div>
                         </div>
                     </div>
-
 
                     <div class="circle1"></div>
                     <div class="circle2"></div>
                     <div class="circle3"></div>
                     <div class="circle4"></div>
-
                 </form>
-
-
-                <!-- footer -->
-                <footer>
-
-                </footer>
-
         </div>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <!-- <div class="modal-body"></div> -->
+           
+            <div class="modal-body">
+               <p>Thank you for your service!</p>
+               <p>You just aided in uniting a lost item to their Owner</p>
+                <div class="btn-div">
+                    <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
+               </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
     </div>
+
+
+    <script src="/found_an_item_files/script.js"></script>
+    <% if ( info.popup === "show") { %>
+        <script src="/found_an_item_files/popupscript.js"></script>
+    <% } %>
 </body>
 
 </html>
@@ -115,7 +117,7 @@
 
 <script>
     function allowDrop(ev) {
-        ev.preventDefault();
+        ev.preventDefault2();
     }
 
     function drag(ev) {

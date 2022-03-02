@@ -394,7 +394,8 @@ main{
     margin-bottom: 1em;
 }
 .filter-lost-items-container{
-    display:flex
+    display:flex;
+
 }
 .filters{
     text-align: center;
@@ -414,6 +415,7 @@ main{
     font-weight: 600;
     margin-right: 1.5em;
     box-shadow: 1px 0px 2px -1px rgb(48, 47, 47);
+    height: max-content;
 }
 .category-filter label{
     cursor: pointer;
