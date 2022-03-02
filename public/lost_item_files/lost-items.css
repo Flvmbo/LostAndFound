@@ -1,4 +1,4 @@
-
+.to-top
 *{
     box-sizing: border-box;
     margin: 0;
@@ -100,7 +100,7 @@ body{
     display: none;
     background-color: rgba(0, 0, 0, 0.6);
 }
-/* .mobile-filter-container{
+/* .
     position:absolute;
     bottom: 0;
     top:0;

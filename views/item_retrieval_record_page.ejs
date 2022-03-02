@@ -11,7 +11,8 @@
     </style>
 </head>
 <body>
-    <div class="mobile-filter-container">
+    <div class="mobile-filter-background"> </div>
+    <div class="mobile-filter-container">   
         <div class="mobile-filter-div" id="mobile-filter-div">
             <div class="mobile-exit-div exit-div">
                 <button class="exit-btn mobile-exit-btn" id="exit-item-not-found">x</button>
@@ -19,14 +20,14 @@
             <h2 class="filters">Filters</h2>
             <ul class="category-filter filter-type">    
                 <h2 class="filter-heading">Category</h2>
-                <li class="category-item filter-item" id="mobile-all">All</li>
-                <li class="category-item filter-item" id="mobile-clothing">Clothing</li>
-                <li class="category-item filter-item" id="mobile-books">Books</li>
-                <li class="category-item filter-item" id="mobile-fashion-accessories">Fashion Accessories</li>
-                <li class="category-item filter-item" id="mobile-cards">Cards</li>
-                <li class="category-item filter-item" id="mobile-footwear">Footwear</li>
-                <li class="category-item filter-item" id="mobile-rain-shelter">Rain Shelter</li>
-                <li class="category-item filter-item" id="mobile-other">Other</li>
+                <li class="category-item filter-item" id="mobile-all"><label for="">All</label> </li>
+                <li class="category-item filter-item" id="mobile-clothing"><label for="">Clothing</label> </li>
+                <li class="category-item filter-item" id="mobile-books"><label for="">Books</label> </li>
+                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label>  </li>
+                <li class="category-item filter-item" id="mobile-cards"><label for="">Cards</label> </li>
+                <li class="category-item filter-item" id="mobile-footwear"><label for="">Footwear</label> </li>
+                <li class="category-item filter-item" id="mobile-rain-shelter"><label for="">Rain Shelter</label></li>
+                <li class="category-item filter-item" id="mobile-other"><label for="">Other</label> </li>
             </ul>
 
             <ul class="location-filter filter-type mobile-filter-type" id="mobile-filter-type">
@@ -78,6 +79,7 @@
         </div>
     </div>
     <div class="overall-container" id="top">
+        <%- include("./partials/nav_bar.ejs")  %> 
        <a class="to-top" href="#top"> 
            <div class="back-to-top-div">
                 <button class="back-to-top-btn">

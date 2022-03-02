@@ -26,26 +26,80 @@ body{
     /* border: 2px solid brown; */
 }
 
-.mobile-filter-container{
+
+.mobile-filter-background{
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    z-index: 5;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+/* .mobile-filter-container{
     position:absolute;
     top:0;
     right:-100%;
     left:100%;
     bottom: 0;
     /* max-width: 1650px; */
-    z-index: 5;
+    /* z-index: 5;
     display:flex;
     align-items:flex-start;
     justify-content:center;
     /* display: none; */
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: right .15s ease-in;
+    /* background-color: rgba(0, 0, 0, 0.5);
+    transition: right .15s ease-in; */ 
     /* overflow-y: scroll; */
     /* border: 2px solid; */
 
     
-}
+/* }  */
+
 .mobile-filter-div{
+    /* position: relative; */
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(100%, 0%) scale(0);
+    transform-origin: right;
+    transition: transform .15s ease-in;
+    background-color: #fff;
+    width:75%;
+    height: 100%;
+    max-width: 1960px;
+    /* margin-top: 2em; */
+    z-index: 11;
+    /* opacity: 1; */
+    border: 0;
+    padding:0 .5em;
+    font-size: .85rem;
+    font-weight: 600;
+    box-shadow: 0px 0px 2px -1px rgb(48, 47, 47);
+    pointer-events: all;
+    overflow-y: scroll;
+
+}
+
+.mobile-filter-div .mobile-exit-div{
+    position: relative;
+    top:10px;
+    /* border: 2px solid; */
+    float: right;
+
+}
+.mobile-filter-div .mobile-exit-btn{
+    font-weight: 200;
+    color: rgb(150, 141, 141);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* .mobile-filter-div{
     position: relative;
     background-color: #fff;
     width:75%;
@@ -74,7 +128,7 @@ body{
     color: rgb(150, 141, 141);
     font-size: 1.5rem;
     cursor: pointer;
-}
+} */
 
 .to-top{
     position: fixed;
@@ -108,7 +162,6 @@ body{
 
     
 }
-
 #item-not-found-div{
     position:fixed;
     bottom:0;
