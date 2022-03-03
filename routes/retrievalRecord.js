@@ -1,14 +1,8 @@
 const express = require("express")
-const retrieved_items = require("../dbSchema/retrieve_Item")
 var route = express.Router()
+const retrievedRecord_controller = require("../controllers/retrievedRecord_controller")
 
-route.get("/retrieval-records", async (req,res)=>{
-    try{
-        var retrieved_items_array = await retrieved_items.find({})
-        res.render("item_retrieval_record_page", {info:{items:retrieved_items_array}})
-    }catch(err){
-        console.log(err)
-    }
-})
+// This GET route gets the retrieved records and shows them on the retrieval records page
+route.get("/retrieval-records", retrievedRecord_controller.get_showRetrievedRecordPage)
 
 module.exports = route

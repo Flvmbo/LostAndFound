@@ -63,12 +63,12 @@ input[type = text]{
   outline: none;
   border-bottom: 1px solid black;
   font-size: .9rem;
-  padding: 5px;
+  padding: .25em;
 }
 .container{
   position: relative;
   box-sizing: border-box;
-  margin-top: 25px;
+  /* margin-top: 1em; */
   width: 100%;
   display: flex;
   justify-content: center;

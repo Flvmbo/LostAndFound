@@ -7,72 +7,85 @@
     <title>Not Seeing Your Lost Item</title>
     <link rel="stylesheet" href="/get_update_page/notSeeing.css">
 </head>
-<%- include('./partials/nav_bar.ejs') %>
 <script>
     if("<%=  info.activeAdmin %>" != ""){
         // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-           document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-           document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-       }
+        document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+        document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+    }
 </script>
 
+<%- include('./partials/nav_bar.ejs') %>
+
 <body>
+    <div class="overall-container">
+        <%- include('./partials/nav_bar.ejs') %>
+        <script>
+            if("<%=  info.activeAdmin %>" != ""){
+                // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+            }
+        </script>
 
-   <div class="back">
-        <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back to home</a>
-    </div>
 
 
-    <div class="container">
-        <form action="/get-update" method="post">
-            <h1 id="heading">NOT SEEING YOUR LOST ITEM?</h1>
-            <div class="input-container">
-                <div class="overall-form-div">
-                    <div class="field">
-                        <input type="text" name="firstname" placeholder="FirstName">
-                        <input type="text" name="student_email" placeholder="Student Email">
-                        <input type="text" name="item_category" placeholder="Item Category">
-                        <input type="text" name="item_name" placeholder="Name of item">
+    <div class="back">
+            <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back to home</a>
+        </div>
+
+
+        <div class="container">
+            <form action="/get-update" method="post">
+                <h1 id="heading">NOT SEEING YOUR LOST ITEM?</h1>
+                <div class="input-container">
+                    <div class="overall-form-div">
+                        <div class="field">
+                            <input type="text" name="firstname" placeholder="FirstName">
+                            <input type="text" name="student_email" placeholder="Student Email">
+                            <input type="text" name="item_category" placeholder="Item Category">
+                            <input type="text" name="item_name" placeholder="Name of item">
+                        </div>
+                        
+                        <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
                     </div>
-                    
-                    <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
+
+                    <div class="pic">
+                        <img src="get_update_page/images/Crazy wallpaper.jpg" alt="" class="hidden-mobile">
+                    </div>
                 </div>
 
-                <div class="pic">
-                    <img src="get_update_page/images/Crazy wallpaper.jpg" alt="" class="hidden-mobile">
+                <div class="btn-div">
+                    <!-- <button data-modal-target class="btn">Submit</button>      -->
+                    <input class="btn" type="submit" id="get-btn" value="Submit">   
                 </div>
+            </form>
+
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <button data-close-button class="close-button">&times;</button>
             </div>
-
+            <!-- <div class="modal-body"></div> -->
+        
+            <div class="modal-body">
+            <p>Thanks for your response</p>
+            <p> You'd be notified of any updates in your category!</p>
             <div class="btn-div">
-                <!-- <button data-modal-target class="btn">Submit</button>      -->
-                <input class="btn" type="submit" id="get-btn" value="Submit">   
+                    <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
             </div>
-        </form>
-
-    </div>
-    <div class="modal" id="modal">
-        <div class="modal-header">
-            <button data-close-button class="close-button">&times;</button>
+            </div>
         </div>
-        <!-- <div class="modal-body"></div> -->
-       
-        <div class="modal-body">
-           <p>Thanks for your response</p>
-           <p> You'd be notified of any updates in your category!</p>
-           <div class="btn-div">
-                <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
-           </div>
-        </div>
-    </div>
-    <div id="overlay"></div>
+        <div id="overlay"></div>
 
-    <div class="circle1"></div>
-    <div class="circle2"></div>
-    <div class="circle3"></div>
-    <div class="circle4"></div>
-    <% if ( info.popup === "show") { %>
-        <script src="/get_update_page/script.js"></script>
-    <% } %>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+        <% if ( info.popup === "show") { %>
+            <script src="/get_update_page/script.js"></script>
+        <% } %>
+    </div>
 </body>
 </html> 
 

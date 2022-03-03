@@ -60,25 +60,34 @@ const inViewCallback = entries => {
 
 
 
-const newCursor = document.querySelector('.updatedCursor')
+// const newCursor = document.querySelector('.updatedCursor')
+// document.addEventListener('mousemove',function(e)
+// {
+//     var x = e.pageX
+//     var y = e.pageY
 
-
-document.addEventListener('mousemove',function(e)
-{
-    var x = e.pageX
-    var y = e.pageY
-
-    newCursor.style.top = y + "px"
-    newCursor.style.left = x + "px"
-})
+//     newCursor.style.top = y + "px"
+//     newCursor.style.left = x + "px"
+// })
 
 const hamburger = document.querySelector('.hamburger')
 const mobileMenu = document.querySelector('.mobile-menu-container')
 
+//
+const dividingLine =  document.getElementById('dividingline')
+const mobileLeft =  document.getElementById('mobileLeft')
+const mobileRight =  document.getElementById('mobileRight')
+
+const hamburgerCloseDiv = document.getElementById("hamburgerCloseDiv")
+const closee = document.getElementById("close")
+
 hamburger.addEventListener('click',function(e)
 {
+    hamburgerCloseDiv.style.display = "block"
     mobileMenu.classList.toggle('mobile-opened')
     hamburger.style.position = "absolute"
+
+
     if(document.body.style.overflowY == 'hidden')
     {   document.body.style.overflowY = 'auto' }
     else
@@ -88,4 +97,14 @@ hamburger.addEventListener('click',function(e)
 })
 
 
-
+closee.addEventListener("click",()=>{
+    hamburgerCloseDiv.style.display = "none"
+    mobileMenu.classList.toggle('mobile-opened')
+    hamburger.style.position = "relative"
+    if(document.body.style.overflowY == 'hidden')
+    {   document.body.style.overflowY = 'auto' }
+    else
+    {
+        document.body.style.overflowY = 'hidden'
+    }
+})

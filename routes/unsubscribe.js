@@ -1,27 +1,11 @@
 const express = require("express")
-const get_update_schema = require("../dbSchema/get_update")
-
 var route = express.Router()
+const unsubscribe_controller = require("../controllers/unsubsribe_controller")
 
-route.post("/unsubscribe", async(req,res)=>{
-    var {email} = req.body
-    try{
-        if(email != ""){
-            var delete_subscriber = await get_update_schema.deleteMany({StudentEmail : email})
-            if(delete_subscriber.deletedCount == 0){
-                res.render("unsubscribe_from_mail", {info:{message: "You do not have email subscription"}})
-            }else{
-                res.render("unsubscribe_from_mail", {info:{message: "You have successfully opted out of the email subscription"}})
-            }
-        }else{
-            res.render("unsubscribe_from_mail", {info:{}})
-        }
-        
-    }catch(err){
+//This GET route shows the unsubscribe page
+route.get("/unsubscribe",unsubscribe_controller.get_showUnsubscribePage)
 
-    }
-    
-
-})
+//This POST route helps users unsubscribe from email alerts
+route.post("/unsubscribe", unsubscribe_controller.post_unsubscribe)
 
 module.exports = route

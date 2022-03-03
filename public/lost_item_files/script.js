@@ -38,35 +38,18 @@ filterBackground.addEventListener('click', ()=>{
 const slideContainer = document.querySelector('.image-container');
 const rightSlide = document.querySelectorAll('.next-image');
 const leftSlide = document.querySelectorAll('.prev-image');
+// let imagesize = slider.offsetWidth;
+// let leftTouch = imagesize - 140;
+// let rightTouch  = imagesize -10;
 
-let touchstartX = 0
-let touchendX = 0
-const slider = document.querySelector('.image-container')
-
-function handleGesture() {
-  if (touchendX < touchstartX) alert('swiped left!')
-  if (touchendX > touchstartX) alert('swiped right!')
-}
-
-slider.addEventListener('touchstart', e => {
-    alert( e.changedTouches[0].screenX)
-    let leftTouch = e.changedTouches[0].screenX;
-    let rightTouch = e.changedTouches[0].screenX;
-    if(imagesize >= 85 && imagesize <= 110){
-    //SWIPE LEFT
-        touchstartX = imagesize
-        handleGesture()
-    }
-    else if(imagesize>=210 && imagesize<=235){
-        // SWIPE RIGHT
-        touchendX = imagesize
-        handleGesture()
-    }
-//   touchstartX = e.changedTouches[0].screenX
-//   alert(e.changedTouches[0].screenX)
-//   handleGesture()
-})
-
+// slideContainer.addEventListener('click', (e)=>{
+//     alert(this.clientX)
+// })
+// function changeWidth(event) {
+    
+//     let outerDiv = document.getElementById('outerDiv');
+//     document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
+//   }
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
@@ -224,9 +207,6 @@ mobileLookUpDate.addEventListener('click', ()=>{
     selectDate.style.display = 'block';
 })
 
-// TO INPUT VALUES INSIDE THE ITEM DETAILS INPUT TEXTBOX
-let itemName = document.querySelector('.item-name');
-itemName.value = ""
 
 // leftSlide.addEventListener('click', (e)=>{
 //     imageAndSliderContainer.classList.remove('circle-highlightt')
@@ -284,39 +264,61 @@ menuDiv.addEventListener('click', ()=>{
 
 
 let docElem = document.documentElement;
+// let body = document.querySelector('body')
 let toTop = document.querySelector('.to-top');
 let noItem = document.querySelector('#item-not-found-div')
 let offset = 100;
 let scrollPos, docheight;
-
-
+docheight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
+var setMiniUpdateVisible = false;
 window.addEventListener('scroll', (event)=>{
-    docheight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
-if(docheight != undefined){
+    if(docheight != undefined){
         offset = docheight/4;
-}
-
-scrollPos =  body.scrollTop || docElem.scrollTop
-
-if(scrollPos > offset)
-    {   toTop.style.display = "block";
-    if (scrollPos > (offset + 300)){
-        noItem.style = "right:0;"
-        }
     }
 
-else{
-     toTop.style.display = "none"
-     noItem.style = "right:-100%;"
+    scrollPos =  body.scrollTop || docElem.scrollTop
+
+    if(scrollPos > offset)
+    { 
+        toTop.style.visibility = "visible";
 
     }
+    else{
+    toTop.style.visibility = "hidden"
+    }
+
+    setVisible(scrollPos, offset);
+   
 })
 
 const exitItemNotFound = document.querySelector('#exit-item-not-found');
 
 exitItemNotFound.addEventListener('click', ()=>{
-    noItem.style = "right:-100%;"
+    //To open the mini stuff
+    if(noItem.style.right == "-100%"){
+        setMiniUpdateVisible = false;
+        noItem.style = "right:0%;visibility:visible"
+    }
+    else{
+        //To close the mini stuff
+        setMiniUpdateVisible = true;
+         noItem.style = "right:-100%;visibility:visible"
+    }
 })
+
+function setVisible(scrollPos, offset){
+    if (scrollPos > (offset + 300)){
+        if(!setMiniUpdateVisible){
+            noItem.style = "right:0%; visibility:visible";
+        }
+        else{
+            noItem.style = "right:-100%;visibility:visible";
+        }
+    }
+    else{
+        noItem.style = "right:-100%;visibility:hidden";2
+    }
+}
 
 
 

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Found an item</title>
-    <link rel="stylesheet" href="/found_an_item_files/found_an_item_page.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
+    <link rel="stylesheet" href="/found_an_item_files/found_an_item_page.css">
 </head>
 
 <body>
     <div class="full_page">
         <div class="full-page">
             <%- include('./partials/nav_bar.ejs') %>
-
+            <%- include('./partials/mobile_nav_bar.ejs') %>
+            <script>
+                if("<%=  info.activeAdmin %>" != ""){
+                    // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                    document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                    document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+                }
+            </script>
                 <!-- main -->
                 <form class="main" action="/api/v1/submit-item" method="post" enctype="multipart/form-data">
                     <div class="main-header">

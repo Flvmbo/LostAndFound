@@ -1,82 +1,21 @@
+//requiring the needed dependencies for this page
 const express = require('express')
+const adminLogin_controller = require("../controllers/adminLogin_controller")
 var route  = express.Router()
-const admin = require('../dbSchema/users')
-const items = require('../dbSchema/submit_item')
 
 route = express.Router();
 
-route.post("/sign-in", async  (req,res)=>{
-    
 
-    try{
-        const {username:name,password} = req.body
-        if(name == "" || password == ""){
-            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
-            const getadmin =  await admin.findOne({
-                name:name,
-                password:password
-            });
+/*This route is to get the sign in page*/
+route.get("/sign-in-page", adminLogin_controller.get_adminLoginPage);
 
-            if(getadmin != null || getadmin != ""){
-                req.session.activeAdmin = getadmin.location
-                   try{
-                        const allItems = await items.find({})
-                        res.render("lost_items_page",{items:{item:allItems, activeAdmin : req.session.activeAdmin }})
-                        // res.redirect("/lost-items")
-                    }
+/*This route is to get the sign in page when coming from the retrieve item route*/
+route.get("/sign-in-page/:id", adminLogin_controller.get_adminLoginPageFromRetrieveItem);
 
-                    catch(e)
-                    {
-                        console.log(e);
-                    }
-                // if(req.params.id == null || req.params.id == "" || req.params.uniqueID == null || req.params.uniqueID == ""){
-                  
-                // }else{
-                //     res.redirect(`/item-retrieval/${req.params.id}`)
-                // }
-            }else{
-                res.render("admin_signin_page", {info:{error:"Invalid username or password", display:"block", }});
-            }
-        }
-    }catch(e){
-        console.log(e);
-    }
- 
-})
+/*This POST route is to login as admin*/
+route.post("/sign-in", adminLogin_controller.post_signIn)
 
+/*This POST route is to login as admin when coming from the retrieve item route*/
+route.post("/sign-in/:id", adminLogin_controller.post_signinFromRetrieveItem)
 
-route.post("/sign-in/:id", async  (req,res)=>{
-    
-
-    try{
-        const {username:name,password} = req.body
-        if(name == "" || password == ""){
-            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
-            const getadmin =  await admin.findOne({
-                name:name,
-                password:password
-            });
-
-            if(getadmin != null || getadmin != ""){
-                req.session.activeAdmin = getadmin.location
-                res.redirect(`/item-retrieval/${req.params.id}`)
-                  
-                // if(req.params.id == null || req.params.id == "" || req.params.uniqueID == null || req.params.uniqueID == ""){
-                  
-                // }else{
-                //     res.redirect(`/item-retrieval/${req.params.id}`)
-                // }
-            }else{
-                res.render("admin_signin_page", {info:{error:"Invalid username or password", display:"block", }});
-            }
-        }
-    }catch(e){
-        console.log(e);
-    }
- 
-})
 module.exports = route
