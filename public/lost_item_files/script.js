@@ -38,35 +38,18 @@ filterBackground.addEventListener('click', ()=>{
 const slideContainer = document.querySelector('.image-container');
 const rightSlide = document.querySelectorAll('.next-image');
 const leftSlide = document.querySelectorAll('.prev-image');
+// let imagesize = slider.offsetWidth;
+// let leftTouch = imagesize - 140;
+// let rightTouch  = imagesize -10;
 
-let touchstartX = 0
-let touchendX = 0
-const slider = document.querySelector('.image-container')
-
-function handleGesture() {
-  if (touchendX < touchstartX) alert('swiped left!')
-  if (touchendX > touchstartX) alert('swiped right!')
-}
-
-slider.addEventListener('touchstart', e => {
-    alert( e.changedTouches[0].screenX)
-    let leftTouch = e.changedTouches[0].screenX;
-    let rightTouch = e.changedTouches[0].screenX;
-    if(imagesize >= 85 && imagesize <= 110){
-    //SWIPE LEFT
-        touchstartX = imagesize
-        handleGesture()
-    }
-    else if(imagesize>=210 && imagesize<=235){
-        // SWIPE RIGHT
-        touchendX = imagesize
-        handleGesture()
-    }
-//   touchstartX = e.changedTouches[0].screenX
-//   alert(e.changedTouches[0].screenX)
-//   handleGesture()
-})
-
+// slideContainer.addEventListener('click', (e)=>{
+//     alert(this.clientX)
+// })
+// function changeWidth(event) {
+    
+//     let outerDiv = document.getElementById('outerDiv');
+//     document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
+//   }
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
@@ -224,9 +207,6 @@ mobileLookUpDate.addEventListener('click', ()=>{
     selectDate.style.display = 'block';
 })
 
-// TO INPUT VALUES INSIDE THE ITEM DETAILS INPUT TEXTBOX
-let itemName = document.querySelector('.item-name');
-itemName.value = ""
 
 // leftSlide.addEventListener('click', (e)=>{
 //     imageAndSliderContainer.classList.remove('circle-highlightt')

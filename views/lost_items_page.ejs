@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost Items</title>
-    <link rel="stylesheet" href="/lost_item_files/lost-items.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
+    <link rel="stylesheet" href="/lost_item_files/lost-items.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
     <div class="mobile-filter-background"> </div>
@@ -84,7 +86,7 @@
     <div class="overall-container" id="top">
         <div class="mini-features">
             <a class="to-top" href="#top"> 
-                <button class="back-to-top-btn">^  </button>
+                <button class="back-to-top-btn">^ </button>
             </a>
             <div class="item-not-found-div filter-type" id="item-not-found-div">
                 <div class="exit-div">
@@ -214,7 +216,7 @@
                             <div class="lost-item-content-div">
                                 <div class="item-name-div item-details-div">
                                     <label for="item-name-label" class="item-label">Item name: </label>
-                                     <input type="text" value="<%=item.item_name%>"  readonly name="item-name" class="details-input">
+                                     <input type="text" value="<%=item.item_name%>"  readonly name="item-name" class="item-name details-input">
                                 </div>
                                 <div class="item-location-found-div item-details-div">
                                     <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly value="<%=item.Location%>"  name="location-found" class="location-found details-input">
