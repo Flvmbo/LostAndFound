@@ -64,6 +64,7 @@
               <div class="picture-div">
                 <div id="dropRegion">
                   <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
+                  <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
                   <span class="image-preview__default-text">Click to upload picture of the retriever or drag and drop
                     here</span>
                 </div>
@@ -123,9 +124,11 @@
     const previewImage = previewContainer.querySelector('.image-preview__image');
     const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
     var files = input.files;
+    var upload_pic1 = document.querySelector('.upload_pic1');
     if(!input.value){
       previewImage.setAttribute("src", "");
       previewDefaultText.style.display = "block";
+      upload_pic1.style.display = "block";
       previewImage.style.display = "none";
     }
     if(input.value){  
@@ -179,8 +182,10 @@
     const previewContainer = document.getElementById("dropRegion");
     const previewImage = previewContainer.querySelector('.image-preview__image');
     const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+    var upload_pic1 = document.querySelector('.upload_pic1');
     const reader = new FileReader();
     previewDefaultText.style.display = "none";
+    upload_pic1.style.display = "none";
     previewImage.style.display = "block";
     //    var my_cont = document.getElementById("dropRegion");
     //  var my_image = document.getElementById("my_image");
