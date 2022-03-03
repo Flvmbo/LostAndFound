@@ -2,7 +2,6 @@ const express = require('express')
 const route  = express.Router()
 const upload = require('../middleware/upload')
 const item_controller = require("../controllers/item_controller")
-const path = require("path")
 
 
 
