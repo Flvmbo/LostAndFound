@@ -14,8 +14,8 @@
     <div class="mobile-filter-background"> </div>
     <div class="mobile-filter-container">   
         <div class="mobile-filter-div" id="mobile-filter-div">
-            <div class="mobile-exit-div exit-div">
-                <button class="exit-btn mobile-exit-btn" id="exit-item-not-found">x</button>
+            <div class="mobile-exit-div">
+                <button class="mobile-exit-btn" id="mobile-exit-item-not-found">x</button>
             </div>
             <h2 class="filters">Filters</h2>
             <ul class="category-filter filter-type">    
@@ -80,23 +80,23 @@
     </div>
     <!-- </div> -->
     <div class="overall-container" id="top">
-       <a class="to-top" href="#top"> 
-           <div class="back-to-top-div">
-                <button class="back-to-top-btn">
-                    <!-- <img class="to-top-img" src="./lost-items-images/drop-down.svg" alt=""> -->
-                    <span class="to-top-symbol">^</span>   
-                </button>
+        <div class="mini-features">
+            <a class="to-top" href="#top"> 
+                <button class="back-to-top-btn">^  </button>
+            </a>
+            <div class="item-not-found-div filter-type" id="item-not-found-div">
+                <div class="exit-div">
+                    <button class="exit-btn" id="exit-item-not-found">></button>
+                </div>
+                <div class="mini-update-container">
+                    <h2 class="mini-update-heading">Can't find your lost item?</h2>
+                    <div class="get-update-div">
+                        <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
+                    </div>
+                </div> 
             </div>
-        </a>
-        <div class="item-not-found-div filter-type" id="item-not-found-div">
-            <div class="exit-div">
-                <button class="exit-btn" id="exit-item-not-found">x</button>
-            </div>
-            <h2 class="">Can't find your lost item?</h2>
-            <div class="get-update-div">
-                <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
-            </div>
-        </div>
+         </div>
+       
         <%- include('./partials/nav_bar.ejs') %>
         <script>
 
@@ -111,8 +111,13 @@
             <div class="filter-menu">
                 <button class="show-filter"><img class="filter-icon" src="/lost_item_files/lost-items-images/filter-sort.png" alt="filter-icon"><label for="filter-sort" class="filter-sort-label" >Filter and Sort</label></button>
             </div>
-            <div class="num-div">
-                <label for="item-number" class="item-number">4 items found </label>
+            <div class="sort-num-div">
+                <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
+                    <select name="sort" id="sort">
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">Descending</option>
+                    </select></div>
+                <div class="item-number-div"><label for="item-number" class="item-number">4 items found </label></div>
         <!--  By default, in any form of sort, it shows by most recently uploaded -->
             </div>
             <div class="filter-lost-items-container">
