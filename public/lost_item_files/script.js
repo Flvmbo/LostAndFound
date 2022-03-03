@@ -284,39 +284,61 @@ menuDiv.addEventListener('click', ()=>{
 
 
 let docElem = document.documentElement;
+// let body = document.querySelector('body')
 let toTop = document.querySelector('.to-top');
 let noItem = document.querySelector('#item-not-found-div')
 let offset = 100;
 let scrollPos, docheight;
-
-
+docheight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
+var setMiniUpdateVisible = false;
 window.addEventListener('scroll', (event)=>{
-    docheight = Math.max(body.scrollHeight, body.offsetHeight, docElem.clientHeight, docElem.scrollHeight, docElem.offsetHeight);
-if(docheight != undefined){
+    if(docheight != undefined){
         offset = docheight/4;
-}
-
-scrollPos =  body.scrollTop || docElem.scrollTop
-
-if(scrollPos > offset)
-    {   toTop.style.display = "block";
-    if (scrollPos > (offset + 300)){
-        noItem.style = "right:0;"
-        }
     }
 
-else{
-     toTop.style.display = "none"
-     noItem.style = "right:-100%;"
+    scrollPos =  body.scrollTop || docElem.scrollTop
+
+    if(scrollPos > offset)
+    { 
+        toTop.style.visibility = "visible";
 
     }
+    else{
+    toTop.style.visibility = "hidden"
+    }
+
+    setVisible(scrollPos, offset);
+   
 })
 
 const exitItemNotFound = document.querySelector('#exit-item-not-found');
 
 exitItemNotFound.addEventListener('click', ()=>{
-    noItem.style = "right:-100%;"
+    //To open the mini stuff
+    if(noItem.style.right == "-100%"){
+        setMiniUpdateVisible = false;
+        noItem.style = "right:0%;visibility:visible"
+    }
+    else{
+        //To close the mini stuff
+        setMiniUpdateVisible = true;
+         noItem.style = "right:-100%;visibility:visible"
+    }
 })
+
+function setVisible(scrollPos, offset){
+    if (scrollPos > (offset + 300)){
+        if(!setMiniUpdateVisible){
+            noItem.style = "right:0%; visibility:visible";
+        }
+        else{
+            noItem.style = "right:-100%;visibility:visible";
+        }
+    }
+    else{
+        noItem.style = "right:-100%;visibility:hidden";2
+    }
+}
 
 
 
