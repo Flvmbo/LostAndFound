@@ -116,10 +116,10 @@
             <div class="sort-num-div">
                 <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
                     <select name="sort" id="sort">
-                        <option value="ascending">Ascending</option>
                         <option value="descending">Descending</option>
+                        <option value="ascending">Ascending</option>
                     </select></div>
-                <div class="item-number-div"><label for="item-number" class="item-number">4 items found </label></div>
+                <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
         <!--  By default, in any form of sort, it shows by most recently uploaded -->
             </div>
             <div class="filter-lost-items-container">
@@ -213,7 +213,8 @@
                             </div>
                             <div class="lost-item-content-div">
                                 <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name: </label> <input type="text" value="<%=item.item_name%>"  readonly name="item-name" class="item-name details-input">
+                                    <label for="item-name-label" class="item-label">Item name: </label>
+                                     <input type="text" value="<%=item.item_name%>"  readonly name="item-name" class="details-input">
                                 </div>
                                 <div class="item-location-found-div item-details-div">
                                     <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly value="<%=item.Location%>"  name="location-found" class="location-found details-input">
@@ -222,9 +223,9 @@
                                     <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly value="<%=item.Location%>"  name="current-location" class="current-location details-input">
                                 </div>
                                 <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=item.itemDate%>"  name="date-found" class="date-found details-input">
+                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%>"  name="date-found" class="date-found details-input">
                                 </div>
-                                <div class="retrieve-item-div">                                
+                                <div class="retrieve-item-div">                           
                                     <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
                                 </div>
 
@@ -246,130 +247,14 @@
                     </div>
 
                     <% }) %>
-                    <!-- <div class="lost-item-container">
-                        <div class="item-time-uploaded-div item-details-div">
-                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
-                        </div>    
-                      <div class="lost-item-div">
-                            <div class="image-slider-container" id="4">
-                                <div class="slider-container prev-image-container">
-                                    <input class="prev-image slide-image" type="button" value="<">
-                                </div>
-                                <div class="image-container">
-                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
-                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/Dog.jpg" alt="">
-                                </div>
-                                <div class="slider-container next-image-container">
-                                    <input class="next-image slide-image" type="button" value=">">
-                                </div>
-                            </div>
-                            <div class="lost-item-content-div">
-                                <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
-                                </div>
-                                <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
-                                </div>
-                                <div class="item-current-location-div item-details-div">
-                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
-                                </div>
-                                <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="25th December, 2022"  name="date-found" class="date-found details-input">
-                                </div>
-                                <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
-
-                            </div>
-                        </div>  
-                        <div class="item-category-div item-details-div">
-                             <label for="item-category-label" class="item-label">Category:</label>
-                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
-                        </div>   
-                    </div> -->
-                    <!--<div class="lost-item-container">
-                        <div class="item-time-uploaded-div item-details-div">
-                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
-                        </div>    
-                      <div class="lost-item-div">
-                            <div class="image-slider-container" id="5">
-                                <div class="slider-container prev-image-container">
-                                    <input class="prev-image slide-image" type="button" value="<">
-                                </div>
-                                <div class="image-container">
-                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
-                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/filter-sort.png" alt="">
-                                </div>
-                                <div class="slider-container next-image-container">
-                                    <input class="next-image slide-image" type="button" value=">">
-                                </div>
-                            </div>
-                            <div class="lost-item-content-div">
-                                <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
-                                </div>
-                                <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
-                                </div>
-                                <div class="item-current-location-div item-details-div">
-                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
-                                </div>
-                                <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
-                                </div>
-                                <a class="retrieve-item"href="/item-retrieval"><button class="retrieve-item-btn btn">Retrieve</button></a>
-
-                            </div>
-                        </div> 
-                        <div class="item-category-div item-details-div">
-                             <label for="item-category-label" class="item-label">Category:</label> 
-                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
-                        </div>   
-                    </div>
-                    <div class="lost-item-container">
-                        <div class="item-time-uploaded-div item-details-div">
-                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
-                        </div>    
-                      <div class="lost-item-div">
-                            <div class="image-slider-container" id="6">
-                                <div class="slider-container prev-image-container">
-                                    <input class="prev-image slide-image" type="button" value="<">
-                                </div>
-                                <div class="image-container">
-                                    <img class="item-image left-img" src="lost_item_files/lost-items-images/device.png" alt="">
-                                    <img class="item-image right-img" src="lost_item_files/lost-items-images/pig.jpg" alt="">
-                                </div>
-                                <div class="slider-container next-image-container">
-                                    <input class="next-image slide-image" type="button" value=">">
-                                </div>
-                            </div>
-                            <div class="lost-item-content-div">
-                                <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input">
-                                </div>
-                                <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" class="location-found details-input">
-                                </div>
-                                <div class="item-current-location-div item-details-div">
-                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
-                                </div>
-                                <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Senate Building"  name="date-found" class="date-found details-input">
-                                </div>
-                                <a class="retrieve-item" href="Demilade-lost-found/retrieval page.html"><button class="retrieve-item-btn btn">Retrieve</button></a>
-
-                            </div>
-                        </div> 
-                        <div class="item-category-div item-details-div">
-                            <!-- <label for="item-category-label" class="item-label">Category:</label> 
-                             <input type="text" readonly placeholder="detail"  name="category" class="category details-input">
-                        </div>   
-                    </div> -->
+                   
                 </div>
                 
             </div>
 
         </main>
     </div>
-    <script src="lost_item_files/script.js"></script>
+    <script src="/lost_item_files/script.js"></script>
 </body>
 </html>
 
