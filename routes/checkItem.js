@@ -1,14 +1,9 @@
 const express = require("express")
 var route = express.Router()
+const checkItem_controller = require("../controllers/checkItem_controller")
 
-route.get("/item-retrieval-checkpage/:id", async (req,res)=>{
-    try{
-        uniqueID = req.params.uniqueID
-        id = req.params.id
-        res.render("admin_signin_page", {info: {from : "check_page", id :  id} })
-    }catch(err){
-        console.log(err)
-    }
-})
+// This GET route shows the suggested item from the email
+route.get("/check-item/:id", checkItem_controller.get_showEmailItemPage);
+
 
 module.exports = route

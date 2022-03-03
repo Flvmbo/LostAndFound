@@ -103,7 +103,7 @@
             if("<%=  items.activeAdmin %>" != ""){
                 // document.getElementById("loginBtnDiv").innerHTML = ` <%=  items.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
                    document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                   document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= items.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+                   document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= items.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
                }
         </script>
         <main>
@@ -217,14 +217,14 @@
                                     <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
                                 </div>
 
-                                <script>
+                                <!-- <script>
                                     var retrieveButton =document.getElementById("retrieveButton")
                                     retrieveButton.addEventListener("click",()=>{
                                         if("<%=  items.activeAdmin %>" == ""){
                                             retrieveButton.href = "/item-retrieval-checkpage/<%= item._id  %>"
                                         }
                                     })
-                                </script>
+                                </script> -->
 
                             </div>
                         </div> 

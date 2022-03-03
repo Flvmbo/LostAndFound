@@ -16,7 +16,13 @@
     <div class="full_page">
         <div class="full-page">
             <%- include('./partials/nav_bar.ejs') %>
-
+            <script>
+                if("<%=  info.activeAdmin %>" != ""){
+                    // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                    document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                    document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+                }
+            </script>
                 <!-- main -->
                 <form class="main" action="/api/v1/submit-item" method="post" enctype="multipart/form-data">
                     <div class="main-header">
