@@ -120,12 +120,7 @@ app.get("/lost-items", async (req,res) => {
     }
 })
 
-// app.get("/lost-items", (req, res) => {
-//     // res.render("lost_items_page");
-//     // console.log("here");
-//     // res.json({"message":"we in this"})
-//     res.render("lost_items_page",{items:allItems})
-// });
+
 
 
 app.get("/log-out" , (req ,res) =>{
