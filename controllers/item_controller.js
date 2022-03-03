@@ -17,7 +17,7 @@ const post_submitItem =  async (req,res)=>{
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date;
+    var dateTime = date +" " + time;
     var uniqueID =  Date.now()
 
     const {item_name,Category,Description,Location} = req.body
