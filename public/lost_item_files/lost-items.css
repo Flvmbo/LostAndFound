@@ -124,7 +124,7 @@ body{
     position: fixed;
     top: 5%;
     left: 50%;
-    transform: translate(100%, 0%) scale(0);
+    transform: translate(-50%, 0%) scale(0);
     transform-origin: right;
     transition: transform .15s ease-in;
     background-color: #fff;

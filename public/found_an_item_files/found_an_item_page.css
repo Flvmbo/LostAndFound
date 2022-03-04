@@ -82,7 +82,7 @@ a{
 
 .main-center-center-left{
     position: relative;
-    width: 55%;
+    width: 50%;
     max-width: 500px;
     box-sizing: border-box;
     /* border: 2px solid; */
@@ -341,6 +341,12 @@ a{
   }
  
 @media (max-width:850px) {
+
+    .form-info{
+        width:80%;
+        max-width: 500px;
+        /* border: 2px solid; */
+    }
     .main-center-center{
         flex-direction: column;
         margin: 2em auto;
@@ -445,6 +451,10 @@ a{
         /* border: 2px solid; */
         text-align: left;
         width:100%;
+    }
+    .main-header{
+        padding-left: 0;
+
     }
     
 }
