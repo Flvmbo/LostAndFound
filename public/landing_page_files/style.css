@@ -232,7 +232,7 @@ h1 {
 }
 
 .admin-pic-container {
-  width: min(90%, 400px);
+  width: min(90%, 450px);
   overflow-y: hidden;
   position: relative;
   /* background-color: #00aa51; */
@@ -249,7 +249,7 @@ h1 {
 .rec1,
 .rec2 {
   position: absolute;
-  width: min(95%, 400px);
+  width: min(95%, 450px);
 }
 .rec1 {
   top: 0;
@@ -555,7 +555,9 @@ span {
 
   .admin-section {
     flex-direction: row;
+    justify-content: flex-start;
     padding: 5rem;
+    padding-right: 0;
   }
 
   .admin-section-info {
@@ -647,6 +649,10 @@ span {
   .about-header {
     font-size: 3rem;
   }
+
+  .admin-section {
+    padding-right: 5rem;
+  }
 }
 
 @media screen and (min-width: 1153px) {
@@ -675,7 +681,7 @@ span {
   }
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1365px) {
   .home-section,
   .about-section,
   .admin-section,
@@ -690,5 +696,9 @@ span {
 
   .talk-container {
     width: 100%;
+  }
+
+  .admin-section-info {
+    margin-left: 5rem;
   }
 }
