@@ -317,7 +317,7 @@ h1 {
   /* background-color: #592c54; */
 }
 
-.recent-items-container::-webkit-scrollbar {
+.recent-items-container::-webkit-scrollbar- {
   width: 50%;
   height: 0.5px;
   border-radius: 5px;
@@ -643,7 +643,7 @@ span {
 @media screen and (min-width: 1153px) {
   .home-section {
     justify-content: space-between;
-    padding-right: 12rem;
+    padding-right: 10rem;
     padding-top: 5rem;
   }
 
