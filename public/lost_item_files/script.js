@@ -253,14 +253,14 @@ mobileLookUpDate.addEventListener('click', ()=>{
 // })
 
 
-// MENU BAR FOR MOBILE
-const menuDiv = document.querySelector('.menu-bar')
-const hamburger = document.querySelector('.hamburger')
-menuDiv.addEventListener('click', ()=>{
-    // alert('hi');
-    hamburger.style.display = 'none'
-    menuDiv.style = "position:absolute;top:0; bottom:0; left:0; right:0; background-color:blue; opacity:.3; overflow:hidden"
-})
+// // MENU BAR FOR MOBILE
+// const menuDiv = document.querySelector('.menu-bar')
+// const hamburger = document.querySelector('.hamburger')
+// menuDiv.addEventListener('click', ()=>{
+//     // alert('hi');
+//     hamburger.style.display = 'none'
+//     menuDiv.style = "position:absolute;top:0; bottom:0; left:0; right:0; background-color:blue; opacity:.3; overflow:hidden"
+// })
 
 
 let docElem = document.documentElement;

@@ -13,10 +13,12 @@ var dropRegion = document.getElementById("dropRegion");
           const previewImage = document.querySelector('.preview-img1');
           const previewDefaultText = document.querySelector('.preview-default-text1');
           var upload_pic1 = document.querySelector('.upload_pic1');
+          const format = document.getElementById('format')                      
           var files = input.files;
           if(!input.value){
             previewImage.setAttribute("src", "");
-            previewDefaultText.style.display = "block";
+            previewDefaultText.style.display = "block";  
+            format.style.display = "block";           
             upload_pic1.style.display = "block";
             previewImage.style.display = "none";
           }
@@ -36,9 +38,10 @@ var dropRegion = document.getElementById("dropRegion");
             // check type of file
             var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
             if(validTypes.indexOf(image.type) == -1){
-              alert("Invalid File Type");
-               image1.value = "";
-               checkValue(image1);
+              const format = document.getElementById('format');
+              format.innerHTML = `Invalid Type<br> Acceptable Formats are: PNG, JPEG, JPG`;
+              image1.value = "";
+              checkValue(image1);
               return false;
             }
             // check the size of file, Im not sure if this is needed
@@ -58,7 +61,10 @@ var dropRegion = document.getElementById("dropRegion");
             const previewImage = document.querySelector('.preview-img1');
             const previewDefaultText = document.querySelector('.preview-default-text1');
             var upload_pic1 = document.querySelector('.upload_pic1');
+            const format = document.getElementById('format');
             previewDefaultText.style.display = "none";
+            format.innerHTML = `Acceptable Formats: PNG, JPEG, JPG`;
+            format.style.display = "none";
             upload_pic1.style.display = "none";
             previewImage.style.display = "block";
             let reader = new FileReader();
@@ -121,10 +127,12 @@ var dropRegion = document.getElementById("dropRegion");
           const previewImage2 = document.querySelector('.preview-img2');
           const previewDefaultText2 = document.querySelector('.preview-default-text2');
           var upload_pic2 = document.querySelector('.upload_pic2');
+          const format2 = document.getElementById('format2')                      
           var files = input.files;
           if(!input.value){
               previewImage2.setAttribute("src", "");
               previewDefaultText2.style.display = "block";
+              format2.style.display = "block";           
               upload_pic2.style.display = "block";
               previewImage2.style.display = "none";
           }
@@ -144,7 +152,8 @@ var dropRegion = document.getElementById("dropRegion");
             // check type of file
             var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
             if(validTypes.indexOf(image.type) == -1){
-              alert("Invalid File Type");
+              const format2 = document.getElementById('format2');
+              format2.innerHTML = `Invalid Type<br> Acceptable Formats are: PNG, JPEG, JPG`;
               image2.value = "";
               checkValue2(image2);
               return false;
@@ -167,6 +176,9 @@ var dropRegion = document.getElementById("dropRegion");
             const previewImage2 = document.querySelector('.preview-img2');
             const previewDefaultText2 = document.querySelector('.preview-default-text2');
             var upload_pic2 = document.querySelector('.upload_pic2');
+            const format2 = document.getElementById('format2');
+            format2.innerHTML = `Acceptable Formats: PNG, JPEG, JPG`;
+            format2.style.display = "none";
             previewDefaultText2.style.display = "none";
             upload_pic2.style.display = "none";
             previewImage2.style.display = "block";
