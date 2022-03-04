@@ -59,6 +59,7 @@
 
 .close{
     font-size: 60px;
+    cursor: pointer;
 }
 
 .dividing-line
@@ -68,9 +69,9 @@
     left: 50%;
     height: 31rem;
     vertical-align: center;
-    width: 0.4%;
+    width: 2px;
     border:1px solid var(--primary-color);
-    animation:showLine 1s 0.1s ease forwards;
+    animation:showLine 1s 0.2s ease forwards;
     transform-origin: center;
     z-index: 10000;
     transform: scale(0);
@@ -204,14 +205,14 @@
 
 <div class="mobile-menu-container">
         <div class="mobile-left" id="mobileLeft">
-            <p class = "mh"><a href="">Home</a></p>
-            <p class = "ms"><a href="">Submit-Item</a></p>
+            <p class = "mh"><a href="/home">Home</a></p>
+            <p class = "ms"><a href="/found-item">Submit Item</a></p>
             <p class = "mr"><a href="">How to use</a></p>
         </div>
         <div class="dividing-line" id="dividingline"></div>
         <div class="mobile-right" id="mobileRight">
-            <p class = "ma" ><a href="">About Us</a></p>
-            <p class = "mr"><a href="">Retrieve Item</a></p>
+            <p class = "ma" ><a href="/home#aboutUs">About Us</a></p>
+            <p class = "mr"><a href="/lost-items">Lost Items</a></p>
         </div>
 
         <div class="hamburger_close_div" id="hamburgerCloseDiv">
