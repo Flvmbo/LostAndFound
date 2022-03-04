@@ -22,7 +22,7 @@ ul {
 h1 {
   /* word-spacing: 0.2c; */
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .site-container {
@@ -82,8 +82,8 @@ h1 {
 }
 
 .home-header {
-  font-weight: 400;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .home-desc {
@@ -180,7 +180,7 @@ h1 {
 }
 
 .about-header {
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 3.5rem;
   position: relative;
   opacity: 0;
@@ -211,6 +211,7 @@ h1 {
   opacity: 0;
   transform: translateY(20px);
   transition: 0.7s ease;
+  /* font-size: 13px; */
   /* transition-delay: 0.5s; */
   position: relative;
 }
@@ -271,7 +272,7 @@ h1 {
 
 .admin-section-info h1 {
   font-size: 2.2rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 1.3rem;
   text-align: center;
 }
@@ -403,6 +404,7 @@ span {
   right: 2rem;
   margin-top: 1rem;
   color: #964b8e;
+  font-size: 13.5px;
 }
 
 .talk-section {
@@ -508,6 +510,13 @@ span {
 }
 
 @media screen and (min-width: 410px) {
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
   .home-img-container {
     width: 70%;
   }
@@ -521,7 +530,7 @@ span {
 @media screen and (min-width: 502px) {
   .home-section {
     align-items: flex-start;
-    padding-left: 3rem;
+    padding-left: 5rem;
   }
 
   .home-img-container {
@@ -623,7 +632,7 @@ span {
 @media screen and (min-width: 1067px) {
   .home-section {
     justify-content: space-between;
-    padding-right: 8rem;
+    padding-right: 7rem;
   }
 
   .home-img-container {
@@ -644,11 +653,11 @@ span {
   .home-section {
     justify-content: space-between;
     padding-right: 10rem;
-    padding-top: 5rem;
+    padding-top: 3rem;
   }
 
   .home-header {
-    font-size: 5rem;
+    font-size: 4.8rem;
   }
 
   .about-header,
@@ -656,9 +665,30 @@ span {
     font-size: 4rem;
   }
 
+  .recent-header {
+    font-size: 3.5rem;
+  }
   .home-img-container {
     margin: 0;
     padding: 0;
     width: 500px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section,
+  .talk-section {
+    padding-left: 10rem;
+  }
+
+  .talk-section {
+    padding-right: 5rem;
+  }
+
+  .talk-container {
+    width: 100%;
   }
 }
