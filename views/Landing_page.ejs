@@ -1,263 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Landing Page</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
     <link rel="stylesheet" href="/landing_page_files/style.css">
+<<<<<<< Updated upstream
+=======
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+=======
+    
+>>>>>>> Stashed changes
 </head>
+
 <body>
-
-   
-    <div class="mobile-menu-container">
-        <div class="mobile-left" id="mobileLeft">
-            <p class = "mh"><a href="">Home</a></p>
-            <p class = "ms"><a href="">Submit-Item</a></p>
-            <p class = "mr"><a href="">How to use</a></p>
-        </div>
-        <div class="dividing-line" id="dividingline"></div>
-        <div class="mobile-right" id="mobileRight">
-            <p class = "ma" ><a href="">About Us</a></p>
-            <p class = "mr"><a href="">Retrieve Item</a></p>
-        </div>
-
-        <div class="hamburger_close_div" id="hamburgerCloseDiv">
-            <label class="close" id="close">&times;</label>
-        </div>
-    </div>
-
-    <!-- <div class="updatedCursor">
-        <div class="innerPointer"></div>
-    </div> -->
-
     <div class="site-container">
 
-    <!-- <div class="ran-left-ellipse">
-        <img src="landing_page_files/images/Ellipse 2 (1).svg" alt="" class = 'ran1'>
-        <img src="landing_page_files/images/Ellipse 2 (1).svg" alt="" class = 'ran2'>
-    </div> -->
-    <!-- <div class="ran-left-ellipse2">
-        <img src="landing_page_files/images/Ellipse 2 (1).svg" alt="" class = 'ran1'>
-        <img src="landing_page_files/images/Ellipse 2 (1).svg" alt="" class = 'ran2'>
-    </div> -->
-
-    <div class="navbar" style="margin:0;position: relative; padding: 15px; padding-bottom: 0px; font-family: 'Raleway';">
-        <%- include('./partials/nav_bar.ejs') %>
-        <script>
-            if("<%=  info.activeAdmin %>" != ""){
-                // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-                   document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                   document.getElementById("loginBtnDiv").innerHTML= `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-               }
-        </script>
-    </div>
-
-    <div class="home-section">
-        <div class="yeye-div">
-        <div class="home-section-left">
-            
-        <h1 class = "home-hero-section"><span class ="fpHero">Easily find your </span> <br> <span class = "litems"> lost items! </span>
-            <div class="hero-text-underline1"></div>
-            <div class="hero-text-underline2"></div>
-        </h1>
-        <p class="home-text">You can now find your lost items or upload found items with <br> ease!</p>
-
-        
-
-        <div class="home-buttons">
-            <a href="/lost-items"><div class="retrieve-item-btn">Explore lost items</div></a>
-            <a href="/sign-in"><div class="admin-login-btn">Login as an Admin</div></a>
-        </div>
-
-    </div>
-</div>
-
-    <div class="home-section-right">
-        <div class="home-hero-section-img">
-            <img src="landing_page_files/images/Ellipse 2.svg" alt="" class="img-ellipse-1">
-            <img src="landing_page_files/images/Ellipse 1.svg" alt="" class="img-ellipse-2">
-            <div class="home-hero-img">
-                <img src="landing_page_files/images/homeHeroImage.png" alt="">
+        <!-- <div class="mobile-menu-container">
+            <div class="mobile-left" id="mobileLeft">
+                <p class="mh"><a href="">Home</a></p>
+                <p class="ms"><a href="">Submit-Item</a></p>
+                <p class="mr"><a href="">How to use</a></p>
+            </div>
+            <div class="dividing-line" id="dividingline"></div>
+            <div class="mobile-right" id="mobileRight">
+                <p class="ma"><a href="">About Us</a></p>
+                <p class="mr"><a href="">Retrieve Item</a></p>
             </div>
 
-            <img src="landing_page_files/images/Vector (1).svg" alt="" class="elp ellipse-orbit1">
-            <img src="landing_page_files/images/Vector (2).svg" alt="" class="elp ellipse-orbit2">
-            <img src="landing_page_files/images/Vector (3).svg" alt="" class="elp ellipse-orbit3">
-            <img src="landing_page_files/images/Vector.svg" alt="" class="elp ellipse-orbit4">
-        </div>
-    </div>
-    </div>
-
-    <div class="about-us-section" id = "aboutUs">
-        <h1 class="home-hero-section abs">
-            About us
-            <div class="about-underline"></div>
-        </h1>
-
-        <p class = "yes">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-             sed do eiusmod tempor incididunt ut labore et dolore magna 
-             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ul
-            laboris nisi ut aliquip ex ea commodo consequat.
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ul
-            laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-
-        <p class = "yes">Duis aute irure dolor in reprehenderit in voluptate velit esse 
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            pidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum."
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ul
-            laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-    </div>
-
-    <div class="home-admin-section">
-        <div class="admin-left">
-            
-            <div class="f-square2">
-                <div class="f-square1"></div>
-                <img src="landing_page_files/images/adminGuy.png" alt="">
-                <div class="f-square3"></div>
+            <div class="hamburger_close_div" id="hamburgerCloseDiv">
+                <label class="close" id="close">&times;</label>
             </div>
-            
+        </div> -->
+
+        <div class="navbar"
+            style="margin:0;position: relative; padding: 15px; padding-bottom: 0px; font-family: 'Raleway';">
+            <%- include('./partials/nav_bar.ejs') %>
+                <script>
+                    if ("<%=  info.activeAdmin %>" != "") {
+                        // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                        document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                        document.getElementById("loginBtnDiv").innerHTML = `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
+                    }
+                </script>
         </div>
 
-        <div class="admin-right">
-            <h1 class="home-hero-section hhs-admin">
-                Monitor the flow <br> as an Admin
+        <div class="home-section">
+
+            <div class="home-img-container">
+                <img src="landing_page_files/images/landing_page_image.svg" alt="">
+            </div>
+
+            <div class="home-info-container">
+                <h1 class="home-header">Easily <i id="findW">find</i> your <br> <i id="lostW">lost</i> items!</h1>
+
+                <p class="home-desc">
+                    You can now find your lost items or upload found items with ease!
+                </p>
+
+                <div class="home-buttons">
+                    <a href="">
+                        <div class="retrieve-item-btn btn">
+                            Retrieve an item
+                        </div>
+                    </a>
+
+                    <a href="">
+                        <div class="adminLogin-btn btn">
+                            Login as an Admin
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h1 class="about-header">
+                About us
             </h1>
-            <p class = "admin-yarns">Makeives easier as you upload all found items on <br> the website as an administrator. </p>
-            <div class="admin-login-btn ar-btn" > Login as an Admin </div>
+
+            <p class="about-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </p>
+
+            <p class="about-desc">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
         </div>
-    </div>
 
-    <div class="recently-found-section">
-        <h1 class="home-hero-section abs">
-            Recently Found
-            <div class="about-underline"></div>
-        </h1>
+        <div class="admin-section">
+            <div class="admin-pic-container">
+                <img src="landing_page_files/images/Rectangle_1.svg" alt="" class="rec1">
+                <img src="landing_page_files/images/Rectangle_2.svg" alt="" class="rec2">
 
-        <div class="items-section">
-            <div class="current-item">
-                <div class="item-wrapper">
-                    <div class="item-left">
-                        <img src="landing_page_files/images/computer.png" alt="">
-                        <img src="landing_page_files/images/computer2.png" alt="">
-                    </div>
-                    <div class="item-right">
-                        <p class="item-txt">Location-found:</p>
-                        <p class="it item-found">Reception</p>
-                        <p class="item-txt">Current location:</p>
-                        <p class="it item-loc">Chaplain's office</p>
-                        <p class="item-txt">item name:</p>
-                        <p class="it item-name">Silver hp laptop</p>
-                        <p class="item-txt">Category:</p>
-                        <p class="it item-cat">Laptop</p>
-                        <p class="item-txt">Time uploaded:</p>
-                        <p class="it item-time">Reception</p>
-
-                        <div class="retrieve-btn">
-                            <a href="/item-retrieval">Retrieve</a>
-                        </div>
-                    </div>
-                </div>
-            
-            
-           
-                <div class="item-wrapper">
-                    <div class="item-left">
-                        <img src="landing_page_files/images/computer.png" alt="">
-                        <img src="landing_page_files/images/computer2.png" alt="">
-                    </div>
-                    <div class="item-right">
-                        <p class="item-txt">Location-found:</p>
-                        <p class="it item-found">Reception</p>
-                        <p class="item-txt">Current location:</p>
-                        <p class="it item-loc">Chaplain's office</p>
-                        <p class="item-txt">item name:</p>
-                        <p class="it item-name">Silver hp laptop</p>
-                        <p class="item-txt">Category:</p>
-                        <p class="it item-cat">Laptop</p>
-                        <p class="item-txt">Time uploaded:</p>
-                        <p class="it item-time">Reception</p>
-
-                        <div class="retrieve-btn">
-                            <a href="/item-retrieval">Retrieve</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-wrapper">
-                    <div class="item-left">
-                        <img src="landing_page_files/images/computer.png" alt="">
-                        <img src="landing_page_files/images/computer2.png" alt="">
-                    </div>
-                    <div class="item-right">
-                        <p class="item-txt">Location-found:</p>
-                        <p class="it item-found">Reception</p>
-                        <p class="item-txt">Current location:</p>
-                        <p class="it item-loc">Chaplain's office</p>
-                        <p class="item-txt">item name:</p>
-                        <p class="it item-name">Silver hp laptop</p>
-                        <p class="item-txt">Category:</p>
-                        <p class="it item-cat">Laptop</p>
-                        <p class="item-txt">Time uploaded:</p>
-                        <p class="it item-time">Reception</p>
-
-                        <div class="retrieve-btn">
-                            <a href="/item-retrieval">Retrieve</a>
-                        </div>
-                    </div>
-                </div>
+                <img src="landing_page_files/images/admin_picture.png" alt="" class="admin-pic">
             </div>
-            
+
+            <div class="admin-section-info">
+                <h1>Monitor the flow <br> as an Admin</h1>
+                <p>
+                    As an authorized personnel, you can upload found items brought to your location with ease!
+                </p>
+                <a href="">
+                    <div class="adminBtn btn">Login as an Admin</div>
+                </a>
+
             </div>
         </div>
 
+        <div class="recentlyFound-section">
+            <h1 class="recent-header">
+                Recently Found
+            </h1>
 
-    <div class="talk-to-us">
-        <div class="talk-container">
-        <h1>Can't find your item?</h1>
 
-        <div class="talk-btn">
-            <a href="/get-update"> Get Updates! </a>
+
+
+            <div class="recent-items-container">
+
+                <div class="recent-next-symbol">
+                    &#8250;
+                </div>
+
+
+                <span>
+                    <div class="recent-item">
+                        <div class="recent-left">
+                            <img src="landing_page_files/images/recent_item.png" alt="">
+                            <img src="landing_page_files/images/recent_item.png" alt="">
+                        </div>
+                        <div class="recent-right">
+
+
+
+                            <div class="recent-info">
+                                <p class="recent-info-head">Location found:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Current Location:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Item name:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Category:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Time uploaded</p>
+                                <p>30mins ago</p>
+                            </div>
+
+                            <div class="retrieve-recent-btn ">
+                                retrieve
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <div class="recent-item">
+                        <div class="recent-left">
+                            <img src="landing_page_files/images/recent_item.png" alt="">
+                            <img src="landing_page_files/images/recent_item.png" alt="">
+                        </div>
+                        <div class="recent-right">
+
+
+
+                            <div class="recent-info">
+                                <p class="recent-info-head">Location found:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Current Location:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Item name:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Category:</p>
+                                <p>Reception</p>
+                            </div>
+                            <div class="recent-info">
+                                <p class="recent-info-head">Time uploaded</p>
+                                <p>30mins ago</p>
+                            </div>
+
+                            <div class="retrieve-recent-btn">
+                                retrieve
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <a id="see-items" href="">See all items &#8594; </a>
         </div>
+
+
+        <div class="talk-section">
+            <div class="talk-container">
+                <h1>Can't find your item?</h1>
+                <div class="talk-btn">
+                    Talk to us
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="lostAndFound-logo f-section">
+                <img src="landing_page_files/images/lostAndFound_logo.png" alt="">
+            </div>
+
+            <div class="footer-access f-section">
+                <p class="footer-head">
+                    Access
+                </p>
+                <p>Sign up as an admin</p>
+                <p>Login as an admin</p>
+            </div>
+            <div class="footer-items f-section">
+                <p class="footer-head">
+                    All items
+                </p>
+                <p>Upload an item</p>
+                <p>Retrieve an item</p>
+            </div>
+            <div class="cu-address f-section">
+                <p>Covenant University <br> Km. 10 Idiroko Road, Canaan Land, <br> Ota, Ogun State, Nigeria.</p>
+
+            </div>
+
+            <p class="copyright">&#169; 2021</p>
+        </div>
+
     </div>
-
-    </div>
-
-
-    <div class="footer">
-        <div class="logo-section ls-footer">
-            <img src="landing_page_files/images/covenantLogo.svg" alt="" class="cu-logo">
-            <p class="logo-message">Lost &<br> Found </p>
-        </div>
-
-        <div class="access-section fs">
-            <h3>Acesss</h3>
-            <p><a href=""> Sign up as an admin</a></p>
-            <p><a href="">Login as an admin </a></p>
-        </div>
-
-        <div class="items-footer-section fs ">
-            <h3>items</h3>
-            <p><a href=""> All items </a></p>
-            <p><a href=""> Upload an item </a></p>
-        </div>
-
-        <div class="items-footer-section fs fs-address">
-            <p>Covenant University</p>
-            <p> Km. 10 Idiroko Road, Canaan Land, Ota,</p>
-            <p>Ogun State, Nigeria.</p>
-        </div>
-    </div>
-
-</div>
-    <script src="landing_page_files/action.js"></script>
 </body>
+
 </html>
-
-
