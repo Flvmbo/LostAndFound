@@ -1,4 +1,9 @@
-var dropRegion = document.getElementById("dropRegion");
+      // let form = document.querySelector('form');
+      // form.addEventListener('submit', (e)=>{
+      //   e.preventDefault();
+      // })      
+      
+      var dropRegion = document.getElementById("dropRegion");
         var image1 = document.getElementById('image1')
         var clear = document.getElementById('clear');
         dropRegion.addEventListener("click", function(){
