@@ -31,7 +31,7 @@
                     if ("<%=  info.activeAdmin %>" != "") {
                         // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
                         document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                        document.getElementById("loginBtnDiv").innerHTML = `<div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
+                        document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
                     }
                 </script>
         </div>
