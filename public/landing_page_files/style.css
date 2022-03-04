@@ -10,6 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
+  scroll-behavior: smooth;
 }
 
 a,
@@ -286,7 +287,7 @@ h1 {
 }
 
 span {
-  margin-right: 2rem;
+  margin-right: 4rem;
 }
 
 .recent-item {

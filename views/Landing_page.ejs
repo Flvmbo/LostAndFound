@@ -118,17 +118,16 @@
                     &#8250;
                 </div>
 
+                <% info.latestItems.forEach((item) => { %>
 
-                <span>
-                    <div class="recent-item">
+                
+                    <span>
+                        <div class="recent-item">
                         <div class="recent-left">
-                            <img src="landing_page_files/images/recent_item.png" alt="">
-                            <img src="landing_page_files/images/recent_item.png" alt="">
+                            <img src= "/<%=item.firstImage %>" alt="">
+                            <img src="/<%=item.secondImage%>" alt = "">
                         </div>
                         <div class="recent-right">
-
-
-
                             <div class="recent-info">
                                 <p class="recent-info-head">Location found:</p>
                                 <p>Reception</p>
@@ -156,55 +155,21 @@
                         </div>
                     </div>
                 </span>
-                <span>
-                    <div class="recent-item">
-                        <div class="recent-left">
-                            <img src="landing_page_files/images/recent_item.png" alt="">
-                            <img src="landing_page_files/images/recent_item.png" alt="">
-                        </div>
-                        <div class="recent-right">
 
-
-
-                            <div class="recent-info">
-                                <p class="recent-info-head">Location found:</p>
-                                <p>Reception</p>
-                            </div>
-                            <div class="recent-info">
-                                <p class="recent-info-head">Current Location:</p>
-                                <p>Reception</p>
-                            </div>
-                            <div class="recent-info">
-                                <p class="recent-info-head">Item name:</p>
-                                <p>Reception</p>
-                            </div>
-                            <div class="recent-info">
-                                <p class="recent-info-head">Category:</p>
-                                <p>Reception</p>
-                            </div>
-                            <div class="recent-info">
-                                <p class="recent-info-head">Time uploaded</p>
-                                <p>30mins ago</p>
-                            </div>
-
-                            <div class="retrieve-recent-btn">
-                                retrieve
-                            </div>
-                        </div>
-                    </div>
-                </span>
+                <% })  %>
+                
             </div>
 
-            <a id="see-items" href="">See all items &#8594; </a>
+            <a id="see-items" href="/lost-items">See all items &#8594; </a>
         </div>
 
 
         <div class="talk-section">
             <div class="talk-container">
                 <h1>Can't find your item?</h1>
-                <div class="talk-btn">
+                <a href=""><div class="talk-btn">
                     Talk to us
-                </div>
+                </div></a>
             </div>
         </div>
 
@@ -217,15 +182,14 @@
                 <p class="footer-head">
                     Access
                 </p>
-                <p>Sign up as an admin</p>
-                <p>Login as an admin</p>
+                <a href="/sign-in-page"><p>Login as an admin</p></a>
             </div>
             <div class="footer-items f-section">
                 <p class="footer-head">
                     All items
                 </p>
-                <p>Upload an item</p>
-                <p>Retrieve an item</p>
+                <a href="/found-item"><p>Upload an item</p></a>
+                <a href="/item-retrieval/:id"><p>Retrieve an item</p></a>
             </div>
             <div class="cu-address f-section">
                 <p>Covenant University <br> Km. 10 Idiroko Road, Canaan Land, <br> Ota, Ogun State, Nigeria.</p>
