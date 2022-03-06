@@ -22,15 +22,17 @@
 <body>
     
     <div class="site-container">
-    <%- include('./partials/mobile_nav_bar.ejs') %>
-    
-    <%- include('./partials/nav_bar.ejs') %>
-    <script>
-        if ("<%=  info.activeAdmin %>" != "") {
+        <%- include('./partials/nav_bar.ejs') %>
+        <%- include('./partials/mobile_nav_bar.ejs') %>
+
+
+
+        <script>
+            if ("<%=  info.activeAdmin %>" != "") {
             // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-            document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-        }
+                document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+            }
         </script>
 
         <div class="home-section">
@@ -48,13 +50,13 @@
 
                 <div class="home-buttons">
                     <a href="">
-                        <div class="retrieve-item-btn btn">
+                        <div class="retrieve-item-btn btn" style = "padding: 1.5em; border-radius: 7px;">
                             Retrieve an item
                         </div>
                     </a>
 
                     <a href="">
-                        <div class="adminLogin-btn btn">
+                        <div class="adminLogin-btn btn" style = "padding: 1.45em; border-radius: 7px; background-color: #fff; border: 1px solid #592c54; color: #592c54;">
                             Login as an Admin
                         </div>
                     </a>
@@ -103,7 +105,7 @@
                     As an authorized personnel, you can upload found items brought to your location with ease!
                 </p>
                 <a href="">
-                    <div class="adminBtn btn">Login as an Admin</div>
+                    <div class="adminBtn btn" style = "padding: 1.5em; border-radius: 7px;">Login as an Admin</div>
                 </a>
 
             </div>
@@ -207,6 +209,7 @@
     </div>
 
     <script src="/landing_page_files/action.js"></script>
+    <script src="/landing_page_files/mobile.js"></script>
 </body>
 
 </html>

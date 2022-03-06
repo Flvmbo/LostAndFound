@@ -29,6 +29,7 @@ h1 {
   max-width: 1920px;
   margin: 0 auto;
   position: relative;
+  padding: 1em;
 }
 
 .navbar {
@@ -51,6 +52,7 @@ h1 {
   /* min-width: 250px; */
   width: min(80%, 250px);
   position: relative;
+  margin: 0 auto;
   margin-bottom: 2.1rem;
   opacity: 0;
   animation: hero-animate 1s 0.65s ease forwards;
@@ -83,11 +85,11 @@ h1 {
 
 .home-header {
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .home-desc {
-  margin-bottom: 1.7rem;
+  margin-bottom: 2rem;
   line-height: 15px;
   color: rgba(7, 10, 34, 0.6);
   font-size: 0.9rem;
@@ -123,7 +125,7 @@ h1 {
 }
 
 .retrieve-item-btn {
-  margin-right: 1.2rem;
+  margin-right: 2.5rem;
 }
 
 #findW,
@@ -186,6 +188,7 @@ h1 {
   opacity: 0;
   transform: translateY(20px);
   transition: 1s ease;
+  max-width: 8ch;
 }
 
 .about-header::after {
@@ -197,7 +200,7 @@ h1 {
   bottom: -10px;
   background-color: #964b8e;
   border: 0.5px solid #964b8e;
-  width: 50%;
+  width: 100%;
   max-width: 456px;
   height: 0;
 }
@@ -293,7 +296,7 @@ h1 {
 .recent-header {
   position: relative;
   margin-bottom: 3rem;
-  /* max-width: 16ch; */
+  max-width: 14ch;
 }
 
 .recent-header::after {
@@ -305,8 +308,8 @@ h1 {
   bottom: -10px;
   background-color: #964b8e;
   border: 0.5px solid #964b8e;
-  width: 100%;
-  max-width: 456px;
+  width: 90%;
+  /* max-width: 456px; */
   height: 0;
 }
 
@@ -509,13 +512,19 @@ span {
   }
 }
 
+@media screen and (max-width: 355px) {
+  .retrieve-item-btn {
+    margin-bottom: 0.8rem;
+  }
+}
+
 @media screen and (min-width: 410px) {
   .home-section,
   .about-section,
   .admin-section,
   .recentlyFound-section {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   .home-img-container {
     width: 70%;
@@ -530,11 +539,16 @@ span {
 @media screen and (min-width: 502px) {
   .home-section {
     align-items: flex-start;
+  }
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section {
     padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .home-img-container {
-    margin: 0 auto;
     margin-bottom: 2rem;
   }
 
@@ -643,7 +657,7 @@ span {
     /* width: 500px; */
   }
   .home-header {
-    font-size: 4rem;
+    font-size: 1rem;
   }
 
   .about-header {
@@ -663,7 +677,7 @@ span {
   }
 
   .home-header {
-    font-size: 4.8rem;
+    font-size: 4rem;
   }
 
   .about-header,
@@ -681,13 +695,13 @@ span {
   }
 }
 
-@media screen and (min-width: 1365px) {
+@media screen and (min-width: 1265px) {
   .home-section,
   .about-section,
   .admin-section,
   .recentlyFound-section,
   .talk-section {
-    padding-left: 10rem;
+    padding-left: 8rem;
   }
 
   .talk-section {
