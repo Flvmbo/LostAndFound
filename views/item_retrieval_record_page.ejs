@@ -10,7 +10,7 @@
         @import url('https:fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
 </head>
-<body>
+<body slass = "body">
     <div class="mobile-filter-background"> </div>
     <div class="mobile-filter-container">   
         <div class="mobile-filter-div" id="mobile-filter-div">
@@ -89,16 +89,13 @@
                 document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
             }
         </script>
-        
-       <a class="to-top" href="#top"> 
-           <div class="back-to-top-div">
-                <button class="back-to-top-btn">
-                    <!-- <img class="to-top-img" src="./lost-items-images/drop-down.svg" alt=""> -->
-                    <span class="to-top-symbol">^</span>   
-                </button>
-            </div>
-        </a>
+
+       
+<a class="to-top" href="#top"> 
+    <button class="back-to-top-btn">^ </button>
+</a>
         <div class="item-not-found-div filter-type" id="item-not-found-div">
+           
             <div class="exit-div">
                 <button class="exit-btn" id="exit-item-not-found">x</button>
             </div>
