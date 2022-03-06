@@ -42,11 +42,11 @@
                         <div class="main-center-center">
                             <div class="main-center-center-left">
                                 <div class="input_txtbx_div">
-                                    <input type="text" name="item_name" class="input_txtbx" id=""
+                                    <input type="text" name="item_name" class="input_txtbx" id="itemName"
                                         placeholder="Item name">
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <select name="Category" class="input_txtbx" id="">
+                                    <select name="Category" class="input_txtbx" id="category">
                                         <option value="N/A">Select category</option>
                                         <option value="Laptops">Laptops</option>
                                         <option value="Tablets">Tablets / Ipads / Ipods</option>
@@ -58,22 +58,18 @@
                                     </select>
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <input type="text" class="input_txtbx" name="Description" id=""
-                                        placeholder="Brief description identifying marks">
+                                    <input type="text" class="input_txtbx" name="Description" id="description" placeholder="Brief description identifying marks">
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <input type="text" class="input_txtbx" name="Location" id=""
-                                        placeholder="Location found">
+                                    <input type="text" class="input_txtbx" name="Location" id="locationFound" placeholder="Location found">
                                 </div>
                                 <div class="error-div">
-                                    <p class="info">
+                                    <p class="info" id="error_p">
                                       <%= info.error %>
                                     </p>
                                 </div>
-                                <script>
-                                    const info = document.querySelector('.info');
-                                    info.style.display = "<%= info.display  %>"
-                                </script>
+                               
+                                
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
@@ -98,7 +94,7 @@
                         </div>
                         <div class="main-footer">
                             <div class="main-footer-center">
-                                </label><input type="submit" class="submit_button btn" value="Submit">
+                                </label><input type="button" class="submit_button btn" value="Submit" onclick="checkIfEmpty()" id="submitButton">
                             </div>
                         </div>
                     </div>
@@ -131,6 +127,32 @@
     <% if ( info.popup === "show") { %>
         <script src="/found_an_item_files/popupscript.js"></script>
     <% } %>
+
+    <script>
+        checkIfEmpty = () =>{
+            var errorP = document.getElementById("error_p")
+            var itemName = document.getElementById('itemName').value
+            var category = document.getElementById('category').value
+            var description = document.getElementById('description').value
+            var locationFound = document.getElementById('locationFound').value
+            var image1 = document.getElementById('image1').value
+            var image2 = document.getElementById('image2').value
+            var submitButton = document.getElementById('submitButton')
+            if(itemName == "" || category == "" || description == "" || locationFound == ""){
+                errorP.innerHTML = "Enter values to empty fields"
+                errorP.style.display = "block"
+                submitButton.blur()
+            }else if(image1 == "" || image2 == ""){
+                errorP.innerHTML = "Both images are required"
+                submitButton.blur()
+                errorP.style.display = "block"
+            }
+            else{
+                submitButton.type = "submit"
+            }
+        }
+    </script>
+    
 </body>
 
 </html>
