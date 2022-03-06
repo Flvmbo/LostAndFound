@@ -23,10 +23,11 @@
                 <div class="input-container">
                     <div class="overall-form-div">
                         <div class="field">
-                            <input type="text" name="firstname" placeholder="FirstName">
-                            <input type="text" name="student_email" placeholder="Student Email">
-                            <input type="text" name="item_category" placeholder="Item Category">
-                            <input type="text" name="item_name" placeholder="Name of item">
+                            <input type="text" name="firstname" placeholder="FirstName" id="firstName">
+                            <input type="text" name="student_email" placeholder="Student Email" id="studentEmail">
+                            <input type="text" name="item_category" placeholder="Item Category" id ="itemCategory">
+                            <input type="text" name="item_name" placeholder="Name of item" id="itemName">
+                            <p class="info" id="error_p"> </p>
                         </div>
                         
                         <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
@@ -39,7 +40,7 @@
 
                 <div class="btn-div">
                     <!-- <button data-modal-target class="btn">Submit</button>      -->
-                    <input class="btn" type="submit" id="get-btn" value="Submit">   
+                    <input class="btn" type="button" id="get-btn" value="Submit" onclick="checkIfEmpty()">   
                 </div>
             </form>
 
@@ -71,3 +72,24 @@
 </body>
 </html> 
 
+
+<script>
+    checkIfEmpty = () =>{
+        var errorP = document.getElementById("error_p")
+        var firstName = document.getElementById('firstName').value
+        var studentEmail = document.getElementById('studentEmail').value
+        var itemCategory = document.getElementById('itemCategory').value
+        var itemName = document.getElementById('itemName').value
+      
+        var submitButton = document.getElementById('get-btn')
+
+            if(firstName == "" || studentEmail == "" || itemCategory == "" || itemName == ""){
+                errorP.innerHTML = "Enter values to empty fields"
+                errorP.style.display = "block"
+                submitButton.blur()
+            }
+            else{
+                submitButton.type = "submit"
+            }
+    }
+</script>

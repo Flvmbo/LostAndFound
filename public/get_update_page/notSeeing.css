@@ -121,6 +121,19 @@ form{
     margin:0;
     margin-bottom: 2em;
 }
+
+
+.info{
+    display: none;
+    width:100%;
+    background-color: rgb(168, 49, 49);
+    margin-bottom:3em;
+    padding: .5em;
+    text-align: center;
+    font-size: .85rem;
+    color:#fff;
+  }
+  
 img{
     display: block;
     /* display: none; */
