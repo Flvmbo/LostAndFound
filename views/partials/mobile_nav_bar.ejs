@@ -215,41 +215,28 @@
         <div class="mobile-left" id="mobileLeft">
             <p class = "mh"><a href="/home">Home</a></p>
             <p class = "ms"><a href="/found-item">Submit Item</a></p>
-            </div>
-            <div class="dividing-line" id="dividingline"></div>
-            <div class="mobile-right" id="mobileRight">
-                <p class = "mr"><a href="/lost-items">Lost Items</a></p>
-                <p class = "mr"><a href="">How to use</a></p>
-                </div>
-                
-                <div class="hamburger_close_div" id="hamburgerCloseDiv">
-                    <label class="close" id="close">&times;</label>
-                    </div>
-                    </div>
-                    </body>
-                    
-                    <script>
-                        
-                        const hamburger = document.querySelector('.hamburger')
-                        const mobileMenu = document.querySelector('.mobile-menu-container')
-                        
-                        //
-                        const dividingLine =  document.getElementById('dividingline')
-                        const mobileLeft =  document.getElementById('mobileLeft')
-                        const mobileRight =  document.getElementById('mobileRight')
-                        
-                        const hamburgerCloseDiv = document.getElementById("hamburgerCloseDiv")
-                        const closee = document.getElementById("close")
-                        
-                        /* document.body.onresize = ()=>{
-                            // alert()
-                            if(document.body.clientWidth> 850 && window.getComputedStyle(document.querySelector(".nav-container"), null).display == "flex"){
-                                closee.click()
-                            }
-                        } */
-                        
-                        hamburger.addEventListener('click',function(e)
-                        {
+        </div>
+        <div class="dividing-line" id="dividingline"></div>
+        <div class="mobile-right" id="mobileRight">
+            <p class = "mr"><a href="/lost-items">Lost Items</a></p>
+            <p class = "mr"><a href="">How to use</a></p>
+        </div>    
+        <div class="hamburger_close_div" id="hamburgerCloseDiv">
+            <label class="close" id="close">&times;</label>
+        </div>
+    </div>
+</body>
+                   
+<script>                        
+    const hamburger = document.querySelector('.hamburger')
+    const mobileMenu = document.querySelector('.mobile-menu-container')                      
+    const dividingLine =  document.getElementById('dividingline')
+    const mobileLeft =  document.getElementById('mobileLeft')
+    const mobileRight =  document.getElementById('mobileRight')
+    const hamburgerCloseDiv = document.getElementById("hamburgerCloseDiv")
+    const closee = document.getElementById("close")
+    hamburger.addEventListener('click',function(e)
+    {
         hamburgerCloseDiv.style.display = "block"
         mobileMenu.classList.add('mobile-opened')
         hamburger.style.display ="none"
@@ -273,6 +260,6 @@
             document.body.style.overflow = 'hidden'
         }
     })
-    </script>
+</script>
     
     
