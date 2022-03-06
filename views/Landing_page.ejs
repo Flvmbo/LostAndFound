@@ -20,21 +20,18 @@
 </head>
 
 <body>
+    
     <div class="site-container">
-
-        <%- include('./partials/mobile_nav_bar.ejs') %>
-
-        <div class="navbar"
-            style="margin:0;position: sticky; padding: 15px; padding-bottom: 0px; font-family: 'Raleway';">
-            <%- include('./partials/nav_bar.ejs') %>
-                <script>
-                    if ("<%=  info.activeAdmin %>" != "") {
-                        // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-                        document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                        document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-                    }
-                </script>
-        </div>
+    <%- include('./partials/mobile_nav_bar.ejs') %>
+    
+    <%- include('./partials/nav_bar.ejs') %>
+    <script>
+        if ("<%=  info.activeAdmin %>" != "") {
+            // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+            document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
+        }
+        </script>
 
         <div class="home-section">
 
@@ -88,7 +85,7 @@
                     occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 </p>
             
-            </div>
+            
 
         </div>
 
