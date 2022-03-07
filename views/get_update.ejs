@@ -10,15 +10,7 @@
 <body>
     <div class="overall-container">
         <%- include('./partials/nav_bar.ejs') %>
-        <script>
-            if("<%=  info.activeAdmin %>" != ""){
-                // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-                document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-            }
-        </script>
-
-
+        <%- include('./partials/mobile_nav_bar.ejs') %>
 
     <div class="back">
             <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back to home</a>
@@ -40,7 +32,6 @@
                         <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
                         <div class="error-div">
                             <p class="info">
-
                             </p>
                           </div>
                     </div>
@@ -108,4 +99,25 @@
     </script>
 </body>
 </html> 
+<!-- 
 
+<script>
+    checkIfEmpty = () =>{
+        var errorP = document.getElementById("error_p")
+        var firstName = document.getElementById('firstName').value
+        var studentEmail = document.getElementById('studentEmail').value
+        var itemCategory = document.getElementById('itemCategory').value
+        var itemName = document.getElementById('itemName').value
+      
+        var submitButton = document.getElementById('get-btn')
+
+            if(firstName == "" || studentEmail == "" || itemCategory == "" || itemName == ""){
+                errorP.innerHTML = "Enter values to empty fields"
+                errorP.style.display = "block"
+                submitButton.blur()
+            }
+            else{
+                submitButton.type = "submit"
+            }
+    }
+</script> -->

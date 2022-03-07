@@ -22,13 +22,14 @@ ul {
 h1 {
   /* word-spacing: 0.2c; */
   font-size: 2.5rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .site-container {
   max-width: 1920px;
   margin: 0 auto;
   position: relative;
+  padding: 1em;
 }
 
 .navbar {
@@ -51,6 +52,7 @@ h1 {
   /* min-width: 250px; */
   width: min(80%, 250px);
   position: relative;
+  margin: 0 auto;
   margin-bottom: 2.1rem;
   opacity: 0;
   animation: hero-animate 1s 0.65s ease forwards;
@@ -82,12 +84,12 @@ h1 {
 }
 
 .home-header {
-  font-weight: 400;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .home-desc {
-  margin-bottom: 1.7rem;
+  margin-bottom: 2rem;
   line-height: 15px;
   color: rgba(7, 10, 34, 0.6);
   font-size: 0.9rem;
@@ -123,7 +125,7 @@ h1 {
 }
 
 .retrieve-item-btn {
-  margin-right: 1.2rem;
+  margin-right: 2.5rem;
 }
 
 #findW,
@@ -180,12 +182,13 @@ h1 {
 }
 
 .about-header {
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 3.5rem;
   position: relative;
   opacity: 0;
   transform: translateY(20px);
   transition: 1s ease;
+  max-width: 8ch;
 }
 
 .about-header::after {
@@ -197,7 +200,7 @@ h1 {
   bottom: -10px;
   background-color: #964b8e;
   border: 0.5px solid #964b8e;
-  width: 50%;
+  width: 100%;
   max-width: 456px;
   height: 0;
 }
@@ -211,6 +214,7 @@ h1 {
   opacity: 0;
   transform: translateY(20px);
   transition: 0.7s ease;
+  /* font-size: 13px; */
   /* transition-delay: 0.5s; */
   position: relative;
 }
@@ -231,7 +235,7 @@ h1 {
 }
 
 .admin-pic-container {
-  width: min(90%, 400px);
+  width: min(90%, 450px);
   overflow-y: hidden;
   position: relative;
   /* background-color: #00aa51; */
@@ -248,7 +252,7 @@ h1 {
 .rec1,
 .rec2 {
   position: absolute;
-  width: min(95%, 400px);
+  width: min(95%, 450px);
 }
 .rec1 {
   top: 0;
@@ -271,7 +275,7 @@ h1 {
 
 .admin-section-info h1 {
   font-size: 2.2rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 1.3rem;
   text-align: center;
 }
@@ -292,7 +296,7 @@ h1 {
 .recent-header {
   position: relative;
   margin-bottom: 3rem;
-  /* max-width: 16ch; */
+  max-width: 14ch;
 }
 
 .recent-header::after {
@@ -304,8 +308,8 @@ h1 {
   bottom: -10px;
   background-color: #964b8e;
   border: 0.5px solid #964b8e;
-  width: 100%;
-  max-width: 456px;
+  width: 90%;
+  /* max-width: 456px; */
   height: 0;
 }
 
@@ -317,7 +321,7 @@ h1 {
   /* background-color: #592c54; */
 }
 
-.recent-items-container::-webkit-scrollbar {
+.recent-items-container::-webkit-scrollbar- {
   width: 50%;
   height: 0.5px;
   border-radius: 5px;
@@ -403,6 +407,7 @@ span {
   right: 2rem;
   margin-top: 1rem;
   color: #964b8e;
+  font-size: 13.5px;
 }
 
 .talk-section {
@@ -507,7 +512,20 @@ span {
   }
 }
 
+@media screen and (max-width: 355px) {
+  .retrieve-item-btn {
+    margin-bottom: 0.8rem;
+  }
+}
+
 @media screen and (min-width: 410px) {
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
   .home-img-container {
     width: 70%;
   }
@@ -521,11 +539,16 @@ span {
 @media screen and (min-width: 502px) {
   .home-section {
     align-items: flex-start;
-    padding-left: 3rem;
+  }
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .home-img-container {
-    margin: 0 auto;
     margin-bottom: 2rem;
   }
 
@@ -546,7 +569,9 @@ span {
 
   .admin-section {
     flex-direction: row;
+    justify-content: flex-start;
     padding: 5rem;
+    padding-right: 0;
   }
 
   .admin-section-info {
@@ -623,7 +648,7 @@ span {
 @media screen and (min-width: 1067px) {
   .home-section {
     justify-content: space-between;
-    padding-right: 8rem;
+    padding-right: 7rem;
   }
 
   .home-img-container {
@@ -632,23 +657,27 @@ span {
     /* width: 500px; */
   }
   .home-header {
-    font-size: 4rem;
+    font-size: 1rem;
   }
 
   .about-header {
     font-size: 3rem;
+  }
+
+  .admin-section {
+    padding-right: 5rem;
   }
 }
 
 @media screen and (min-width: 1153px) {
   .home-section {
     justify-content: space-between;
-    padding-right: 12rem;
-    padding-top: 5rem;
+    padding-right: 10rem;
+    padding-top: 3rem;
   }
 
   .home-header {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 
   .about-header,
@@ -656,9 +685,35 @@ span {
     font-size: 4rem;
   }
 
+  .recent-header {
+    font-size: 3.5rem;
+  }
   .home-img-container {
     margin: 0;
     padding: 0;
     width: 500px;
+  }
+}
+
+@media screen and (min-width: 1265px) {
+  .home-section,
+  .about-section,
+  .admin-section,
+  .recentlyFound-section,
+  .talk-section {
+    padding-left: 8rem;
+  }
+
+  .talk-section {
+    padding-right: 5rem;
+  }
+
+  .talk-container {
+    width: 100%;
+  }
+
+  .admin-section-info {
+    margin-left: 5rem;
+    /* width: 60%; */
   }
 }

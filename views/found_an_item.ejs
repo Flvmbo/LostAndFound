@@ -42,34 +42,32 @@
                         <div class="main-center-center">
                             <div class="main-center-center-left">
                                 <div class="input_txtbx_div">
-                                    <input type="text" name="item_name" class="input_txtbx" id=""
+                                    <input type="text" name="item_name" class="input_txtbx" id="itemName"
                                         placeholder="Item name">
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <select name="Category" class="input_txtbx" id="">
+                                    <select name="Category" class="input_txtbx" id="category">
                                         <option value="N/A">Select category</option>
-                                        <option value="Laptop">Laptop</option>
-                                        <option value="Tablet">Tablet</option>
-                                        <option value="Miscellaneous">Miscellaneous</option>
+                                        <option value="Laptops">Laptops</option>
+                                        <option value="Tablets">Tablets / Ipads / Ipods</option>
+                                        <option value="Other electronics">Other electronics</option>
+                                        <option value="Cards">Cards</option>
+                                        <option value="Fabrics">Fabrics</option>
+                                        <option value="Books">Books</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <input type="text" class="input_txtbx" name="Description" id=""
-                                        placeholder="Brief description identifying marks">
+                                    <input type="text" class="input_txtbx" name="Description" id="description" placeholder="Brief description identifying marks">
                                 </div>
                                 <div class="input_txtbx_div">
-                                    <input type="text" class="input_txtbx" name="Location" id=""
-                                        placeholder="Location found">
+                                    <input type="text" class="input_txtbx" name="Location" id="locationFound" placeholder="Location found">
                                 </div>
                                 <div class="error-div">
                                     <p class="info">
                                       <!-- <%= info.error %> -->
                                     </p>
                                 </div>
-                                <!-- <script>
-                                    const info = document.querySelector('.info');
-                                    info.style.display = "<%= info.display  %>"
-                                </script> -->
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
@@ -130,6 +128,7 @@
     <% if ( info.popup === "show") { %>
         <script src="/found_an_item_files/popupscript.js"></script>
     <% } %>
+    
 </body>
 
 </html>
