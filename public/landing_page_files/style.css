@@ -219,10 +219,6 @@ h1 {
   position: relative;
 }
 
-.about-desc:nth-child(1) {
-  margin-bottom: 0;
-}
-
 .admin-section {
   width: 100%;
   display: flex;
@@ -599,8 +595,12 @@ span {
     flex-direction: row;
     position: relative;
     align-items: center;
+    padding: 3.5rem 2rem;
   }
 
+  .f-section {
+    margin-bottom: 0;
+  }
   .copyright {
     position: absolute;
     bottom: 1rem;
@@ -657,7 +657,7 @@ span {
     /* width: 500px; */
   }
   .home-header {
-    font-size: 1rem;
+    font-size: 3.5rem;
   }
 
   .about-header {
@@ -676,15 +676,6 @@ span {
     padding-top: 3rem;
   }
 
-  .home-header {
-    font-size: 4rem;
-  }
-
-  .about-header,
-  .admin-section-info h1 {
-    font-size: 4rem;
-  }
-
   .recent-header {
     font-size: 3.5rem;
   }
@@ -692,6 +683,17 @@ span {
     margin: 0;
     padding: 0;
     width: 500px;
+  }
+}
+
+@media screen and (min-width: 1223px) {
+  .home-header {
+    font-size: 4rem;
+  }
+
+  .about-header,
+  .admin-section-info h1 {
+    font-size: 4rem;
   }
 }
 
