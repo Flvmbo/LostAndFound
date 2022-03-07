@@ -4,7 +4,7 @@ const lostitems = require('../model/submit_item');
 const get_showRetrieveItemPage = async (req, res) => {
     id = req.params.id;
     // console.log(id)
-    res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"none", id:`${id}`, activeAdmin: req.session.activeAdmin}});
+    res.render("item_retrieval_page", {info:{modalDisplay:"none", id:`${id}`, activeAdmin: req.session.activeAdmin}});
 }
 
 
@@ -13,11 +13,6 @@ const post_retriveItem =  async (req,res)=>{
         let getId = req.params.id;
         console.log(getId)
         const {firstname, lastname, admin, location} = req.body;
-        if(firstname == "" || lastname == "" || admin == "" || location == ""){
-            res.render("item_retrieval_page", {info:{error:"Enter values to empty fields", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});
-        }
-        else{
-            if(req.file){
                 var retrieved_item = await lostitems.findOne({id : getId})
                 const date = new Date()
 
@@ -35,15 +30,11 @@ const post_retriveItem =  async (req,res)=>{
                 })
                 
             await retrievedItem.save()
-            .then(()=> res.render("item_retrieval_page", {info:{error:"", display:"none", modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin, popup: "show"}}))
+            .then(()=> res.render("item_retrieval_page", {info:{modalDisplay:"block",id:`${id}`, activeAdmin: req.session.activeAdmin, popup: "show"}}))
             .catch((e)=>console.log(e.message));
             
             await lostitems.deleteOne({_id:getId}).catch((e)=>console.log(e.message))
-            }
-            else{
-                res.render("item_retrieval_page", {info:{error:"Image is required", display:"block", modalDisplay:"none",id:`${id}`, activeAdmin: req.session.activeAdmin}});
-            }
-        }
+
     }catch(e){
         console.log(e);
         res.render("item_retrieval_page", {info:{error:"Please reload application", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});

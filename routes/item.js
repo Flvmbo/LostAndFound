@@ -9,6 +9,7 @@ const item_controller = require("../controllers/item_controller")
 route.get("/found-item", item_controller.get_showItemPage)
 
 //This POST route is used so upload a missing item to the database
+// 
 route.post("/api/v1/submit-item", upload.array("image"),item_controller.post_submitItem)
 
 module.exports = route

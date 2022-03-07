@@ -63,13 +63,13 @@
                                 </div>
                                 <div class="error-div">
                                     <p class="info">
-                                      <%= info.error %>
+                                      <!-- <%= info.error %> -->
                                     </p>
                                 </div>
-                                <script>
+                                <!-- <script>
                                     const info = document.querySelector('.info');
                                     info.style.display = "<%= info.display  %>"
-                                </script>
+                                </script> -->
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
@@ -77,7 +77,8 @@
                                         <img src="" alt="" class="preview-img1">
                                         <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
                                         <p class="upload-text preview-default-text1">Click to upload first picture or drag and drop here </p>
-                                        <p  id="format" class="preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p> 
+                                        <p  id="format" class="upload-text preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p> 
+                                        <p id="maxSize" class="upload-text preview-default-text1">Maximum upload size: 5mb</p>
                                     </div>
                                     <input type="file" name="image" id="image1">
                                 </div>
@@ -86,7 +87,9 @@
                                         <img src="" alt="" class="preview-img2">
                                         <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic2" alt="" srcset="">
                                         <p class="upload-text preview-default-text2">Click to upload second picture or drag and drop here </p>
-                                        <p  id="format2" class="preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
+                                        <p  id="format2" class="upload-text preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
+                                        <p id="maxSize2" class="upload-text preview-default-text2">Maximum upload size: 5mb</p>
+
                                     </div>
                                     <input type="file" name="image" id="image2">
                                 </div>
@@ -94,7 +97,7 @@
                         </div>
                         <div class="main-footer">
                             <div class="main-footer-center">
-                                </label><input type="submit" class="submit_button btn" value="Submit">
+                                </label><input type="button" class="submit_button btn" value="Submit">
                             </div>
                         </div>
                     </div>

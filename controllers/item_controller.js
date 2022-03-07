@@ -3,15 +3,9 @@ const items = require('../model/submit_item')
 const multer = require('multer');
 const get_update_schema = require("../model/get_update")
 
-
 const get_showItemPage = async (req, res) => {
     res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin,popup:"none"}});
 }
-
-
-
-
-
 
 const post_submitItem =  async (req,res)=>{
     var today = new Date();
@@ -19,14 +13,8 @@ const post_submitItem =  async (req,res)=>{
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date +" " + time;
     var uniqueID =  Date.now()
-
-    const {item_name,Category,Description,Location} = req.body
-    if(item_name == "" || Description == "" || Location == "" || Category=="N/A"){
-    
-        res.render("found_an_item", {info:{error:"Enter values to empty fields", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});
-    }
-    else{
-        if(req.files.length == 2){
+    console.log("Files: ",req.files)
+    const {item_name, Category, Description, Location} = req.body;
             try{
                 var new_item =  new items({
                     uniqueID : uniqueID,
@@ -38,9 +26,7 @@ const post_submitItem =  async (req,res)=>{
                     firstImage:  "uploads/images/" + req.files[0].filename, 
                     secondImage: "uploads/images/" + req.files[1].filename
                 })
-                
                 await new_item.save().then( async ()=>{
-
                     res.render("found_an_item",{info:{popup:"show"}})
                     // res.redirect('/lost-items');
                     var get_update_list = await get_update_schema.find({Category : Category});
@@ -73,12 +59,6 @@ const post_submitItem =  async (req,res)=>{
             }catch(e){
                 console.log(e.message);
             }
-        }
-        else{
-            res.render("found_an_item", {info:{error:"Both images are required", display:"block", modalDisplay:"none", activeAdmin: req.session.activeAdmin}});
-        }
-    }
-  
 }
 
 

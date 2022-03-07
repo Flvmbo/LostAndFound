@@ -14,15 +14,9 @@ const post_signIn = async (req,res) =>{
     try{
         //getting the values of Username and password from req.body
         const {Username , Password} = req.body
-
         //Username and password authentication
-        if(Username == "" || Password == "" || Username == null || Password == ""){
-            res.render("admin_signin_page", {info: {error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
             const getadmin =  await admin.findOne({username:Username, password:Password});
             if(getadmin != null){     
-
                 // store the admin's location as a session variable
                 try{
                     req.session.activeAdmin = getadmin.location
@@ -36,7 +30,6 @@ const post_signIn = async (req,res) =>{
             }else{
                 res.render("admin_signin_page", {info:{error:"Invalid Username or password", display:"block" }});
             }
-        }
     }catch(error){
         console.log(error);
     }
@@ -44,22 +37,12 @@ const post_signIn = async (req,res) =>{
 
 const post_signinFromRetrieveItem = async (req,res) => {
     try{
-
         //getting the values of Username and password from req.body
         const {Username , Password} = req.body
-        // const {Username:name,password} = req.body
-
-        //Username and password authentication
-        if(Username == "" || Password == "" || Username == null || Password == ""){
-            res.render("admin_signin_page", {info:{error:"Enter values to empty fields", display:"block"}});
-        }
-        else{
             const getadmin =  await admin.findOne({username:Username, password:Password});
             if(getadmin != null){    
-
                 // store the admin's location as a session variable
                 try{
-
                     //store the admin's location as a session variable
                     req.session.activeAdmin = getadmin.location
                     res.redirect(`/item-retrieval/${req.params.id}`)
@@ -70,7 +53,6 @@ const post_signinFromRetrieveItem = async (req,res) => {
             }else{
                 res.render("admin_signin_page", {info:{error:"Invalid Username or password", display:"block", }});
             }
-        }
     }catch(e){
         console.log(e);
     }

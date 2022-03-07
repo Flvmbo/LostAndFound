@@ -53,21 +53,23 @@
                 </div>
                 <div class="error-div">
                   <p class="info">
-                    <%= info.error %>
+                    <!-- <%= info.error %> -->
                   </p>
                 </div>
-                <script>
+                <!-- <script>
                   const info = document.querySelector('.info');
                   info.style.display = "<%= info.display  %>"
-                </script>
+                </script> -->
               </div>
               <div class="picture-div">
                 <div id="dropRegion">
                   <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
                   <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
-                  <span class="image-preview__default-text">Click to upload picture of the retriever or drag and drop
+                  <span class="image-preview__default-text">Click to upload 1 picture of the retriever or drag and drop
                     here</span>
                   <p  id="format" class="image-preview__default-text">Acceptable formats: PNG, JPEG, JPG</p>
+                  <p id="maxSize" class="image-preview__default-text">Maximum upload size: 5mb</p>
+
                 </div>
                 <div class="input-div">
                   <input type="file" name="idphoto" id="idphoto">
@@ -78,7 +80,7 @@
             </div>
             <div class="btn-div-center">
               <div class="btn-div">
-                <input type="submit" name="" value="Submit" class="submit btn" id="my_btn">
+                <input type="button" name="submit" value="Submit" class="submit btn" id="my_btn">
               </div>
             </div>
           </form>
@@ -114,102 +116,7 @@
 
 
 
-<script>
-  var dropRegion = document.getElementById("dropRegion");
-  var myinput = document.getElementById('idphoto')
-  var clear = document.getElementById('clear');
-  dropRegion.addEventListener("click", function () {
-    myinput.click();
-  });
-  myinput.addEventListener("change", function () {
-    checkValue(this);
-  });
-
-  function checkValue(input){
-    const previewContainer = document.getElementById("dropRegion");
-    const previewImage = previewContainer.querySelector('.image-preview__image');
-    const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
-    const format = document.getElementById('format')
-    var files = input.files;
-    var upload_pic1 = document.querySelector('.upload_pic1');
-    if(!input.value){
-      previewImage.setAttribute("src", "");
-      previewDefaultText.style.display = "block";
-      format.style.display = "block";
-      upload_pic1.style.display = "block";
-      previewImage.style.display = "none";
-    }
-    if(input.value){  
-    handleFiles(files);
-    }
-  }
-  function preventDefault(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  dropRegion.addEventListener("dragenter", preventDefault, false);
-  dropRegion.addEventListener("dragleave", preventDefault, false);
-  dropRegion.addEventListener("dragover", preventDefault, false);
-  dropRegion.addEventListener("drop", preventDefault, false);
-  function handleDrop(e) {
-    var data = e.dataTransfer,
-      // e.dataTransfer contains the dragged data
-      files = data.files;
-    myinput.files = data.files
-    handleFiles(files);
-  }
-  dropRegion.addEventListener("drop", handleDrop, false);
-
-  function handleFiles(files) {
-    if (validateImage(files[0])) {
-      previewTheImage(files[0]);
-    }
-  }
-  function validateImage(image) {
-    // check type of file
-    var validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-    if (validTypes.indexOf(image.type) == -1) {
-      const format = document.getElementById('format');
-      format.innerHTML = `Invalid Type<br> Acceptable Formats are: PNG, JPEG, JPG`;
-      myinput.value = "";
-      checkValue(myinput);
-      return false;
-    }
-    // check the size of file, Im not sure if this is needed
-    var maxSizeInBytes = 10e6;//10MB
-    if (image.size > maxSizeInBytes) {
-      alert("File too large");
-      myinput.value = "";
-      checkValue(myinput);
-      return false;
-    }
-  
-    return true;
-  }
-  // preview image before uploading
-  function previewTheImage(image) {
-    const previewContainer = document.getElementById("dropRegion");
-    const previewImage = previewContainer.querySelector('.image-preview__image');
-    const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
-    var upload_pic1 = document.querySelector('.upload_pic1');
-    const format = document.getElementById('format');
-    const reader = new FileReader();
-    format.style.display = "none";
-    format.innerHTML = `Acceptable Formats: PNG, JPEG, JPG`;
-    previewDefaultText.style.display = "none";
-    upload_pic1.style.display = "none";
-
-    previewImage.style.display = "block";
-    //    var my_cont = document.getElementById("dropRegion");
-    //  var my_image = document.getElementById("my_image");
-
-    reader.addEventListener("load", function () {
-      previewImage.setAttribute("src", this.result);
-    });
-    reader.readAsDataURL(image);
-  }
-
-</script>
+<script src="/item_retrieval_files/script.js"></script>
 </div>
 </div>
 </body>
