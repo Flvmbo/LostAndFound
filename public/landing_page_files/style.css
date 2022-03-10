@@ -282,6 +282,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 2.5rem;
+  padding-left: 0;
+  padding-right: 0;
   opacity: 0;
   transition: 0.5s ease-in;
   transform: translateY(30px);
@@ -292,6 +294,7 @@ h1 {
   font-weight: 600;
   margin-bottom: 1.3rem;
   text-align: center;
+  max-width: 16ch;
 }
 
 .admin-section-info p {
@@ -394,8 +397,7 @@ h1 {
 .retrieve-recent-btn {
   justify-self: center;
   text-align: center;
-  padding: 1em;
-  border-radius: 10px;
+  padding: 1em 1.5em;
   background-color: #592c54;
   color: #fff;
   font-size: 0.65rem;
@@ -403,7 +405,7 @@ h1 {
   transition-property: background-color, color, box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: ease-in;
-  box-shadow: 0px 1px 1px 1px rgb(212, 210, 210);
+  /* box-shadow: 0px 1px 1px 1px rgb(212, 210, 210); */
 }
 
 .swiper-button-next,
@@ -511,8 +513,16 @@ h1 {
     font-size: 1.8rem;
   }
 
+  .recent-info {
+    margin-bottom: 7px;
+  }
+
+  .recent-info p {
+    font-size: 0.6rem;
+  }
+
   .retrieve-recent-btn {
-    padding: 3px;
+    padding: 0.7em 1em;
     border-radius: 5px;
   }
 
@@ -528,6 +538,14 @@ h1 {
 @media screen and (max-width: 355px) {
   .retrieve-item-btn {
     margin-bottom: 0.8rem;
+  }
+
+  .recent-info {
+    margin-bottom: 7px;
+  }
+
+  .recent-info p {
+    font-size: 0.6rem;
   }
 }
 
@@ -599,15 +617,21 @@ h1 {
     flex-direction: row;
     justify-content: flex-start;
     padding: 5rem;
-    padding-right: 0;
+    align-items: center;
+  }
+
+  .admin-pic-container {
+    margin-bottom: 0;
   }
 
   .admin-section-info {
     align-items: flex-start;
+    padding: 0;
+    padding-left: 1rem;
   }
 
   .admin-section-info h1 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
 
   .recent-img-container {
@@ -712,6 +736,10 @@ h1 {
     padding-right: 5rem;
   }
 
+  .admin-section-info h1 {
+    font-size: 3.5rem;
+  }
+
   .home-circle-container {
     position: absolute;
     left: -3rem;
@@ -765,8 +793,9 @@ h1 {
     padding-left: 10rem;
   }
 
-  .talk-section {
-    padding-right: 5rem;
+  .talk-section,
+  .admin-section {
+    padding-right: 10rem;
   }
 
   .talk-container {
@@ -782,4 +811,13 @@ h1 {
     width: 25vw;
     height: 25vw;
   }
+}
+
+.swiper-horizontal .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  bottom: 0px !important;
+  z-index: -10 !important;
+  opacity: 0.8 !important;
 }
