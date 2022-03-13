@@ -229,6 +229,8 @@
                                     <!-- <label for="item-location-found-label" class="item-label">Location Found:</label> <label name="location-found" class="location-found details-input"><%=item.Location%></label> -->
                                 </div>
                                 <div class="item-current-location-div item-details-div">
+                                    <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
+
                                     <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=item.Location%></span></label>
 
                                     <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
@@ -254,8 +256,10 @@
                             </div>
                         </div> 
                         <div class="item-category-div item-details-div">
-                            <label for="item-category-label" class="item-label">Category:</label>
-                             <input type="text" readonly value="<%-item.Category%>"  name="category" class="category details-input">
+                            <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
+
+                            <!-- <label for="item-category-label" class="item-label">Category:</label>
+                             <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
                         </div>   
                     </div>
 

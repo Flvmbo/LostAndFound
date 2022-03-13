@@ -826,7 +826,7 @@ position: absolute;
     transform: rotate(90deg);
 /* Since its rotated by 90deg, the padding goes right, left, then up down */
     padding: 0 .55em;
-    padding-top: .1em;
+    padding-top: .1em; 
     padding-bottom: .25em;
     /* padding-top: .5em; */
     border: 0;
@@ -845,6 +845,7 @@ position: absolute;
         display:none;
     }
     .filter-menu{
+        max-width: 700px;
         width: 85%;
         /* height: 30px; */
         margin: 1em auto;

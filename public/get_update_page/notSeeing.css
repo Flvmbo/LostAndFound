@@ -37,11 +37,7 @@ a{
 }
 
 #heading{
-    font-weight: 600;
-    font-style: normal;
-    font-size: 18px;
     background-color: transparent;
-    /* line-height: 21px; */
     text-align: left;
     /* border: 2px solid #592C54; */
     margin:0;
@@ -138,9 +134,9 @@ form{
 
 .info{
     display: none;
-    width:100%;
+    width:90%;
     background-color: rgb(168, 49, 49);
-    margin-bottom:3em;
+    margin-bottom:0em;
     padding: .5em;
     text-align: center;
     font-size: .85rem;
@@ -281,7 +277,7 @@ img{
 }
 
 .btn-div{
-    margin: 0;;
+    margin: 0;
     padding-left:.35em;
 }
 .circle1,.circle2,.circle3,.circle4{

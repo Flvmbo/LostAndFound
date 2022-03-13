@@ -107,7 +107,7 @@ a{
     outline: none;
     background-color: transparent;
     border: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     font-size: .9rem;
     padding: .25em;
     /* margin-top:.5em; */
@@ -216,6 +216,9 @@ a{
 .designs{
     position: fixed;
     top: 40%;
+}
+.last-input-div{
+    margin-bottom:1.5em;
 }
 
 .circle1{
@@ -340,7 +343,8 @@ a{
     display: none;
     width:100%;
     background-color: rgb(168, 49, 49);
-    margin-bottom:3em;
+    margin:0;
+    margin-bottom:0em;
     padding: .5em;
     text-align: center;
     font-size: .85rem;

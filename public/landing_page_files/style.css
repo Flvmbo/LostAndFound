@@ -281,6 +281,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   padding: 2.5rem;
   opacity: 0;
   transition: 0.5s ease-in;
@@ -378,7 +379,7 @@ h1 {
 }
 
 .recent-item p {
-  font-size: min(2vw, 0.8rem);
+  font-size: min(3vw, 0.8rem);
 }
 
 .recent-info-head {

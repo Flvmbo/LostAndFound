@@ -102,7 +102,7 @@ function validateImage(image) {
     return false;
   }
   // check the size of file, Im not sure if this is needed
-  var maxSizeInBytes = 10e6;//10MB
+  var maxSizeInBytes = 5000000//10MB
   if (image.size > maxSizeInBytes) {
     const maxSize = document.getElementById('maxSize');                   
     maxSize.innerHTML = `Cannot upload image with size greater than 5mb`      
