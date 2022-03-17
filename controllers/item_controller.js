@@ -3,15 +3,9 @@ const items = require('../model/submit_item')
 const multer = require('multer');
 const get_update_schema = require("../model/get_update")
 
-
 const get_showItemPage = async (req, res) => {
     res.render("found_an_item", {info: {activeAdmin : req.session.activeAdmin,popup:"none"}});
 }
-
-
-
-
-
 
 const post_submitItem =  async (req,res)=>{
     var today = new Date();

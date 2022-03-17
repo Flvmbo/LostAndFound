@@ -86,11 +86,11 @@
     <div class="overall-container" id="top">
         <div class="mini-features">
             <a class="to-top" href="#top"> 
-                <button class="back-to-top-btn">^ </button>
+                <button class="back-to-top-btn">< </button>
             </a>
             <div class="item-not-found-div filter-type" id="item-not-found-div">
                 <div class="exit-div">
-                    <button class="exit-btn" id="exit-item-not-found">></button>
+                    <button class="exit-btn" id="exit-item-not-found"><</button>
                 </div>
                 <div class="mini-update-container">
                     <h2 class="mini-update-heading">Can't find your lost item?</h2>
@@ -209,6 +209,9 @@
                                 <div class="image-container">
                                     <img class="item-image left-img" src="/<%=item.firstImage%>" alt="<%= item.Description %>">
                                     <img class="item-image right-img" src="/<%=item.secondImage%>" alt="<%= item.Description %>">
+                                    <input class="slide-button prev" type="button">
+                                    <input class="slide-button next" type="button">
+
                                 </div>
                                 <div class="slider-container next-image-container">
                                     <input class="next-image slide-image" type="button" value=">">
@@ -216,17 +219,26 @@
                             </div>
                             <div class="lost-item-content-div">
                                 <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name: </label>
-                                     <input type="text" value="<%=item.item_name%>"  readonly name="item-name" class="item-name details-input">
+                                    <label for="item-name-label" class="item-label">Item name:  <span class="item-name details-input"><%=item.item_name%></span></label>
+
+                                    <!-- <label for="item-name-label" class="item-label">Item name: </label> -->
+                                     <!-- <label name="item-name" class="item-name details-input"><%=item.item_name%></label> -->
                                 </div>
                                 <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly value="<%=item.Location%>"  name="location-found" class="location-found details-input">
+                                    <label for="item-location-found-label" class="item-label">Location Found: <span class="location-found details-input"><%=item.Location%></span></label>
+                                    <!-- <label for="item-location-found-label" class="item-label">Location Found:</label> <label name="location-found" class="location-found details-input"><%=item.Location%></label> -->
                                 </div>
                                 <div class="item-current-location-div item-details-div">
-                                    <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly value="<%=item.Location%>"  name="current-location" class="current-location details-input">
+                                    <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
+
+                                    <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=item.Location%></span></label>
+
+                                    <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
                                 </div>
                                 <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly value="<%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%>"  name="date-found" class="date-found details-input">
+                                    <label for="item-date-found-label" class="item-label">Date Found: <span class="current-location details-input"><%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+
+                                    <!-- <label for="item-date-found-label" class="item-label">Date Found:</label> <label name="date-found" class="date-found details-input"></label> -->
                                 </div>
                                 <div class="retrieve-item-div">                           
                                     <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
@@ -244,8 +256,10 @@
                             </div>
                         </div> 
                         <div class="item-category-div item-details-div">
-                            <label for="item-category-label" class="item-label">Category:</label>
-                             <input type="text" readonly value="<%-item.Category%>"  name="category" class="category details-input">
+                            <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
+
+                            <!-- <label for="item-category-label" class="item-label">Category:</label>
+                             <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
                         </div>   
                     </div>
 

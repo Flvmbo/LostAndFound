@@ -38,18 +38,8 @@ filterBackground.addEventListener('click', ()=>{
 const slideContainer = document.querySelector('.image-container');
 const rightSlide = document.querySelectorAll('.next-image');
 const leftSlide = document.querySelectorAll('.prev-image');
-// let imagesize = slider.offsetWidth;
-// let leftTouch = imagesize - 140;
-// let rightTouch  = imagesize -10;
-
-// slideContainer.addEventListener('click', (e)=>{
-//     alert(this.clientX)
-// })
-// function changeWidth(event) {
-    
-//     let outerDiv = document.getElementById('outerDiv');
-//     document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-//   }
+const slideLeft = document.querySelectorAll('.prev');
+const slideRight = document.querySelectorAll('.next');
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
@@ -76,7 +66,54 @@ rightSlide.forEach((element)=>{
 
     })
 })
+slideRight.forEach((element)=>{
+    element.addEventListener('click', ()=>{
+    
+        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+        // imageAndSliderContainer.style ='border:1px solid;';
+        imageAndSliderContainer.classList.remove('circle-highlight')
+        imageAndSliderContainer.classList.add('circle-highlightt');
+        let rightSlideContainer = imageAndSliderContainer.children[2];
+        let leftSlideContainer = imageAndSliderContainer.children[0];
+        rightSlideContainer.style.opacity = '0';
+        rightSlideContainer.style.pointerEvents = 'none';
+        leftSlideContainer.style.opacity = '1';
+        leftSlideContainer.style.pointerEvents = 'all';
+
+        let imageContainer = imageAndSliderContainer.children[1];
+        let leftImg = imageContainer.children[0];
+        let rightImg = imageContainer.children[1];
+        leftImg.style = 'transition:transform .5s ease-in-out'
+        rightImg.style = 'transition:all .7s ease-in-out';
+        leftImg.style.transformOrigin = 'left';
+        leftImg.style.transform = 'scaleX(0)';
+        rightImg.style.opacity = '1';
+
+    })
+})
 leftSlide.forEach((element)=>{
+    element.addEventListener('click', ()=>{
+        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+        // imageAndSliderContainer.style ='border:1px solid;';
+        imageAndSliderContainer.classList.remove('circle-highlightt')
+        imageAndSliderContainer.classList.add('circle-highlight');
+        let rightSlideContainer = imageAndSliderContainer.children[2];
+        let leftSlideContainer = imageAndSliderContainer.children[0];
+        rightSlideContainer.style.opacity = '1';
+        rightSlideContainer.style.pointerEvents = 'all';
+        leftSlideContainer.style.opacity = '0';
+        leftSlideContainer.style.pointerEvents = 'none';
+
+        let imageContainer = imageAndSliderContainer.children[1];
+        let leftImg = imageContainer.children[0];
+        let rightImg = imageContainer.children[1];
+        rightImg.style = 'transition:all .25s ease-in';
+        rightImg.style.opacity = '0';
+        leftImg.style.transform = 'scaleX(1)';
+    })
+})
+
+slideLeft.forEach((element)=>{
     element.addEventListener('click', ()=>{
         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
         // imageAndSliderContainer.style ='border:1px solid;';
@@ -194,7 +231,7 @@ mobileAllLocations.addEventListener('click', ()=>{
     mobileShowLocation.style.display = 'none';
     // anyChecked = false;
 })
-// TO SHOW DATE SELECT OR SORT BY MOST RECENT
+// TO SHOW DATE SELECT OR SORT BY MOST RECENT [MOBILE-FILTER]
 const mobileMostRecent = document.querySelector('#mobile-filter-div #mobile-most-recent');
 mobileMostRecent.addEventListener('click', ()=>{
     let selectDate = document.querySelector('#mobile-filter-div .select-date-true');
@@ -207,60 +244,6 @@ mobileLookUpDate.addEventListener('click', ()=>{
     selectDate.style.display = 'block';
 })
 
-
-// leftSlide.addEventListener('click', (e)=>{
-//     imageAndSliderContainer.classList.remove('circle-highlightt')
-//     imageAndSliderContainer.classList.add('circle-highlight');
-//     rightSlideContainer.style.opacity = '1';
-//     rightSlideContainer.style.pointerEvents = 'all';
-//     leftSlideContainer.style.opacity = '0';
-//     leftSlideContainer.style.pointerEvents = 'none';
-//     // rightImg.style.width = '0';
-//     // leftImg.style.width = '100%';
-//     rightImg.style = 'transition:all .4s ease-in';
-//     // rightImg.style.transform = 'scaleX(0)';
-//     rightImg.style.opacity = '0';
-//     leftImg.style.transform = 'scaleX(1)';
-    
-    
-// })
-
-
-// rightSlide.addEventListener('click', (e)=>{
-   
-//     imageAndSliderContainer.classList.remove('circle-highlight')
-//     imageAndSliderContainer.classList.add('circle-highlightt');
-//     rightSlideContainer.style.opacity = '0';
-//     rightSlideContainer.style.pointerEvents = 'none';
-//     leftSlideContainer.style.opacity = '1';
-//     leftSlideContainer.style.pointerEvents = 'all';
-//     // // leftImg.style.width = '0';
-//     // // rightImg.style.width = '100%';
-//     // imageContainer.style = 'transition:all 1s ease-in-out'
-//     leftImg.style = 'transition:transform .5s ease-in-out'
-//     rightImg.style = 'transition:all .7s ease-in-out';
-//     leftImg.style.transformOrigin = 'left';
-//     // rightImg.style.transformOrigin = 'right';
-//     leftImg.style.transform = 'scaleX(0)';
-//     rightImg.style.opacity = '1';
-//     // leftImg.style.width = '0'
-//     // rightImg.style = 'transform:scaleX(1);pointer-events:all;opacity:1';0
-
-//     // leftImg.style.transform = 'translateX(' + (-size * counter) + 'px)';
-//     // rightImg.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    
-    
-// })
-
-
-// // MENU BAR FOR MOBILE
-// const menuDiv = document.querySelector('.menu-bar')
-// const hamburger = document.querySelector('.hamburger')
-// menuDiv.addEventListener('click', ()=>{
-//     // alert('hi');
-//     hamburger.style.display = 'none'
-//     menuDiv.style = "position:absolute;top:0; bottom:0; left:0; right:0; background-color:blue; opacity:.3; overflow:hidden"
-// })
 
 
 let docElem = document.documentElement;
@@ -319,17 +302,3 @@ function setVisible(scrollPos, offset){
         noItem.style = "right:-100%;visibility:hidden";2
     }
 }
-
-
-
-// slider.addEventListener('touchend', e => {
-//     alert('msg');
-//   touchendX = e.changedTouches[0].screenX
-//   handleGesture()
-// })
-
-
-// if (document.readyState === "loading"){
-//     // alert('hi');
-//     overallContainer.classList.add('body')
-// }

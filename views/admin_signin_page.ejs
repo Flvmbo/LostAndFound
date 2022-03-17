@@ -34,14 +34,11 @@
                             <input type="text" class="form-input password " name="Password" value="">
                         </div>
                         <div class="error-div">
-                            <p class="info"><%= info.error %> </p>
+                            <p class="info"></p>
                         </div>
-                        <script>
-                            const info = document.querySelector('.info');
-                            info.style.display = "<%= info.display  %>"
-                        </script>
+                        
                         <div class="btn-div">
-                            <input type="submit" value="Sign in" class="btn submit" onclick="check_item_page()">
+                            <input type="button" value="Sign in" class="btn submit" onclick="check_item_page()">
                         </div>
                         
                     </div>
@@ -63,6 +60,30 @@
             </div>
         </main>
     </div>
+    <script>
+        let form = document.querySelector('form');
+        let submitButton = document.querySelector('.submit');
+        const info = document.querySelector('.info');
+        info.style.display = "<%= info.display  %>"
+        info.textContent = "<%= info.error %>";
+        submitButton.addEventListener('click', (e)=>{
+            const username = form.Username.value;
+            const password = form.Password.value;
+            const info = document.querySelector('.info');
+            if(username == "" || password == ""){
+                info.style.display = "block";
+                info.textContent = "Enter values to empty fields";
+            }else{
+                    try{
+                        submitButton.type = "submit";
+                        info.style.display = "<%= info.display  %>"
+                        info.textContent = "<%= info.error %>";
+                    }catch(e){
+                    console.log(e.message)
+                    }
+            }
+        })
+    </script>
 </body>
 </html>
 

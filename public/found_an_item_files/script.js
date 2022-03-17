@@ -1,11 +1,50 @@
-      // let form = document.querySelector('form');
-      // form.addEventListener('submit', (e)=>{
-      //   e.preventDefault();
-      // })      
-      
-      var dropRegion = document.getElementById("dropRegion");
+        let form = document.querySelector('form');
+        let submitButton = document.querySelector('.submit_button');
+        submitButton.addEventListener('click', (e)=>{
+          const itemName = form.item_name.value;
+          const category = form.Category.value;
+          const description = form.Description.value;
+          const location = form.Location.value;
+          const info = document.querySelector('.info');
+          const firstImage = form.querySelector('#image1');
+          const secondImage = form.querySelector('#image2');
+
+          // const formData = new FormData();
+    
+          // // const fileField = document.querySelector('input[type="file"]');
+          
+          // // formData.append('username', 'abc123');
+          // formData.append('image', firstImage.files[0]);
+          // formData.append('image', secondImage.files[0]);
+          // formData.append('Category', category)
+          // formData.append('Description', description)
+          // formData.append('Location', location)
+          // formData.append('item_name', itemName)
+
+          if(itemName == "" || description == "" || location == "" || category=="N/A"){
+            info.style.display = "block";
+            info.textContent = "Enter values to empty fields";
+            }
+          else{
+              if(!firstImage.value || !secondImage.value){
+                info.style.display = "block";
+                info.textContent = "Both images are required";
+              }
+              else{
+                console.log(firstImage.files[0])
+                  try{
+                      submitButton.type = "submit";
+                  }catch(e){
+                    console.log(e.message)
+                  }
+              }
+            }
+        })   
+
+        var dropRegion = document.getElementById("dropRegion");
         var image1 = document.getElementById('image1')
         var clear = document.getElementById('clear');
+
         dropRegion.addEventListener("click", function(){
           image1.click();
         });
@@ -18,12 +57,14 @@
           const previewImage = document.querySelector('.preview-img1');
           const previewDefaultText = document.querySelector('.preview-default-text1');
           var upload_pic1 = document.querySelector('.upload_pic1');
-          const format = document.getElementById('format')                      
+          const format = document.getElementById('format')   
+          const maxSize = document.getElementById('maxSize');                   
           var files = input.files;
           if(!input.value){
             previewImage.setAttribute("src", "");
             previewDefaultText.style.display = "block";  
-            format.style.display = "block";           
+            format.style.display = "block";     
+            maxSize.style.display = "block"      
             upload_pic1.style.display = "block";
             previewImage.style.display = "none";
           }
@@ -34,8 +75,14 @@
 
 
         function handleFiles(files){
-            if(validateImage(files[0])){
-              previewImage(files[0]);
+          if(files.length==1){
+            if (validateImage(files[0])) {
+                previewImage(files[0]);
+              }
+        }
+        else{
+            image1.value = "";
+            checkValue(image1);
           }
         }
         
@@ -50,9 +97,10 @@
               return false;
             }
             // check the size of file, Im not sure if this is needed
-            var maxSizeInBytes = 10e6;//10MB
+            var maxSizeInBytes = 5e6;//10MB
             if(image.size > maxSizeInBytes){
-              alert("File too large");
+              const maxSize = document.getElementById('maxSize');                   
+              maxSize.innerHTML = `Cannot upload image with size greater than 5mb`      
               image1.value = "";
               checkValue(image1);
               return false;
@@ -67,9 +115,12 @@
             const previewDefaultText = document.querySelector('.preview-default-text1');
             var upload_pic1 = document.querySelector('.upload_pic1');
             const format = document.getElementById('format');
+            const maxSize = document.getElementById('maxSize');                   
             previewDefaultText.style.display = "none";
             format.innerHTML = `Acceptable Formats: PNG, JPEG, JPG`;
             format.style.display = "none";
+            maxSize.innerHTML = `Maximum upload size: 5mb`    
+            maxSize.style.display = "none";
             upload_pic1.style.display = "none";
             previewImage.style.display = "block";
             let reader = new FileReader();
@@ -132,12 +183,14 @@
           const previewImage2 = document.querySelector('.preview-img2');
           const previewDefaultText2 = document.querySelector('.preview-default-text2');
           var upload_pic2 = document.querySelector('.upload_pic2');
-          const format2 = document.getElementById('format2')                      
+          const format2 = document.getElementById('format2')    
+          const maxSize2 = document.getElementById('maxSize2');                                     
           var files = input.files;
           if(!input.value){
               previewImage2.setAttribute("src", "");
               previewDefaultText2.style.display = "block";
               format2.style.display = "block";           
+              maxSize2.style.display = "block"      
               upload_pic2.style.display = "block";
               previewImage2.style.display = "none";
           }
@@ -147,9 +200,14 @@
         }
 
         function handleFiles2(files){
-            if(validateImage2(files[0])){
-
-              previewImage2(files[0]);
+          if(files.length==1){
+            if (validateImage2(files[0])) {
+                previewImage2(files[0]);
+              }
+        }
+        else{
+            image2.value = "";
+            checkValue2(image2);
           }
         }
         
@@ -164,9 +222,10 @@
               return false;
             }
             // check the size of file, Im not sure if this is needed
-            var maxSizeInBytes = 10e6;//10MB
+            var maxSizeInBytes = 5e6;//10MB
             if(image.size > maxSizeInBytes){
-              alert("File too large");
+              const maxSize2 = document.getElementById('maxSize2');  
+              maxSize2.innerHTML = `Cannot upload image with size greater than 5mb`      
               image2.value = "";
               checkValue2(image2);
               return false;
@@ -182,8 +241,11 @@
             const previewDefaultText2 = document.querySelector('.preview-default-text2');
             var upload_pic2 = document.querySelector('.upload_pic2');
             const format2 = document.getElementById('format2');
+            const maxSize2 = document.getElementById('maxSize2');                   
             format2.innerHTML = `Acceptable Formats: PNG, JPEG, JPG`;
             format2.style.display = "none";
+            maxSize2.innerHTML = `Maximum upload size: 5mb`    
+            maxSize2.style.display = "none";
             previewDefaultText2.style.display = "none";
             upload_pic2.style.display = "none";
             previewImage2.style.display = "block";

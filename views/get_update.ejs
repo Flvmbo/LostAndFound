@@ -19,19 +19,23 @@
 
         <div class="container">
             <form action="/get-update" method="post">
-                <h1 id="heading">NOT SEEING YOUR LOST ITEM?</h1>
+                <h3 id="heading">NOT SEEING YOUR LOST ITEM?</h3>
                 <div class="input-container">
                     <div class="overall-form-div">
                         <div class="field">
-                            <input type="text" name="firstname" placeholder="FirstName" id="firstName">
-                            <input type="text" name="student_email" placeholder="Student Email" id="studentEmail">
-                            <input type="text" name="item_category" placeholder="Item Category" id ="itemCategory">
-                            <input type="text" name="item_name" placeholder="Name of item" id="itemName">
-                            <p class="info" id="error_p"> </p>
+                            <input type="text" name="firstname" placeholder="FirstName">
+                            <input type="email" name="student_email" placeholder="Student Email">
+                            <input type="text" name="item_category" placeholder="Item Category">
+                            <input type="text" name="item_name" placeholder="Name of item">
                         </div>
                         
                         <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
+                        <div class="error-div">
+                            <p class="info">
+                            </p>
+                          </div>
                     </div>
+                    
 
                     <div class="pic">
                         <img src="get_update_page/images/Crazy wallpaper.jpg" alt="" class="hidden-mobile">
@@ -40,7 +44,7 @@
 
                 <div class="btn-div">
                     <!-- <button data-modal-target class="btn">Submit</button>      -->
-                    <input class="btn" type="button" id="get-btn" value="Submit" onclick="checkIfEmpty()">   
+                    <input class="btn" type="button" id="get-btn" value="Submit">   
                 </div>
             </form>
 
@@ -69,9 +73,33 @@
             <script src="/get_update_page/script.js"></script>
         <% } %>
     </div>
+    <script>
+//{firstname,student_email, item_category,item_name, description}
+    let form = document.querySelector('form');
+    let submitButton = document.querySelector('#get-btn');
+    submitButton.addEventListener('click', (e)=>{
+    const firstname = form.firstname.value;
+    const student_email = form.student_email.value;
+    const category = form.item_category.value;
+    const description = form.description.value;
+    const itemName = form.item_name.value;
+    const info = document.querySelector('.info');
+    if(itemName == "" || description == "" || firstname == "" || category=="N/A" || student_email == ""){
+        info.style.display = "block";
+        info.textContent = "Enter values to empty fields";
+    }else{
+          try{
+              submitButton.type = "submit";
+          }catch(e){
+            console.log(e.message)
+          }
+      }
+
+    })
+    </script>
 </body>
 </html> 
-
+<!-- 
 
 <script>
     checkIfEmpty = () =>{
@@ -92,4 +120,4 @@
                 submitButton.type = "submit"
             }
     }
-</script>
+</script> -->

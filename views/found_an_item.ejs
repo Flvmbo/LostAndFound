@@ -60,14 +60,14 @@
                                 <div class="input_txtbx_div">
                                     <input type="text" class="input_txtbx" name="Description" id="description" placeholder="Brief description identifying marks">
                                 </div>
-                                <div class="input_txtbx_div">
+                                <div class="input_txtbx_div last-input-div">
                                     <input type="text" class="input_txtbx" name="Location" id="locationFound" placeholder="Location found">
                                 </div>
                                 <div class="error-div">
-                                    <p class="info" id="error_p"></p>
+                                    <p class="info">
+                                      <!-- <%= info.error %> -->
+                                    </p>
                                 </div>
-                               
-                                
                             </div>
                             <div class="main-center-center-right">
                                 <div class="upload_first_pic">
@@ -75,7 +75,8 @@
                                         <img src="" alt="" class="preview-img1">
                                         <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
                                         <p class="upload-text preview-default-text1">Click to upload first picture or drag and drop here </p>
-                                        <p  id="format" class="preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p> 
+                                        <p  id="format" class="upload-text preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p> 
+                                        <p id="maxSize" class="upload-text preview-default-text1">Maximum upload size: 5mb</p>
                                     </div>
                                     <input type="file" name="image" id="image1">
                                 </div>
@@ -84,7 +85,9 @@
                                         <img src="" alt="" class="preview-img2">
                                         <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic2" alt="" srcset="">
                                         <p class="upload-text preview-default-text2">Click to upload second picture or drag and drop here </p>
-                                        <p  id="format2" class="preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
+                                        <p  id="format2" class="upload-text preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
+                                        <p id="maxSize2" class="upload-text preview-default-text2">Maximum upload size: 5mb</p>
+
                                     </div>
                                     <input type="file" name="image" id="image2">
                                 </div>
@@ -92,7 +95,7 @@
                         </div>
                         <div class="main-footer">
                             <div class="main-footer-center">
-                                </label><input type="button" class="submit_button btn" value="Submit" onclick="checkIfEmpty()" id="submitButton">
+                                </label><input type="button" class="submit_button btn" value="Submit">
                             </div>
                         </div>
                     </div>
@@ -125,31 +128,6 @@
     <% if ( info.popup === "show") { %>
         <script src="/found_an_item_files/popupscript.js"></script>
     <% } %>
-
-    <script>
-        checkIfEmpty = () =>{
-            var errorP = document.getElementById("error_p")
-            var itemName = document.getElementById('itemName').value
-            var category = document.getElementById('category').value
-            var description = document.getElementById('description').value
-            var locationFound = document.getElementById('locationFound').value
-            var image1 = document.getElementById('image1').value
-            var image2 = document.getElementById('image2').value
-            var submitButton = document.getElementById('submitButton')
-            if(itemName == "" || category == "" || description == "" || locationFound == ""){
-                errorP.innerHTML = "Enter values to empty fields"
-                errorP.style.display = "block"
-                submitButton.blur()
-            }else if(image1 == "" || image2 == ""){
-                errorP.innerHTML = "Both images are required"
-                submitButton.blur()
-                errorP.style.display = "block"
-            }
-            else{
-                submitButton.type = "submit"
-            }
-        }
-    </script>
     
 </body>
 

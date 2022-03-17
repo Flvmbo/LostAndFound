@@ -42,7 +42,7 @@ a{
     position: relative;
     width:80%;
     margin: 0 auto;
-    /* margin-bottom: 2em; */
+    margin-bottom: .5em;
     text-align: left;
 }
 
@@ -107,9 +107,10 @@ a{
     outline: none;
     background-color: transparent;
     border: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     font-size: .9rem;
     padding: .25em;
+    /* margin-top:.5em; */
 }
 
 
@@ -155,7 +156,7 @@ a{
     align-items: center;
     height:150px;
     width: max-content;
-    font-size: .85rem;
+    font-size: .82rem;
     font-style: normal;
     font-weight: normal;
     color: rgb(105, 73, 73);
@@ -174,10 +175,11 @@ a{
     text-align: center;
     /* font-size: 1.5rem; */
     margin: .6em;
+    margin-bottom: 0;
 }
 .upload_pic{
     position: relative;
-    width: 40px;
+    width: 35px;
     /* height: 40px; */
 }
 .preview-img1, .preview-img2{
@@ -188,6 +190,10 @@ a{
   max-height: 100%;
   object-fit:cover;
   z-index: 2;
+}
+
+#format, #format2, #maxSize, #maxSize2{
+    color:rgb(175, 13, 13);
 }
 
 .main-footer{
@@ -204,11 +210,15 @@ a{
 
 .submit_button{
     font-size: 1rem;
+    /* padding:0; */
 }
 
 .designs{
     position: fixed;
     top: 40%;
+}
+.last-input-div{
+    margin-bottom:1.5em;
 }
 
 .circle1{
@@ -333,7 +343,8 @@ a{
     display: none;
     width:100%;
     background-color: rgb(168, 49, 49);
-    margin-bottom:3em;
+    margin:0;
+    margin-bottom:0em;
     padding: .5em;
     text-align: center;
     font-size: .85rem;
