@@ -63,16 +63,16 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 
 
 //Using all the routes 
-app.use(itemRoutes)
-app.use(retrieveItemRoutes)
-app.use(getUpdate)
-app.use(checkItemRoutes)
-app.use(adminLogin)
-app.use(unsubscribe)
-app.use(retrievalRecord)
-app.use(logout)
-app.use(landingPage)
-app.use(lostItem)
+app.use("/",itemRoutes)
+app.use("/",retrieveItemRoutes)
+app.use("/",getUpdate)
+app.use("/",checkItemRoutes)
+app.use("/",adminLogin)
+app.use("/",unsubscribe)
+app.use("/",retrievalRecord)
+app.use("/",logout)
+app.use("/",landingPage)
+app.use("/",lostItem)
 
 // Port number
 port = process.env.PORT || 3700
