@@ -277,7 +277,7 @@
                                 <input class="details-input" type="text" name="admin" value="<%= item.admin %>" placeholder="Admin" readonly id=""> -->
                                                 </div>
                                                 <div class="date-time-div retriever-details-item">
-                                                    <label for="date-time" class="item-label">Date and time:<span class="item-name details-input"> <%= item.date_found.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+                                                    <label for="date-time" class="item-label">Date Retrieved:<span class="item-name details-input"> <%= item.date_retrieved.toString().split(' ').slice(0, 4).join(' ')%></span></label>
 
                                                     <!-- <label class="item-label" for="date-time">Date and time: </label>
                                 <input class="" type="datetime" name="date-time" id="" value="<%= item.date_found.toString().split(' ').slice(0, 4).join(' ')%> %>"> -->
@@ -287,7 +287,7 @@
                                     </div>
 
                                     <div class="item-category-div item-details-div">
-                                        <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
+                                        <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.category%></span></label>
                                     </div>
 
                                 </div>
