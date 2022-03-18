@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
     <link rel="stylesheet" href="/lost_item_files/lost-items.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
+
 <body>
     <div class="mobile-filter-background"> </div>
-    <div class="mobile-filter-container">   
+    <div class="mobile-filter-container">
         <div class="mobile-filter-div" id="mobile-filter-div">
             <div class="mobile-filter-heading">
                 <h2 class="mobile-filters">Filters</h2>
@@ -22,12 +22,12 @@
                     <button class="mobile-exit-btn" id="mobile-exit-item-not-found">x</button>
                 </div>
             </div>
-            <ul class="category-filter filter-type">    
+            <ul class="category-filter filter-type">
                 <h2 class="filter-heading">Category</h2>
                 <li class="category-item filter-item" id="mobile-all"><label for="">All</label> </li>
                 <li class="category-item filter-item" id="mobile-clothing"><label for="">Clothing</label> </li>
                 <li class="category-item filter-item" id="mobile-books"><label for="">Books</label> </li>
-                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label>  </li>
+                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label> </li>
                 <li class="category-item filter-item" id="mobile-cards"><label for="">Cards</label> </li>
                 <li class="category-item filter-item" id="mobile-footwear"><label for="">Footwear</label> </li>
                 <li class="category-item filter-item" id="mobile-rain-shelter"><label for="">Rain Shelter</label></li>
@@ -37,15 +37,15 @@
             <ul class="location-filter filter-type mobile-filter-type" id="mobile-filter-type">
                 <h2 class="filter-heading">Choose location(s)</h2>
                 <ul class="choose-location">
-                   <li> <input type="radio" checked name="mobile-location" id="mobile-all-location"> <label for="mobile-all-location">All</label></li>
-                   <li> <input type="radio"  name="mobile-location" id="mobile-specific-location"> <label for="mobile-specific-location">Select location</label></li>
+                    <li> <input type="radio" checked name="mobile-location" id="mobile-all-location"> <label for="mobile-all-location">All</label></li>
+                    <li> <input type="radio" name="mobile-location" id="mobile-specific-location"> <label for="mobile-specific-location">Select location</label></li>
                 </ul>
                 <div class="select-location-true">
                     <li class="location-item filter-item"><input type="checkbox" checked class="check" name="chapel" id="mobile-chapel"> <label for="mobile-chapel">CHAPEL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="mobile-clds"> <label for="mobile-clds">CLDS</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds">  <label for="mobile-ceds">CEDS</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst">  <label for="mobile-cst">CST</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt">  <label for="mobile-lt">LT</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds"> <label for="mobile-ceds">CEDS</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst"> <label for="mobile-cst">CST</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt"> <label for="mobile-lt">LT</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"> <label for="mobile-daniel-hall">DANIEL HALL </label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"> <label for="mobile-dorcas-hall">DORCAS HALL </label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"> <label for="mobile-lydia-hall">LYDIA HALL </label></li>
@@ -56,20 +56,20 @@
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="mobile-paul-hall"><label for="mobile-paul-hall">PAUL HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="mobile-esther-hall"> <label for="mobile-esther-hall">ESTHER HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="mobile-peter-hall"><label for="mobile-peter-hall">PETER HALL </label></li>
-                 </div>
-                 <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
-                 <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
+                </div>
+                <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
+                <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
             </ul>
 
             <div class="date-filter filter-type">
                 <h2 class="filter-heading">Select Date</h2>
                 <ul class="choose-date-div">
                     <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-most-recent">Most recent</label></li>
-                    <li><input type="radio"  name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
+                    <li><input type="radio" name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
                 </ul>
                 <div class="select-date-true">
                     <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-from"></div>
-                    <div class="time-period-div To-div">  <label for="mobile-date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-to"></div>
+                    <div class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-to"></div>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
     <!-- </div> -->
     <div class="overall-container" id="top">
         <div class="mini-features">
-            <a class="to-top" href="#top"> 
+            <a class="to-top" href="#top">
                 <button class="back-to-top-btn">< </button>
             </a>
             <div class="item-not-found-div filter-type" id="item-not-found-div">
@@ -97,154 +97,153 @@
                     <div class="get-update-div">
                         <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
                     </div>
-                </div> 
+                </div>
             </div>
-         </div>
-       
-        <%- include('./partials/nav_bar.ejs') %>
-        <%- include('./partials/mobile_nav_bar.ejs') %>
-        <script>
+        </div>
 
-            if("<%=  items.activeAdmin %>" != ""){
-                // document.getElementById("loginBtnDiv").innerHTML = ` <%=  items.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-                   document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                   document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= items.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-               }
-        </script>
-        <main>
-            <h1 class="big-text" >Check for your <span class="lost-emphasis">los</span>t items</h1>
-            <div class="filter-menu">
-                <button class="show-filter"><img class="filter-icon" src="/lost_item_files/lost-items-images/filter-sort.png" alt="filter-icon"><label for="filter-sort" class="filter-sort-label" >Filter and Sort</label></button>
-            </div>
-            <div class="sort-num-div">
-                <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
-                    <select name="sort" id="sort">
+        <%- include('./partials/nav_bar.ejs') %>
+            <%- include('./partials/mobile_nav_bar.ejs') %>
+                <script>
+                    if ("<%=  items.activeAdmin %>" != "") {
+                        // document.getElementById("loginBtnDiv").innerHTML = ` <%=  items.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                        document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                        document.getElementById("loginBtnDiv").innerHTML = `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= items.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
+                    }
+                </script>
+                <main>
+                    <h1 class="big-text">Check for your <span class="lost-emphasis">los</span>t items</h1>
+                    <div class="filter-menu">
+                        <button class="show-filter"><img class="filter-icon" src="/lost_item_files/lost-items-images/filter-sort.png" alt="filter-icon"><label for="filter-sort" class="filter-sort-label" >Filter and Sort</label></button>
+                    </div>
+                    <div class="sort-num-div">
+                        <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
+                            <select name="sort" id="sort">
                         <option value="descending">Descending</option>
                         <option value="ascending">Ascending</option>
                     </select></div>
-                <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
-        <!--  By default, in any form of sort, it shows by most recently uploaded -->
-            </div>
-            <div class="filter-lost-items-container">
-                <div class="filter-container"  id="filter-container">
-                    <h2 class="filters">Filters</h2>
-                    <ul class="category-filter filter-type">    
-                        <h2 class="filter-heading">Category</h2>
-                        <li class="category-item filter-item" id="all"><label for="">All</label></li>
-                        <li class="category-item filter-item" id="clothing"><label for="">Clothing</label></li>
-                        <li class="category-item filter-item" id="books"><label for="">Books</label></li>
-                        <li class="category-item filter-item" id="fashion-accessories"><label for="">Fashion Accessories</label></li>
-                        <li class="category-item filter-item" id="cards"><label for="">Cards</label></li>
-                        <li class="category-item filter-item" id="footwear"><label for="">Footwear</label></li>
-                        <li class="category-item filter-item" id="rain-shelter"><label for="">Rain Shelter</label></li>
-                        <li class="category-item filter-item" id="other"><label for="">Other</label></li>
-                    </ul>
-                
-
-                    <ul class="location-filter filter-type">
-                        <h2 class="filter-heading">Choose location(s)</h2>
-                        <ul class="choose-location">
-                           <li> <input type="radio" checked name="locations" id="all-location"> <label for="all-location">All</label></li>
-                           <li> <input type="radio"  name="locations" id="specific-location"> <label for="specific-location">Select location</label></li>
-                        </ul>
-                        <ul class="select-location-true">
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="chapel" id="chapel"> <label for="chapel">CHAPEL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="clds"><label for="clds">CLDS</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="ceds"> <label for="ceds">CEDS</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="cst"> <label for="cst">CST</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="lt"> <label for="lt">LT</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="daniel-hall"><label for="daniel-hall">DANIEL HALL </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="dorcas-hall"><label for="dorcas-hall">DORCAS HALL </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="lydia-hall"><label for="lydia-hall">LYDIA HALL </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="joseph-hall"><label for="joseph-hall">JOSEPH HALL </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="deborah-hall"><label for="deborah-hall">DEBORAH HALL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="john-hall"><label for="john-hall">JOHN HALL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mary-hall"><label for="mary-hall">MARY HALL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="paul-hall"><label for="paul-hall">PAUL HALL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="esther-hall"> <label for="esther-hall">ESTHER HALL</label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="peter-hall"><label for="peter-hall">PETER HALL </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="mech" id="mech"><label for="mech">MECH BUILDING </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="civil" id="civil"><label for="civil">CIVIL BUILDING </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="pet" id="pet"><label for="pet">PET BUILDING </label></li>
-                            <li class="location-item filter-item"><input type="checkbox" class="check" name="chem" id="chem"><label for="chem">CHEM BUILDING </label></li>
-                         </ul>
-                         <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
-                         <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
-                    </ul>
-
-                    <div class="date-filter filter-type">
-                        <h2 class="filter-heading">Select Date</h2>
-                        <ul class="choose-date-div">
-                            <li><input type="radio" checked name="date" id="most-recent"> <label for="most-recent">Most recent</label></li>
-                            <li><input type="radio"  name="date" id="search-date"> <label for="search-date">Look up from?</label></li>
-                        </ul>
-                        <div class="select-date-true">
-                            <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
-                            <div class="time-period-div To-div">  <label for="date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
-                        </div>
+                        <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
+                        <!--  By default, in any form of sort, it shows by most recently uploaded -->
                     </div>
+                    <div class="filter-lost-items-container">
+                        <div class="filter-container" id="filter-container">
+                            <h2 class="filters">Filters</h2>
+                            <ul class="category-filter filter-type">
+                                <h2 class="filter-heading">Category</h2>
+                                <li class="category-item filter-item" id="all"><label for="">All</label></li>
+                                <li class="category-item filter-item" id="clothing"><label for="">Clothing</label></li>
+                                <li class="category-item filter-item" id="books"><label for="">Books</label></li>
+                                <li class="category-item filter-item" id="fashion-accessories"><label for="">Fashion Accessories</label></li>
+                                <li class="category-item filter-item" id="cards"><label for="">Cards</label></li>
+                                <li class="category-item filter-item" id="footwear"><label for="">Footwear</label></li>
+                                <li class="category-item filter-item" id="rain-shelter"><label for="">Rain Shelter</label></li>
+                                <li class="category-item filter-item" id="other"><label for="">Other</label></li>
+                            </ul>
 
-                    <div class="item-not-found-div filter-type">
-                        <h2 class="filter-heading">Can't find your lost item?</h2>
-                        <div class="get-update-div">
-                            <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
-                        </div>
-                    </div>
 
-                </div>
+                            <ul class="location-filter filter-type">
+                                <h2 class="filter-heading">Choose location(s)</h2>
+                                <ul class="choose-location">
+                                    <li> <input type="radio" checked name="locations" id="all-location"> <label for="all-location">All</label></li>
+                                    <li> <input type="radio" name="locations" id="specific-location"> <label for="specific-location">Select location</label></li>
+                                </ul>
+                                <ul class="select-location-true">
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chapel" id="chapel"> <label for="chapel">CHAPEL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="clds"><label for="clds">CLDS</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="ceds"> <label for="ceds">CEDS</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="cst"> <label for="cst">CST</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="lt"> <label for="lt">LT</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="daniel-hall"><label for="daniel-hall">DANIEL HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="dorcas-hall"><label for="dorcas-hall">DORCAS HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="lydia-hall"><label for="lydia-hall">LYDIA HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="joseph-hall"><label for="joseph-hall">JOSEPH HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="deborah-hall"><label for="deborah-hall">DEBORAH HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="john-hall"><label for="john-hall">JOHN HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mary-hall"><label for="mary-hall">MARY HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="paul-hall"><label for="paul-hall">PAUL HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="esther-hall"> <label for="esther-hall">ESTHER HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="peter-hall"><label for="peter-hall">PETER HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mech" id="mech"><label for="mech">MECH BUILDING </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="civil" id="civil"><label for="civil">CIVIL BUILDING </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="pet" id="pet"><label for="pet">PET BUILDING </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chem" id="chem"><label for="chem">CHEM BUILDING </label></li>
+                                </ul>
+                                <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
+                                <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
+                            </ul>
 
-                <div class="lost-items-container">
-                
-                    <% items.item.forEach((item,index) => { %>
-                       
-                    <div class="lost-item-container" id="<%-index%>">
-                        <div class="item-time-uploaded-div item-details-div">
-                            <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
-                        </div>    
-                      <div class="lost-item-div">
-                            <div class="image-slider-container" id=`<%=item.id%>`>
-                                <div class="slider-container prev-image-container">
-                                    <input class="prev-image slide-image" type="button" value="<">
-                                </div>
-                                <div class="image-container">
-                                    <img class="item-image left-img" src="/<%=item.firstImage%>" alt="<%= item.Description %>">
-                                    <img class="item-image right-img" src="/<%=item.secondImage%>" alt="<%= item.Description %>">
-                                    <input class="slide-button prev" type="button">
-                                    <input class="slide-button next" type="button">
-
-                                </div>
-                                <div class="slider-container next-image-container">
-                                    <input class="next-image slide-image" type="button" value=">">
+                            <div class="date-filter filter-type">
+                                <h2 class="filter-heading">Select Date</h2>
+                                <ul class="choose-date-div">
+                                    <li><input type="radio" checked name="date" id="most-recent"> <label for="most-recent">Most recent</label></li>
+                                    <li><input type="radio" name="date" id="search-date"> <label for="search-date">Look up from?</label></li>
+                                </ul>
+                                <div class="select-date-true">
+                                    <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
+                                    <div class="time-period-div To-div"> <label for="date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
                                 </div>
                             </div>
-                            <div class="lost-item-content-div">
-                                <div class="item-name-div item-details-div">
-                                    <label for="item-name-label" class="item-label">Item name:  <span class="item-name details-input"><%=item.item_name%></span></label>
 
-                                    <!-- <label for="item-name-label" class="item-label">Item name: </label> -->
-                                     <!-- <label name="item-name" class="item-name details-input"><%=item.item_name%></label> -->
+                            <div class="item-not-found-div filter-type">
+                                <h2 class="filter-heading">Can't find your lost item?</h2>
+                                <div class="get-update-div">
+                                    <a href="/get-update"><button class="btn updates-btn"> Get Updates!</button></a>
                                 </div>
-                                <div class="item-location-found-div item-details-div">
-                                    <label for="item-location-found-label" class="item-label">Location Found: <span class="location-found details-input"><%=item.Location%></span></label>
-                                    <!-- <label for="item-location-found-label" class="item-label">Location Found:</label> <label name="location-found" class="location-found details-input"><%=item.Location%></label> -->
-                                </div>
-                                <div class="item-current-location-div item-details-div">
-                                    <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
+                            </div>
 
-                                    <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=item.Location%></span></label>
+                        </div>
 
-                                    <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
-                                </div>
-                                <div class="item-date-found-div item-details-div">
-                                    <label for="item-date-found-label" class="item-label">Date Found: <span class="current-location details-input"><%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+                        <div class="lost-items-container">
 
-                                    <!-- <label for="item-date-found-label" class="item-label">Date Found:</label> <label name="date-found" class="date-found details-input"></label> -->
-                                </div>
-                                <div class="retrieve-item-div">                           
-                                    <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton" ><button class="retrieve-item-btn btn">Retrieve</button></a>
-                                </div>
+                            <% items.item.forEach((item,index) => { %>
 
-                                <!-- <script>
+                                <div class="lost-item-container" id="<%-index%>">
+                                    <div class="item-time-uploaded-div item-details-div">
+                                        <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                                    </div>
+                                    <div class="lost-item-div">
+                                        <div class="image-slider-container" id=`<%=item.id%>`>
+                                            <div class="slider-container prev-image-container">
+                                                <input class="prev-image slide-image" type="button" value="<">
+                                            </div>
+                                            <div class="image-container">
+                                                <img class="item-image left-img" src="/<%=item.firstImage%>" alt="<%= item.Description %>">
+                                                <img class="item-image right-img" src="/<%=item.secondImage%>" alt="<%= item.Description %>">
+                                                <input class="slide-button prev" type="button">
+                                                <input class="slide-button next" type="button">
+
+                                            </div>
+                                            <div class="slider-container next-image-container">
+                                                <input class="next-image slide-image" type="button" value=">">
+                                            </div>
+                                        </div>
+                                        <div class="lost-item-content-div">
+                                            <div class="item-name-div item-details-div">
+                                                <label for="item-name-label" class="item-label">Item name:  <span class="item-name details-input"><%=item.item_name%></span></label>
+
+                                                <!-- <label for="item-name-label" class="item-label">Item name: </label> -->
+                                                <!-- <label name="item-name" class="item-name details-input"><%=item.item_name%></label> -->
+                                            </div>
+                                            <div class="item-location-found-div item-details-div">
+                                                <label for="item-location-found-label" class="item-label">Location Found: <span class="location-found details-input"><%=item.Location%></span></label>
+                                                <!-- <label for="item-location-found-label" class="item-label">Location Found:</label> <label name="location-found" class="location-found details-input"><%=item.Location%></label> -->
+                                            </div>
+                                            <div class="item-current-location-div item-details-div">
+                                                <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
+
+                                                <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=item.Location%></span></label>
+
+                                                <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
+                                            </div>
+                                            <div class="item-date-found-div item-details-div">
+                                                <label for="item-date-found-label" class="item-label">Date Found: <span class="current-location details-input"><%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+
+                                                <!-- <label for="item-date-found-label" class="item-label">Date Found:</label> <label name="date-found" class="date-found details-input"></label> -->
+                                            </div>
+                                            <div class="retrieve-item-div">
+                                                <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton"><button class="retrieve-item-btn btn">Retrieve</button></a>
+                                            </div>
+
+                                            <!-- <script>
                                     var retrieveButton =document.getElementById("retrieveButton")
                                     retrieveButton.addEventListener("click",()=>{
                                         if("<%=  items.activeAdmin %>" == ""){
@@ -253,25 +252,25 @@
                                     })
                                 </script> -->
 
-                            </div>
-                        </div> 
-                        <div class="item-category-div item-details-div">
-                            <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
+                                        </div>
+                                    </div>
+                                    <div class="item-category-div item-details-div">
+                                        <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
 
-                            <!-- <label for="item-category-label" class="item-label">Category:</label>
+                                        <!-- <label for="item-category-label" class="item-label">Category:</label>
                              <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
-                        </div>   
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                        </div>
+
                     </div>
 
-                    <% }) %>
-                   
-                </div>
-                
-            </div>
-
-        </main>
+                </main>
     </div>
     <script src="/lost_item_files/script.js"></script>
 </body>
-</html>
 
+</html>
