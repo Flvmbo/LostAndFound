@@ -114,16 +114,16 @@
                 </script>
 
                 <main>
-                    <h1 class="big-text">Check for your <span class="lost-emphasis">los</span>t items</h1>
+                    <h1 class="big-text">Retrieved <span class="lost-emphasis">los</span>t items</h1>
                     <div class="filter-menu">
                         <button class="show-filter"><img class="filter-icon" src="/lost_item_files/lost-items-images/filter-sort.png" alt="filter-icon"><label for="filter-sort" class="filter-sort-label" >Filter and Sort</label></button>
                     </div>
                     <div class="sort-num-div">
                         <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
                             <select name="sort" id="sort">
-                        <option value="descending">Descending</option>
-                        <option value="ascending">Ascending</option>
-                    </select></div>
+                                <option value="descending">Descending</option>
+                                <option value="ascending">Ascending</option>
+                            </select></div>
                         <div class="item-number-div"><label for="item-number" class="item-number"><%=info.num%> items found </label></div>
                         <!--  By default, in any form of sort, it shows by most recently uploaded -->
                     </div>
@@ -199,6 +199,7 @@
                         <!-- begin -->
 
                         <div class="lost-items-container">
+
                             <% info.items.forEach(item=> { %>
                                 <div class="lost-item-container">
                                     <div class="item-time-uploaded-div item-details-div">
@@ -238,9 +239,9 @@
                                                     <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
 
                                                     <label for="item-current-location-label" class="item-label">Current
-                                                    Location: <span class="current-location details-input">
-                                                        <%=item.Location_found%>
-                                                    </span></label>
+                                                        Location: <span class="current-location details-input">
+                                                            <%=item.Location_found%>
+                                                        </span></label>
 
                                                     <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
                                                 </div>
@@ -267,85 +268,90 @@
                                                     <label for="fullname" class="item-label">Retriever fullname:<span class="item-name details-input"> <%= item.firstname %> <%= item.lastname %> </span></label>
 
                                                     <!-- <label class="item-label" for="fullname">Retriever fullname: </label>
-                                                    <input class="details-input" type="text" name="fullname" placeholder="Retriever full name" readonly value="<%= item.firstname %> <%= item.lastname %>" id=""> -->
+                                <input class="details-input" type="text" name="fullname" placeholder="Retriever full name" readonly value="<%= item.firstname %> <%= item.lastname %>" id=""> -->
                                                 </div>
                                                 <div class="admin-div retriever-details-item">
                                                     <label for="admin" class="item-label">Admin:<span class="item-name details-input"> <%= item.admin %></span></label>
 
                                                     <!-- <label class="item-label" for="admin">Admin:</label>
-                                                    <input class="details-input" type="text" name="admin" value="<%= item.admin %>" placeholder="Admin" readonly id=""> -->
+                                <input class="details-input" type="text" name="admin" value="<%= item.admin %>" placeholder="Admin" readonly id=""> -->
                                                 </div>
                                                 <div class="date-time-div retriever-details-item">
                                                     <label for="date-time" class="item-label">Date and time:<span class="item-name details-input"> <%= item.date_found.toString().split(' ').slice(0, 4).join(' ')%></span></label>
 
                                                     <!-- <label class="item-label" for="date-time">Date and time: </label>
-                                                    <input class="" type="datetime" name="date-time" id="" value="<%= item.date_found.toString().split(' ').slice(0, 4).join(' ')%> %>"> -->
+                                <input class="" type="datetime" name="date-time" id="" value="<%= item.date_found.toString().split(' ').slice(0, 4).join(' ')%> %>"> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="lost-item-content-div">
-                                            <div class="item-name-div item-details-div">
-                                                <label for="item-name-label" class="item-label">Item name:</label> <input type="text" readonly placeholder="detail" name="item-name" class="item-name details-input" value="<%= item.item_name %> ">
-                                            </div>
-                                            <div class="item-location-found-div item-details-div">
-                                                <label for="item-location-found-label" class="item-label">Location Found:</label> <input type="text" readonly placeholder="Sports Center"  name="location-found" value="<%= item.Location_found%>" class="location-found details-input">
-                                            </div>
-                                            <div class="item-current-location-div item-details-div">
-                                                <label for="item-current-location-label" class="item-label">Current Location:</label> <input type="text" readonly placeholder="deborah hall"  name="current-location" class="current-location details-input">
-                                            </div>
-                                            <div class="item-date-found-div item-details-div">
-                                                <label for="item-date-found-label" class="item-label">Date Found:</label> <input type="text" readonly placeholder="Date found" value="<%= item.date_found %>"  name="date-found" class="date-found details-input">
-                                            </div>
-                                            <a class="retrieve-item"href="/item-retrieval"><button class="retrieve-item-btn btn">Retrieve</button></a>
 
-                                        </div> -->
                                     <div class="item-category-div item-details-div">
                                         <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
                                     </div>
 
                                 </div>
-
-
-
+                                <% });  %>
+                                    <script>
+                                        let lostitemDiv = document.querySelectorAll('.lost-item-div');
+                                        countid = 1;
+                                        lostitemDiv.forEach(lostitem => {
+                                            lostitem.id = countid
+                                            countid += 1;
+                                        })
+                                    </script>
                         </div>
-                        <% });  %>
-                            <!-- end -->
                     </div>
+                    <!-- end -->
 
-    </div>
 
-    </main>
+                </main>
     </div>
     <!-- <script src="/item_retrieval_record_page/script.js"></script> -->
     <script src="/lost_item_files/script.js"></script>
     <script>
-        const exitDetails = document.querySelector(' .exit-details');
-        const
-            showDetails = document.querySelector('.retrieve-item-btn');
-        const
-            retrieveDetailsBlock = document.querySelector('.retriever-details-div');
+        const exitDetails = document.querySelectorAll('.exit-details');
+        const showDetails = document.querySelectorAll('.retrieve-item-btn');
+        const retrieveDetailsBlock = document.querySelector('.retriever-details-div');
         const bodyy = document.querySelector('body');
-        showDetails.addEventListener('click', () => {
-            retrieveDetailsBlock.style =
-                "transform:scale(1);display:flex;"
-            showDetails.style.display = "none";
-            exitDetails.style.display = "block"
+        showDetails.forEach(detail => {
+            detail.addEventListener('click', () => {
+                let lostItemDiv = document.getElementById(detail.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+                let retrieverButton = lostItemDiv.children[0].children[1].children[4].children[0].children[0];
+                let retrievalRecordsDiv = lostItemDiv.children[1];
+                let exitButton = retrievalRecordsDiv.children[1].children[0];
+                retrievalRecordsDiv.style = "transform:scale(1);display:flex;";
+                retrieverButton.style.display = "none";
+                exitButton.style.display = "block"
+            })
         })
 
-        exitDetails.addEventListener('click', () => {
-            retrieveDetailsBlock.style = "transform:scale(0)";
-            showDetails.style.display = "block";
-            exitDetails.style.display = "none";
+        exitDetails.forEach(exit => {
+            exit.addEventListener('click', () => {
+                let lostItemDiv = document.getElementById(exit.parentElement.parentElement.parentElement.id);
+                let retrieverButton = lostItemDiv.children[0].children[1].children[4].children[0].children[0];
+                let retrievalRecordsDiv = lostItemDiv.children[1];
+                let exitButton = retrievalRecordsDiv.children[1].children[0];
+                retrievalRecordsDiv.style = "transform:scale(0)";
+                retrieverButton.style.display = "block";
+                exitButton.style.display = "none";
 
 
+            })
         })
-
         window.addEventListener("resize", () => {
-            retrieveDetailsBlock.style = "transform:scale(1)";
-            exitDetails.style.display = "block"
+            let lostItemDiv = document.querySelectorAll('.lost-item-div');
+            lostItemDiv.forEach(lostItem => {
+                let retrievalRecordsDiv = lostItem.children[1];
+                let exitButton = retrievalRecordsDiv.children[1].children[0];
+                retrievalRecordsDiv.style = "transform:scale(1)";
+                exitButton.style.display = "block";
+            })
+
         })
     </script>
 </body>
+
+</html>
 
 </html>
