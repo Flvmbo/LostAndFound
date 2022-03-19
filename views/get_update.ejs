@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,98 +8,100 @@
     <title>Not Seeing Your Lost Item</title>
     <link rel="stylesheet" href="/get_update_page/notSeeing.css">
 </head>
+
 <body>
     <div class="overall-container">
         <%- include('./partials/nav_bar.ejs') %>
-        <%- include('./partials/mobile_nav_bar.ejs') %>
+            <%- include('./partials/mobile_nav_bar.ejs') %>
 
-    <div class="back">
-            <label class="back-arrow back-to-home" for="back">&#60;</label><a href="/lost-items" id="back" class="back-to-home">Back to home</a>
-        </div>
+                <div class="back">
+                    <label class="back-arrow back-to-home" onclick="window.history.back()" for="back">&#60;</label><a id="back" onclick="window.history.back()" class="back-to-home">Back</a>
+                </div>
 
 
-        <div class="container">
-            <form action="/get-update" method="post">
-                <h3 id="heading">NOT SEEING YOUR LOST ITEM?</h3>
-                <div class="input-container">
-                    <div class="overall-form-div">
-                        <div class="field">
-                            <input type="text" name="firstname" placeholder="FirstName">
-                            <input type="email" name="student_email" placeholder="Student Email">
-                            <input type="text" name="item_category" placeholder="Item Category">
-                            <input type="text" name="item_name" placeholder="Name of item">
+                <div class="container">
+                    <form action="/get-update" method="post">
+                        <h3 id="heading">NOT SEEING YOUR LOST ITEM?</h3>
+                        <div class="input-container">
+                            <div class="overall-form-div">
+                                <div class="field">
+                                    <input type="text" name="firstname" placeholder="FirstName">
+                                    <input type="email" name="student_email" placeholder="Student Email">
+                                    <input type="text" name="item_category" placeholder="Item Category">
+                                    <input type="text" name="item_name" placeholder="Name of item">
+                                </div>
+
+                                <textarea id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
+                                <div class="error-div">
+                                    <p class="info">
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="pic">
+                                <img src="get_update_page/images/Crazy wallpaper.jpg" alt="" class="hidden-mobile">
+                            </div>
                         </div>
-                        
-                        <textarea  id="" cols="30" rows="10" placeholder="Descriptions" name="description" class="descriptions"></textarea>
-                        <div class="error-div">
-                            <p class="info">
-                            </p>
-                          </div>
-                    </div>
-                    
 
-                    <div class="pic">
-                        <img src="get_update_page/images/Crazy wallpaper.jpg" alt="" class="hidden-mobile">
+                        <div class="btn-div">
+                            <!-- <button data-modal-target class="btn">Submit</button>      -->
+                            <input class="btn" type="button" id="get-btn" value="Submit">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal" id="modal">
+                    <div class="modal-header">
+                        <button data-close-button class="close-button">&times;</button>
+                    </div>
+                    <!-- <div class="modal-body"></div> -->
+
+                    <div class="modal-body">
+                        <p>Thanks for your response</p>
+                        <p> You'd be notified of any updates in your category!</p>
+                        <div class="btn-div">
+                            <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
+                        </div>
                     </div>
                 </div>
+                <div id="overlay"></div>
 
-                <div class="btn-div">
-                    <!-- <button data-modal-target class="btn">Submit</button>      -->
-                    <input class="btn" type="button" id="get-btn" value="Submit">   
-                </div>
-            </form>
-
-        </div>
-        <div class="modal" id="modal">
-            <div class="modal-header">
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <!-- <div class="modal-body"></div> -->
-        
-            <div class="modal-body">
-            <p>Thanks for your response</p>
-            <p> You'd be notified of any updates in your category!</p>
-            <div class="btn-div">
-                    <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
-            </div>
-            </div>
-        </div>
-        <div id="overlay"></div>
-
-        <div class="circle1"></div>
-        <div class="circle2"></div>
-        <div class="circle3"></div>
-        <div class="circle4"></div>
-        <% if ( info.popup === "show") { %>
-            <script src="/get_update_page/script.js"></script>
-        <% } %>
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+                <% if ( info.popup === "show") { %>
+                    <script src="/get_update_page/script.js"></script>
+                    <% } %>
     </div>
     <script>
-//{firstname,student_email, item_category,item_name, description}
-    let form = document.querySelector('form');
-    let submitButton = document.querySelector('#get-btn');
-    submitButton.addEventListener('click', (e)=>{
-    const firstname = form.firstname.value;
-    const student_email = form.student_email.value;
-    const category = form.item_category.value;
-    const description = form.description.value;
-    const itemName = form.item_name.value;
-    const info = document.querySelector('.info');
-    if(itemName == "" || description == "" || firstname == "" || category=="N/A" || student_email == ""){
-        info.style.display = "block";
-        info.textContent = "Enter values to empty fields";
-    }else{
-          try{
-              submitButton.type = "submit";
-          }catch(e){
-            console.log(e.message)
-          }
-      }
+        //{firstname,student_email, item_category,item_name, description}
+        let form = document.querySelector('form');
+        let submitButton = document.querySelector('#get-btn');
+        submitButton.addEventListener('click', (e) => {
+            const firstname = form.firstname.value;
+            const student_email = form.student_email.value;
+            const category = form.item_category.value;
+            const description = form.description.value;
+            const itemName = form.item_name.value;
+            const info = document.querySelector('.info');
+            if (itemName == "" || description == "" || firstname == "" || category == "N/A" || student_email == "") {
+                info.style.display = "block";
+                info.textContent = "Enter values to empty fields";
+            } else {
+                try {
+                    submitButton.type = "submit";
+                } catch (e) {
+                    console.log(e.message)
+                }
+            }
 
-    })
+        })
     </script>
 </body>
-</html> 
+
+</html>
 <!-- 
 
 <script>

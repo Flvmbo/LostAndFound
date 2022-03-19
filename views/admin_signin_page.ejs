@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <title>Admin login</title>
     <link rel="stylesheet" href="/admin_login_files/sign-in.css">
 </head>
+
 <body>
     <div class="overall-container">
         <main>
-           
+
             <form action="/sign-in" method="POST" id="form">
                 <div class="heading">
                     <a href="/home" class="logo-home">
@@ -36,27 +38,27 @@
                         <div class="error-div">
                             <p class="info"></p>
                         </div>
-                        
+
                         <div class="btn-div">
                             <input type="button" value="Sign in" class="btn submit" onclick="check_item_page()">
                         </div>
-                        
+
                     </div>
                     <div class="circle-holder">
                         <div class="circle1 circle">
-                  
+
                         </div>
                         <div class="circle2 circle">
-                        
+
                         </div>
                     </div>
                     <!-- </form> -->
                 </div>
-                
+
             </form>
             <div class="back">
                 <label class="back-home" for="back">&#8249;</label>
-                <label class="back-home" for=""><a href="/home">Back to Home</a></label>
+                <label class="back-home" for=""><a onclick="window.history.back()">Back</a></label>
             </div>
         </main>
     </div>
@@ -66,31 +68,32 @@
         const info = document.querySelector('.info');
         info.style.display = "<%= info.display  %>"
         info.textContent = "<%= info.error %>";
-        submitButton.addEventListener('click', (e)=>{
+        submitButton.addEventListener('click', (e) => {
             const username = form.Username.value;
             const password = form.Password.value;
             const info = document.querySelector('.info');
-            if(username == "" || password == ""){
+            if (username == "" || password == "") {
                 info.style.display = "block";
                 info.textContent = "Enter values to empty fields";
-            }else{
-                    try{
-                        submitButton.type = "submit";
-                        info.style.display = "<%= info.display  %>"
-                        info.textContent = "<%= info.error %>";
-                    }catch(e){
+            } else {
+                try {
+                    submitButton.type = "submit";
+                    info.style.display = "<%= info.display  %>"
+                    info.textContent = "<%= info.error %>";
+                } catch (e) {
                     console.log(e.message)
-                    }
+                }
             }
         })
     </script>
 </body>
+
 </html>
 
 <script>
-var check_item_page = () =>{
-    if("<%= info.id%>" != "" || "<%= info.id%>" != null){
-        document.getElementById("form").action = "/sign-in/<%= info.id%>"
+    var check_item_page = () => {
+        if ("<%= info.id%>" != "" || "<%= info.id%>" != null) {
+            document.getElementById("form").action = "/sign-in/<%= info.id%>"
+        }
     }
-}
 </script>

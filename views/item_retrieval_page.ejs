@@ -1,115 +1,114 @@
 <script>
-  if ("<%= info.activeAdmin %>" == "") {
-      window.location.replace("/sign-in-page/<%=info.id%>")
-  }
+    if ("<%= info.activeAdmin %>" == "") {
+        window.location.replace("/sign-in-page/<%=info.id%>")
+    }
 </script>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retrieve Item</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
-  </style>
-  <link rel="stylesheet" href="/item_retrieval_files/retrieval_page.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Item</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+    </style>
+    <link rel="stylesheet" href="/item_retrieval_files/retrieval_page.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
 </head>
 
 <body>
-  <div class="full-page">
-    <div class="full_page">
-      <%- include('./partials/nav_bar.ejs') %>
-      <%- include('./partials/mobile_nav_bar.ejs') %>
-        <script>
-          if ("<%=  info.activeAdmin %>" != "") {
-            // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-            document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-          }
-        </script>
-        <a href="#" class="previous">&#8249;</a>
-        <a href="/home" class="back">Back to Home</a>
-        <div class="container">
-          <form action="/item-retrieval/<%= info.id %>" class="overall-container" method="post"
-            enctype="multipart/form-data">
-            <h3>ITEM RETRIEVAL PAGE</h3>
-            <div class="form">
-              <div class="form-div">
-                <div class="input_txtbx_div">
-                  <input type="text" name="firstname" value="" placeholder="Firstname"><br>
-                </div>
-                <div class="input_txtbx_div">
-                  <input type="text" name="lastname" value="" placeholder="Lastname"><br>
-                </div>
-                <div class="input_txtbx_div">
-                  <input type="text" name="admin" value="<%= info.activeAdmin %> " readonly placeholder="Admin"><br>
-                </div>
-                <div class="input_txtbx_div">
-                  <input type="text" name="location" value="" placeholder="Location"><br>
-                </div>
-                <div class="error-div">
-                  <p class="info">
-                    <!-- <%= info.error %> -->
-                  </p>
-                </div>
-                <!-- <script>
+    <div class="full-page">
+        <div class="full_page">
+            <%- include('./partials/nav_bar.ejs') %>
+                <%- include('./partials/mobile_nav_bar.ejs') %>
+                    <script>
+                        if ("<%=  info.activeAdmin %>" != "") {
+                            // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                            document.getElementById("loginBtnDiv").innerHTML = `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
+                        }
+                    </script>
+                    <a style="cursor: pointer;" onclick="window.history.back()" class="previous">&#8249;</a>
+                    <a style="cursor: pointer;" onclick="window.history.back()" class="back">Back</a>
+                    <div class="container">
+                        <form action="/item-retrieval/<%= info.id %>" class="overall-container" method="post" enctype="multipart/form-data">
+                            <h3>ITEM RETRIEVAL PAGE</h3>
+                            <div class="form">
+                                <div class="form-div">
+                                    <div class="input_txtbx_div">
+                                        <input type="text" name="firstname" value="" placeholder="Firstname"><br>
+                                    </div>
+                                    <div class="input_txtbx_div">
+                                        <input type="text" name="lastname" value="" placeholder="Lastname"><br>
+                                    </div>
+                                    <div class="input_txtbx_div">
+                                        <input type="text" name="admin" value="<%= info.activeAdmin %> " readonly placeholder="Admin"><br>
+                                    </div>
+                                    <div class="input_txtbx_div">
+                                        <input type="text" name="location" value="" placeholder="Location"><br>
+                                    </div>
+                                    <div class="error-div">
+                                        <p class="info">
+                                            <!-- <%= info.error %> -->
+                                        </p>
+                                    </div>
+                                    <!-- <script>
                   const info = document.querySelector('.info');
                   info.style.display = "<%= info.display  %>"
                 </script> -->
-              </div>
-              <div class="picture-div">
-                <div id="dropRegion">
-                  <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
-                  <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
-                  <span class="image-preview__default-text">Click to upload 1 picture of the retriever or drag and drop
+                                </div>
+                                <div class="picture-div">
+                                    <div id="dropRegion">
+                                        <img src="" alt="Image Preview" id="my_image" class="image-preview__image">
+                                        <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic1" alt="" srcset="">
+                                        <span class="image-preview__default-text">Click to upload 1 picture of the retriever or drag and drop
                     here</span>
-                  <p  id="format" class="image-preview__default-text">Acceptable formats: PNG, JPEG, JPG</p>
-                  <p id="maxSize" class="image-preview__default-text">Maximum upload size: 5mb</p>
+                                        <p id="format" class="image-preview__default-text">Acceptable formats: PNG, JPEG, JPG</p>
+                                        <p id="maxSize" class="image-preview__default-text">Maximum upload size: 5mb</p>
 
-                </div>
-                <div class="input-div">
-                  <input type="file" name="idphoto" id="idphoto">
-                  <!-- <input type="button" value="clear" id="clear"> -->
-                </div>
-              </div>
+                                    </div>
+                                    <div class="input-div">
+                                        <input type="file" name="idphoto" id="idphoto">
+                                        <!-- <input type="button" value="clear" id="clear"> -->
+                                    </div>
+                                </div>
 
-            </div>
-            <div class="btn-div-center">
-              <div class="btn-div">
-                <input type="button" name="submit" value="Submit" class="submit btn" id="my_btn">
-              </div>
-            </div>
-          </form>
+                            </div>
+                            <div class="btn-div-center">
+                                <div class="btn-div">
+                                    <input type="button" name="submit" value="Submit" class="submit btn" id="my_btn">
+                                </div>
+                            </div>
+                        </form>
 
-          <div class="modal" id="modal">
-            <div class="modal-header">
-              <a href="/lost-items"><button data-close-button class="close-button">&times;</button></a>
-            </div>
-            <!-- <div class="modal-body"></div> -->
+                        <div class="modal" id="modal">
+                            <div class="modal-header">
+                                <a href="/lost-items"><button data-close-button class="close-button">&times;</button></a>
+                            </div>
+                            <!-- <div class="modal-body"></div> -->
 
-            <div class="modal-body">
-              <p>Congrats on finding lost item</p>
-              <div class="btn-div">
-                <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
-              </div>
-            </div>
+                            <div class="modal-body">
+                                <p>Congrats on finding lost item</p>
+                                <div class="btn-div">
+                                    <a href="/lost-items"><input type="button" class="btn" value="Back to home"></a>
+                                </div>
+                            </div>
 
-          </div>
-          <div id="overlay"></div>
+                        </div>
+                        <div id="overlay"></div>
 
 
+                    </div>
         </div>
-    </div>
-    <div class="circle1"></div>
-    <div class="circle2"></div>
-    <div class="circle3"></div>
-    <div class="circle4"></div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
 
-  </div>
+    </div>
 </body>
 
 </html>
@@ -124,5 +123,5 @@
 </html>
 
 <% if ( info.popup==="show" ) { %>
-  <script src="/item_retrieval_files/popupscript.js"></script>
-  <% } %>
+    <script src="/item_retrieval_files/popupscript.js"></script>
+    <% } %>

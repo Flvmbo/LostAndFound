@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,38 +16,37 @@
     <div class="full_page">
         <div class="full-page">
             <%- include('./partials/nav_bar.ejs') %>
-            <%- include('./partials/mobile_nav_bar.ejs') %>
-            <script>
-                if("<%=  info.activeAdmin %>" != ""){
-                    // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
-                    document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
-                document.getElementById("loginBtnDiv").innerHTML= `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;        
-                }
-            </script>
-                <!-- main -->
-                <form class="main" action="/api/v1/submit-item" method="post" enctype="multipart/form-data">
-                    <div class="main-header">
-                        <!-- <label for=""><img src="./lost-items-images/back.png" alt="" srcset="" class="back_pic"></label>
+                <%- include('./partials/mobile_nav_bar.ejs') %>
+                    <script>
+                        if ("<%=  info.activeAdmin %>" != "") {
+                            // document.getElementById("loginBtnDiv").innerHTML = ` <%=  info.activeAdmin %> <br> <br> <a href = "/log-out"> Log out</a>`
+                            document.getElementById("loginBtnDiv").firstElementChild.style.display = "none";
+                            document.getElementById("loginBtnDiv").innerHTML = `<a href="/retrieval-records"><div style="font-size:.8rem" class="admin-login-btn btn"><%= info.activeAdmin %></div></a> <a style="font-size:.9rem;margin-top:.3em;display:block;text-align:center" href = "/log-out"> Log out</a> `;
+                        }
+                    </script>
+                    <!-- main -->
+                    <form class="main" action="/api/v1/submit-item" method="post" enctype="multipart/form-data">
+                        <div class="main-header">
+                            <!-- <label for=""><img src="./lost-items-images/back.png" alt="" srcset="" class="back_pic"></label>
                   -->
-                        <a href="/home">
-                            <label style="font-weight: 700;" for="">
+                            <a style="cursor: pointer;" onclick="window.history.back()">
+                                <label style="font-weight: 700;" for="">
                                 < </label>
-                                    <!-- COME AND REMOVE THIS SCOPE -->
-                                    <p class="back_text">Back to home</p>
-                        </a>
-                    </div>
-                    <div class="main-center">
-                        <!-- <div class="input_txtbx_div form-info-div"> -->
-                        <h3 class="form-info">SUBMIT A FOUND ITEM</h3>
-                        <!-- </div> -->
-                        <div class="main-center-center">
-                            <div class="main-center-center-left">
-                                <div class="input_txtbx_div">
-                                    <input type="text" name="item_name" class="input_txtbx" id="itemName"
-                                        placeholder="Item name">
-                                </div>
-                                <div class="input_txtbx_div">
-                                    <select name="Category" class="input_txtbx" id="category">
+                                <!-- COME AND REMOVE THIS SCOPE -->
+                                <p class="back_text">Back</p>
+                            </a>
+                        </div>
+                        <div class="main-center">
+                            <!-- <div class="input_txtbx_div form-info-div"> -->
+                            <h3 class="form-info">SUBMIT A FOUND ITEM</h3>
+                            <!-- </div> -->
+                            <div class="main-center-center">
+                                <div class="main-center-center-left">
+                                    <div class="input_txtbx_div">
+                                        <input type="text" name="item_name" class="input_txtbx" id="itemName" placeholder="Item name">
+                                    </div>
+                                    <div class="input_txtbx_div">
+                                        <select name="Category" class="input_txtbx" id="category">
                                         <option value="N/A">Select category</option>
                                         <option value="Laptops">Laptops</option>
                                         <option value="Tablets">Tablets / Ipads / Ipods</option>
@@ -56,68 +56,68 @@
                                         <option value="Books">Books</option>
                                         <option value="Others">Others</option>
                                     </select>
+                                    </div>
+                                    <div class="input_txtbx_div">
+                                        <input type="text" class="input_txtbx" name="Description" id="description" placeholder="Brief description identifying marks">
+                                    </div>
+                                    <div class="input_txtbx_div last-input-div">
+                                        <input type="text" class="input_txtbx" name="Location" id="locationFound" placeholder="Location found">
+                                    </div>
+                                    <div class="error-div">
+                                        <p class="info">
+                                            <!-- <%= info.error %> -->
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="input_txtbx_div">
-                                    <input type="text" class="input_txtbx" name="Description" id="description" placeholder="Brief description identifying marks">
-                                </div>
-                                <div class="input_txtbx_div last-input-div">
-                                    <input type="text" class="input_txtbx" name="Location" id="locationFound" placeholder="Location found">
-                                </div>
-                                <div class="error-div">
-                                    <p class="info">
-                                      <!-- <%= info.error %> -->
-                                    </p>
+                                <div class="main-center-center-right">
+                                    <div class="upload_first_pic">
+                                        <div class="first-pic-container upload-pic-container" id="dropRegion">
+                                            <img src="" alt="" class="preview-img1">
+                                            <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic1" alt="" srcset="">
+                                            <p class="upload-text preview-default-text1">Click to upload first picture or drag and drop here </p>
+                                            <p id="format" class="upload-text preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p>
+                                            <p id="maxSize" class="upload-text preview-default-text1">Maximum upload size: 5mb</p>
+                                        </div>
+                                        <input type="file" name="image" id="image1">
+                                    </div>
+                                    <div class="upload_second_pic">
+                                        <div class="first-pic-container upload-pic-container" id="dropRegion2">
+                                            <img src="" alt="" class="preview-img2">
+                                            <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic2" alt="" srcset="">
+                                            <p class="upload-text preview-default-text2">Click to upload second picture or drag and drop here </p>
+                                            <p id="format2" class="upload-text preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
+                                            <p id="maxSize2" class="upload-text preview-default-text2">Maximum upload size: 5mb</p>
+
+                                        </div>
+                                        <input type="file" name="image" id="image2">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="main-center-center-right">
-                                <div class="upload_first_pic">
-                                    <div class="first-pic-container upload-pic-container" id="dropRegion">  
-                                        <img src="" alt="" class="preview-img1">
-                                        <img src="/found_an_item_files/lost-items-images/upload.png"  class="upload_pic upload_pic1" alt="" srcset="">
-                                        <p class="upload-text preview-default-text1">Click to upload first picture or drag and drop here </p>
-                                        <p  id="format" class="upload-text preview-default-text1">Acceptable formats: PNG, JPEG, JPG</p> 
-                                        <p id="maxSize" class="upload-text preview-default-text1">Maximum upload size: 5mb</p>
-                                    </div>
-                                    <input type="file" name="image" id="image1">
-                                </div>
-                                <div class="upload_second_pic">
-                                    <div class="first-pic-container upload-pic-container" id="dropRegion2">
-                                        <img src="" alt="" class="preview-img2">
-                                        <img src="/found_an_item_files/lost-items-images/upload.png" class="upload_pic upload_pic2" alt="" srcset="">
-                                        <p class="upload-text preview-default-text2">Click to upload second picture or drag and drop here </p>
-                                        <p  id="format2" class="upload-text preview-default-text2">Acceptable formats: PNG, JPEG, JPG</p>
-                                        <p id="maxSize2" class="upload-text preview-default-text2">Maximum upload size: 5mb</p>
-
-                                    </div>
-                                    <input type="file" name="image" id="image2">
+                            <div class="main-footer">
+                                <div class="main-footer-center">
+                                    </label><input type="button" class="submit_button btn" value="Submit">
                                 </div>
                             </div>
                         </div>
-                        <div class="main-footer">
-                            <div class="main-footer-center">
-                                </label><input type="button" class="submit_button btn" value="Submit">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="circle1"></div>
-                    <div class="circle2"></div>
-                    <div class="circle3"></div>
-                    <div class="circle4"></div>
-                </form>
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                    </form>
         </div>
         <div class="modal" id="modal">
             <div class="modal-header">
                 <button data-close-button class="close-button">&times;</button>
             </div>
             <!-- <div class="modal-body"></div> -->
-           
+
             <div class="modal-body">
-               <p>Thank you for your service!</p>
-               <p>You just aided in uniting a lost item to their Owner</p>
+                <p>Thank you for your service!</p>
+                <p>You just aided in uniting a lost item to their Owner</p>
                 <div class="btn-div">
-                    <a href="/lost-items"><input type="button" class="btn"  value="Back to home"></a>
-               </div>
+                    <a href="/lost-items"><input type="button" class="btn" value="Explore lost items"></a>
+                </div>
             </div>
         </div>
         <div id="overlay"></div>
@@ -127,8 +127,8 @@
     <script src="/found_an_item_files/script.js"></script>
     <% if ( info.popup === "show") { %>
         <script src="/found_an_item_files/popupscript.js"></script>
-    <% } %>
-    
+        <% } %>
+
 </body>
 
 </html>
