@@ -13,7 +13,7 @@ const post_retriveItem = async(req, res) => {
         let getId = req.params.id;
         console.log(getId)
         const { firstname, lastname, admin, location } = req.body;
-        var retrieved_item = await lostitems.findOne({ id: getId });
+        var retrieved_item = await lostitems.findOne({ _id: getId });
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

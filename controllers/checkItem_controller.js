@@ -1,11 +1,11 @@
 const items = require('../model/submit_item')
-const get_showEmailItemPage = async (req, res) => {
+const get_showEmailItemPage = async(req, res) => {
     let iid = req.params.id
-    try{
+    let show = {}
+    try {
         const allItems = await items.find({})
         for (let i = 0; i < allItems.length; i++) {
-            if(allItems[i].uniqueID == iid){
-                let show = {}
+            if (allItems[i].uniqueID == iid) {
                 show.id = allItems[i].id
                 show.uniqueID = allItems[i].uniqueID
                 show.item_name = allItems[i].item_name
@@ -15,13 +15,10 @@ const get_showEmailItemPage = async (req, res) => {
                 show.itemDate = allItems[i].itemDate
                 show.firstImage = allItems[i].firstImage
                 show.secondImage = allItems[i].secondImage
-            }            
+            }
         }
-        res.render("check_item_page",{info:{item:show}})
-    }
-
-    catch(e)
-    {
+        res.render("check_item_page", { info: { item: show } })
+    } catch (e) {
         console.log(e);
     }
 }
