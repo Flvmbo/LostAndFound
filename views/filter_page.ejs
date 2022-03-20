@@ -1,0 +1,72 @@
+<!-- <div class="lost-items-container"> -->
+
+    <% items.item.forEach((item,index) => { %>
+
+        <div class="lost-item-container" id="<%-index%>">
+            <div class="item-time-uploaded-div item-details-div">
+                <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+            </div>
+            <div class="lost-item-div">
+                <div class="image-slider-container" id=`<%=item.id%>`>
+                    <div class="slider-container prev-image-container">
+                        <input class="prev-image slide-image" type="button" value="<">
+                    </div>
+                    <div class="image-container">
+                        <img class="item-image left-img" src="/<%=item.firstImage%>" alt="<%= item.Description %>">
+                        <img class="item-image right-img" src="/<%=item.secondImage%>" alt="<%= item.Description %>">
+                        <input class="slide-button prev" type="button">
+                        <input class="slide-button next" type="button">
+                    </div>
+                    <div class="slider-container next-image-container">
+                        <input class="next-image slide-image" type="button" value=">">
+                    </div>
+                </div>
+                <div class="lost-item-content-div">
+                    <div class="item-name-div item-details-div">
+                        <label for="item-name-label" class="item-label">Item name:  <span class="item-name details-input"><%=item.item_name%></span></label>
+
+                        <!-- <label for="item-name-label" class="item-label">Item name: </label> -->
+                        <!-- <label name="item-name" class="item-name details-input"><%=item.item_name%></label> -->
+                    </div>
+                    <div class="item-location-found-div item-details-div">
+                        <label for="item-location-found-label" class="item-label">Location Found: <span class="location-found details-input"><%=item.Location%></span></label>
+                        <!-- <label for="item-location-found-label" class="item-label">Location Found:</label> <label name="location-found" class="location-found details-input"><%=item.Location%></label> -->
+                    </div>
+                    <div class="item-current-location-div item-details-div">
+                        <!-- <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input">Civil Building</span></label> -->
+
+                        <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=item.Location%></span></label>
+
+                        <!-- <label for="item-current-location-label" class="item-label">Current Location:</label> <label name="current-location" class="current-location details-input">deborah hall</label> -->
+                    </div>
+                    <div class="item-date-found-div item-details-div">
+                        <label for="item-date-found-label" class="item-label">Date Found: <span class="current-location details-input"><%=item.itemDate.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+
+                        <!-- <label for="item-date-found-label" class="item-label">Date Found:</label> <label name="date-found" class="date-found details-input"></label> -->
+                    </div>
+                    <div class="retrieve-item-div">
+                        <a class="retrieve-item" href="/item-retrieval/<%= item._id  %>" id="retrieveButton"><button class="retrieve-item-btn btn">Retrieve</button></a>
+                    </div>
+
+                    <!-- <script>
+            var retrieveButton =document.getElementById("retrieveButton")
+            retrieveButton.addEventListener("click",()=>{
+                if("<%=  items.activeAdmin %>" == ""){
+                    retrieveButton.href = "/item-retrieval-checkpage/<%= item._id  %>"
+                }
+            })
+        </script> -->
+
+                </div>
+            </div>
+            <div class="item-category-div item-details-div">
+                <label for="item-category-label" name="category" class="item-label">Category:  <span class="category details-input"><%-item.Category%></span></label>
+
+                <!-- <label for="item-category-label" class="item-label">Category:</label>
+     <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
+            </div>
+        </div>
+
+        <% }) %>
+
+<!-- </div> -->

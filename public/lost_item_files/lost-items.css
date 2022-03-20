@@ -825,10 +825,12 @@ position: absolute;
     font-size: 1.2rem;
     transform: rotate(90deg);
 /* Since its rotated by 90deg, the padding goes right, left, then up down */
-    padding: 0 .55em;
+    /* padding: 0 .55em;
     padding-top: .1em; 
-    padding-bottom: .25em;
+    padding-bottom: .25em; */
     /* padding-top: .5em; */
+    width: 2rem;
+    height: 2rem;
     border: 0;
     border-radius: 12px;
     cursor: pointer;
