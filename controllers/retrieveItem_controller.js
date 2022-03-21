@@ -3,8 +3,15 @@ const lostitems = require('../model/submit_item');
 
 const get_showRetrieveItemPage = async(req, res) => {
     id = req.params.id;
-    // console.log(id)
-    res.render("item_retrieval_page", { info: { modalDisplay: "none", id: `${id}`, activeAdmin: req.session.activeAdmin } });
+    try {
+        await lostitems.findById(id);
+        res.render("item_retrieval_page", { info: { modalDisplay: "none", id: `${id}`, activeAdmin: req.session.activeAdmin } });
+
+    } catch (e) {
+        res.send("Resouce not found").status(404);
+
+    }
+
 }
 
 
