@@ -21,19 +21,26 @@
                     location: `<%= items.location%>`, 
                 })
             });
+
+
             $(".location-item").click(function(){
-                locations = []
+                locations = ""
                 locationItem = document.getElementsByClassName("desktop-check")
+                first = true
                 for (let i = 0; i < locationItem.length; i++) {
                     if(locationItem[i].checked == true){
-                        locations.push(locationItem[i].name.toUpperCase())
+                        if(first == false){
+                            locations += ","
+                        }
+                        first = false
+                        locations += locationItem[i].name.toUpperCase()
                     }
                 }
 
 
                 $(".lost-items-container").load("/filter", {
-                    location: locations, 
-                    category: `<%= items.category %>`
+                    category: `<%= items.category %>`,
+                    location: locations
                 })
             })
         });
