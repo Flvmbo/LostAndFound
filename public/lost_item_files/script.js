@@ -1,3 +1,4 @@
+// const { all } = require("express/lib/application");
 const body = document.querySelector('body');
 const showFilter = document.querySelector('.show-filter');
 // const filterContainer = document.querySelector('.mobile-filter-container');
@@ -174,6 +175,8 @@ selectLocation.addEventListener('click', ()=>{
 const allLocations = document.querySelector('#filter-container #all-location');
 allLocations.addEventListener('click', ()=>{
     let showLocation = document.querySelector('#filter-container .select-location-true');
+    // let allLocations = document.querySelectorAll(".check");
+    // allLocations.forEach(location)
     showLocation.style.display = 'none';
     // anyChecked = false;
 })
