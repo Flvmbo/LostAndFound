@@ -18,7 +18,7 @@ route.post("/filter", async (req, res)=>{
         var lostItems = await lostItemsModel.find({Category:category, Location:location}).sort( {itemDate: -1 })   
         const number = lostItems.length;
         console.log("number of items: ",  number)
-        res.render("filter_page",{items:{item:lostItems, activeAdmin: req.session.activeAdmin, num:number}})
+        res.render("filter_page", {items:{item:lostItems, activeAdmin: req.session.activeAdmin, num:number , category : req.session.sessionCategory , location : req.session.sessionLocation}})
     }
     catch(e)
     {
