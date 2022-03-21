@@ -10,6 +10,23 @@
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
     <link rel="stylesheet" href="/lost_item_files/lost-items.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="/lost_item_files/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".category-item").click(function(){
+                $(".lost-items-container").load("/filter", {
+                    category: `${this.textContent}`, 
+                })
+            });
+            $(".location-item").click(function(){
+                $(".lost-items-container").load("/filter", {
+                    location: `${this.textContent}`, 
+                })
+            })
+        });
+    </script>
 </head>
 
 <body>
@@ -24,14 +41,14 @@
             </div>
             <ul class="category-filter filter-type">
                 <h2 class="filter-heading">Category</h2>
-                <li class="category-item filter-item" id="mobile-all"><label for="">All</label> </li>
-                <li class="category-item filter-item" id="mobile-clothing"><label for="">Clothing</label> </li>
-                <li class="category-item filter-item" id="mobile-books"><label for="">Books</label> </li>
-                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label> </li>
+                <li class="category-item filter-item" id="mobile-all"><label for="">All</label></li>
+                <li class="category-item filter-item" id="mobile-clothing"><label for="">Clothing</label></li>
+                <li class="category-item filter-item" id="mobile-books"><label for="">Books</label></li>
+                <li class="category-item filter-item" id="mobile-fashion-accessories"><label for="">Fashion Accessories</label></li>
                 <li class="category-item filter-item" id="mobile-cards"><label for="">Cards</label> </li>
                 <li class="category-item filter-item" id="mobile-footwear"><label for="">Footwear</label> </li>
                 <li class="category-item filter-item" id="mobile-rain-shelter"><label for="">Rain Shelter</label></li>
-                <li class="category-item filter-item" id="mobile-other"><label for="">Other</label> </li>
+                <li class="category-item filter-item" id="mobile-other"><label for="">Others</label></li>
             </ul>
 
             <ul class="location-filter filter-type mobile-filter-type" id="mobile-filter-type">
@@ -46,16 +63,16 @@
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds"> <label for="mobile-ceds">CEDS</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst"> <label for="mobile-cst">CST</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt"> <label for="mobile-lt">LT</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"> <label for="mobile-daniel-hall">DANIEL HALL </label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"> <label for="mobile-dorcas-hall">DORCAS HALL </label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"> <label for="mobile-lydia-hall">LYDIA HALL </label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="mobile-joseph-hall"> <label for="mobile-joseph-hall">JOSEPH HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"> <label for="mobile-daniel-hall">DANIEL HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"> <label for="mobile-dorcas-hall">DORCAS HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"> <label for="mobile-lydia-hall">LYDIA HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="mobile-joseph-hall"> <label for="mobile-joseph-hall">JOSEPH HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="mobile-deborah-hall"> <label for="mobile-deborah-hall">DEBORAH HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="mobile-john-hall"> <label for="mobile-john-hall">JOHN HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mobile-mary-hall"> <label for="mobile-mary-hall">MARY HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="mobile-paul-hall"><label for="mobile-paul-hall">PAUL HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="mobile-esther-hall"> <label for="mobile-esther-hall">ESTHER HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="mobile-peter-hall"><label for="mobile-peter-hall">PETER HALL </label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="mobile-peter-hall"><label for="mobile-peter-hall">PETER HALL</label></li>
                 </div>
                 <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
                 <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
@@ -136,7 +153,7 @@
                                 <li class="category-item filter-item" id="cards"><label for="">Cards</label></li>
                                 <li class="category-item filter-item" id="footwear"><label for="">Footwear</label></li>
                                 <li class="category-item filter-item" id="rain-shelter"><label for="">Rain Shelter</label></li>
-                                <li class="category-item filter-item" id="other"><label for="">Other</label></li>
+                                <li class="category-item filter-item" id="other"><label for="">Others</label></li>
                             </ul>
 
 

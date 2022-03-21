@@ -17,7 +17,7 @@ const retrievalRecord = require("./routes/retrievalRecord")
 const logout = require("./routes/logout")
 const landingPage = require("./routes/landingPage")
 const lostItem = require("./routes/lostitem")
-
+const filterRoute = require("./routes/filterRoute");
 
 var app = express()
 
@@ -73,6 +73,7 @@ app.use(retrievalRecord)
 app.use(logout)
 app.use(landingPage)
 app.use(lostItem)
+app.use(filterRoute)
 
 // Port number
 port = process.env.PORT || 3700
