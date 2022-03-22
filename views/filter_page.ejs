@@ -1,4 +1,5 @@
 <!-- <div class="lost-items-container"> -->
+    <!-- <script src="/lost_item_files/script.js"></script> -->
     <% items.item.forEach((item,index) => { %>
 
         <div class="lost-item-container" id="<%-index%>">
@@ -68,110 +69,130 @@
 
         <% }) %>
 
-        <!-- <script>
-            $(document).on("click",".query",function() {
 
-            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <script>
+            // $(document).on("click",".query",function() {
+
+            // })
             // TO DO THE IMAGE SLIDER ANIMATION
-let slideContainer = document.querySelector('.image-container');
-let rightSlide = document.querySelectorAll('.next-image');
-let leftSlide = document.querySelectorAll('.prev-image');
-let slideLeft = document.querySelectorAll('.prev');
-let slideRight = document.querySelectorAll('.next');
+// let slideContainer = document.querySelector('.image-container');
+// let rightSlide = document.querySelectorAll('.next-image');
+// let leftSlide = document.querySelectorAll('.prev-image');
+// let slideLeft = document.querySelectorAll('.prev');
+// let slideRight = document.querySelectorAll('.next');
 
-rightSlide.forEach((element)=>{
-        $(element).on("click",()=> {
-        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
-        // imageAndSliderContainer.style ='border:1px solid;';
-        imageAndSliderContainer.classList.remove('circle-highlight')
-        imageAndSliderContainer.classList.add('circle-highlightt');
-        let rightSlideContainer = imageAndSliderContainer.children[2];
-        let leftSlideContainer = imageAndSliderContainer.children[0];
-        rightSlideContainer.style.opacity = '0';
-        rightSlideContainer.style.pointerEvents = 'none';
-        leftSlideContainer.style.opacity = '1';
-        leftSlideContainer.style.pointerEvents = 'all';
+// rightSlide.forEach((element)=>{
+//         $(element).on("click",()=> {
+//         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+//         // imageAndSliderContainer.style ='border:1px solid;';
+//         imageAndSliderContainer.classList.remove('circle-highlight')
+//         imageAndSliderContainer.classList.add('circle-highlightt');
+//         let rightSlideContainer = imageAndSliderContainer.children[2];
+//         let leftSlideContainer = imageAndSliderContainer.children[0];
+//         rightSlideContainer.style.opacity = '0';
+//         rightSlideContainer.style.pointerEvents = 'none';
+//         leftSlideContainer.style.opacity = '1';
+//         leftSlideContainer.style.pointerEvents = 'all';
 
-        let imageContainer = imageAndSliderContainer.children[1];
-        let leftImg = imageContainer.children[0];
-        let rightImg = imageContainer.children[1];
-        leftImg.style = 'transition:transform .5s ease-in-out'
-        rightImg.style = 'transition:all .7s ease-in-out';
-        leftImg.style.transformOrigin = 'left';
-        leftImg.style.transform = 'scaleX(0)';
-        rightImg.style.opacity = '1';
+//         let imageContainer = imageAndSliderContainer.children[1];
+//         let leftImg = imageContainer.children[0];
+//         let rightImg = imageContainer.children[1];
+//         leftImg.style = 'transition:transform .5s ease-in-out'
+//         rightImg.style = 'transition:all .7s ease-in-out';
+//         leftImg.style.transformOrigin = 'left';
+//         leftImg.style.transform = 'scaleX(0)';
+//         rightImg.style.opacity = '1';
 
-    })
-})
-slideRight.forEach((element)=>{
-    element.addEventListener('click', ()=>{
+//     })
+// })
+// slideRight.forEach((element)=>{
+//     element.addEventListener('click', ()=>{
     
-        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
-        // imageAndSliderContainer.style ='border:1px solid;';
-        imageAndSliderContainer.classList.remove('circle-highlight')
-        imageAndSliderContainer.classList.add('circle-highlightt');
-        let rightSlideContainer = imageAndSliderContainer.children[2];
-        let leftSlideContainer = imageAndSliderContainer.children[0];
-        rightSlideContainer.style.opacity = '0';
-        rightSlideContainer.style.pointerEvents = 'none';
-        leftSlideContainer.style.opacity = '1';
-        leftSlideContainer.style.pointerEvents = 'all';
+//         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+//         // imageAndSliderContainer.style ='border:1px solid;';
+//         imageAndSliderContainer.classList.remove('circle-highlight')
+//         imageAndSliderContainer.classList.add('circle-highlightt');
+//         let rightSlideContainer = imageAndSliderContainer.children[2];
+//         let leftSlideContainer = imageAndSliderContainer.children[0];
+//         rightSlideContainer.style.opacity = '0';
+//         rightSlideContainer.style.pointerEvents = 'none';
+//         leftSlideContainer.style.opacity = '1';
+//         leftSlideContainer.style.pointerEvents = 'all';
 
-        let imageContainer = imageAndSliderContainer.children[1];
-        let leftImg = imageContainer.children[0];
-        let rightImg = imageContainer.children[1];
-        leftImg.style = 'transition:transform .5s ease-in-out'
-        rightImg.style = 'transition:all .7s ease-in-out';
-        leftImg.style.transformOrigin = 'left';
-        leftImg.style.transform = 'scaleX(0)';
-        rightImg.style.opacity = '1';
+//         let imageContainer = imageAndSliderContainer.children[1];
+//         let leftImg = imageContainer.children[0];
+//         let rightImg = imageContainer.children[1];
+//         leftImg.style = 'transition:transform .5s ease-in-out'
+//         rightImg.style = 'transition:all .7s ease-in-out';
+//         leftImg.style.transformOrigin = 'left';
+//         leftImg.style.transform = 'scaleX(0)';
+//         rightImg.style.opacity = '1';
 
-    })
-})
-leftSlide.forEach((element)=>{
-    element.addEventListener('click', ()=>{
-        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
-        // imageAndSliderContainer.style ='border:1px solid;';
-        imageAndSliderContainer.classList.remove('circle-highlightt')
-        imageAndSliderContainer.classList.add('circle-highlight');
-        let rightSlideContainer = imageAndSliderContainer.children[2];
-        let leftSlideContainer = imageAndSliderContainer.children[0];
-        rightSlideContainer.style.opacity = '1';
-        rightSlideContainer.style.pointerEvents = 'all';
-        leftSlideContainer.style.opacity = '0';
-        leftSlideContainer.style.pointerEvents = 'none';
+//     })
+// })
+// leftSlide.forEach((element)=>{
+//     element.addEventListener('click', ()=>{
+//         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+//         // imageAndSliderContainer.style ='border:1px solid;';
+//         imageAndSliderContainer.classList.remove('circle-highlightt')
+//         imageAndSliderContainer.classList.add('circle-highlight');
+//         let rightSlideContainer = imageAndSliderContainer.children[2];
+//         let leftSlideContainer = imageAndSliderContainer.children[0];
+//         rightSlideContainer.style.opacity = '1';
+//         rightSlideContainer.style.pointerEvents = 'all';
+//         leftSlideContainer.style.opacity = '0';
+//         leftSlideContainer.style.pointerEvents = 'none';
 
-        let imageContainer = imageAndSliderContainer.children[1];
-        let leftImg = imageContainer.children[0];
-        let rightImg = imageContainer.children[1];
-        rightImg.style = 'transition:all .25s ease-in';
-        rightImg.style.opacity = '0';
-        leftImg.style.transform = 'scaleX(1)';
-    })
-})
+//         let imageContainer = imageAndSliderContainer.children[1];
+//         let leftImg = imageContainer.children[0];
+//         let rightImg = imageContainer.children[1];
+//         rightImg.style = 'transition:all .25s ease-in';
+//         rightImg.style.opacity = '0';
+//         leftImg.style.transform = 'scaleX(1)';
+//     })
+// })
 
-slideLeft.forEach((element)=>{
-    element.addEventListener('click', ()=>{
-        let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
-        // imageAndSliderContainer.style ='border:1px solid;';
-        imageAndSliderContainer.classList.remove('circle-highlightt')
-        imageAndSliderContainer.classList.add('circle-highlight');
-        let rightSlideContainer = imageAndSliderContainer.children[2];
-        let leftSlideContainer = imageAndSliderContainer.children[0];
-        rightSlideContainer.style.opacity = '1';
-        rightSlideContainer.style.pointerEvents = 'all';
-        leftSlideContainer.style.opacity = '0';
-        leftSlideContainer.style.pointerEvents = 'none';
+// slideLeft.forEach((element)=>{
+//     element.addEventListener('click', ()=>{
+//         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+//         // imageAndSliderContainer.style ='border:1px solid;';
+//         imageAndSliderContainer.classList.remove('circle-highlightt')
+//         imageAndSliderContainer.classList.add('circle-highlight');
+//         let rightSlideContainer = imageAndSliderContainer.children[2];
+//         let leftSlideContainer = imageAndSliderContainer.children[0];
+//         rightSlideContainer.style.opacity = '1';
+//         rightSlideContainer.style.pointerEvents = 'all';
+//         leftSlideContainer.style.opacity = '0';
+//         leftSlideContainer.style.pointerEvents = 'none';
 
-        let imageContainer = imageAndSliderContainer.children[1];
-        let leftImg = imageContainer.children[0];
-        let rightImg = imageContainer.children[1];
-        rightImg.style = 'transition:all .25s ease-in';
-        rightImg.style.opacity = '0';
-        leftImg.style.transform = 'scaleX(1)';
-    })
-})
+//         let imageContainer = imageAndSliderContainer.children[1];
+//         let leftImg = imageContainer.children[0];
+//         let rightImg = imageContainer.children[1];
+//         rightImg.style = 'transition:all .25s ease-in';
+//         rightImg.style.opacity = '0';
+//         leftImg.style.transform = 'scaleX(1)';
+//     })
+// })
 
-        </script>
- -->
+//         </script>
+ 
 <!-- </div> -->

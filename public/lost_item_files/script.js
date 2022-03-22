@@ -44,7 +44,7 @@ const slideRight = document.querySelectorAll('.next');
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
-    
+        
         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
         // imageAndSliderContainer.style ='border:1px solid;';
         imageAndSliderContainer.classList.remove('circle-highlight')
@@ -69,7 +69,7 @@ rightSlide.forEach((element)=>{
 })
 slideRight.forEach((element)=>{
     element.addEventListener('click', ()=>{
-    
+        
         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
         // imageAndSliderContainer.style ='border:1px solid;';
         imageAndSliderContainer.classList.remove('circle-highlight')
