@@ -175,8 +175,11 @@ selectLocation.addEventListener('click', ()=>{
 const allLocations = document.querySelector('#filter-container #all-location');
 allLocations.addEventListener('click', ()=>{
     let showLocation = document.querySelector('#filter-container .select-location-true');
-    // let allLocations = document.querySelectorAll(".check");
-    // allLocations.forEach(location)
+    let locationFilter = document.querySelectorAll('#filter-container .check');
+    locationFilter.forEach(location=>{
+        location.checked = false;
+    })
+    locationFilter[0].checked = true;
     showLocation.style.display = 'none';
     // anyChecked = false;
 })

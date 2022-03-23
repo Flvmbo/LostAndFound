@@ -97,7 +97,8 @@
                     checkCategory();
                 }
             }               
-                $(".lost-items-container").load("/filter", {
+            // /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
+                $(".lost-items-container").load(`/filter`, {
                     location:locationArray,
                     category:categoryArray
                 })
@@ -182,7 +183,7 @@
     <div class="overall-container" id="top">
         <div class="mini-features">
             <a class="to-top" href="#top">
-                <button class="back-to-top-btn">< </button>
+                <button class="back-to-top-btn"><</button>
             </a>
             <div class="item-not-found-div filter-type" id="item-not-found-div">
                 <div class="exit-div">
@@ -214,9 +215,10 @@
                     <div class="sort-num-div">
                         <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
                             <select name="sort" id="sort">
-                        <option value="descending">Descending</option>
-                        <option value="ascending">Ascending</option>
-                    </select></div>
+                                <option value="descending">Descending</option>
+                                <option value="ascending">Ascending</option>
+                            </select>
+                        </div>
                         <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
                         <!--  By default, in any form of sort, it shows by most recently uploaded -->
                     </div>
@@ -366,6 +368,7 @@
                 </main>
     </div>
     <script src="/lost_item_files/script.js"></script>
+    
 </body>
 
 </html>

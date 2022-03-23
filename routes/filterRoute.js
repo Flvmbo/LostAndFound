@@ -1,7 +1,7 @@
 const express = require("express")
 var route = express.Router();
 const lostItemsModel = require('../model/submit_item');
-route.post("/filter", async (req, res)=>{
+route.post("/", async (req, res)=>{
     let location = req.body['location[]'];
     let category = req.body['category[]'];
     console.log("category: ",category);

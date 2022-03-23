@@ -73,7 +73,7 @@ app.use(retrievalRecord)
 app.use(logout)
 app.use(landingPage)
 app.use(lostItem)
-app.use(filterRoute)
+app.use("/filter", filterRoute)
 
 // Port number
 port = process.env.PORT || 3700
