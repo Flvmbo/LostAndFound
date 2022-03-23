@@ -12,6 +12,8 @@
     <script src="/lost_item_files/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
+            // $.getScript('/lost_item_files/script.js');
+            // $(".filter-container li").click()
             let categoryArray = [];
             let locationArray = [];
             checkCategory();
@@ -98,10 +100,21 @@
                 }
             }               
             // /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
-                $(".lost-items-container").load(`/filter`, {
+            //     $(".lost-items-container").load(`/filter`, {
+            // }   
+
+                $.post("/filter",{
                     location:locationArray,
                     category:categoryArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
                 })
+
+                // $(".lost-items-container").load("/filter", {
+                //         location:locationArray,
+                //         category:categoryArray
+                // })
+
             });
             return false;
    
@@ -348,7 +361,7 @@
                                         }
                                     })
                                 </script> -->
-
+                                            
                                         </div>
                                     </div>
                                     <div class="item-category-div item-details-div">
@@ -357,6 +370,7 @@
                                         <!-- <label for="item-category-label" class="item-label">Category:</label>
                              <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
                                     </div>
+
                                 </div>
 
                                 <% }) %>
