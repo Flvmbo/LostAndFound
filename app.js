@@ -98,7 +98,7 @@ port = process.env.PORT || 3700
 const dbConnect = async() => {
     try
     {
-    const connected = await mongoose.connect(process.env.MONGOURI || "mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+    const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
         console.log("connected to the database")
         app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
     })
