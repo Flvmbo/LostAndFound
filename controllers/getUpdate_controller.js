@@ -27,5 +27,5 @@ const post_saveUser =  async (req,res)=>{
 
 module.exports = {
     get_showPage,
-    post_saveUser,
+    post_saveUser
 }
