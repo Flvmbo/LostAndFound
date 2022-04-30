@@ -27,6 +27,7 @@ const post_submitItem = async(req, res) => {
         firstImage: "uploads/images/" + req.files[0].filename,
         secondImage: "uploads/images/" + req.files[1].filename
     })
+    
 
     await new_item.save().then(async() => {
 

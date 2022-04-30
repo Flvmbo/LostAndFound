@@ -322,6 +322,9 @@ img{
 
 
 @media (max-width:450px) {
+    .back{
+        margin-bottom: 1em;
+    }
     .container{
         width:100%;
     }
