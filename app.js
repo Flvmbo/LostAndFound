@@ -65,7 +65,7 @@ app.set("partials", path.join(__dirname + "/views/partials"))
 //Using all the routes 
 app.use(itemRoutes)
 app.use(retrieveItemRoutes)
-app.use(getUpdate)
+// app.use(getUpdate)
 app.use(checkItemRoutes)
 app.use(adminLogin)
 app.use(unsubscribe)
