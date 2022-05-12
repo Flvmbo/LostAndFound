@@ -184,7 +184,7 @@ allLocations.addEventListener('click', ()=>{
     // anyChecked = false;
 })
 // TO SHOW DATE SELECT OR SORT BY MOST RECENT
-const mostRecent = document.querySelector('#filter-container #most-recent');
+const mostRecent = document.querySelector('#filter-container #default');
 mostRecent.addEventListener('click', ()=>{
     let selectDate = document.querySelector('#filter-container .select-date-true');
     selectDate.style.display = 'none';
