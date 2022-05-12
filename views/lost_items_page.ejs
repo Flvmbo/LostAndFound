@@ -12,18 +12,18 @@
     <script src="/lost_item_files/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
-            // $.getScript('/lost_item_files/script.js');
-            // $(".filter-container li").click()
             let categoryArray = [];
             let locationArray = [];
+            let dateArray = [];
             checkCategory();
             checkLocation();
+            getDates();
             function checkCategory(category = "all"){
                 if(category.toLowerCase() == "all"){
                    let getCategories = document.querySelectorAll('.filter-container .category-item');
                    let allCategories = [];
                     getCategories.forEach((category)=>{
-                        allCategories.push(category.textContent)
+                        allCategories.push(category.innerText)
                     })
                     categoryArray = allCategories;
                 }else{
@@ -32,93 +32,107 @@
             }
             function checkLocation(chooseLocation = "all"){
                 if(chooseLocation.toLowerCase() == "all"){
-                  let getLocations = document.querySelectorAll(".filter-container .check");
                   let locationItem = document.querySelectorAll('.filter-container .location-item');
                   let allLocations = [];
-                  for(let i = 0; i<locationItem.length; i++){
-                            console.log(locationItem[i].textContent)
-                            allLocations.push(locationItem[i].textContent);
-                    }
+                  for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
                     locationArray = allLocations;       
                 }else{
                     let getLocations = document.querySelectorAll(".filter-container .check");
                     let locationItem = document.querySelectorAll('.filter-container .location-item');
                     var noChecked = false;                  
-                    // locationItem[0].checked = true;
-                    locationArray = [];
                     selectedLocations = [];
                     for(let i = 0; i<locationItem.length; i++){
-                        if(getLocations[i].checked)
-                        {
-                            console.log(getLocations[i])
-                            selectedLocations.push(locationItem[i].textContent);
-                        }
+                        if(getLocations[i].checked) selectedLocations.push(locationItem[i].innerText);
                     }
                     locationArray = selectedLocations;
                     if(locationArray.length <1){
                         let allLocations = [];
-                        for(let i = 0; i<locationItem.length; i++){
-                            console.log(locationItem[i].textContent)
-                            allLocations.push(locationItem[i].textContent);
-                        }
+                        for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
                        locationArray = allLocations;    
                     }                    
                 }
             }
-
+            function getDates(date = "default"){
+                if(date.toLowerCase() == "default"){
+                    let dateFrom = document.querySelector(".filter-container .date-from").value;
+                    let dateTo = document.querySelector(".filter-container .date-to").value;
+                    dateArray = [dateFrom, dateTo];
+                }
+            }
 
             $(".filter-container li").click(function(){
               if(this.parentElement.className.includes("category-filter")){
                 let locationItem = document.querySelectorAll('.filter-container .location-item');
-                    console.log("Category is: ", this.textContent);
-                    checkCategory(this.textContent);
-                    checkLocation();
-                    if(locationArray.length < locationItem.length ){
-                        checkLocation("value");    
-                    }else{
-                        checkLocation();
-                    }
+                    checkCategory(this.innerText);
+                    if(locationArray.length < locationItem.length ){checkLocation("value");}
+                    else{checkLocation();}
               }
               else if(this.parentElement.className.includes("choose-location")){
                 let getCategories = document.querySelectorAll('.filter-container .category-item');
-                    checkLocation(this.textContent);
-                if(categoryArray.length < getCategories.length){
-                    checkCategory(categoryArray[0])
-                }
-                else{
-                    checkCategory();
-                }
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
             }
             else if(this.parentElement.className.includes("select-location-true")){
                 let getCategories = document.querySelectorAll('.filter-container .category-item');
-                    checkLocation(this.textContent);
-                if(categoryArray.length < getCategories.length){
-                    checkCategory(categoryArray[0])
-                }
-                else{
-                    checkCategory();
-                }
-            }               
-            // /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
-            //     $(".lost-items-container").load(`/filter`, {
-            // }   
-
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }    
+            else if(this.className.includes("time-period-div")){
+                this.children[1].addEventListener("change", ()=>{
+                let getCategories = document.querySelectorAll('.filter-container .category-item');
+                let locationItem = document.querySelectorAll('.filter-container .location-item');
+                    if(this.children[1] == document.querySelector(".filter-container .date-from")){
+                        let fromDate = this.children[1].value;
+                        let toDate = this.nextElementSibling.children[1].value;
+                        alert(toDate)
+                        dateArray = [fromDate, toDate]
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        return
+                    }
+                    else if(this.children[1] == document.querySelector(".filter-container .date-to")){
+                        let toDate = this.children[1].value;
+                        let fromDate = this.previousElementSibling.children[1].value;
+                        dateArray = [fromDate, toDate];
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        return
+                    }
+                })
+            }           
                 $.post("/filter",{
                     location:locationArray,
-                    category:categoryArray
+                    category:categoryArray,
+                    dates:dateArray
                 },(data,status)=>{
                     $(".lost-items-container").html(data)
                 })
-
-                // $(".lost-items-container").load("/filter", {
-                //         location:locationArray,
-                //         category:categoryArray
-                // })
-
             });
             return false;
-   
         });
+// /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
+//     $(".lost-items-container").load(`/filter`, {
+// }   
     </script>
 </head>
 
@@ -178,8 +192,8 @@
                     <li><input type="radio" name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
                 </ul>
                 <div class="select-date-true">
-                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-from"></li>
-                    <li class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-to"></li>
+                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="date-from" min="2022-01-01" name="date" id="mobile-date-from"></li>
+                    <li class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" class="date-to" min="2022-01-01" name="date" id="mobile-date-to"></li>
                 </div>
             </div>
 
@@ -285,13 +299,39 @@
                             <div class="date-filter filter-type">
                                 <h2 class="filter-heading">Select Date</h2>
                                 <ul class="choose-date-div">
-                                    <li><input type="radio" checked name="date" id="most-recent"> <label for="most-recent">Most recent</label></li>
+                                    <!-- <li><input type="radio" checked name="date" id="all-dates"> <label for="all-dates">All dates</label></li>     -->
+                                    <li><input type="radio" checked name="date" id="default"> <label for="default">Default</label></li>
                                     <li><input type="radio" name="date" id="search-date"> <label for="search-date">Look up from?</label></li>
                                 </ul>
                                 <div class="select-date-true">
-                                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="date"></li>
-                                    <li class="time-period-div To-div"> <label for="date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="date"></li>
+                                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="time-period date-from" min="<%= items.minDate %> " name="date" id="date-from"></li>
+                                    <li class="time-period-div To-div"> <label for="date-to">To:</label> <input type="date" class="time-period date-to"  min="2022-01-01" name="date" id="date-to"></li>
                                 </div>
+                                <script>
+                                    Date.prototype.toDateInputValue = (function() {
+                                            var local = new Date(this);
+                                            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                                            return local.toJSON().slice(0,10);
+                                        });
+
+                                        function convert(str) {
+                                            var date = new Date(str),
+                                                mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                                                day = ("0" + date.getDate()).slice(-2);
+                                            return [date.getFullYear(), mnth, day].join("-");
+                                        }  
+
+                                    let dateTo = document.getElementById("date-to");
+                                    dateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
+                                    dateTo.setAttribute("max", dateTo.value)// Maximum value is Today
+                                    dateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+
+                                    let dateFrom = document.getElementById("date-from");
+                                    
+                                    dateFrom.value = convert("<%= items.minDate %>");
+                                    // dateFrom.setAttribute("min", dateFrom.value)//Minimum value is the last thing in database
+                                    dateFrom.setAttribute("max", dateTo.value)//Maximum value is Today
+                                </script>
                             </div>
 
                             <div class="item-not-found-div filter-type">
