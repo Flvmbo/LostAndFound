@@ -672,9 +672,8 @@ main{
 .item-label{
     display: block;
     font-size: .75rem;
-    text-transform: capitalize;
-    word-wrap:break-word;
-    word-break: break-word;
+    /* text-transform: capitalize; */
+    /* border: 2px solid; */
     padding:0;
 }
 .item-details-div{
@@ -690,7 +689,7 @@ main{
     border: 0;
     pointer-events: none;
     outline:0;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     color:#000;
     text-align: right;
     font-size: .9rem;
