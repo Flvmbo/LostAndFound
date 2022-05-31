@@ -1,6 +1,5 @@
 const express = require("express")
-const getUpdate_controller = require("../controllers/getupdate_controller")
-
+const getUpdate_controller = require("../controllers/getUpdate_controller")
 var route = express.Router();
 
 // This GET route shows the get update page
