@@ -58,12 +58,19 @@
                 }
             }
             function getDates(date = "default"){
+                function convert(str) {
+                        var date = new Date(str),
+                            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                            day = ("0" + date.getDate()).slice(-2);
+                        return [date.getFullYear(), mnth, day].join("-");
+                    }  
+
                 if(date.toLowerCase() == "default"){
                     let dateTo = document.getElementById("date-to");
                     let dateFrom = document.getElementById("date-from"); 
-                    dateFrom.value = convert("<%= items.minDate %>");                                                     
+                    dateFrom.value = convert("<%= items.minDate %>");                                                
                     dateTo.value = convert("<%= items.maxDate %>");   
-                    dateArray = [dateFrom, dateTo];
+                    dateArray = [dateFrom.value, dateTo.value];
                 }
             }
 
@@ -146,6 +153,17 @@
                     $(".lost-items-container").html(data)
                 })         
             })
+            $("#default").click((e)=>{
+                getDates();
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
         }
         const mobileFilterAlgorithm = ()=>{
             let categoryArray = [];
@@ -194,12 +212,19 @@
                 }
             }
             function getDates(date = "default"){
+                function convert(str) {
+                    var date = new Date(str),
+                        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                        day = ("0" + date.getDate()).slice(-2);
+                    return [date.getFullYear(), mnth, day].join("-");
+                }  
+
                 if(date.toLowerCase() == "default"){    
-                    let mobileDateTo = document.getElementById("mobile-date-to");
-                    let mobileDateFrom = document.getElementById("mobile-date-from");  
+                    let mobileDateTo = document.getElementById("mobile-date-to").value;
+                    let mobileDateFrom = document.getElementById("mobile-date-from").value;  
                     mobileDateFrom.value = convert("<%= items.minDate %>");
                     mobileDateTo.value = convert("<%= items.maxDate %>");                                                                                                  
-                    dateArray = [dateFrom, dateTo];
+                    dateArray = [dateFrom.value, dateTo.value];
                 }
             }
 
@@ -282,7 +307,19 @@
                     $(".lost-items-container").html(data)
                 })         
             })
+            $("#mobile-default").click((e)=>{
+                getDates();
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
         }
+      
         $(document).ready(()=>{
             filterAlgorithm();
             mobileFilterAlgorithm();
@@ -345,7 +382,7 @@
             <div class="date-filter filter-type">
                 <h2 class="filter-heading">Select Date</h2>
                 <ul class="choose-date-div">
-                    <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-most-recent">Most recent</label></li>
+                    <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-default">Default</label></li>
                     <li><input type="radio" name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
                 </ul>
                 <div class="select-date-true">
