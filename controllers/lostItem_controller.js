@@ -5,7 +5,8 @@ const get_showLostItemPage =  async (req,res) => {
         const number = allItems.length;
         const lastElement = allItems[allItems.length - 1];
         const minimumDate = lastElement.itemDate;
-        res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin, num:number, minDate:minimumDate}})
+        const maxDate = allItems[0].itemDate;
+        res.render("lost_items_page",{items:{item:allItems, activeAdmin: req.session.activeAdmin, num:number, minDate:minimumDate, maxDate}})
     }
     catch(e)
     {

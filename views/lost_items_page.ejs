@@ -11,13 +11,18 @@
     <link rel="stylesheet" href="/lost_item_files/lost-items.css">
     <script src="/lost_item_files/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function(){
+        const filterAlgorithm = ()=>{
             let categoryArray = [];
             let locationArray = [];
             let dateArray = [];
+            let sortArray = [];
             checkCategory();
             checkLocation();
             getDates();
+            checkSort();
+            function checkSort(){
+                sortArray = [document.getElementById("sort").value];
+            }
             function checkCategory(category = "all"){
                 if(category.toLowerCase() == "all"){
                    let getCategories = document.querySelectorAll('.filter-container .category-item');
@@ -123,12 +128,162 @@
                 $.post("/filter",{
                     location:locationArray,
                     category:categoryArray,
-                    dates:dateArray
+                    dates:dateArray,
+                    sort:sortArray
                 },(data,status)=>{
                     $(".lost-items-container").html(data)
                 })
             });
-            return false;
+            $("#sort").change((e)=>{
+                sortArray = [e.target.value];
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
+        }
+        const mobileFilterAlgorithm = ()=>{
+            let categoryArray = [];
+            let locationArray = [];
+            let dateArray = [];
+            let sortArray = [];
+            checkCategory();
+            checkLocation();
+            getDates();
+            checkSort();
+            function checkSort(){
+                sortArray = [document.getElementById("sort").value];
+            }
+            function checkCategory(category = "all"){
+                if(category.toLowerCase() == "all"){
+                   let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                   let allCategories = [];
+                    getCategories.forEach((category)=>{
+                        allCategories.push(category.innerText)
+                    })
+                    categoryArray = allCategories;
+                }else{
+                    categoryArray = [category];
+                }
+            }
+            function checkLocation(chooseLocation = "all"){
+                if(chooseLocation.toLowerCase() == "all"){
+                  let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                  let allLocations = [];
+                  for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                    locationArray = allLocations;       
+                }else{
+                    let getLocations = document.querySelectorAll(".mobile-filter-container .check");
+                    let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                    var noChecked = false;                  
+                    selectedLocations = [];
+                    for(let i = 0; i<locationItem.length; i++){
+                        if(getLocations[i].checked) selectedLocations.push(locationItem[i].innerText);
+                    }
+                    locationArray = selectedLocations;
+                    if(locationArray.length <1){
+                        let allLocations = [];
+                        for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                       locationArray = allLocations;    
+                    }                    
+                }
+            }
+            function getDates(date = "default"){
+                if(date.toLowerCase() == "default"){
+                    let dateFrom = document.querySelector(".mobile-filter-container .date-from").value;
+                    let dateTo = document.querySelector(".mobile-filter-container .date-to").value;
+                    dateArray = [dateFrom, dateTo];
+                }
+            }
+
+            $(".mobile-filter-container li").click(function(){
+              if(this.parentElement.className.includes("category-filter")){
+                let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                    checkCategory(this.innerText);
+                    if(locationArray.length < locationItem.length ){checkLocation("value");}
+                    else{checkLocation();}
+              }
+              else if(this.parentElement.className.includes("choose-location")){
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }
+            else if(this.parentElement.className.includes("select-location-true")){
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }    
+            else if(this.className.includes("time-period-div")){
+                this.children[1].addEventListener("change", ()=>{
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                    if(this.children[1] == document.querySelector(".mobile-filter-container .date-from")){
+                        let fromDate = this.children[1].value;
+                        let toDate = this.nextElementSibling.children[1].value;
+                        alert(toDate)
+                        dateArray = [fromDate, toDate]
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        return
+                    }
+                    else if(this.children[1] == document.querySelector(".mobile-filter-container .date-to")){
+                        let toDate = this.children[1].value;
+                        let fromDate = this.previousElementSibling.children[1].value;
+                        dateArray = [fromDate, toDate];
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        return
+                    }
+                })
+            }           
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray,
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })
+            });
+            $("#sort").change((e)=>{
+                sortArray = [e.target.value];
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
+        }
+        $(document).ready(()=>{
+            filterAlgorithm();
+            mobileFilterAlgorithm();
         });
 // /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
 //     $(".lost-items-container").load(`/filter`, {
@@ -246,7 +401,7 @@
                                 <option value="ascending">Ascending</option>
                             </select>
                         </div>
-                        <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
+                        <div class="item-number-div"><label for="item-number" id="item-number" class="item-number"><%=items.num%> items found </label></div>
                         <!--  By default, in any form of sort, it shows by most recently uploaded -->
                     </div>
                     <div class="filter-lost-items-container">
@@ -322,15 +477,28 @@
                                         }  
 
                                     let dateTo = document.getElementById("date-to");
-                                    dateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
-                                    dateTo.setAttribute("max", dateTo.value)// Maximum value is Today
-                                    dateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
-
                                     let dateFrom = document.getElementById("date-from");
-                                    
-                                    dateFrom.value = convert("<%= items.minDate %>");
-                                    // dateFrom.setAttribute("min", dateFrom.value)//Minimum value is the last thing in database
-                                    dateFrom.setAttribute("max", dateTo.value)//Maximum value is Today
+                                    let mobileDateTo = document.getElementById("mobile-date-to");
+                                    let mobileDateFrom = document.getElementById("mobile-date-from");
+                                     
+                                    // dateTo.setAttribute("max", dateTo.value)// Maximum value is Today
+                                    // dateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
+                                    dateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    dateTo.setAttribute("max", convert("<%= items.maxDate %>")) //Mininum value is the last thing in database                              
+                                    dateTo.value = convert("<%= items.maxDate %>");
+                                    // mobileDateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
+                                    // mobileDateTo.setAttribute("max", mobileDateTo.value)// Maximum value is Today
+                                    mobileDateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    mobileDateTo.setAttribute("max", convert("<%= items.maxDate%>")) //Mininum value is the last thing in database                              
+                                    mobileDateTo.value = convert("<%= items.maxDate %>");
+                                    // dateFrom.setAttribute("max", dateTo.value)//Maximum value is Today
+                                    dateFrom.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    dateFrom.setAttribute("max", convert("<%= items.maxDate %>"))
+                                    dateFrom.value = convert("<%= items.minDate%>");
+
+                                    mobileDateFrom.value = convert("<%= items.minDate %>");
+                                    mobileDateFrom.setAttribute("min",convert("<%= items.minDate %>"));
+                                    mobileDateFrom.setAttribute("max", convert("<%= items.maxDate %>"))//Maximum value is Today
                                 </script>
                             </div>
 
