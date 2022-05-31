@@ -7,10 +7,10 @@ route.post("/", async (req, res)=>{
     let dates = req.body['dates[]'];
     let sort = req.body['sort[]'];
     const sortValue = sort=="ascending"?1:-1;
-    console.log(sort);
-    console.log(dates)
     let startDate = dates[0];
     let endDate = dates[1];
+    console.log(sort);
+    console.log(dates)
     console.log("category: ",category);
     console.log("location: ", location)
 

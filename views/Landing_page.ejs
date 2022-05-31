@@ -161,7 +161,7 @@
                                             </p>
                                         </div>
 
-                                        <a href="/item-retrieval/:id" class="retrieve-recent-btn" style="background: #592C54;box-shadow: 0px 4px 10px rgba(89, 44, 84, 0.25);border-radius: 5px;"> retrieve  </a>
+                                        <a href="/item-retrieval/<%=item.id%>" class="retrieve-recent-btn" style="background: #592C54;box-shadow: 0px 4px 10px rgba(89, 44, 84, 0.25);border-radius: 5px;"> retrieve  </a>
                                     </div>
                                 </div>
 
@@ -184,7 +184,7 @@
                 <div class="talk-section">
                     <div class="talk-container">
                         <h1>Can't find your item?</h1>
-                        <a href="">
+                        <a href="/get-updates">
                             <div class="talk-btn">
                                 Get updates!
                             </div>
@@ -194,7 +194,7 @@
 
                 <div class="footer">
                     <div class="lostAndFound-logo f-section">
-                        <img src="landing_page_files/images/lostAndFound_logo.png" alt="">
+                        <img src="/landing_page_files/images/lostAndFound_logo.png" alt="">
                     </div>
 
                     <div class="footer-access f-section">
@@ -212,13 +212,12 @@
                         <a href="/found-item">
                             <p>Upload an item</p>
                         </a>
-                        <a href="/item-retrieval/:id">
+                        <a href="/sign-in-page">
                             <p>Retrieve an item</p>
                         </a>
                     </div>
                     <div class="cu-address f-section">
                         <p>Covenant University <br> Km. 10 Idiroko Road, Canaan Land, <br> Ota, Ogun State, Nigeria.</p>
-
                     </div>
 
                     <p class="copyright">&#169; 2021</p>
