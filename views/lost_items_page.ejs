@@ -93,13 +93,24 @@
                 if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
                 else{checkCategory();}
             }    
-            else if(this.className.includes("time-period-div")){
-                this.children[1].addEventListener("change", ()=>{
+                
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray,
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })
+            });
+
+            $(".time-period").change((e)=>{
                 let getCategories = document.querySelectorAll('.filter-container .category-item');
                 let locationItem = document.querySelectorAll('.filter-container .location-item');
-                    if(this.children[1] == document.querySelector(".filter-container .date-from")){
-                        let fromDate = this.children[1].value;
-                        let toDate = this.nextElementSibling.children[1].value;
+                let dates = document.querySelectorAll(".time-period");
+                    if(e.target == document.querySelector(".filter-container .date-from")){
+                        let fromDate = e.target.value;
+                        let toDate = dates[1].value;
                         dateArray = [fromDate, toDate]
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
@@ -112,11 +123,10 @@
                         }else{
                             checkLocation();
                         }
-                        return
                     }
-                    else if(this.children[1] == document.querySelector(".filter-container .date-to")){
-                        let toDate = this.children[1].value;
-                        let fromDate = this.previousElementSibling.children[1].value;
+                    else if(e.target == document.querySelector(".filter-container .date-to")){
+                        let toDate = e.target.value;
+                        let fromDate = dates[0].value;;
                         dateArray = [fromDate, toDate];
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
@@ -129,19 +139,16 @@
                         }else{
                             checkLocation();
                         }
-                        return
                     }
-                })
-            }           
                 $.post("/filter",{
-                    location:locationArray,
-                    category:categoryArray,
-                    dates:dateArray,
-                    sort:sortArray
+                location:locationArray,
+                category:categoryArray,
+                dates:dateArray, 
+                sort:sortArray
                 },(data,status)=>{
                     $(".lost-items-container").html(data)
-                })
-            });
+                })     
+            })     
             $("#sort").change((e)=>{
                 sortArray = [e.target.value];
                 $.post("/filter",{
@@ -165,6 +172,8 @@
                 })         
             })
         }
+        
+
         const mobileFilterAlgorithm = ()=>{
             let categoryArray = [];
             let locationArray = [];
@@ -247,13 +256,23 @@
                 if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
                 else{checkCategory();}
             }    
-            else if(this.className.includes("time-period-div")){
-                this.children[1].addEventListener("change", ()=>{
+           
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray,
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })
+            });
+           $(".mobile-time-period").change((e)=>{
                 let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
                 let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
-                    if(this.children[1] == document.querySelector(".mobile-filter-container .date-from")){
-                        let fromDate = this.children[1].value;
-                        let toDate = this.nextElementSibling.children[1].value;
+                let dates = document.querySelectorAll(".mobile-time-period");
+                    if(e.target == document.querySelector(".mobile-filter-container .date-from")){
+                        let fromDate = e.target.value;
+                        let toDate = dates[1].value;
                         dateArray = [fromDate, toDate]
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
@@ -266,11 +285,11 @@
                         }else{
                             checkLocation();
                         }
-                        return
+                        
                     }
-                    else if(this.children[1] == document.querySelector(".mobile-filter-container .date-to")){
-                        let toDate = this.children[1].value;
-                        let fromDate = this.previousElementSibling.children[1].value;
+                    else if(e.target == document.querySelector(".mobile-filter-container .date-to")){
+                        let toDate = e.target.value;
+                        let fromDate = dates[0].value;;
                         dateArray = [fromDate, toDate];
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
@@ -283,19 +302,18 @@
                         }else{
                             checkLocation();
                         }
-                        return
+                        
                     }
-                })
-            }           
-                $.post("/filter",{
-                    location:locationArray,
-                    category:categoryArray,
-                    dates:dateArray,
-                    sort:sortArray
+                    $.post("/filter",{
+                location:locationArray,
+                category:categoryArray,
+                dates:dateArray, 
+                sort:sortArray
                 },(data,status)=>{
                     $(".lost-items-container").html(data)
+                })   
+
                 })
-            });
             $("#sort").change((e)=>{
                 sortArray = [e.target.value];
                 $.post("/filter",{
@@ -386,8 +404,8 @@
                     <li><input type="radio" name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
                 </ul>
                 <div class="select-date-true">
-                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="date-from" min="2022-01-01" name="date" id="mobile-date-from"></li>
-                    <li class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" class="date-to" min="2022-01-01" name="date" id="mobile-date-to"></li>
+                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="mobile-time-period date-from" min="2022-01-01" name="date" id="mobile-date-from"></li>
+                    <li class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" class="mobile-time-period date-to" min="2022-01-01" name="date" id="mobile-date-to"></li>
                 </div>
             </div>
 
