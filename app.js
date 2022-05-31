@@ -80,25 +80,10 @@ port = process.env.PORT || 3700
 
 
 // database Local connection
-const dbConnect = async() => {
-    try
-    {
-        const connected = await mongoose.connect("mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
-        console.log("connected to the database")
-        app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
-    })
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-}
-
-// database Connection to Atlas
 // const dbConnect = async() => {
 //     try
 //     {
-//     const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+//         const connected = await mongoose.connect("mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
 //         console.log("connected to the database")
 //         app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
 //     })
@@ -108,6 +93,21 @@ const dbConnect = async() => {
 //         console.log(e);
 //     }
 // }
+
+// database Connection to Atlas
+const dbConnect = async() => {
+    try
+    {
+    const connected = await mongoose.connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
+        console.log("connected to the database")
+        app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
+    })
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+}
 
 // calling database connection
 dbConnect()
