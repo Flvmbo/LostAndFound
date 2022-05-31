@@ -59,8 +59,10 @@
             }
             function getDates(date = "default"){
                 if(date.toLowerCase() == "default"){
-                    let dateFrom = document.querySelector(".filter-container .date-from").value;
-                    let dateTo = document.querySelector(".filter-container .date-to").value;
+                    let dateTo = document.getElementById("date-to");
+                    let dateFrom = document.getElementById("date-from"); 
+                    dateFrom.value = convert("<%= items.minDate %>");                                                     
+                    dateTo.value = convert("<%= items.maxDate %>");   
                     dateArray = [dateFrom, dateTo];
                 }
             }
@@ -192,9 +194,11 @@
                 }
             }
             function getDates(date = "default"){
-                if(date.toLowerCase() == "default"){
-                    let dateFrom = document.querySelector(".mobile-filter-container .date-from").value;
-                    let dateTo = document.querySelector(".mobile-filter-container .date-to").value;
+                if(date.toLowerCase() == "default"){    
+                    let mobileDateTo = document.getElementById("mobile-date-to");
+                    let mobileDateFrom = document.getElementById("mobile-date-from");  
+                    mobileDateFrom.value = convert("<%= items.minDate %>");
+                    mobileDateTo.value = convert("<%= items.maxDate %>");                                                                                                  
                     dateArray = [dateFrom, dateTo];
                 }
             }
