@@ -91,7 +91,6 @@
                     if(this.children[1] == document.querySelector(".filter-container .date-from")){
                         let fromDate = this.children[1].value;
                         let toDate = this.nextElementSibling.children[1].value;
-                        alert(toDate)
                         dateArray = [fromDate, toDate]
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
@@ -226,7 +225,6 @@
                     if(this.children[1] == document.querySelector(".mobile-filter-container .date-from")){
                         let fromDate = this.children[1].value;
                         let toDate = this.nextElementSibling.children[1].value;
-                        alert(toDate)
                         dateArray = [fromDate, toDate]
                         if(categoryArray.length < getCategories.length){
                             checkCategory(categoryArray[0])
