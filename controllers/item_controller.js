@@ -5,6 +5,8 @@ const get_update_schema = require("../model/get_update");
 const cloudinary = require("../util/cloudinary");
 const upload = require("../middleware/upload");
 const fs = require("fs");
+const LOCALURL = "http://localhost:3700";
+const ONLINEURL = "http://lostandfound-cu.herokuapp.com"
 
 const get_showItemPage = async (req, res) => {
   res.render("found_an_item", {
@@ -57,7 +59,7 @@ const post_submitItem = async (req, res) => {
         Category: Category,
       });
       for (let i = 0; i < get_update_list.length; i++) {
-        console.log(get_update_list[i].id);
+        console.log(get_update_list[i]._id);
         var transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
@@ -70,8 +72,8 @@ const post_submitItem = async (req, res) => {
           from: "isaiah.ekundayo@stu.cu.edu.ng",
           to: get_update_list[i].StudentEmail,
           subject: "Lost Item Alert",
-          html: `<p>Based on your the item misplaced you have been adviced to check out this <a href="http://localhost:3700/check-item/${uniqueID}">item</a></p>
-                            <p>To opt out from receiving emails please click the button <a href = "http://localhost:3700/unsubscribe"><input type="button"/ value="Unsubscribe"></a> </p>
+          html: `<p>Based on your the item misplaced you have been advised to check out this <a href="${ONLINEURL}/check-item/${uniqueID}">item</a></p>
+                            <p>To opt out from receiving emails please click the button <a href = "${ONLINEURL}/unsubscribe"><input type="button"/ value="Unsubscribe"></a> </p>
                             `,
         };
 

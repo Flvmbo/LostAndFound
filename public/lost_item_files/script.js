@@ -1,3 +1,4 @@
+// const { all } = require("express/lib/application");
 const body = document.querySelector('body');
 const showFilter = document.querySelector('.show-filter');
 // const filterContainer = document.querySelector('.mobile-filter-container');
@@ -43,7 +44,7 @@ const slideRight = document.querySelectorAll('.next');
 
 rightSlide.forEach((element)=>{
     element.addEventListener('click', ()=>{
-    
+        
         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
         // imageAndSliderContainer.style ='border:1px solid;';
         imageAndSliderContainer.classList.remove('circle-highlight')
@@ -68,7 +69,7 @@ rightSlide.forEach((element)=>{
 })
 slideRight.forEach((element)=>{
     element.addEventListener('click', ()=>{
-    
+        
         let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
         // imageAndSliderContainer.style ='border:1px solid;';
         imageAndSliderContainer.classList.remove('circle-highlight')
@@ -174,11 +175,16 @@ selectLocation.addEventListener('click', ()=>{
 const allLocations = document.querySelector('#filter-container #all-location');
 allLocations.addEventListener('click', ()=>{
     let showLocation = document.querySelector('#filter-container .select-location-true');
+    let locationFilter = document.querySelectorAll('#filter-container .check');
+    locationFilter.forEach(location=>{
+        location.checked = false;
+    })
+    locationFilter[0].checked = true;
     showLocation.style.display = 'none';
     // anyChecked = false;
 })
 // TO SHOW DATE SELECT OR SORT BY MOST RECENT
-const mostRecent = document.querySelector('#filter-container #most-recent');
+const mostRecent = document.querySelector('#filter-container #default');
 mostRecent.addEventListener('click', ()=>{
     let selectDate = document.querySelector('#filter-container .select-date-true');
     selectDate.style.display = 'none';

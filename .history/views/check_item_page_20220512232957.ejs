@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+    </style>
+    <link rel="stylesheet" href="/lost_item_files/lost-items.css">
+    <link rel="stylesheet" href="/check_item_files/check-item.css">
+
+</head>
+
+<body>
+    <%- include("./partials/nav_bar.ejs") %>
+        <%- include('./partials/mobile_nav_bar.ejs') %>
+            <div class="lost-items-container">
+                <div class="lost-item-container" id="<%-info.item.id%>">
+                    <div class="item-time-uploaded-div item-details-div">
+                        <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
+                    </div>
+                    <div class="lost-item-div">
+                        <div class="image-slider-container" id=`<%=info.item.id%>`>
+                            <div class="slider-container prev-image-container">
+                                <input class="prev-image slide-image" type="button" value="<">
+                            </div>
+                            <div class="image-container">
+                                <img class="item-image left-img" src="/<%=info.item.firstImage%>" alt="<%= info.item.Description %>">
+                                <img class="item-image right-img" src="/<%=info.item.secondImage%>" alt="<%= info.item.Description %>">
+                                <input class="slide-button prev" type="button">
+                                <input class="slide-button next" type="button">
+                            </div>
+                            <div class="slider-container next-image-container">
+                                <input class="next-image slide-image" type="button" value=">">
+                            </div>
+                        </div>
+                        <div class="lost-item-content-div">
+                            <div class="item-name-div item-details-div">
+                                <label for="item-name-label" class="item-label">Item name:  <span class="item-name details-input"><%=info.item.item_name%></span></label>
+                            </div>
+                            <div class="item-location-found-div item-details-div">
+                                <label for="item-location-found-label" class="item-label">Location Found: <span class="location-found details-input"><%=info.item.Location%></span></label>
+                            </div>
+                            <div class="item-current-location-div item-details-div">
+                                <label for="item-current-location-label" class="item-label">Current Location: <span class="current-location details-input"><%=info.item.Location%></span></label>
+                            </div>
+                            <div class="item-date-found-div item-details-div">
+                                <label for="item-date-found-label" class="item-label">Date Found: <span class="current-location details-input"><%=info.item.itemDate.toString().split(' ').slice(0, 4).join(' ')%></span></label>
+                            </div>
+                            <div class="retrieve-item-div">
+                                <a class="retrieve-item" href="/item-retrieval/<%= info.item.id   %>" id="retrieveButton"><button class="retrieve-item-btn btn">Retrieve</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-category-div item-details-div">
+                        <label for="item-category-label" name="category" class="item-label">Category: <span class="category details-input"><%-info.item.Category%></span></label>
+                    </div>
+                </div>
+
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <script src="/check_item_files/script.js"></script>
+
+            <img src="fghj" one
+
+</body>
+
+</html>

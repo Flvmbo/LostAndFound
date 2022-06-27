@@ -27,10 +27,10 @@ var retrieveItem = new mongoose.Schema({
     },
     date_found: {
         required: true,
-        type: String
+        type: Date
     },
     date_retrieved: {
-        type: String
+        type: Date
     },
 
     idphoto: {

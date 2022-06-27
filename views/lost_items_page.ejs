@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,22 +9,342 @@
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
     </style>
     <link rel="stylesheet" href="/lost_item_files/lost-items.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="/lost_item_files/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $(".category-item").click(function(){
-                $(".lost-items-container").load("/filter", {
-                    category: `${this.textContent}`, 
+        const filterAlgorithm = ()=>{
+            let categoryArray = [];
+            let locationArray = [];
+            let dateArray = [];
+            let sortArray = [];
+            checkCategory();
+            checkLocation();
+            getDates();
+            checkSort();
+            function checkSort(){
+                sortArray = [document.getElementById("sort").value];
+            }
+            function checkCategory(category = "all"){
+                if(category.toLowerCase() == "all"){
+                   let getCategories = document.querySelectorAll('.filter-container .category-item');
+                   let allCategories = [];
+                    getCategories.forEach((category)=>{
+                        allCategories.push(category.innerText)
+                    })
+                    categoryArray = allCategories;
+                }else{
+                    categoryArray = [category];
+                }
+            }
+            function checkLocation(chooseLocation = "all"){
+                if(chooseLocation.toLowerCase() == "all"){
+                  let locationItem = document.querySelectorAll('.filter-container .location-item');
+                  let allLocations = [];
+                  for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                    locationArray = allLocations;       
+                }else{
+                    let getLocations = document.querySelectorAll(".filter-container .check");
+                    let locationItem = document.querySelectorAll('.filter-container .location-item');
+                    var noChecked = false;                  
+                    selectedLocations = [];
+                    for(let i = 0; i<locationItem.length; i++){
+                        if(getLocations[i].checked) selectedLocations.push(locationItem[i].innerText);
+                    }
+                    locationArray = selectedLocations;
+                    if(locationArray.length <1){
+                        let allLocations = [];
+                        for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                       locationArray = allLocations;    
+                    }                    
+                }
+            }
+            function getDates(date = "default"){
+                function convert(str) {
+                        var date = new Date(str),
+                            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                            day = ("0" + date.getDate()).slice(-2);
+                        return [date.getFullYear(), mnth, day].join("-");
+                    }  
+
+                if(date.toLowerCase() == "default"){
+                    let dateTo = document.getElementById("date-to");
+                    let dateFrom = document.getElementById("date-from"); 
+                    dateFrom.value = convert("<%= items.minDate %>");                                                
+                    dateTo.value = convert("<%= items.maxDate %>");   
+                    dateArray = [dateFrom.value, dateTo.value];
+                }
+            }
+
+            $(".filter-container li").click(function(){
+              if(this.parentElement.className.includes("category-filter")){
+                let locationItem = document.querySelectorAll('.filter-container .location-item');
+                    checkCategory(this.innerText);
+                    if(locationArray.length < locationItem.length ){checkLocation("value");}
+                    else{checkLocation();}
+              }
+              else if(this.parentElement.className.includes("choose-location")){
+                let getCategories = document.querySelectorAll('.filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }
+            else if(this.parentElement.className.includes("select-location-true")){
+                let getCategories = document.querySelectorAll('.filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }    
+                
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray,
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
                 })
             });
-            $(".location-item").click(function(){
-                $(".lost-items-container").load("/filter", {
-                    location: `${this.textContent}`, 
-                })
+
+            $(".time-period").change((e)=>{
+                let getCategories = document.querySelectorAll('.filter-container .category-item');
+                let locationItem = document.querySelectorAll('.filter-container .location-item');
+                let dates = document.querySelectorAll(".time-period");
+                    if(e.target == document.querySelector(".filter-container .date-from")){
+                        let fromDate = e.target.value;
+                        let toDate = dates[1].value;
+                        dateArray = [fromDate, toDate]
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                    }
+                    else if(e.target == document.querySelector(".filter-container .date-to")){
+                        let toDate = e.target.value;
+                        let fromDate = dates[0].value;;
+                        dateArray = [fromDate, toDate];
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                    }
+                $.post("/filter",{
+                location:locationArray,
+                category:categoryArray,
+                dates:dateArray, 
+                sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })     
+            })     
+            $("#sort").change((e)=>{
+                sortArray = [e.target.value];
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
             })
+            $("#default").click((e)=>{
+                getDates();
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
+        }
+        
+
+        const mobileFilterAlgorithm = ()=>{
+            let categoryArray = [];
+            let locationArray = [];
+            let dateArray = [];
+            let sortArray = [];
+            checkCategory();
+            checkLocation();
+            getDates();
+            checkSort();
+            function checkSort(){
+                sortArray = [document.getElementById("sort").value];
+            }
+            function checkCategory(category = "all"){
+                if(category.toLowerCase() == "all"){
+                   let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                   let allCategories = [];
+                    getCategories.forEach((category)=>{
+                        allCategories.push(category.innerText)
+                    })
+                    categoryArray = allCategories;
+                }else{
+                    categoryArray = [category];
+                }
+            }
+            function checkLocation(chooseLocation = "all"){
+                if(chooseLocation.toLowerCase() == "all"){
+                  let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                  let allLocations = [];
+                  for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                    locationArray = allLocations;       
+                }else{
+                    let getLocations = document.querySelectorAll(".mobile-filter-container .check");
+                    let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                    var noChecked = false;                  
+                    selectedLocations = [];
+                    for(let i = 0; i<locationItem.length; i++){
+                        if(getLocations[i].checked) selectedLocations.push(locationItem[i].innerText);
+                    }
+                    locationArray = selectedLocations;
+                    if(locationArray.length <1){
+                        let allLocations = [];
+                        for(let i = 0; i<locationItem.length; i++){allLocations.push(locationItem[i].innerText);}
+                       locationArray = allLocations;    
+                    }                    
+                }
+            }
+            function getDates(date = "default"){
+                function convert(str) {
+                    var date = new Date(str),
+                        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                        day = ("0" + date.getDate()).slice(-2);
+                    return [date.getFullYear(), mnth, day].join("-");
+                }  
+
+                if(date.toLowerCase() == "default"){    
+                    let mobileDateTo = document.getElementById("mobile-date-to").value;
+                    let mobileDateFrom = document.getElementById("mobile-date-from").value;  
+                    mobileDateFrom.value = convert("<%= items.minDate %>");
+                    mobileDateTo.value = convert("<%= items.maxDate %>");                                                                                                  
+                    dateArray = [dateFrom.value, dateTo.value];
+                }
+            }
+
+            $(".mobile-filter-container li").click(function(){
+              if(this.parentElement.className.includes("category-filter")){
+                let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                    checkCategory(this.innerText);
+                    if(locationArray.length < locationItem.length ){checkLocation("value");}
+                    else{checkLocation();}
+              }
+              else if(this.parentElement.className.includes("choose-location")){
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }
+            else if(this.parentElement.className.includes("select-location-true")){
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                    checkLocation(this.innerText);
+                if(categoryArray.length < getCategories.length){checkCategory(categoryArray[0])}
+                else{checkCategory();}
+            }    
+           
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray,
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })
+            });
+           $(".mobile-time-period").change((e)=>{
+                let getCategories = document.querySelectorAll('.mobile-filter-container .category-item');
+                let locationItem = document.querySelectorAll('.mobile-filter-container .location-item');
+                let dates = document.querySelectorAll(".mobile-time-period");
+                    if(e.target == document.querySelector(".mobile-filter-container .date-from")){
+                        let fromDate = e.target.value;
+                        let toDate = dates[1].value;
+                        dateArray = [fromDate, toDate]
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        
+                    }
+                    else if(e.target == document.querySelector(".mobile-filter-container .date-to")){
+                        let toDate = e.target.value;
+                        let fromDate = dates[0].value;;
+                        dateArray = [fromDate, toDate];
+                        if(categoryArray.length < getCategories.length){
+                            checkCategory(categoryArray[0])
+                        }
+                        else{
+                            checkCategory();
+                        }
+                        if(locationArray.length < locationItem.length ){
+                        checkLocation("value");    
+                        }else{
+                            checkLocation();
+                        }
+                        
+                    }
+                    $.post("/filter",{
+                location:locationArray,
+                category:categoryArray,
+                dates:dateArray, 
+                sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })   
+
+                })
+            $("#sort").change((e)=>{
+                sortArray = [e.target.value];
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
+            $("#mobile-default").click((e)=>{
+                getDates();
+                $.post("/filter",{
+                    location:locationArray,
+                    category:categoryArray,
+                    dates:dateArray, 
+                    sort:sortArray
+                },(data,status)=>{
+                    $(".lost-items-container").html(data)
+                })         
+            })
+        }
+      
+        $(document).ready(()=>{
+            filterAlgorithm();
+            mobileFilterAlgorithm();
         });
+// /query?location=${JSON.stringify(locationArray)}+category=${JSON.stringify(categoryArray)}
+//     $(".lost-items-container").load(`/filter`, {
+// }   
     </script>
 </head>
 
@@ -54,24 +373,24 @@
             <ul class="location-filter filter-type mobile-filter-type" id="mobile-filter-type">
                 <h2 class="filter-heading">Choose location(s)</h2>
                 <ul class="choose-location">
-                    <li> <input type="radio" checked name="mobile-location" id="mobile-all-location"> <label for="mobile-all-location">All</label></li>
-                    <li> <input type="radio" name="mobile-location" id="mobile-specific-location"> <label for="mobile-specific-location">Select location</label></li>
+                    <li><input type="radio" checked name="mobile-location" id="mobile-all-location"><label for="mobile-all-location">All</label></li>
+                    <li><input type="radio" name="mobile-location" id="mobile-specific-location"><label for="mobile-specific-location">Select location</label></li>
                 </ul>
                 <div class="select-location-true">
-                    <li class="location-item filter-item"><input type="checkbox" checked class="check" name="chapel" id="mobile-chapel"> <label for="mobile-chapel">CHAPEL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="mobile-clds"> <label for="mobile-clds">CLDS</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds"> <label for="mobile-ceds">CEDS</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst"> <label for="mobile-cst">CST</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt"> <label for="mobile-lt">LT</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"> <label for="mobile-daniel-hall">DANIEL HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"> <label for="mobile-dorcas-hall">DORCAS HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"> <label for="mobile-lydia-hall">LYDIA HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="mobile-joseph-hall"> <label for="mobile-joseph-hall">JOSEPH HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="mobile-deborah-hall"> <label for="mobile-deborah-hall">DEBORAH HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="mobile-john-hall"> <label for="mobile-john-hall">JOHN HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mobile-mary-hall"> <label for="mobile-mary-hall">MARY HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" checked class="check" name="chapel" id="mobile-chapel"><label for="mobile-chapel">CHAPEL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="mobile-clds"><label for="mobile-clds">CLDS</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="mobile-ceds"><label for="mobile-ceds">CEDS</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="mobile-cst"><label for="mobile-cst">CST</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="mobile-lt"><label for="mobile-lt">LT</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="mobile-daniel-hall"><label for="mobile-daniel-hall">DANIEL HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="mobile-dorcas-hall"><label for="mobile-dorcas-hall">DORCAS HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="mobile-lydia-hall"><label for="mobile-lydia-hall">LYDIA HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="mobile-joseph-hall"><label for="mobile-joseph-hall">JOSEPH HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="mobile-deborah-hall"><label for="mobile-deborah-hall">DEBORAH HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="mobile-john-hall"><label for="mobile-john-hall">JOHN HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mobile-mary-hall"><label for="mobile-mary-hall">MARY HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="mobile-paul-hall"><label for="mobile-paul-hall">PAUL HALL</label></li>
-                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="mobile-esther-hall"> <label for="mobile-esther-hall">ESTHER HALL</label></li>
+                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="mobile-esther-hall"><label for="mobile-esther-hall">ESTHER HALL</label></li>
                     <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="mobile-peter-hall"><label for="mobile-peter-hall">PETER HALL</label></li>
                 </div>
                 <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
@@ -81,12 +400,12 @@
             <div class="date-filter filter-type">
                 <h2 class="filter-heading">Select Date</h2>
                 <ul class="choose-date-div">
-                    <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-most-recent">Most recent</label></li>
+                    <li><input type="radio" checked name="mobile-date" id="mobile-most-recent"> <label for="mobile-default">Default</label></li>
                     <li><input type="radio" name="mobile-date" id="mobile-search-date"> <label for="mobile-search-date">Look up from?</label></li>
                 </ul>
                 <div class="select-date-true">
-                    <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-from"></div>
-                    <div class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="mobile-date-to"></div>
+                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="mobile-time-period date-from" min="2022-01-01" name="date" id="mobile-date-from"></li>
+                    <li class="time-period-div To-div"> <label for="mobile-date-to">To:</label> <input type="date" class="mobile-time-period date-to" min="2022-01-01" name="date" id="mobile-date-to"></li>
                 </div>
             </div>
 
@@ -135,10 +454,11 @@
                     <div class="sort-num-div">
                         <div class="sort-div"><label for="sort" id="sort-label">Sort by:</label>
                             <select name="sort" id="sort">
-                        <option value="descending">Descending</option>
-                        <option value="ascending">Ascending</option>
-                    </select></div>
-                        <div class="item-number-div"><label for="item-number" class="item-number"><%=items.num%> items found </label></div>
+                                <option value="descending">Descending</option>
+                                <option value="ascending">Ascending</option>
+                            </select>
+                        </div>
+                        <div class="item-number-div"><label for="item-number" id="item-number" class="item-number"><%=items.num%> items found </label></div>
                         <!--  By default, in any form of sort, it shows by most recently uploaded -->
                     </div>
                     <div class="filter-lost-items-container">
@@ -160,29 +480,29 @@
                             <ul class="location-filter filter-type">
                                 <h2 class="filter-heading">Choose location(s)</h2>
                                 <ul class="choose-location">
-                                    <li> <input type="radio" checked name="locations" id="all-location"> <label for="all-location">All</label></li>
-                                    <li> <input type="radio" name="locations" id="specific-location"> <label for="specific-location">Select location</label></li>
+                                    <li><input type="radio" checked name="locations" id="all-location"><label for="all-location">All</label></li>
+                                    <li><input type="radio" name="locations" id="specific-location"><label for="specific-location">Select location</label></li>
                                 </ul>
                                 <ul class="select-location-true">
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chapel" id="chapel"> <label for="chapel">CHAPEL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chapel" id="chapel"><label for="chapel">CHAPEL</label></li>
                                     <li class="location-item filter-item"><input type="checkbox" class="check" name="clds" id="clds"><label for="clds">CLDS</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="ceds"> <label for="ceds">CEDS</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="cst"> <label for="cst">CST</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="lt"> <label for="lt">LT</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="daniel-hall"><label for="daniel-hall">DANIEL HALL </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="dorcas-hall"><label for="dorcas-hall">DORCAS HALL </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="lydia-hall"><label for="lydia-hall">LYDIA HALL </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="joseph-hall"><label for="joseph-hall">JOSEPH HALL </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="ceds" id="ceds"><label for="ceds">CEDS</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="cst" id="cst"><label for="cst">CST</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lt" id="lt"><label for="lt">LT</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="daniel-hall" id="daniel-hall"><label for="daniel-hall">DANIEL HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="dorcas-hall" id="dorcas-hall"><label for="dorcas-hall">DORCAS HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="lydia-hall" id="lydia-hall"><label for="lydia-hall">LYDIA HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="joseph-hall" id="joseph-hall"><label for="joseph-hall">JOSEPH HALL</label></li>
                                     <li class="location-item filter-item"><input type="checkbox" class="check" name="deborah-hall" id="deborah-hall"><label for="deborah-hall">DEBORAH HALL</label></li>
                                     <li class="location-item filter-item"><input type="checkbox" class="check" name="john-hall" id="john-hall"><label for="john-hall">JOHN HALL</label></li>
                                     <li class="location-item filter-item"><input type="checkbox" class="check" name="mary-hall" id="mary-hall"><label for="mary-hall">MARY HALL</label></li>
                                     <li class="location-item filter-item"><input type="checkbox" class="check" name="paul-hall" id="paul-hall"><label for="paul-hall">PAUL HALL</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="esther-hall"> <label for="esther-hall">ESTHER HALL</label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="peter-hall"><label for="peter-hall">PETER HALL </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mech" id="mech"><label for="mech">MECH BUILDING </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="civil" id="civil"><label for="civil">CIVIL BUILDING </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="pet" id="pet"><label for="pet">PET BUILDING </label></li>
-                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chem" id="chem"><label for="chem">CHEM BUILDING </label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="esther-hall" id="esther-hall"><label for="esther-hall">ESTHER HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="peter-hall" id="peter-hall"><label for="peter-hall">PETER HALL</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="mech" id="mech"><label for="mech">MECH BUILDING</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="civil" id="civil"><label for="civil">CIVIL BUILDING</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="pet" id="pet"><label for="pet">PET BUILDING</label></li>
+                                    <li class="location-item filter-item"><input type="checkbox" class="check" name="chem" id="chem"><label for="chem">CHEM BUILDING</label></li>
                                 </ul>
                                 <!-- if they tick select location, by default, only chapel will be checked, the rest will be false, so as to have something displayed in the lost items section -->
                                 <!-- If they untick everything, the option [ALL] should be true automatically and select location false-->
@@ -191,13 +511,52 @@
                             <div class="date-filter filter-type">
                                 <h2 class="filter-heading">Select Date</h2>
                                 <ul class="choose-date-div">
-                                    <li><input type="radio" checked name="date" id="most-recent"> <label for="most-recent">Most recent</label></li>
+                                    <!-- <li><input type="radio" checked name="date" id="all-dates"> <label for="all-dates">All dates</label></li>     -->
+                                    <li><input type="radio" checked name="date" id="default"> <label for="default">Default</label></li>
                                     <li><input type="radio" name="date" id="search-date"> <label for="search-date">Look up from?</label></li>
                                 </ul>
                                 <div class="select-date-true">
-                                    <div class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
-                                    <div class="time-period-div To-div"> <label for="date-to">To:</label> <input type="date" min="2022-01-01" name="date" id="date"></div>
+                                    <li class="time-period-div from-div"> <label for="date-from">From:</label> <input type="date" class="time-period date-from" min="<%= items.minDate %> " name="date" id="date-from"></li>
+                                    <li class="time-period-div To-div"> <label for="date-to">To:</label> <input type="date" class="time-period date-to"  min="2022-01-01" name="date" id="date-to"></li>
                                 </div>
+                                <script>
+                                    Date.prototype.toDateInputValue = (function() {
+                                            var local = new Date(this);
+                                            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                                            return local.toJSON().slice(0,10);
+                                        });
+
+                                        function convert(str) {
+                                            var date = new Date(str),
+                                                mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                                                day = ("0" + date.getDate()).slice(-2);
+                                            return [date.getFullYear(), mnth, day].join("-");
+                                        }  
+
+                                    let dateTo = document.getElementById("date-to");
+                                    let dateFrom = document.getElementById("date-from");
+                                    let mobileDateTo = document.getElementById("mobile-date-to");
+                                    let mobileDateFrom = document.getElementById("mobile-date-from");
+                                     
+                                    // dateTo.setAttribute("max", dateTo.value)// Maximum value is Today
+                                    // dateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
+                                    dateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    dateTo.setAttribute("max", convert("<%= items.maxDate %>")) //Mininum value is the last thing in database                              
+                                    dateTo.value = convert("<%= items.maxDate %>");
+                                    // mobileDateTo.value = new Date().toDateInputValue();//value and max value are same as you cant go past today
+                                    // mobileDateTo.setAttribute("max", mobileDateTo.value)// Maximum value is Today
+                                    mobileDateTo.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    mobileDateTo.setAttribute("max", convert("<%= items.maxDate%>")) //Mininum value is the last thing in database                              
+                                    mobileDateTo.value = convert("<%= items.maxDate %>");
+                                    // dateFrom.setAttribute("max", dateTo.value)//Maximum value is Today
+                                    dateFrom.setAttribute("min", convert("<%= items.minDate %>")) //Mininum value is the last thing in database                              
+                                    dateFrom.setAttribute("max", convert("<%= items.maxDate %>"))
+                                    dateFrom.value = convert("<%= items.minDate%>");
+
+                                    mobileDateFrom.value = convert("<%= items.minDate %>");
+                                    mobileDateFrom.setAttribute("min",convert("<%= items.minDate %>"));
+                                    mobileDateFrom.setAttribute("max", convert("<%= items.maxDate %>"))//Maximum value is Today
+                                </script>
                             </div>
 
                             <div class="item-not-found-div filter-type">
@@ -267,7 +626,7 @@
                                         }
                                     })
                                 </script> -->
-
+                                            
                                         </div>
                                     </div>
                                     <div class="item-category-div item-details-div">
@@ -276,6 +635,7 @@
                                         <!-- <label for="item-category-label" class="item-label">Category:</label>
                              <input type="text" readonly value="<%-item.Category%>"   class="category details-input"> -->
                                     </div>
+
                                 </div>
 
                                 <% }) %>
@@ -287,6 +647,7 @@
                 </main>
     </div>
     <script src="/lost_item_files/script.js"></script>
+    
 </body>
 
 </html>

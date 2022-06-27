@@ -1,7 +1,14 @@
 <!-- <div class="lost-items-container"> -->
-
+    <!-- <script src="/lost_item_files/script.js"></script> -->
+    <script>
+        function changeNumText(){
+            let numberText = document.getElementById('item-number');
+            let number = "<%=items.num%>";
+            numberText.innerText = `${number} items found`;
+        }
+        changeNumText();
+    </script>
     <% items.item.forEach((item,index) => { %>
-
         <div class="lost-item-container" id="<%-index%>">
             <div class="item-time-uploaded-div item-details-div">
                 <label for="time-uploaded" class="time-uploaded">Uploaded 2s ago</label>
@@ -68,5 +75,110 @@
         </div>
 
         <% }) %>
+
+        <script>
+            runImageSlider();
+function runImageSlider(){
+    let rightSlider = document.querySelectorAll('.next-image');
+    let leftSlider = document.querySelectorAll('.prev-image');
+    let sliderLeft = document.querySelectorAll('.prev');
+    let sliderRight = document.querySelectorAll('.next');
+
+    rightSlider.forEach((element)=>{
+            $(element).on("click",()=> {
+            let imageSlider = document.getElementById(element.parentElement.parentElement.id);
+            // imageSlider.style ='border:1px solid;';
+            imageSlider.classList.remove('circle-highlight')
+            imageSlider.classList.add('circle-highlightt');
+            let rightSlideButton = imageSlider.children[2];
+            let leftSlideButton = imageSlider.children[0];
+            rightSlideButton.style.opacity = '0';
+            rightSlideButton.style.pointerEvents = 'none';
+            leftSlideButton.style.opacity = '1';
+            leftSlideButton.style.pointerEvents = 'all';
+
+            let imageBox = imageSlider.children[1];
+            let leftImage = imageBox.children[0];
+            let rightImage = imageBox.children[1];
+            leftImage.style = 'transition:transform .5s ease-in-out'
+            rightImage.style = 'transition:all .7s ease-in-out';
+            leftImage.style.transformOrigin = 'left';
+            leftImage.style.transform = 'scaleX(0)';
+            rightImage.style.opacity = '1';
+
+        })
+    })
+
+    leftSlider.forEach((element)=>{
+        element.addEventListener('click', ()=>{
+            let imageSlider = document.getElementById(element.parentElement.parentElement.id);
+            // imageSlider.style ='border:1px solid;';
+            imageSlider.classList.remove('circle-highlightt')
+            imageSlider.classList.add('circle-highlight');
+            let rightSlideButton = imageSlider.children[2];
+            let leftSlideButton = imageSlider.children[0];
+            rightSlideButton.style.opacity = '1';
+            rightSlideButton.style.pointerEvents = 'all';
+            leftSlideButton.style.opacity = '0';
+            leftSlideButton.style.pointerEvents = 'none';
+
+            let imageBox = imageSlider.children[1];
+            let leftImage = imageBox.children[0];
+            let rightImage = imageBox.children[1];
+            rightImage.style = 'transition:all .25s ease-in';
+            rightImage.style.opacity = '0';
+            leftImage.style.transform = 'scaleX(1)';
+        })
+    })
+
+    sliderLeft.forEach((element)=>{
+        element.addEventListener('click', ()=>{
+            let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+            // imageAndSliderContainer.style ='border:1px solid;';
+            imageAndSliderContainer.classList.remove('circle-highlightt')
+            imageAndSliderContainer.classList.add('circle-highlight');
+            let rightSlideContainer = imageAndSliderContainer.children[2];
+            let leftSlideContainer = imageAndSliderContainer.children[0];
+            rightSlideContainer.style.opacity = '1';
+            rightSlideContainer.style.pointerEvents = 'all';
+            leftSlideContainer.style.opacity = '0';
+            leftSlideContainer.style.pointerEvents = 'none';
+
+            let imageContainer = imageAndSliderContainer.children[1];
+            let leftImg = imageContainer.children[0];
+            let rightImg = imageContainer.children[1];
+            rightImg.style = 'transition:all .25s ease-in';
+            rightImg.style.opacity = '0';
+            leftImg.style.transform = 'scaleX(1)';
+        })
+    })
+    sliderRight.forEach((element)=>{
+        element.addEventListener('click', ()=>{
+        
+            let imageAndSliderContainer = document.getElementById(element.parentElement.parentElement.id);
+            // imageAndSliderContainer.style ='border:1px solid;';
+            imageAndSliderContainer.classList.remove('circle-highlight')
+            imageAndSliderContainer.classList.add('circle-highlightt');
+            let rightSlideContainer = imageAndSliderContainer.children[2];
+            let leftSlideContainer = imageAndSliderContainer.children[0];
+            rightSlideContainer.style.opacity = '0';
+            rightSlideContainer.style.pointerEvents = 'none';
+            leftSlideContainer.style.opacity = '1';
+            leftSlideContainer.style.pointerEvents = 'all';
+
+            let imageContainer = imageAndSliderContainer.children[1];
+            let leftImg = imageContainer.children[0];
+            let rightImg = imageContainer.children[1];
+            leftImg.style = 'transition:transform .5s ease-in-out'
+            rightImg.style = 'transition:all .7s ease-in-out';
+            leftImg.style.transformOrigin = 'left';
+            leftImg.style.transform = 'scaleX(0)';
+            rightImg.style.opacity = '1';
+
+        })
+    })
+}
+    </script>
+
 
 <!-- </div> -->

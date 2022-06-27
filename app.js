@@ -10,7 +10,7 @@ const session  = require("express-session")
 const itemRoutes = require('./routes/item')
 const retrieveItemRoutes = require('./routes/retrieveItem')
 const adminLogin  = require("./routes/adminLogin")
-const getUpdate = require("./routes/getUpdate.js")
+const getUpdate = require("./routes/getUpdate");
 const checkItemRoutes = require("./routes/checkItem")
 const unsubscribe = require("./routes/unsubscribe")
 const retrievalRecord = require("./routes/retrievalRecord")
@@ -73,7 +73,7 @@ app.use(retrievalRecord)
 app.use(logout)
 app.use(landingPage)
 app.use(lostItem)
-app.use(filterRoute)
+app.use("/filter", filterRoute)
 
 // Port number
 port = process.env.PORT || 3700
@@ -83,7 +83,7 @@ port = process.env.PORT || 3700
 // const dbConnect = async() => {
 //     try
 //     {
-//         const connected = await mongoose.connect("mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },async ()=>{
+//         const connected = await mongoose.connect("mongodb://localhost/LostAndFound",{ useNewUrlParser: true, useUnifiedTopology: true },()=>{
 //         console.log("connected to the database")
 //         app.listen(port,()=>{console.log(`server is listening on port ${port}`)})
 //     })
