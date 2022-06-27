@@ -21,7 +21,7 @@ var upload = multer({
         }
         else{
             console.log("Only image type files supported" , file.mimetype)
-            callback(null, false)
+            callback({message:"Unsupported file format"}, false)
         }
     },
     limits:{

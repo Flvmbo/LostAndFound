@@ -3,8 +3,6 @@ const express = require('express')
 const adminLogin_controller = require("../controllers/adminLogin_controller")
 var route  = express.Router()
 
-// route = express.Router();
-
 
 /*This route is to get the sign in page*/
 route.get("/sign-in-page", adminLogin_controller.get_adminLoginPage);
