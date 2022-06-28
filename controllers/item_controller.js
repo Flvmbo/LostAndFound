@@ -3,7 +3,6 @@ const items = require("../model/submit_item");
 const get_update_schema = require("../model/get_update");
 // CLOUDINARY DEPENDENCIES
 const cloudinary = require("../util/cloudinary");
-const upload = require("../middleware/upload");
 const fs = require("fs");
 const LOCALURL = "http://localhost:3700";
 const ONLINEURL = "http://lostandfound-cu.herokuapp.com";
@@ -36,8 +35,6 @@ const post_submitItem = async (req, res) => {
     urls.push(newPath);
     fs.unlinkSync(path);
   }
-  console.log(urls);
-
   // CLOUDINARY UPLOAD ENDS
 
   var new_item = new items({

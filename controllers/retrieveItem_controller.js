@@ -1,5 +1,8 @@
 const retrievedItems = require('../model/retrieve_Item');
 const lostitems = require('../model/submit_item');
+// CLOUDINARY DEPENDENCIES
+const cloudinary = require("../util/cloudinary");
+const fs = require("fs");
 
 const get_showRetrieveItemPage = async(req, res) => {
     id = req.params.id;
@@ -26,6 +29,16 @@ const post_retriveItem = async(req, res) => {
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date + " " + time;
 
+        // UPLOAD TO CLOUDINARY START ...
+        const uploader = async (path) => await cloudinary.uploads(path, "images");
+        const imageUrl = [];
+        const {path} = req.file;
+        const newPath = await uploader(path);
+        imageUrl = newPath;
+        fs.unlinkSync(path);
+        console.log(imageUrl);
+        // CLOUDINARY UPLOAD ENDS
+
         var retrievedItem = new retrievedItems({
             firstname: firstname,
             lastname: lastname,
@@ -35,7 +48,7 @@ const post_retriveItem = async(req, res) => {
             Location_found: retrieved_item.Location,
             date_retrieved: dateTime,
             date_found: retrieved_item.itemDate,
-            idphoto: "retrieved/images/" + req.file.filename,
+            idphoto: imageUrl,
             itemPhoto: retrieved_item.firstImage,
             category: retrieved_item.Category
         })
