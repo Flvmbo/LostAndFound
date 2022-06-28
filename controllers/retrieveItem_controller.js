@@ -31,10 +31,9 @@ const post_retriveItem = async(req, res) => {
 
         // UPLOAD TO CLOUDINARY START ...
         const uploader = async (path) => await cloudinary.uploads(path, "images");
-        const imageUrl = [];
         const {path} = req.file;
         const newPath = await uploader(path);
-        imageUrl = newPath;
+        const imageUrl = newPath;
         fs.unlinkSync(path);
         console.log(imageUrl);
         // CLOUDINARY UPLOAD ENDS
