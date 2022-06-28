@@ -1,3 +1,4 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const items = require("../model/submit_item");
 const get_update_schema = require("../model/get_update");
@@ -62,7 +63,7 @@ const post_submitItem = async (req, res) => {
           service: "gmail",
           auth: {
             user: SITE_EMAIL,
-            pass: "aarzvzodjppaeswx",
+            pass: process.env.APP_PASSWORD,
           },
         });
 
