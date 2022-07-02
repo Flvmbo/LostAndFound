@@ -9,17 +9,12 @@ route.post("/", async (req, res)=>{
     const sortValue = sort=="ascending"?1:-1;
     let startDate = dates[0];
     let endDate = dates[1];
+    console.log("New Request + \n");
     console.log(sort);
     console.log(dates)
     console.log("category: ",category);
     console.log("location: ", location)
 
-    // console.log(`Category is: ${req.body.category} while Location: ${req.body.location}`);
-    // res.send(req.body)
-    
-    // console.log("category is: ", category);
-    // req.session.sessionCategory = category;
-    // // req.session.sessionLocation = location;
     try{
         var lostItems = await lostItemsModel.find({Category:category, Location:location, itemDate:{
             $gte: new Date(new Date(startDate).setHours(00, 00, 00)),
